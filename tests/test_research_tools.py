@@ -96,7 +96,7 @@ class PublicSourceSafetyTests(unittest.TestCase):
             resolver=PUBLIC_RESOLVER,
         )
         self.assertEqual([x["name"] for x in registry.descriptions()], ["fetch_public_url"])
-        result = registry.invoke("fetch_public_url", {"url": "https://example.test/source"})
+        result = registry.invoke("fetch_public_url", {"url": "https://example.test/source"}, role="market_researcher")
         self.assertEqual(result["text"], "Evidence text")
 
 
