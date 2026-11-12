@@ -144,6 +144,18 @@ class LLMInterfaceTests(unittest.TestCase):
             mocked_urlopen.assert_not_called()
 
     @patch("agent.llm.urlopen")
+    def test_monthly_guard_reserves_full_per_call_cap(self, mocked_urlopen):
+        with tempfile.TemporaryDirectory() as folder:
+            ledger = SpendLedger(Path(folder) / "ledger.sqlite3", 0.5)
+            client = OpenAICompatibleClient(live_settings(max_cost_per_call_usd=1.0), "test-secret", ledger)
+            with self.assertRaises(SpendLimitExceeded):
+                client.generate(LLMRequest(
+                    task="tiny", system="s", user="u", max_output_tokens=10
+                ))
+            mocked_urlopen.assert_not_called()
+            self.assertEqual(ledger.monthly_committed_usd(), 0.0)
+
+    @patch("agent.llm.urlopen")
     def test_failed_network_request_keeps_reservation(self, mocked_urlopen):
         from urllib.error import URLError
         mocked_urlopen.side_effect = URLError("offline")
