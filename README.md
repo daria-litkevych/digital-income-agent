@@ -63,3 +63,11 @@ python -m unittest discover -s tests -v
 ## Scheduled workflow
 
 GitHub Actions runs the bounded workflow on the configured schedule or by manual dispatch. The workflow commits updated state and dashboard snapshots when files change.
+
+## LLM integration foundation
+
+- `agent/llm.py` defines a provider-neutral request/response contract and a deterministic offline mock.
+- Live provider calls are **not implemented or enabled**. No API key is read and no network request is made.
+- Per-request input/output limits and a verified-price cost preflight are included for a future client.
+- See [docs/LLM_INTEGRATION.md](docs/LLM_INTEGRATION.md) for the staged implementation and benchmark plan.
+- The mock is test scaffolding only; its output is never valid market evidence.
