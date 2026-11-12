@@ -114,6 +114,14 @@ def collect_news(search):
         })
     return results
 
+def atomic_write_text(path, content):
+    """Replace a file atomically so interrupted runs cannot leave partial JSON or reports."""
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp = path.with_suffix(path.suffix + ".tmp")
+    temp.write_text(content, encoding="utf-8")
+    temp.replace(path)
+
 def make_report(state, run_time):
     items = state.get("research_items", [])
     sections = [
