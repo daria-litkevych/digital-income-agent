@@ -1,6 +1,6 @@
 # Digital Income Agent — Research Report
 
-Generated: 2026-11-12T16:18:35.899416+00:00
+Generated: 2026-11-12T20:36:43.519807+00:00
 
 ## Executive snapshot
 
