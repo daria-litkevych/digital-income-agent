@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "completed"
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -786,6 +786,19 @@
       "updated_at": "2026-11-12T22:29:29.194956+00:00",
       "attempts": 2,
       "completed_at": "2026-11-12T22:29:29.194956+00:00"
+    },
+    {
+      "id": "AB-020",
+      "title": "Build cross-role specialist evaluation and adversarial quality gates",
+      "phase": 9,
+      "role": "quality_controller",
+      "kind": "agent_evaluation",
+      "status": "queued",
+      "priority": 92,
+      "depends_on": [
+        "AB-019"
+      ],
+      "acceptance": "Every registered role is tested against all allowed artifact sections and foreign-role rejection; evidence URL provenance is enforced; unapproved live clients and external side-effect requests fail before provider invocation; CI runs the complete suite. Evaluation scope and limitations are documented; structural contract tests are not misrepresented as semantic model-quality validation."
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
