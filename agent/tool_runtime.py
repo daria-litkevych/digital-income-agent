@@ -22,6 +22,7 @@ class AgentTool:
     required_arguments: tuple[str, ...] = ()
     allowed_arguments: tuple[str, ...] = ()
     requires_approval: bool = False
+    allowed_roles: tuple[str, ...] = ()
 
 
 class ToolRegistry:
@@ -37,21 +38,25 @@ class ToolRegistry:
             raise ValueError(f"Tool already registered: {tool.name}")
         self._tools[tool.name] = tool
 
-    def descriptions(self) -> list[dict[str, Any]]:
+    def descriptions(self, role: str | None = None) -> list[dict[str, Any]]:
         return [
             {
                 "name": tool.name,
                 "description": tool.description,
                 "required_arguments": list(tool.required_arguments),
                 "allowed_arguments": list(tool.allowed_arguments),
+                "allowed_roles": list(tool.allowed_roles),
             }
             for tool in self._tools.values()
+            if role is None or role in tool.allowed_roles
         ]
 
-    def invoke(self, name: str, arguments: dict[str, Any]) -> Any:
+    def invoke(self, name: str, arguments: dict[str, Any], *, role: str) -> Any:
         tool = self._tools.get(name)
         if tool is None:
             raise BrainError(f"Unknown tool: {name}")
+        if role not in tool.allowed_roles:
+            raise BrainError(f"Role {role} is not allowed to use tool: {name}")
         if tool.requires_approval:
             raise BrainError(f"Tool requires human approval and cannot run autonomously: {name}")
         if not isinstance(arguments, dict):
@@ -116,7 +121,7 @@ class AgentToolRuntime:
                 "role": role,
                 "task": task,
                 "context": context,
-                "available_tools": self.registry.descriptions(),
+                "available_tools": self.registry.descriptions(role=role),
                 "transcript": transcript,
                 "protocol": {
                     "tool_call": {"type": "tool_call", "tool": "registered_name", "arguments": {}},
@@ -153,7 +158,7 @@ class AgentToolRuntime:
             if message.get("type") == "tool_call":
                 tool_name = message.get("tool")
                 arguments = message.get("arguments", {})
-                observation = self.registry.invoke(tool_name, arguments)
+                observation = self.registry.invoke(tool_name, arguments, role=role)
                 transcript.append({
                     "step": step + 1, "tool": tool_name,
                     "arguments": arguments, "observation": observation,
