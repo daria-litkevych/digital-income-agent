@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "blocked"
+      "status": "completed"
     }
   ],
   "tasks": [
@@ -720,19 +720,18 @@
       "phase": 9,
       "role": "quality_controller",
       "kind": "approval_security",
-      "status": "blocked",
+      "status": "done",
       "priority": 96,
       "depends_on": [
         "AB-014",
         "AB-015"
       ],
       "acceptance": "Approval requests are persisted with expiry and immutable payload hash; secret-like fields and non-JSON data are rejected; approval is identity-attributed, one-time, tamper-evident and covered by lifecycle/security tests. Queue does not execute actions.",
-      "started_at": "2026-11-12T21:23:28.398703+00:00",
-      "last_result": "No safe executor is registered for AB-016.",
-      "updated_at": "2026-11-12T21:23:28.398748+00:00",
+      "started_at": "2026-11-12T21:23:44.930679+00:00",
+      "last_result": "A persistent, expiring, payload-hash-bound, one-time human approval queue is covered by offline security and lifecycle tests; it records approvals but does not execute external actions.",
+      "updated_at": "2026-11-12T21:23:44.930889+00:00",
       "attempts": 1,
-      "blocked_reason": "No safe executor is registered for AB-016.",
-      "next_action": "Register a handler and acceptance checks before scheduling this task."
+      "completed_at": "2026-11-12T21:23:44.930889+00:00"
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
