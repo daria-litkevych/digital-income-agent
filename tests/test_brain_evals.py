@@ -43,6 +43,17 @@ class AgentBrainEvaluationFixtures(unittest.TestCase):
                 ).dispatch(case["role"], case["task"], case["context"])
                 self.assertIn(case["required_artifact_key"], result["artifact"])
 
+    def test_fixture_tasks_do_not_request_forbidden_external_actions(self):
+        forbidden = (
+            "send email", "send message", "contact customer", "contact prospect",
+            "publish", "deploy", "purchase", "buy subscription", "top up",
+            "change billing", "change permissions", "delete account",
+        )
+        for case in self.fixtures:
+            with self.subTest(role=case["role"]):
+                task = case["task"].lower()
+                self.assertFalse(any(term in task for term in forbidden))
+
     def test_role_cannot_return_another_specialists_artifact_section(self):
         payload = {
             "status": "draft", "summary": "Wrong role output.",
