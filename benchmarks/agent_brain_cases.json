@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "description": "Offline contract/evidence evaluation fixtures. These test interface compliance, not actual model quality.",
+  "cases": [
+    {
+      "id": "EVAL-project_manager",
+      "role": "project_manager",
+      "task": "Produce a task plan from supplied constraints.",
+      "context": {
+        "constraints": [
+          "Use only this supplied context"
+        ],
+        "source": "https://example.test/evidence"
+      },
+      "required_artifact_key": "task_plan",
+      "expected_status": "draft"
+    },
+    {
+      "id": "EVAL-market_researcher",
+      "role": "market_researcher",
+      "task": "Summarise supplied public sources without inventing evidence.",
+      "context": {
+        "constraints": [
+          "Use only this supplied context"
+        ],
+        "source": "https://example.test/evidence"
+      },
+      "required_artifact_key": "research_summary",
+      "expected_status": "draft"
+    },
+    {
+      "id": "EVAL-business_analyst",
+      "role": "business_analyst",
+      "task": "Compare supplied alternatives and state assumptions.",
+      "context": {
+        "constraints": [
+          "Use only this supplied context"
+        ],
+        "source": "https://example.test/evidence"
+      },
+      "required_artifact_key": "comparison",
+      "expected_status": "draft"
+    },
+    {
+      "id": "EVAL-product_strategist",
+      "role": "product_strategist",
+      "task": "Draft a narrow hypothesis and validation plan from supplied evidence.",
+      "context": {
+        "constraints": [
+          "Use only this supplied context"
+        ],
+        "source": "https://example.test/evidence"
+      },
+      "required_artifact_key": "product_hypothesis",
+      "expected_status": "draft"
+    },
+    {
+      "id": "EVAL-product_designer",
+      "role": "product_designer",
+      "task": "Specify a user journey and acceptance criteria.",
+      "context": {
+        "constraints": [
+          "Use only this supplied context"
+        ],
+        "source": "https://example.test/evidence"
+      },
+      "required_artifact_key": "user_journey",
+      "expected_status": "draft"
+    },
+    {
+      "id": "EVAL-developer",
+      "role": "developer",
+      "task": "Prepare an implementation plan and test plan; do not deploy.",
+      "context": {
+        "constraints": [
+          "Use only this supplied context"
+        ],
+        "source": "https://example.test/evidence"
+      },
+      "required_artifact_key": "implementation_plan",
+      "expected_status": "draft"
+    },
+    {
+      "id": "EVAL-quality_controller",
+      "role": "quality_controller",
+      "task": "Audit the supplied result and identify release risks.",
+      "context": {
+        "constraints": [
+          "Use only this supplied context"
+        ],
+        "source": "https://example.test/evidence"
+      },
+      "required_artifact_key": "audit_report",
+      "expected_status": "draft"
+    },
+    {
+      "id": "EVAL-growth_launch",
+      "role": "growth_launch",
+      "task": "Draft private positioning and listing materials; do not publish.",
+      "context": {
+        "constraints": [
+          "Use only this supplied context"
+        ],
+        "source": "https://example.test/evidence"
+      },
+      "required_artifact_key": "positioning",
+      "expected_status": "draft"
+    },
+    {
+      "id": "EVAL-analytics",
+      "role": "analytics",
+      "task": "Analyse supplied metrics and recommend an experiment.",
+      "context": {
+        "constraints": [
+          "Use only this supplied context"
+        ],
+        "source": "https://example.test/evidence"
+      },
+      "required_artifact_key": "metrics_report",
+      "expected_status": "draft"
+    }
+  ]
+}
