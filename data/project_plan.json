@@ -617,11 +617,11 @@
         "AB-009"
       ],
       "acceptance": "Project Manager coordinates multi-step role handoffs using live model only when explicitly approved; persists checkpoints, resumes safely, enforces budgets and gates external actions. End-to-end tests simulate the entire lifecycle with fake model/tools.",
-      "started_at": "2026-11-12T21:04:48.160384+00:00",
+      "started_at": "2026-11-12T21:05:01.647246+00:00",
       "last_result": "Checkpointed multi-specialist orchestration is implemented with bounded workflows, role validation, recovery and human-review gates.",
-      "updated_at": "2026-11-12T21:04:48.160508+00:00",
+      "updated_at": "2026-11-12T21:05:01.647466+00:00",
       "attempts": 1,
-      "completed_at": "2026-11-12T21:04:48.160508+00:00"
+      "completed_at": "2026-11-12T21:05:01.647466+00:00"
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
