@@ -592,16 +592,17 @@
       "phase": 9,
       "role": "developer",
       "kind": "workspace_tools",
-      "status": "queued",
+      "status": "done",
       "priority": 112,
       "depends_on": [
         "AB-007"
       ],
       "acceptance": "Agents can inspect approved workspace files, propose bounded changes and run tests in isolated temporary workspaces. No secrets, deployment, public commits or writes outside allowlisted paths; all generated changes are reviewable.",
-      "started_at": "2026-11-12T20:59:43.786507+00:00",
-      "last_result": "Re-queued after the missing acceptance handler/tool implementation was added.",
-      "updated_at": "2026-11-12T20:59:43.786544+00:00",
-      "attempts": 1
+      "started_at": "2026-11-12T21:04:09.718722+00:00",
+      "last_result": "Temporary proposal workspace tools are implemented with path allowlists, repository-isolated edits, allowlisted test modules and execution timeouts.",
+      "updated_at": "2026-11-12T21:04:09.718861+00:00",
+      "attempts": 2,
+      "completed_at": "2026-11-12T21:04:09.718861+00:00"
     },
     {
       "id": "AB-010",

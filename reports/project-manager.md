@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T21:03:38.718173+00:00
+**Last cycle:** 2026-11-12T21:04:09.718861+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 22 | Queued: 3 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 36
-- Last task: AB-008 (completed)
+- Completed: 23 | Queued: 2 | Running: 0 | Blocked: 1 | Failed: 0
+- Project Manager cycles: 37
+- Last task: AB-009 (completed)
 
 ## Specialist registry
 
@@ -49,8 +49,8 @@
   - Latest: Bounded JSON tool-call runtime is implemented with an allowlisted registry, argument validation, approval gates, hard step/output limits and AgentBrain final-output validation.
 - **AB-008 · Add safe source-retrieval tools and evidence provenance** — done · market_researcher
   - Latest: Read-only public-source retrieval is implemented with HTTPS and public-IP checks, redirect refusal, response bounds and explicit ungraded evidence metadata.
-- **AB-009 · Add sandboxed workspace editing and test execution tools** — queued · developer
-  - Latest: Re-queued after the missing acceptance handler/tool implementation was added.
+- **AB-009 · Add sandboxed workspace editing and test execution tools** — done · developer
+  - Latest: Temporary proposal workspace tools are implemented with path allowlists, repository-isolated edits, allowlisted test modules and execution timeouts.
 - **AB-010 · Integrate autonomous multi-step specialist orchestration** — queued · project_manager
 - **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher
   - Latest: Completed a first desk-research scan. Identified eight candidates across B2C, B2B and prosumer; this is directional evidence only, not validation or proof of sales.
