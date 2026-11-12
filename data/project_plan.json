@@ -155,8 +155,8 @@
     {
       "id": 9,
       "name": "Autonomous studio capability",
-      "goal": "Connect guarded AI specialist roles to the workflow, with human approval gates, spend limits, traceable outputs and evals.",
-      "status": "planned"
+      "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -450,6 +450,85 @@
         "DS-009"
       ],
       "acceptance": "Review actual traffic, conversion, sales, refunds and support; decide improve, reposition or stop."
+    },
+    {
+      "id": "AB-001",
+      "title": "Create central specialist registry and guarded Agent Brain dispatcher",
+      "phase": 9,
+      "role": "project_manager",
+      "kind": "architecture",
+      "status": "done",
+      "priority": 120,
+      "depends_on": [],
+      "acceptance": "Central role registry, injected LLM client, structured JSON output contract, offline default and explicit separation of model output from side effects.",
+      "last_result": "Implemented agent/brain.py with nine specialist roles, common dispatch contract, fail-closed JSON validation and offline mock default. Live calls are not enabled."
+    },
+    {
+      "id": "AB-002",
+      "title": "Add Agent Brain safety, role coverage and contract tests",
+      "phase": 9,
+      "role": "quality_controller",
+      "kind": "quality_assurance",
+      "status": "done",
+      "priority": 119,
+      "depends_on": [
+        "AB-001"
+      ],
+      "acceptance": "Tests cover all lifecycle roles, offline mock labelling, unknown role rejection, external-action rejection and malformed model outputs.",
+      "last_result": "Added tests/test_brain.py with fake-client tests; no network calls or paid services."
+    },
+    {
+      "id": "AB-003",
+      "title": "Integrate guarded Agent Brain dispatch into Project Manager",
+      "phase": 9,
+      "role": "developer",
+      "kind": "integration",
+      "status": "queued",
+      "priority": 118,
+      "depends_on": [
+        "AB-002"
+      ],
+      "acceptance": "Project Manager can explicitly route an eligible task to a specialist brain, persist validated output, recover interrupted tasks and default to deterministic/offline execution unless an approved mode is explicitly configured."
+    },
+    {
+      "id": "AB-004",
+      "title": "Connect live LLM dispatch to spend ledger and approval configuration",
+      "phase": 9,
+      "role": "developer",
+      "kind": "budget_guard",
+      "status": "queued",
+      "priority": 117,
+      "depends_on": [
+        "AB-003"
+      ],
+      "acceptance": "Live calls remain disabled by default; any enabled call requires explicit provider, verified pricing, per-call cap, monthly cap, runtime credential and persistent ledger reservation/settlement before and after network use."
+    },
+    {
+      "id": "AB-005",
+      "title": "Build specialist evaluation suite and evidence-quality tests",
+      "phase": 9,
+      "role": "quality_controller",
+      "kind": "evaluation",
+      "status": "queued",
+      "priority": 116,
+      "depends_on": [
+        "AB-003"
+      ],
+      "acceptance": "Each role has representative golden cases, structured-output checks, evidence/citation checks, hallucination traps and approval-boundary tests; mock output cannot pass as completed work."
+    },
+    {
+      "id": "AB-006",
+      "title": "Run end-to-end Agent Brain workflow and document autonomy limits",
+      "phase": 9,
+      "role": "project_manager",
+      "kind": "end_to_end",
+      "status": "queued",
+      "priority": 115,
+      "depends_on": [
+        "AB-004",
+        "AB-005"
+      ],
+      "acceptance": "A complete task moves from queue through role dispatch, validated result, persisted artifact and report; interrupted runs recover; no unapproved API call, spend, outreach or publication occurs."
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
