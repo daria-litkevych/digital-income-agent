@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "completed"
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -622,6 +622,58 @@
       "updated_at": "2026-11-12T21:05:01.647466+00:00",
       "attempts": 1,
       "completed_at": "2026-11-12T21:05:01.647466+00:00"
+    },
+    {
+      "id": "AB-011",
+      "title": "Build explicitly approved live studio composition root",
+      "phase": 9,
+      "role": "developer",
+      "kind": "live_composition",
+      "status": "queued",
+      "priority": 110,
+      "depends_on": [
+        "AB-010"
+      ],
+      "acceptance": "A composition root builds the live client, monthly ledger, bounded tool registry and checkpointed orchestrator only after a separate explicit approval flag, live-enabled setting, runtime credential, verified prices and hard caps. Construction itself makes no provider request."
+    },
+    {
+      "id": "AB-012",
+      "title": "Integrate default-off autonomous dispatch into Project Manager",
+      "phase": 9,
+      "role": "project_manager",
+      "kind": "pm_autonomy_integration",
+      "status": "queued",
+      "priority": 109,
+      "depends_on": [
+        "AB-011"
+      ],
+      "acceptance": "Project Manager can route an explicitly marked workflow through the gated composition root, persists checkpoints, refuses execution by default, and never marks specialist drafts done without review. Scheduled runs remain offline."
+    },
+    {
+      "id": "AB-013",
+      "title": "Enforce role-specific tool permissions and audit boundaries",
+      "phase": 9,
+      "role": "quality_controller",
+      "kind": "tool_permissions",
+      "status": "queued",
+      "priority": 108,
+      "depends_on": [
+        "AB-012"
+      ],
+      "acceptance": "Every registered tool declares allowed specialist roles; runtime filters visible tools and refuses cross-role invocation. Tests prove research, workspace and privileged actions cannot be used by the wrong role."
+    },
+    {
+      "id": "AB-014",
+      "title": "Run full offline autonomy integration and recovery suite",
+      "phase": 9,
+      "role": "quality_controller",
+      "kind": "autonomy_e2e",
+      "status": "queued",
+      "priority": 107,
+      "depends_on": [
+        "AB-013"
+      ],
+      "acceptance": "End-to-end fake-client workflow exercises PM gate, multiple specialist roles, allowed tool use, evidence provenance, checkpoints, interruption and resume. All network and billing clients are fakes; no public actions or spend occur."
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
