@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 44,
+  "run_count": 45,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T21:06:37.380958+00:00",
-  "research_last_run_utc": "2026-11-12T21:06:34.726535+00:00",
+  "last_run_utc": "2026-11-12T21:08:13.356118+00:00",
+  "research_last_run_utc": "2026-11-12T21:08:11.122801+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -192,13 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 41,
+  "pm_run_count": 42,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T21:06:37.380911+00:00",
-    "task_id": "AB-011",
-    "role": "developer",
+    "timestamp": "2026-11-12T21:08:13.356056+00:00",
+    "task_id": "AB-012",
+    "role": "project_manager",
     "status": "completed",
-    "summary": "A live studio composition root now requires explicit host approval, an explicit live flag, runtime credentials, verified token pricing and a monthly spend ledger; construction itself makes no provider call."
+    "summary": "Project Manager now has a default-off autonomous dispatch path with explicit approval, persisted checkpoints and mandatory human review of specialist drafts."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -857,12 +857,17 @@
         "phase": 9,
         "role": "project_manager",
         "kind": "pm_autonomy_integration",
-        "status": "queued",
+        "status": "done",
         "priority": 109,
         "depends_on": [
           "AB-011"
         ],
-        "acceptance": "Project Manager can route an explicitly marked workflow through the gated composition root, persists checkpoints, refuses execution by default, and never marks specialist drafts done without review. Scheduled runs remain offline."
+        "acceptance": "Project Manager can route an explicitly marked workflow through the gated composition root, persists checkpoints, refuses execution by default, and never marks specialist drafts done without review. Scheduled runs remain offline.",
+        "started_at": "2026-11-12T21:08:13.355833+00:00",
+        "last_result": "Project Manager now has a default-off autonomous dispatch path with explicit approval, persisted checkpoints and mandatory human review of specialist drafts.",
+        "updated_at": "2026-11-12T21:08:13.356056+00:00",
+        "attempts": 1,
+        "completed_at": "2026-11-12T21:08:13.356056+00:00"
       },
       {
         "id": "AB-013",
@@ -1375,6 +1380,31 @@
         ]
       },
       "next_action": "Integrate the gated factory into Project Manager with a default-off execution switch and verify recovery without enabling live mode."
+    },
+    "AB-012": {
+      "ok": true,
+      "blocked": false,
+      "summary": "Project Manager now has a default-off autonomous dispatch path with explicit approval, persisted checkpoints and mandatory human review of specialist drafts.",
+      "metrics": {
+        "checks": {
+          "project_manager_dispatch_integrated": true,
+          "approval_defaults_to_false": true,
+          "unapproved_execution_blocked": true,
+          "checkpoints_persist_in_state": true,
+          "drafts_remain_human_review_gated": true,
+          "default_off_tests_exist": true
+        }
+      },
+      "artifact": {
+        "integration": "agent/project_manager.py",
+        "tests": "tests/test_pm_autonomy_gate.py",
+        "limitations": [
+          "Scheduled Project Manager does not supply live approval",
+          "No live model request is enabled",
+          "Autonomous task outputs cannot be marked done without human review"
+        ]
+      },
+      "next_action": "Run full end-to-end integration tests in offline mode, then perform a security and permission audit."
     }
   },
   "event_log": [
@@ -1637,6 +1667,13 @@
       "role": "developer",
       "status": "completed",
       "summary": "A live studio composition root now requires explicit host approval, an explicit live flag, runtime credentials, verified token pricing and a monthly spend ledger; construction itself makes no provider call."
+    },
+    {
+      "timestamp": "2026-11-12T21:08:13.356056+00:00",
+      "task_id": "AB-012",
+      "role": "project_manager",
+      "status": "completed",
+      "summary": "Project Manager now has a default-off autonomous dispatch path with explicit approval, persisted checkpoints and mandatory human review of specialist drafts."
     }
   ]
 }

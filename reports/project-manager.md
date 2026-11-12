@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T21:06:37.380911+00:00
+**Last cycle:** 2026-11-12T21:08:13.356056+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 25 | Queued: 4 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 41
-- Last task: AB-011 (completed)
+- Completed: 26 | Queued: 3 | Running: 0 | Blocked: 1 | Failed: 0
+- Project Manager cycles: 42
+- Last task: AB-012 (completed)
 
 ## Specialist registry
 
@@ -55,7 +55,8 @@
   - Latest: Checkpointed multi-specialist orchestration is implemented with bounded workflows, role validation, recovery and human-review gates.
 - **AB-011 · Build explicitly approved live studio composition root** — done · developer
   - Latest: A live studio composition root now requires explicit host approval, an explicit live flag, runtime credentials, verified token pricing and a monthly spend ledger; construction itself makes no provider call.
-- **AB-012 · Integrate default-off autonomous dispatch into Project Manager** — queued · project_manager
+- **AB-012 · Integrate default-off autonomous dispatch into Project Manager** — done · project_manager
+  - Latest: Project Manager now has a default-off autonomous dispatch path with explicit approval, persisted checkpoints and mandatory human review of specialist drafts.
 - **AB-013 · Enforce role-specific tool permissions and audit boundaries** — queued · quality_controller
 - **AB-014 · Run full offline autonomy integration and recovery suite** — queued · quality_controller
 - **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher

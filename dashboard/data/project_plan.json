@@ -647,12 +647,17 @@
       "phase": 9,
       "role": "project_manager",
       "kind": "pm_autonomy_integration",
-      "status": "queued",
+      "status": "done",
       "priority": 109,
       "depends_on": [
         "AB-011"
       ],
-      "acceptance": "Project Manager can route an explicitly marked workflow through the gated composition root, persists checkpoints, refuses execution by default, and never marks specialist drafts done without review. Scheduled runs remain offline."
+      "acceptance": "Project Manager can route an explicitly marked workflow through the gated composition root, persists checkpoints, refuses execution by default, and never marks specialist drafts done without review. Scheduled runs remain offline.",
+      "started_at": "2026-11-12T21:08:13.355833+00:00",
+      "last_result": "Project Manager now has a default-off autonomous dispatch path with explicit approval, persisted checkpoints and mandatory human review of specialist drafts.",
+      "updated_at": "2026-11-12T21:08:13.356056+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-12T21:08:13.356056+00:00"
     },
     {
       "id": "AB-013",
