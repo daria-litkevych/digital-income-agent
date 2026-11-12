@@ -2,8 +2,8 @@
   "agent_name": "Digital Income Agent",
   "run_count": 17,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T20:36:45.836699+00:00",
-  "research_last_run_utc": "2026-11-12T20:36:43.519807+00:00",
+  "last_run_utc": "2026-11-12T20:36:59.500270+00:00",
+  "research_last_run_utc": "2026-11-12T20:36:57.277017+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -14,7 +14,7 @@
     "freelancer consultant scope creep pricing quotes change requests client work",
     "creator freelancer content business workflow client deliverables digital tools"
   ],
-  "research_new_items": 0,
+  "research_new_items": 2,
   "research_errors": [],
   "research_items": [
     {
@@ -32,6 +32,22 @@
       "published_date": "2026-09-30"
     },
     {
+      "title": "Lloyds reduces small business admin with new in-app invoicing tool in partnership with BankiFi - Open Banking Expo",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOalZ4NWdFUmN5eXFjNTk3TzJlWERCSVhEVTZkS2RreEg3TlJMelFabVBLaXhTZEdLa3VhWE5FU3ZtaGxweU05dTlSdlMzS2pSMjZRdERtbDRyOXZyR3YzdmtIOVRXTzhkVmEzeEFMRTJtZHZfU3YwcHJ0R0otMGRaZGthMEVVcDVwVEtSSTZrMWsxX0hIUVdaRlpJdEZDaHVUQ3lrWmtvNTVnVWdKU1hPemtFVWE4MmRRT1p3b0YxaXZia2hTZURj?oc=5",
+      "published": "Mon, 28 Sep 2026 07:00:00 GMT",
+      "description": "Lloyds reduces small business admin with new in-app invoicing tool in partnership with BankiFi Open Banking Expo",
+      "query": "small business invoicing quoting payment reminders admin automation software",
+      "hypothesis": "b2b_microbusiness_admin",
+      "segment": "B2B",
+      "relevance_score": 3,
+      "matched_terms": [
+        "small business",
+        "invoicing",
+        "admin"
+      ],
+      "published_date": "2026-09-28"
+    },
+    {
       "title": "Blink Raises $17 Million and Partners With Shake Shack to Advance Frontline Workforce Technology for Restaurants - Restaurant Technology News",
       "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOTUJiTkQ5aWJTc2ltYlBvdjFBZjg5cWVqU0JWY1FaUTJPUjFOZEE2YkNLVllRcGR1bVFmRjdDR29tbFNFZkJqVEx4T2pzdUFEWXp5MHBDenNrRjJkQjZqN3RNdV9HLUtIYlpxWUREYlpzUlNsWWtXdjUxQXRfdTFmdWJIQS1MT1hzTmFIR1FIa3h0YzhaNTRRbGdwS1NFNUtwWWlQZUZXMC1LNGI0bVhDX083MkctelZZYl8zeENURG9XYmhVcTBHLVV5cHJPbHk2SWpNT3p2eVNaUnpKcTl6M0FPeUxwWklMOUJ4WlZB?oc=5",
       "published": "Sat, 27 Jun 2026 07:00:00 GMT",
@@ -44,6 +60,21 @@
         "restaurant"
       ],
       "published_date": "2026-06-27"
+    },
+    {
+      "title": "Best Invoicing Solutions For Small Business - Salesforce",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNY2VMOWE3cngyMGIzUkVXMHRhanpOY1JTVFNJemItNnpVR1pWZ0ZMT3BwVFMtTGdKWHk2aTFRcndwR3FBRzVNYllqN2FuRm9kdDFHUzZocHBkdGVxVVp3RXcyalJESjVzdmlpa0hvbi1FaEpCajQ2c05aeFJZNi1MYklDcUNjTnRI?oc=5",
+      "published": "Mon, 22 Jun 2026 07:00:00 GMT",
+      "description": "Best Invoicing Solutions For Small Business Salesforce",
+      "query": "small business invoicing quoting payment reminders admin automation software",
+      "hypothesis": "b2b_microbusiness_admin",
+      "segment": "B2B",
+      "relevance_score": 2,
+      "matched_terms": [
+        "small business",
+        "invoicing"
+      ],
+      "published_date": "2026-06-22"
     },
     {
       "title": "HN TV: Why Running Hotel Operations on WhatsApp Is the Equivalent of Managing Your Business on Personal Gmail — A Conversation with Guy Weiss, CEO of Zenzap - Hospitality Net",
@@ -147,7 +178,7 @@
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
   "pm_run_count": 14,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T20:36:45.836647+00:00",
+    "timestamp": "2026-11-12T20:36:59.500223+00:00",
     "task_id": null,
     "status": "no_eligible_tasks",
     "summary": "No queued or retryable task has all dependencies completed."
@@ -954,7 +985,7 @@
       "summary": "No queued or retryable task has all dependencies completed."
     },
     {
-      "timestamp": "2026-11-12T20:36:45.836647+00:00",
+      "timestamp": "2026-11-12T20:36:59.500223+00:00",
       "task_id": null,
       "status": "no_eligible_tasks",
       "summary": "No queued or retryable task has all dependencies completed."

@@ -1,11 +1,11 @@
 # Digital Income Agent — Research Report
 
-Generated: 2026-11-12T20:36:43.519807+00:00
+Generated: 2026-11-12T20:36:57.277017+00:00
 
 ## Executive snapshot
 
-- New articles this run: 0
-- Relevant articles stored: 8
+- New articles this run: 2
+- Relevant articles stored: 10
 - Collection errors: 0
 - Research window: approximately the last 12 months
 
@@ -40,9 +40,21 @@ No sufficiently relevant articles found in this run.
 
 ### Micro-business administration
 
-Relevant news items stored: 0
+Relevant news items stored: 2
 
-No sufficiently relevant articles found in this run.
+#### Lloyds reduces small business admin with new in-app invoicing tool in partnership with BankiFi - Open Banking Expo
+- Date: 2026-09-28
+- Relevance score: 3
+- Matched topics: small business, invoicing, admin
+- Search: small business invoicing quoting payment reminders admin automation software
+- Source: https://news.google.com/rss/articles/CBMixwFBVV95cUxOalZ4NWdFUmN5eXFjNTk3TzJlWERCSVhEVTZkS2RreEg3TlJMelFabVBLaXhTZEdLa3VhWE5FU3ZtaGxweU05dTlSdlMzS2pSMjZRdERtbDRyOXZyR3YzdmtIOVRXTzhkVmEzeEFMRTJtZHZfU3YwcHJ0R0otMGRaZGthMEVVcDVwVEtSSTZrMWsxX0hIUVdaRlpJdEZDaHVUQ3lrWmtvNTVnVWdKU1hPemtFVWE4MmRRT1p3b0YxaXZia2hTZURj?oc=5
+
+#### Best Invoicing Solutions For Small Business - Salesforce
+- Date: 2026-06-22
+- Relevance score: 2
+- Matched topics: small business, invoicing
+- Search: small business invoicing quoting payment reminders admin automation software
+- Source: https://news.google.com/rss/articles/CBMiiAFBVV95cUxNY2VMOWE3cngyMGIzUkVXMHRhanpOY1JTVFNJemItNnpVR1pWZ0ZMT3BwVFMtTGdKWHk2aTFRcndwR3FBRzVNYllqN2FuRm9kdDFHUzZocHBkdGVxVVp3RXcyalJESjVzdmlpa0hvbi1FaEpCajQ2c05aeFJZNi1MYklDcUNjTnRI?oc=5
 
 ### Small service business operations
 
