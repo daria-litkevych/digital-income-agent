@@ -485,8 +485,8 @@
       {
         "id": "AG-07",
         "name": "Cross-market research pipeline",
-        "status": "planned",
-        "evidence": "Needs multi-segment query configuration, source capture and evidence grading"
+        "status": "implemented_limited",
+        "evidence": "agent/main.py now runs eight RSS query groups across B2C, B2B and prosumer; RSS remains a weak discovery signal and does not replace source-level research."
       },
       {
         "id": "AG-08",
