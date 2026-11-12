@@ -1,0 +1,142 @@
+{
+  "generated_at": "2026-11-12",
+  "scope": "Initial public competitor and substitute scan. Prices are displayed prices observed in search-result snippets/pages and should be rechecked before commercial decisions.",
+  "hypotheses": {
+    "cafe_starter_kit": [
+      {
+        "name": "Coffee Shop Opening & Closing Checklist (Etsy marketplace listing)",
+        "type": "direct digital template",
+        "price": "$5.55",
+        "audience": "Coffee shop operators",
+        "offer": "Editable opening and closing checklist",
+        "source": "https://www.etsy.com/market/coffee_shop_opening_checklist",
+        "evidence_note": "Marketplace listing result; product-level seller and review details not independently opened."
+      },
+      {
+        "name": "Café / Coffee Shop Daily Operations Checklist (Etsy marketplace listing)",
+        "type": "direct digital template",
+        "price": "$5.99",
+        "audience": "Cafe operators",
+        "offer": "Daily operations checklist in Word/PDF",
+        "source": "https://www.etsy.com/market/opening_and_closing_checklist_cafe",
+        "evidence_note": "Marketplace listing result."
+      },
+      {
+        "name": "Coffee Shop Operations Manual / Barista Training (Etsy marketplace listing)",
+        "type": "direct digital template",
+        "price": "$25.37",
+        "audience": "Coffee shop owners and managers",
+        "offer": "Operations manual and barista training SOPs",
+        "source": "https://www.etsy.com/market/opening_and_closing_checklist_cafe",
+        "evidence_note": "Marketplace listing result."
+      },
+      {
+        "name": "Coffee Shop Checklist / Barista Training Guide (Etsy marketplace listing)",
+        "type": "direct digital template",
+        "price": "$3.45 sale price",
+        "audience": "Coffee shop operators",
+        "offer": "Opening/closing checklist and barista training guide",
+        "source": "https://www.etsy.com/market/coffee_shop_checklist",
+        "evidence_note": "Marketplace result showed a listing with 1.5k displayed review count; verify on product page before relying on it."
+      },
+      {
+        "name": "Coffee Shop SOP Manual Template (Etsy marketplace listing)",
+        "type": "direct digital template",
+        "price": "$11.24 sale price",
+        "audience": "Coffee shop owners",
+        "offer": "SOP manual template in Word/Google Docs",
+        "source": "https://www.etsy.com/market/coffee_shop_checklist",
+        "evidence_note": "Marketplace result showed 1.1k displayed review count; verify on product page."
+      },
+      {
+        "name": "Editable Coffee & Hot Drinks Master Log (Etsy marketplace listing)",
+        "type": "adjacent digital template",
+        "price": "$4.15",
+        "audience": "Coffee shop operators",
+        "offer": "Sales, inventory, cost, cleaning, shift and expense logs",
+        "source": "https://www.etsy.com/market/coffee_shop_checklist",
+        "evidence_note": "Marketplace result showed 506 displayed review count; verify on product page."
+      }
+    ],
+    "shiftbrief_ai": [
+      {
+        "name": "ShiftForce (formerly ShiftNote)",
+        "type": "direct competitor",
+        "price": "From $40/location/month",
+        "audience": "Restaurants, bars, hotels; especially multi-location operators",
+        "offer": "Manager logbook, shift notes, tasks, schedules and staff messaging",
+        "source": "https://foodbusinessapps.com/sites/site/shiftnote",
+        "evidence_note": "Third-party product directory reviewed Sep 29 2026; vendor identity/price should be confirmed on current official site."
+      },
+      {
+        "name": "Front Desk",
+        "type": "direct competitor",
+        "price": "€29–€89/property/month excl. tax",
+        "audience": "Hotels and shift-based teams",
+        "offer": "Shift handover and digital logbook with web and mobile apps",
+        "source": "https://front-desk.fr/en/",
+        "evidence_note": "Vendor pricing page search result."
+      },
+      {
+        "name": "Shifo",
+        "type": "substitute / broader horeca platform",
+        "price": "€32/month excl. VAT Starter",
+        "audience": "Dutch restaurants, hotels, cafes and bars",
+        "offer": "Scheduling, tasks, time clock, recurring tasks, HACCP logbook and exports",
+        "source": "https://shifo.nl/en",
+        "evidence_note": "Vendor pricing page; not a pure handover tool."
+      },
+      {
+        "name": "Venheim Operations Logbook",
+        "type": "substitute / broader operations platform",
+        "price": "Free Start; €39.90/site/month Pro",
+        "audience": "Hospitality businesses",
+        "offer": "Roster, time clock, team chat, onboarding, HACCP, inventory and reports",
+        "source": "https://venheim.com/en/operations-logbook",
+        "evidence_note": "Vendor pricing page; handover is adjacent to the wider operations logbook."
+      },
+      {
+        "name": "Rotahr",
+        "type": "substitute / broader restaurant operations platform",
+        "price": "€49/month Starter; €89/month Pro",
+        "audience": "Small cafes and independent restaurants",
+        "offer": "Rota, daily brief, logbook, equipment register, messaging and AI features",
+        "source": "https://rotahr.com/",
+        "evidence_note": "Vendor pricing page."
+      },
+      {
+        "name": "HospiX DS",
+        "type": "substitute / broader daily operations platform",
+        "price": "From €99/month",
+        "audience": "Hospitality venues",
+        "offer": "Sales, labour, prep, tasks, staff schedule and shift handovers",
+        "source": "https://hospix.tech/products/ds",
+        "evidence_note": "Vendor pricing page."
+      }
+    ]
+  },
+  "customer_signals": [
+    {
+      "hypothesis": "shiftbrief_ai",
+      "signal": "A restaurant worker described paper schedules plus chaotic group texts causing missed shift swaps, side-work assignments and schedule confusion; another commenter praised read receipts, while others disliked over-messaging and app complexity.",
+      "source": "https://www.reddit.com/r/Serverlife/comments/1qau5mp/restaurant_workers_what_apps_does_your_job_use/",
+      "type": "community discussion",
+      "limitation": "Anecdotal thread; not representative demand evidence."
+    },
+    {
+      "hypothesis": "shiftbrief_ai",
+      "signal": "Workers described communication apps being used for shift notes, prep, repairs and handovers, but also concerns about micromanagement and excessive messages.",
+      "source": "https://www.reddit.com/r/KitchenConfidential/comments/1s1w644/does_everyone_use_apps_now_to_communicate/",
+      "type": "community discussion",
+      "limitation": "Anecdotal thread; mixed sentiment."
+    }
+  ],
+  "early_findings": [
+    "Café checklist and SOP templates are already a crowded low-price marketplace category. Competing on generic checklists alone is unlikely to be attractive.",
+    "A potential differentiation for the café kit is a highly curated, specialty-coffee-specific workflow pack with exceptionally low setup friction and genuinely useful manager routines; this remains unvalidated.",
+    "ShiftBrief AI faces established direct and adjacent software competitors. Dutch horeca products already bundle tasks, logbooks, messaging and scheduling at roughly €32–€49/month at entry levels.",
+    "Community signals suggest a real communication/handover problem, but also highlight a product risk: too many notifications, app complexity and perceived micromanagement.",
+    "No willingness-to-pay conclusion can be drawn from this scan."
+  ],
+  "next_validation": "Interview or observe 5–8 independent specialty coffee shop owners/managers and 5–8 horeca shift leads; ask them to show current handover/checklist workflow before presenting a solution."
+}
