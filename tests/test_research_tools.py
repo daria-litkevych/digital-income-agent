@@ -1,8 +1,11 @@
 import unittest
+import tempfile
+from pathlib import Path
 
 from agent.engine import execute
 from unittest.mock import patch
 
+from agent.evidence_store import EvidenceStore
 from agent.research_tools import _PinnedHTTPSConnection
 from agent.research_tools import (
     SourceFetchError, build_research_tool_registry, fetch_public_source,
@@ -113,6 +116,60 @@ class PublicSourceSafetyTests(unittest.TestCase):
                 "https://example.test/a", transport=oversized,
                 resolver=PUBLIC_RESOLVER, max_bytes=10,
             )
+
+    def test_fetch_and_record_tool_persists_ungraded_excerpt_with_hash(self):
+        with tempfile.TemporaryDirectory() as directory:
+            store = EvidenceStore(Path(directory) / "evidence.json")
+            summary = store.ingest_discovery([{
+                "title": "Public source",
+                "link": "https://example.test/source",
+                "description": "RSS snippet",
+                "segment": "B2B",
+                "hypothesis": "microbusiness_admin",
+            }], checked_at="2026-11-12T00:00:00+00:00")
+            record = store._load()["records"][0]
+            registry = build_research_tool_registry(
+                transport=lambda url, timeout, max_bytes: {
+                    "final_url": url, "content_type": "text/plain",
+                    "body": b"Source body with a claim that still needs checking.",
+                },
+                resolver=PUBLIC_RESOLVER,
+                evidence_store=store,
+            )
+            self.assertIn("fetch_and_record_evidence", [x["name"] for x in registry.descriptions()])
+            result = registry.invoke(
+                "fetch_and_record_evidence",
+                {"evidence_id": record["evidence_id"], "url": record["source_url"]},
+                role="market_researcher",
+            )
+            updated = store._load()["records"][0]
+            inspection = updated["source_inspections"][0]
+            self.assertEqual(result["stored"]["review_status"], "ungraded")
+            self.assertEqual(updated["evidence_status"], "source_retrieved_ungraded")
+            self.assertEqual(updated["confidence"], "Unverified")
+            self.assertEqual(inspection["excerpt"], "Source body with a claim that still needs checking.")
+            self.assertTrue(inspection["untrusted_source_text"])
+            self.assertEqual(len(inspection["content_sha256"]), 64)
+
+    def test_fetch_and_record_tool_rejects_url_mismatch_before_network(self):
+        with tempfile.TemporaryDirectory() as directory:
+            store = EvidenceStore(Path(directory) / "evidence.json")
+            store.ingest_discovery([{
+                "title": "Public source", "link": "https://example.test/source",
+                "description": "RSS snippet",
+            }])
+            record = store._load()["records"][0]
+            def forbidden_transport(*args):
+                raise AssertionError("network transport must not be called for a URL mismatch")
+            registry = build_research_tool_registry(
+                transport=forbidden_transport, resolver=PUBLIC_RESOLVER, evidence_store=store,
+            )
+            with self.assertRaises(SourceFetchError):
+                registry.invoke(
+                    "fetch_and_record_evidence",
+                    {"evidence_id": record["evidence_id"], "url": "https://example.test/other"},
+                    role="market_researcher",
+                )
 
     def test_registry_exposes_only_the_explicit_read_only_fetch_tool(self):
         registry = build_research_tool_registry(
