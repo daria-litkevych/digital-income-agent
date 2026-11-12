@@ -16,22 +16,22 @@ MAX_ATTEMPTS = 3
 DEFAULT_BRAIN = build_offline_brain()
 
 def dispatch_task(task, state, evidence, brain=None):
-    \"\"\"Route only explicitly flagged tasks through Agent Brain; deterministic execution is default.\"\"\"
-    if not task.get(\"dispatch_to_brain\"):
+    """Route only explicitly flagged tasks through Agent Brain; deterministic execution is default."""
+    if not task.get("dispatch_to_brain"):
         return execute(task, state, evidence)
     selected_brain = brain or DEFAULT_BRAIN
     output = selected_brain.dispatch(
-        task.get(\"role\", \"\"),
-        task.get(\"title\", \"Execute specialist task\"),
-        {\"task\": task, \"project_state\": state, \"evidence\": evidence},
+        task.get("role", ""),
+        task.get("title", "Execute specialist task"),
+        {"task": task, "project_state": state, "evidence": evidence},
     )
     # Drafts from a model are never auto-marked as completed work.
     return {
-        \"ok\": False,
-        \"blocked\": True,
-        \"summary\": \"Agent Brain returned a draft requiring review; no task was auto-completed.\",
-        \"artifact\": {\"agent_brain_output\": output},
-        \"next_action\": \"Review the structured draft, evidence and risks before accepting it as task output.\",
+        "ok": False,
+        "blocked": True,
+        "summary": "Agent Brain returned a draft requiring review; no task was auto-completed.",
+        "artifact": {"agent_brain_output": output},
+        "next_action": "Review the structured draft, evidence and risks before accepting it as task output.",
     }
 
 def load_json(path, default):
