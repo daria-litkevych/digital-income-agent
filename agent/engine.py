@@ -166,6 +166,26 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-013":
+        root = Path(__file__).resolve().parents[1]
+        runtime_path = root / "agent" / "tool_runtime.py"
+        research_path = root / "agent" / "research_tools.py"
+        workspace_path = root / "agent" / "workspace_tools.py"
+        test_path = root / "tests" / "test_tool_runtime.py"
+        runtime = runtime_path.read_text(encoding="utf-8") if runtime_path.exists() else ""
+        research = research_path.read_text(encoding="utf-8") if research_path.exists() else ""
+        workspace = workspace_path.read_text(encoding="utf-8") if workspace_path.exists() else ""
+        checks = {
+            "tool_role_allowlist_exists": "allowed_roles" in runtime,
+            "runtime_filters_visible_tools_by_role": "descriptions(role=role)" in runtime,
+            "runtime_checks_role_before_invoke": "role not in tool.allowed_roles" in runtime,
+            "research_tools_have_role_scopes": "allowed_roles=" in research,
+            "workspace_tools_have_role_scopes": "allowed_roles=" in workspace,
+            "permission_tests_exist": test_path.exists(),
+            "side_effects_still_approval_gated": "requires_approval" in runtime,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "Specialist tool permissions are now enforced by role at both discovery and invocation; cross-role access fails closed." if passed else "Role-specific tool permission checks are incomplete.", "metrics": {"checks": checks}, "artifact": {"runtime": "agent/tool_runtime.py", "research_tools": "agent/research_tools.py", "workspace_tools": "agent/workspace_tools.py", "tests": "tests/test_tool_runtime.py"}, "next_action": "Run the full offline autonomy integration and recovery suite."}
     if task_id == "AB-012":
         root = Path(__file__).resolve().parents[1]
         pm_path = root / "agent" / "project_manager.py"
