@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import json
+import hashlib
 
 from agent.engine import ROLES, apply_result, execute, select_task, utc_now
 from agent.brain import build_offline_brain
@@ -12,6 +13,7 @@ STATE_FILE = ROOT / "data" / "state.json"
 PLAN_FILE = ROOT / "data" / "project_plan.json"
 EVIDENCE_FILE = ROOT / "data" / "market_research.json"
 REPORT_FILE = ROOT / "reports" / "project-manager.md"
+CHECKPOINT_DIR = ROOT / "data" / "agent_checkpoints"
 MAX_ATTEMPTS = 3
 DEFAULT_BRAIN = build_offline_brain()
 
@@ -26,11 +28,24 @@ def dispatch_task(task, state, evidence, brain=None, *, autonomous_approval=Fals
             }
         from agent.autonomous_studio import build_live_studio
         workflow_steps = task.get("workflow_steps", [])
-        checkpoints = state.setdefault("autonomous_workflow_checkpoints", {})
+        workflow_id = str(task.get("id", "autonomous-task"))
+        if not workflow_id.strip() or len(workflow_id) > 120:
+            return {
+                "ok": False, "blocked": True,
+                "summary": "Autonomous workflow ID is missing or exceeds the allowed length.",
+                "next_action": "Use a stable workflow task ID of at most 120 characters.",
+            }
+        checkpoint_name = hashlib.sha256(workflow_id.encode("utf-8")).hexdigest() + ".json"
+        checkpoint_path = CHECKPOINT_DIR / checkpoint_name
+        def load_checkpoints():
+            return load_json(checkpoint_path, {})
+        def save_checkpoints(updated):
+            # Persist after every specialist handoff, not only at PM cycle end.
+            save_json(checkpoint_path, updated)
         studio = build_live_studio(
             ROOT,
-            checkpoint_loader=lambda: checkpoints,
-            checkpoint_saver=lambda updated: checkpoints.update(updated),
+            checkpoint_loader=load_checkpoints,
+            checkpoint_saver=save_checkpoints,
             approval_confirmed=True,
             env=env,
         )
