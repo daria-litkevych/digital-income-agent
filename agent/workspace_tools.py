@@ -153,6 +153,7 @@ def build_workspace_tool_registry(workspace: ProposalWorkspace) -> ToolRegistry:
             description="Read an allowlisted project file in the temporary proposal workspace.",
             handler=lambda args: {"path": args["path"], "content": workspace.read_file(args["path"])},
             required_arguments=("path",), allowed_arguments=("path",),
+            allowed_roles=("developer", "quality_controller"),
         ),
         AgentTool(
             name="propose_workspace_edit",
@@ -160,11 +161,13 @@ def build_workspace_tool_registry(workspace: ProposalWorkspace) -> ToolRegistry:
             handler=lambda args: workspace.propose_write(args["path"], args["content"]),
             required_arguments=("path", "content"),
             allowed_arguments=("path", "content"),
+            allowed_roles=("developer",),
         ),
         AgentTool(
             name="run_allowlisted_tests",
             description="Run one pre-approved unittest module in the temporary proposal workspace with a strict timeout.",
             handler=lambda args: workspace.run_tests(args["test_module"]),
             required_arguments=("test_module",), allowed_arguments=("test_module",),
+            allowed_roles=("developer", "quality_controller"),
         ),
     ])
