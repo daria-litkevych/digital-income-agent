@@ -1,11 +1,11 @@
 # Digital Income Agent — Research Report
 
-Generated: 2026-11-12T20:42:51.003603+00:00
+Generated: 2026-11-12T20:43:38.073291+00:00
 
 ## Executive snapshot
 
-- New articles this run: 0
-- Relevant articles stored: 10
+- New articles this run: 1
+- Relevant articles stored: 11
 - Collection errors: 0
 - Research window: approximately the last 12 months
 
@@ -32,9 +32,14 @@ Relevant news items stored: 1
 
 ### Wedding planning workflows
 
-Relevant news items stored: 0
+Relevant news items stored: 1
 
-No sufficiently relevant articles found in this run.
+#### How Wedding Planning Platforms Help Couples Stay on Budget - Caribbean National Weekly
+- Date: 2026-06-17
+- Relevance score: 3
+- Matched topics: wedding, budget, planning
+- Search: wedding planning guest list RSVP budget vendor seating spreadsheet tool
+- Source: https://news.google.com/rss/articles/CBMipwFBVV95cUxPRHE2d3RqUjdiSmNoeURmVGUtWTMzY3V3SG5GZHJYSkZBTEVLemFDSTI2dk0zRFBDa09QNmozWHJlQjBtYmJfLUJlTG9fVWRDZlJveDY3TTc0bkxmaklWb2x6RWV0RUFPeEUwQ2ZhaGtFZzh4RmJOc3A3Z3hUS0hQVGhYcmJtWmQ0ZGNiYkNyVlhaaTlWT2QxM05oUnRkUXFrVzJydEhERQ?oc=5
 
 ## B2B
 

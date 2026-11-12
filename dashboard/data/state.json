@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 21,
+  "run_count": 22,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T20:42:53.493480+00:00",
-  "research_last_run_utc": "2026-11-12T20:42:51.003603+00:00",
+  "last_run_utc": "2026-11-12T20:43:40.708939+00:00",
+  "research_last_run_utc": "2026-11-12T20:43:38.073291+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -14,7 +14,7 @@
     "freelancer consultant scope creep pricing quotes change requests client work",
     "creator freelancer content business workflow client deliverables digital tools"
   ],
-  "research_new_items": 0,
+  "research_new_items": 1,
   "research_errors": [],
   "research_items": [
     {
@@ -88,6 +88,22 @@
         "hospitality",
         "hotel",
         "operations"
+      ],
+      "published_date": "2026-06-17"
+    },
+    {
+      "title": "How Wedding Planning Platforms Help Couples Stay on Budget - Caribbean National Weekly",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPRHE2d3RqUjdiSmNoeURmVGUtWTMzY3V3SG5GZHJYSkZBTEVLemFDSTI2dk0zRFBDa09QNmozWHJlQjBtYmJfLUJlTG9fVWRDZlJveDY3TTc0bkxmaklWb2x6RWV0RUFPeEUwQ2ZhaGtFZzh4RmJOc3A3Z3hUS0hQVGhYcmJtWmQ0ZGNiYkNyVlhaaTlWT2QxM05oUnRkUXFrVzJydEhERQ?oc=5",
+      "published": "Wed, 17 Jun 2026 07:00:00 GMT",
+      "description": "How Wedding Planning Platforms Help Couples Stay on Budget Caribbean National Weekly",
+      "query": "wedding planning guest list RSVP budget vendor seating spreadsheet tool",
+      "hypothesis": "b2c_wedding",
+      "segment": "B2C",
+      "relevance_score": 3,
+      "matched_terms": [
+        "wedding",
+        "budget",
+        "planning"
       ],
       "published_date": "2026-06-17"
     },
@@ -176,9 +192,9 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 18,
+  "pm_run_count": 19,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T20:42:53.493446+00:00",
+    "timestamp": "2026-11-12T20:43:40.708886+00:00",
     "task_id": null,
     "status": "no_eligible_tasks",
     "summary": "No queued or retryable task has all dependencies completed."
@@ -1096,6 +1112,12 @@
     },
     {
       "timestamp": "2026-11-12T20:42:53.493446+00:00",
+      "task_id": null,
+      "status": "no_eligible_tasks",
+      "summary": "No queued or retryable task has all dependencies completed."
+    },
+    {
+      "timestamp": "2026-11-12T20:43:40.708886+00:00",
       "task_id": null,
       "status": "no_eligible_tasks",
       "summary": "No queued or retryable task has all dependencies completed."
