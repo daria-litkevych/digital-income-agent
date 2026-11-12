@@ -19,6 +19,8 @@ from agent.tool_runtime import AgentTool, ToolRegistry
 
 
 DEFAULT_ALLOWED_FILES = (
+    "agent/__init__.py",
+    "tests/__init__.py",
     "agent/brain.py",
     "agent/engine.py",
     "agent/project_manager.py",
@@ -113,7 +115,14 @@ class ProposalWorkspace:
         }
         try:
             result = subprocess.run(
-                [sys.executable, "-I", "-m", "unittest", test_module, "-v"],
+                [
+                    sys.executable, "-I", "-c",
+                    "import os, sys, unittest; sys.path.insert(0, os.getcwd()); "
+                    "suite = unittest.defaultTestLoader.loadTestsFromName(sys.argv[1]); "
+                    "result = unittest.TextTestRunner(verbosity=2).run(suite); "
+                    "sys.exit(0 if result.wasSuccessful() else 1)",
+                    test_module,
+                ],
                 cwd=self.root,
                 env=env,
                 capture_output=True,
