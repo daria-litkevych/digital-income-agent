@@ -132,13 +132,13 @@
       "id": 5,
       "name": "Quality assurance",
       "goal": "Test core flows, edge cases, accessibility, mobile usability, privacy and reliability.",
-      "status": "in_progress"
+      "status": "blocked"
     },
     {
       "id": 6,
       "name": "Sales and launch assets",
       "goal": "Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.",
-      "status": "in_progress"
+      "status": "planned"
     },
     {
       "id": 7,
@@ -396,13 +396,19 @@
       "phase": 5,
       "role": "quality_controller",
       "kind": "quality_assurance",
-      "status": "in_progress",
+      "status": "blocked",
       "priority": 70,
       "depends_on": [
         "DS-006"
       ],
       "acceptance": "Automated/manual test record, known limitations, privacy review and no critical defects in core flow.",
-      "last_result": "Automated prototype checks pass: required inputs/actions, calculation and print/copy hooks, no external services or persistent storage, privacy/legal disclaimer. Manual browser/mobile QA remains."
+      "last_result": "No safe executor is registered for DS-007.",
+      "recovered_at": "2026-11-12T16:18:08.979709+00:00",
+      "started_at": "2026-11-12T16:18:08.979752+00:00",
+      "updated_at": "2026-11-12T16:18:08.979784+00:00",
+      "attempts": 1,
+      "blocked_reason": "No safe executor is registered for DS-007.",
+      "next_action": "Register a handler and acceptance checks before scheduling this task."
     },
     {
       "id": "DS-008",
@@ -410,13 +416,14 @@
       "phase": 6,
       "role": "growth_launch",
       "kind": "launch_preparation",
-      "status": "in_progress",
+      "status": "queued",
       "priority": 65,
       "depends_on": [
         "DS-007"
       ],
       "acceptance": "Draft positioning, pricing hypothesis, screenshots, listing copy, instructions, refund/support policy and platform fee comparison.",
-      "last_result": "Drafted listing copy, untested pricing hypothesis and participant usability-test script. No platform selected and nothing published."
+      "last_result": "Drafted listing copy, untested pricing hypothesis and participant usability-test script. No platform selected and nothing published.",
+      "recovered_at": "2026-11-12T16:18:08.979724+00:00"
     },
     {
       "id": "DS-009",
