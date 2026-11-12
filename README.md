@@ -20,13 +20,13 @@ The studio follows one product lifecycle:
 8. Explicit user approval before any public listing, payment, outreach or account change.
 9. Analytics, iteration or product retirement based on actual behaviour.
 
-The current candidates are hypotheses, not validated business opportunities. See [the opportunity scan](reports/opportunity-scan.md) and [the project plan](data/project_plan.json).
+The current candidates are hypotheses, not validated business opportunities. See [the opportunity scan](reports/opportunity-scan.md), [ScopeSnap competitor review](products/scopesnap/research/competitors.md) and [evidence grading rules](docs/EVIDENCE_GRADING.md).
 
 ## Current technical state — important distinction
 
 The repository currently contains a **deterministic Python workflow**, not a fully autonomous AI studio.
 
-- `agent/main.py` collects Google News RSS discovery signals. Its current query configuration is still focused on cafés and hospitality.
+- `agent/main.py` collects Google News RSS discovery signals. It now collects Google News RSS discovery signals across B2C, B2B and prosumer. RSS is a weak discovery input, not customer research or demand validation.
 - `agent/engine.py` contains five deterministic specialist handlers.
 - `agent/project_manager.py` executes one eligible task per run, checks dependencies, persists state and produces reports.
 - `agent/llm.py` provides a provider-neutral client and offline mock. The live client is **not connected** to specialist roles or scheduled runs.
@@ -34,7 +34,7 @@ The repository currently contains a **deterministic Python workflow**, not a ful
 - `dashboard/` displays project plan, task, research and finance snapshots.
 - `tests/` and GitHub Actions provide automated checks.
 
-The next technical work is to implement cross-market research, evidence grading, opportunity scoring, product-specific workspaces, and eventually guarded AI role dispatch. Until those are implemented and tested, the planned roles must not be described as active autonomous agents.
+The next technical work is source-level research, evidence grading, comparable opportunity scoring, product-specific workspaces, and eventually guarded AI role dispatch. Web research performed in ChatGPT is not automatically performed by the scheduled repository agent. Until those are implemented and tested, the planned roles must not be described as active autonomous agents.
 
 ## Specialist roster
 
