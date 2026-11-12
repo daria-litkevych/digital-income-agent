@@ -8,9 +8,12 @@ import json
 import re
 import xml.etree.ElementTree as ET
 
+from agent.evidence_store import EvidenceStore
+
 ROOT = Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "state.json"
 REPORT_PATH = ROOT / "reports" / "latest.md"
+EVIDENCE_STORE_PATH = ROOT / "data" / "evidence_store.json"
 
 SEARCHES = [
     {"hypothesis":"b2c_life_admin","segment":"B2C","name":"Consumer life admin and focus tools","query":'consumer daily planning focus life admin app spreadsheet template', "terms":["daily planner","focus","life admin","planning","routine","organize","organise","productivity","calendar","task"]},
@@ -186,6 +189,8 @@ def main():
     state["research_new_items"] = len(new_items)
     state["research_errors"] = errors
     state["research_items"] = merged[:200]
+    evidence_summary = EvidenceStore(EVIDENCE_STORE_PATH).ingest_discovery(merged[:200], checked_at=now)
+    state["evidence_store_summary"] = evidence_summary
     state["research_hypotheses"] = {
         **{item["hypothesis"]: item["name"] for item in SEARCHES},
     }
