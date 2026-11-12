@@ -40,19 +40,21 @@ class ToolRegistryTests(unittest.TestCase):
             name="lookup", description="Read one item",
             handler=lambda args: {"value": args["key"]},
             required_arguments=("key",), allowed_arguments=("key",),
+            allowed_roles=("market_researcher",),
         )])
         with self.assertRaisesRegex(BrainError, "Unexpected"):
-            registry.invoke("lookup", {"key": "x", "extra": True})
-        self.assertEqual(registry.invoke("lookup", {"key": "x"}), {"value": "x"})
+            registry.invoke("lookup", {"key": "x", "extra": True}, role="market_researcher")
+        self.assertEqual(registry.invoke("lookup", {"key": "x"}, role="market_researcher"), {"value": "x"})
 
     def test_side_effect_tool_is_blocked(self):
         registry = ToolRegistry([AgentTool(
             name="publish", description="Publish externally",
             handler=lambda args: {"ok": True},
             allowed_arguments=(), requires_approval=True,
+            allowed_roles=("growth_launch",),
         )])
         with self.assertRaisesRegex(BrainError, "human approval"):
-            registry.invoke("publish", {})
+            registry.invoke("publish", {}, role="growth_launch")
 
 
 class AgentToolRuntimeTests(unittest.TestCase):
@@ -61,7 +63,7 @@ class AgentToolRuntimeTests(unittest.TestCase):
         registry = ToolRegistry([AgentTool(
             name="lookup", description="Lookup",
             handler=lambda args: called.append(args),
-            allowed_arguments=(),
+            allowed_arguments=(), allowed_roles=("market_researcher",),
         )])
         result = AgentToolRuntime(OfflineMockClient(), registry).run(
             "market_researcher", "Summarise sources", {}
@@ -93,6 +95,7 @@ class AgentToolRuntimeTests(unittest.TestCase):
             name="read_source", description="Read supplied public source",
             handler=lambda args: {"url": args["url"], "content": "fixture text"},
             required_arguments=("url",), allowed_arguments=("url",),
+            allowed_roles=("market_researcher",),
         )])
         result = AgentToolRuntime(client, registry, live_approved=True).run(
             "market_researcher", "Summarise supplied sources", {"url": source}
