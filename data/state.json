@@ -2,8 +2,8 @@
   "agent_name": "Digital Income Agent",
   "run_count": 66,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T22:39:42.820112+00:00",
-  "research_last_run_utc": "2026-11-12T22:39:39.451842+00:00",
+  "last_run_utc": "2026-11-12T22:39:55.643918+00:00",
+  "research_last_run_utc": "2026-11-12T22:39:53.589987+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -194,10 +194,11 @@
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
   "pm_run_count": 63,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T22:39:42.820048+00:00",
-    "task_id": null,
-    "status": "no_eligible_tasks",
-    "summary": "No queued or retryable task has all dependencies completed."
+    "timestamp": "2026-11-12T22:39:55.643861+00:00",
+    "task_id": "AB-020",
+    "role": "quality_controller",
+    "status": "blocked",
+    "summary": "No safe executor is registered for AB-020."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -365,7 +366,7 @@
         "id": 9,
         "name": "Autonomous studio capability",
         "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-        "status": "completed"
+        "status": "blocked"
       }
     ],
     "tasks": [
@@ -995,6 +996,25 @@
         "updated_at": "2026-11-12T22:29:29.194956+00:00",
         "attempts": 2,
         "completed_at": "2026-11-12T22:29:29.194956+00:00"
+      },
+      {
+        "id": "AB-020",
+        "title": "Build cross-role specialist evaluation and adversarial quality gates",
+        "phase": 9,
+        "role": "quality_controller",
+        "kind": "agent_evaluation",
+        "status": "blocked",
+        "priority": 92,
+        "depends_on": [
+          "AB-019"
+        ],
+        "acceptance": "Every registered role is tested against all allowed artifact sections and foreign-role rejection; evidence URL provenance is enforced; unapproved live clients and external side-effect requests fail before provider invocation; CI runs the complete suite. Evaluation scope and limitations are documented; structural contract tests are not misrepresented as semantic model-quality validation.",
+        "started_at": "2026-11-12T22:39:55.643817+00:00",
+        "last_result": "No safe executor is registered for AB-020.",
+        "updated_at": "2026-11-12T22:39:55.643861+00:00",
+        "attempts": 1,
+        "blocked_reason": "No safe executor is registered for AB-020.",
+        "next_action": "Register a handler and acceptance checks before scheduling this task."
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -2092,10 +2112,11 @@
       "summary": "Project Manager now persists specialist checkpoints after every handoff, reloads them on resume, and injects the provenance-aware evidence store into the approved research tool registry. Scheduled execution still supplies no live approval and all outputs remain subject to human review."
     },
     {
-      "timestamp": "2026-11-12T22:39:42.820048+00:00",
-      "task_id": null,
-      "status": "no_eligible_tasks",
-      "summary": "No queued or retryable task has all dependencies completed."
+      "timestamp": "2026-11-12T22:39:55.643861+00:00",
+      "task_id": "AB-020",
+      "role": "quality_controller",
+      "status": "blocked",
+      "summary": "No safe executor is registered for AB-020."
     }
   ],
   "evidence_store_summary": {

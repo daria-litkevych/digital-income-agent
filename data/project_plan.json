@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "in_progress"
+      "status": "blocked"
     }
   ],
   "tasks": [
@@ -793,12 +793,18 @@
       "phase": 9,
       "role": "quality_controller",
       "kind": "agent_evaluation",
-      "status": "queued",
+      "status": "blocked",
       "priority": 92,
       "depends_on": [
         "AB-019"
       ],
-      "acceptance": "Every registered role is tested against all allowed artifact sections and foreign-role rejection; evidence URL provenance is enforced; unapproved live clients and external side-effect requests fail before provider invocation; CI runs the complete suite. Evaluation scope and limitations are documented; structural contract tests are not misrepresented as semantic model-quality validation."
+      "acceptance": "Every registered role is tested against all allowed artifact sections and foreign-role rejection; evidence URL provenance is enforced; unapproved live clients and external side-effect requests fail before provider invocation; CI runs the complete suite. Evaluation scope and limitations are documented; structural contract tests are not misrepresented as semantic model-quality validation.",
+      "started_at": "2026-11-12T22:39:55.643817+00:00",
+      "last_result": "No safe executor is registered for AB-020.",
+      "updated_at": "2026-11-12T22:39:55.643861+00:00",
+      "attempts": 1,
+      "blocked_reason": "No safe executor is registered for AB-020.",
+      "next_action": "Register a handler and acceptance checks before scheduling this task."
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
