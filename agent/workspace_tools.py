@@ -26,11 +26,18 @@ DEFAULT_ALLOWED_FILES = (
     "agent/project_manager.py",
     "agent/tool_runtime.py",
     "agent/research_tools.py",
+    "agent/workspace_tools.py",
+    "agent/orchestrator.py",
+    "agent/autonomous_studio.py",
     "tests/test_brain.py",
     "tests/test_brain_e2e.py",
     "tests/test_project_manager.py",
     "tests/test_tool_runtime.py",
     "tests/test_research_tools.py",
+    "tests/test_workspace_tools.py",
+    "tests/test_orchestrator.py",
+    "tests/test_autonomous_studio.py",
+    "tests/test_pm_autonomy_gate.py",
 )
 DEFAULT_ALLOWED_TESTS = (
     "tests.test_brain",
