@@ -1,26 +1,51 @@
 # Project Manager — Online Passive Income
 
-**Agent development update:** 2026-11-12
+**Last cycle:** 2026-11-12T14:57:03.746625+00:00
 
-## Technical agent status
+**Goal:** Build a low-cost, mostly automated digital product business targeting €1,000/month within five years.
 
-- Persistent task orchestration and dependency scheduling: implemented.
-- Five deterministic specialist handlers: implemented.
-- Result validation, bounded retries, interrupted-run recovery and event log: implemented.
-- Unit tests and CI test gate: committed; awaiting first GitHub Actions execution.
-- RSS freshness filtering and persistent-memory pruning: implemented.
-- Scheduled execution, reports and dashboard snapshot sync: configured; deployment verification pending.
-- Dashboard now displays the Project Manager cycle count rather than the RSS collector count.
+## Execution status
 
-**Architecture caveat:** this is currently a deterministic, rules-based agent, not an LLM-powered autonomous researcher. It has no paid API integration and cannot browse arbitrary websites. Any future LLM or browser integration must be separately approved and cost-guarded.
+- Completed: 6 | Queued: 2 | Running: 0 | Blocked: 0 | Failed: 0
+- Project Manager cycles: 2
+- Last task: PS-001 (completed)
 
-## Current business-research queue
+## Specialist registry
 
-The competitor and pricing scans and qualitative customer-signal scan are complete. The next eligible task is PS-001: compare both business hypotheses and define the lowest-cost validation experiment. This task is deliberately separate from technical agent development.
+- **Project Manager** — Prioritises work, dependencies, continuity and execution limits.
+- **Market Researcher** — Organises sourced competitor and customer evidence.
+- **Business Analyst** — Compares pricing, customer pain, economics and evidence strength.
+- **Product Strategist** — Compares hypotheses and designs low-cost validation experiments.
+- **Quality Controller** — Audits sources, evidence limits and unsupported conclusions.
 
-## Safety and cost guardrails
+## Phases
 
-- No paid APIs, subscriptions, servers or domains without explicit approval.
-- No product publication, customer outreach or external commitments without explicit approval.
-- Community discussions are anecdotal signals, not proof of market size or willingness to pay.
-- One business task is processed per scheduled invocation; failed tasks have bounded retries and blocked tasks require deliberate re-queueing.
+- **1. Cloud infrastructure** — completed: Private repository, persistent data, cloud execution and cost guardrails
+- **2. Agent brain** — completed: Orchestrator, specialist roles, memory, task queue and resume logic
+- **3. Automated research** — in_progress: Search, browser research, evidence capture and source checks
+- **4. Scheduling and reports** — planned: Five bounded daily cycles, saved results and notifications
+- **5. Management dashboard** — planned: Connect the MVP to persistent project data and show actual agent progress
+
+## Task queue
+
+- **PM-001 · Build persistent Project Manager and specialist role registry** — done · project_manager
+- **MR-001 · Map direct competitors and substitutes for café starter kit** — done · market_researcher
+  - Latest: Initial sourced competitor scan saved: 6 café template products/substitutes. See data/market_research.json; this is discovery evidence, not proof of sales.
+- **MR-002 · Map direct competitors and substitutes for ShiftBrief AI** — done · market_researcher
+  - Latest: Mapped six handover/logbook competitors and substitutes; official pricing pages checked for ShiftForce, Shifo, Venheim and Rotahr. See data/market_research.json and reports/market-research.md.
+- **BA-001 · Compare competitor pricing and business models** — done · business_analyst
+  - Latest: Compared visible one-time/free/subscription price anchors. Prices differ by currency, tax, venue/team size and scope; some older observations remain flagged for recheck.
+- **BA-002 · Identify recurring customer complaints and unmet needs** — done · business_analyst
+  - Latest: Added first-hand/community discussion evidence for café stock consistency, staffing/owner overload and food waste, plus a hotel shift-handover example where buried notes led to forgotten guest requests. Evidence remains anecdotal and does not establish willingness to pay.
+- **PS-001 · Compare the two hypotheses and choose the cheapest demand test** — done · product_strategist
+  - Latest: Compared both hypotheses. Willingness to pay is not demonstrated for either; recommend discovery interviews before choosing or building.
+- **QC-001 · Quality review of market evidence and recommendation** — queued · quality_controller
+- **PM-002 · Prepare first product MVP scope and launch roadmap** — queued · project_manager
+
+## Agent architecture and limits
+
+- Deterministic specialist handlers run without paid LLM/API services.
+- One task is executed per invocation; task results and a bounded event log are persisted.
+- Failed tasks may retry up to three times; blocked tasks require new evidence or a deliberate plan change.
+- No paid services, publishing, customer outreach or external commitments are permitted automatically.
+- Research findings are evidence signals, not proof of demand or revenue.

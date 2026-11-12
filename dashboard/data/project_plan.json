@@ -32,13 +32,13 @@
       "id": 2,
       "name": "Agent brain",
       "goal": "Orchestrator, specialist roles, memory, task queue and resume logic",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": 3,
       "name": "Automated research",
       "goal": "Search, browser research, evidence capture and source checks",
-      "status": "planned"
+      "status": "in_progress"
     },
     {
       "id": 4,
@@ -141,13 +141,18 @@
       "phase": 3,
       "role": "product_strategist",
       "kind": "analysis",
-      "status": "queued",
+      "status": "done",
       "priority": 70,
       "depends_on": [
         "BA-001",
         "BA-002"
       ],
-      "acceptance": "Evidence-based comparison, risks and a low-cost validation experiment."
+      "acceptance": "Evidence-based comparison, risks and a low-cost validation experiment.",
+      "started_at": "2026-11-12T14:57:03.746587+00:00",
+      "last_result": "Compared both hypotheses. Willingness to pay is not demonstrated for either; recommend discovery interviews before choosing or building.",
+      "updated_at": "2026-11-12T14:57:03.746625+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-12T14:57:03.746625+00:00"
     },
     {
       "id": "QC-001",

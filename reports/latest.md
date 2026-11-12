@@ -1,11 +1,11 @@
 # Digital Income Agent — Research Report
 
-Generated: 2026-11-12T14:23:09.032988+00:00
+Generated: 2026-11-12T14:57:01.151745+00:00
 
 ## Executive snapshot
 
 - New articles this run: 0
-- Relevant articles stored: 31
+- Relevant articles stored: 5
 - Collection errors: 0
 - Research window: approximately the last 12 months
 

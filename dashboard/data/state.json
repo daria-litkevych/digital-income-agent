@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 4,
+  "run_count": 5,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T14:23:11.062450+00:00",
-  "research_last_run_utc": "2026-11-12T14:23:09.032988+00:00",
+  "last_run_utc": "2026-11-12T14:57:03.746645+00:00",
+  "research_last_run_utc": "2026-11-12T14:57:01.151745+00:00",
   "research_queries": [
     "\"specialty coffee\" cafe operations staff training",
     "\"coffee shop\" \"daily checklist\" OR \"opening checklist\" OR \"closing checklist\"",
@@ -87,188 +87,6 @@
         "hotel"
       ],
       "published_date": "2026-05-05"
-    },
-    {
-      "title": "College shuts down Goodrich Coffee Bar, citing need to restructure - The Williams Record",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPWkhpRzBWUEdxRFJsdmNyNUc5d21zVjhkbHlYM1VpS1FvendKbUY1THg4U2VZd1lTRzJGU0hMWUIyVml6OHdfLWU0WmFSMzAtOE1qa1A5R2NSa1BxQnV6TnFnMDZZQU5RaHZtT1JQMnZRR0I2SmhSQ0poNy1LWS10TXl1RlRnb2VUX3lkS2dtVVY3RkcyZnp1LTlTN2JKZjhFbVFYZXZxZkg?oc=5",
-      "published": "Wed, 23 Sep 2026 05:23:25 GMT",
-      "description": "College shuts down Goodrich Coffee Bar, citing need to restructure The Williams Record",
-      "query": "specialty coffee shop operations problems"
-    },
-    {
-      "title": "Coffee shop trends to watch out for in 2026 - Perfect Daily Grind",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE0zeWo5bGYwcEcwUlBUVDFRX190NGw5Vm1LMWM3dlBSWEJ5NFVjSjdUd0RqYTI2M0lwRVpjNzlreGNiRlVBMnZBRHQ1dUhpT2hjWl9XWFVaTHF4S01RUGpSNUY2dDJ1ZjRQaEoxdGJHWmJJeHc?oc=5",
-      "published": "Wed, 28 Jan 2026 08:00:00 GMT",
-      "description": "Coffee shop trends to watch out for in 2026 Perfect Daily Grind",
-      "query": "specialty coffee shop operations problems"
-    },
-    {
-      "title": "Why the price of coffee has skyrocketed: from Brazilian plantations to specialty coffee houses - EL PAÍS English",
-      "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxONTczaXEwNncxUUJQMTZ3WThJOHE4c1EtQTZSaTlrLVROSlc1UnlRVDFma2NUOW5oT1ZuTkFxR3gxNS01Q3VONThqWVh6OVNHd3laT1loZWNFRWJxZUJVaXgzdFJHSGNwS2dPM1hlQVJNbFA0c2tZalRucHFfN3J3VXJnakZ6cGpyV3lCT3ZCU0pZM1kxNVhhMW1wWVZsMWRfWnE3a0RONXJXbUl4Y0NxdEw1SEN2SGpieVF6bVpsUXd5TDlTcUZKM1R6UzdzR1dfWnQyblpDeHFCRDZyaVk0WUZvTkxVTVRVMDdzbjlB0gGCAkFVX3lxTE5NUkNrdjJzRzctT0pENnpxV2tObDE1TFR6aDk1SHFmTGtwdHNMU09wSGpVLTc0S2pEb00tbVFnc1hrUzJFMjQ0UUVXU1lsSno4NDVrRTIwYjQ0aGx6eTg5b1VjZTNiMktMWFY5ZlJfQmZEbTY2SkxWb1d1Z0VTUkh2anVocU5yOVNncGVYbDhEc3k4UzNaNDZXd1Q5U0RFMk5NckZXWGg0ZkRsN2VmU2Jid0ZtdkVzVWtYVWJGNmFQa0VsUDBmUlg5ZHcyZHBpb0lIOVNRX1ZRRkRlMWNpSzVoM1RvZ2o1aHJNQkRLTTV2aDFtZlJheW5Kc2pvdEtqWVM0QQ?oc=5",
-      "published": "Sat, 27 Dec 2025 08:00:00 GMT",
-      "description": "Why the price of coffee has skyrocketed: from Brazilian plantations to specialty coffee houses EL PAÍS English",
-      "query": "specialty coffee shop operations problems"
-    },
-    {
-      "title": "The Best Coffee Shops in Every State - Food & Wine",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9lN0R1NHRlOXdOYlhVSzR4YWxlSVhsYUNXc184WlZHWmFKY3ktU2F6UVB2VFV4aUZqWEF0c2JtUUZXR1pXZzRtWkJna2tLcU15d0ZVQVM2SUY3R0F6VWh0aDdiRGdpYmtNUmpNb0pzVEY?oc=5",
-      "published": "Fri, 11 Mar 2022 08:00:00 GMT",
-      "description": "The Best Coffee Shops in Every State Food & Wine",
-      "query": "specialty coffee shop operations problems"
-    },
-    {
-      "title": "Key Growth Opportunities In The Multi-Billion Dollar Coffee Industry - U.S. Chamber of Commerce",
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPVjZNSkJ4Smp6SFN6eVZZdlJoY1FLZ0J0TW0xY1N0WUxYUmRJeFg0bmo0YUwyTGZ5anJNMTJfVlFiNFlacXVnMTdjSEJzYU5uT3RyTTZ1cHJiMEF0ekd4YTZWOE9MYkFWSUJmU0ZkZEtqSUswOXNQMHV3U080Si1yUWVTdjN3ZnFPdmFqRlhZZF9JZkhV?oc=5",
-      "published": "Mon, 22 Jul 2024 07:00:00 GMT",
-      "description": "Key Growth Opportunities In The Multi-Billion Dollar Coffee Industry U.S. Chamber of Commerce",
-      "query": "specialty coffee shop operations problems"
-    },
-    {
-      "title": "Cafe website: menus, allergens and opening hours - Contractor UK",
-      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1BYndwWDg4dEhFWVFGWDlZUHlmUkpKaFVtSHdObDI4S1loYnZKQjJtVHB2REljUnA2VjdaRklrRE5GWGpNWE53NGxsWWpIWTZqUjRuVHFLNldUVnctZVROZ3BSNGJpWUNT?oc=5",
-      "published": "Sun, 08 Nov 2026 08:00:00 GMT",
-      "description": "Cafe website: menus, allergens and opening hours Contractor UK",
-      "query": "coffee shop opening closing checklist template"
-    },
-    {
-      "title": "While You Are Sleeping: Local coffee shop brews up business - WBIR",
-      "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQZ1gxU1VISUszOWY3VklBMlRHRXRZSld5VjlqTmRhX1NONGxlU3NNbHk0aGNLZk14eUpHMmZyWldxSlk3eG00SzMxTzVHM2w3N1Z5MDRSajFPc0NuczVMa0JXcEtBY2VDeExxMW9pejBJOFFma0JtYWFGd1B0ZGs2Vm5hakctNGtLczdpd3VHc3BtTGJuZTNqODhGVXV1Y0RmdnlTbno2ZEN6aGtZU1JTNmItVzJ2THhtTVZMN3RFeVotSnRCNjJLdVRrSUJQQ2d4cE1Bd1U5eVJ3NmVkcF9nb2Zwd0M?oc=5",
-      "published": "Sat, 10 Jan 2026 08:00:00 GMT",
-      "description": "While You Are Sleeping: Local coffee shop brews up business WBIR",
-      "query": "coffee shop opening closing checklist template"
-    },
-    {
-      "title": "The Best Bakery and Coffee Shop POS Systems: 8 Must-Have Features - Toast",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5Ibk5MQk1SZUhLcEMtWFBYYzZBSHlzZDE3ZXNSQmp1NUVKMlc0WWVDSVEwbGZoTGMyR2dnUzdvTV9LRVIyc2ZkWG9LcGc5MldkcFlRajhBLWVJaGVZQWV0UTRVNTR5czZNNm5kMi1rVWE0YnV1X1RmZGZ4SFRlZlE?oc=5",
-      "published": "Fri, 09 Jan 2026 08:00:00 GMT",
-      "description": "The Best Bakery and Coffee Shop POS Systems: 8 Must-Have Features Toast",
-      "query": "coffee shop opening closing checklist template"
-    },
-    {
-      "title": "Coffeeshop Toilet Deep Cleaning Grant (CTCG) - NEA.gov.sg",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOYjVLOFJVU0ZPMWU2VjNDNTQyMHA2WC1tZ3NreTY3SlRGUV9iVXBidnhkb0dwWE1mbTBZRGFwWGRtWWFqX2FidDNraDVvX1VMZml4cm9pek5jU1N3VXljaXdyUV84azB1TF9jd2hNZDlJa0FlVlpmdFpzMkRWak1Xb1hVVW5xb1BCNmYtVXJlcjladEVqNEdnMV9YM2hQUnZ0SGowaGJR?oc=5",
-      "published": "Mon, 03 Nov 2025 02:16:01 GMT",
-      "description": "Coffeeshop Toilet Deep Cleaning Grant (CTCG) NEA.gov.sg",
-      "query": "coffee shop opening closing checklist template"
-    },
-    {
-      "title": "The Best Bakery POS Systems: 8 Must-Have Features (2026) - Toast",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9BVjNVckxfdExLRFMxUDdRRzNEUkxrMk1XaGxaUHprYzY4OGl5ZnpvSTN3dHM4Si1IUTBJQkRVRFU5U0xYX2d6LXBncjI4ejRvcEtYNm1kVWdsX0UwOFk1aWRteXhNOGVMYVpkSERFTVM1YU0?oc=5",
-      "published": "Wed, 24 Dec 2025 08:00:00 GMT",
-      "description": "The Best Bakery POS Systems: 8 Must-Have Features (2026) Toast",
-      "query": "coffee shop opening closing checklist template"
-    },
-    {
-      "title": "Eversys Brings Specialty Coffee Quality and Automation to Hospitality at Scale | - Hotel Technology News",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQeV84N0ltbUhqa3hHZVB4emtiNzk1QWt3SzZwUUU5bU5Zam5jTDYyNXQ2N28xcnZoemo5eW1TZnBzdDhxRzJEaUlRS3paRzJieHBzb0t1RjF0RGY2OEtpdXNZZjluVXRvNnB3TEVQZzBUMHBGNml2U1RsQXhiUWkybnVkRjVIRDFfVm9QeURuZHIyQVY0RXNydGlOUGR3U1FTLXczcFVpeGU3YjhaeU1RaWIwVkN0RmVWVlNV?oc=5",
-      "published": "Mon, 22 Jun 2026 07:00:00 GMT",
-      "description": "Eversys Brings Specialty Coffee Quality and Automation to Hospitality at Scale | Hotel Technology News",
-      "query": "specialty cafe staff training operations"
-    },
-    {
-      "title": "McDonald’s to spend $8.5B on revamping restaurants, tech and franchise support - Fox Business",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPU09qX2w4aEw4aU81UzZVOFQ1YjVncFg4MTZnbmFfMGVfc0xuUnh6emhtN0pvZlZqaTB3TmZnbzNRNldGV0piU1ljUkVQYUtXUDUyN3lOQk5Rcl9yUXVya2cyTlFQSWZIdFd0Z2N0dkJBYjVDcE5ZQkYxT3dRUXZKMjA2eXRUdUR6cWZvbG1QYXFXc25kbXBnQktpYU5hZnlaaXZz0gGoAUFVX3lxTFBtaGtET1BaSHppaVZSUWt0Z0hoUmlIbF9tNEh4SlpHSUJaTHFpYlNIR0h6b0hNQkNTakdzUGFhRVNtdUI2ZEY4UHFXaGwxSjBNWU8tbmZpNmhTekpmVW1lU2YzR01EX19sdTJlQllkdW8yWEdkTS05OTBYc0N3NzNWNGhCSGhRaWV3eEIzZ0RCM0pGZGdEc1BGbjBndGlxc0NFSV9VTmlUeA?oc=5",
-      "published": "Wed, 23 Sep 2026 07:00:00 GMT",
-      "description": "McDonald’s to spend $8.5B on revamping restaurants, tech and franchise support Fox Business",
-      "query": "specialty cafe staff training operations"
-    },
-    {
-      "title": "Nationally acclaimed Postcard Pizza expanding in Fort Collins - The Coloradoan",
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQcloyMy1VWnhlTnd4T1ZQcFhKS2VCaFQweU5wRS1fTVNISUcxQzY1NlNNMUVDSW5JOGxfaXFFaDZmWEFPZXAtTlpSa3MtRS1jam9nU2QyR3VDYlJPX2tUNUtGeW9XdUI3RzRscGlMM3lNY0k1ejljXzF3M0hnNDI1eTV5ZmVVcHM5Y3hkbWVrcm9YRGoyQ2k0QXRBcmM5blh1ZEpjaEtCRXFHdlM1SExNUHRZLXdfMHR2T2ZoVHFXM08teW1BcVBRLWVxaHR0Zw?oc=5",
-      "published": "Wed, 05 Aug 2026 07:00:00 GMT",
-      "description": "Nationally acclaimed Postcard Pizza expanding in Fort Collins The Coloradoan",
-      "query": "specialty cafe staff training operations"
-    },
-    {
-      "title": "Why there’s more focus on customer service in specialty coffee than ever - Perfect Daily Grind",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNWXlFdnBvSklJX2dLSkZURkpYUGRVbC1GVUNJU1lZN2NtXzZTejQweFdWaGl6ZmdmTUhKMmpJOElZRDZHMzQ4X21KN2p2dTk5T25aUldsWkJWeXhWWHVjc0xRcTB0amxyZjJlNEJvZGEwcFdUdlpDaF9xTGVyWG9hSTNpVXlUc1l6eWMzSFBUbw?oc=5",
-      "published": "Thu, 08 Jan 2026 08:00:00 GMT",
-      "description": "Why there’s more focus on customer service in specialty coffee than ever Perfect Daily Grind",
-      "query": "specialty cafe staff training operations"
-    },
-    {
-      "title": "Are we experiencing a specialty coffee brain drain? - Coffee Intelligence",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5LTE03Yl9BN1B6SFUtcExJUVI2Q2xZbDhYUVRUTjd4NnNYOEpESUlocGg4UHFTenRiQXBXR0gyMmMtZk0zbzNpNGxIZy13ZU9IOUpFX3ZEaDBhQUZLcXlOMzF4UHFvRWRXY3QtLTNpdXVDOFU?oc=5",
-      "published": "Wed, 27 Nov 2024 08:00:00 GMT",
-      "description": "Are we experiencing a specialty coffee brain drain? Coffee Intelligence",
-      "query": "specialty cafe staff training operations"
-    },
-    {
-      "title": "The Restaurant Labor Shortage in 2026: Causes and Fixes - Toast",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9zdTFCZkdra3Ixajl6UFhoV2FyeFZ4QkUtbE9ITS1ETWlnWHZvVEszYWpjbHkzV1NPV3psZGJ5TlFvMWljWkR4N3BkTG5LS0Fxb3VfbHFSSi13bkxDMFVrdlNRTmZXSHphLVZuREt3OVl2UnBwSWc?oc=5",
-      "published": "Thu, 27 Aug 2026 07:00:00 GMT",
-      "description": "The Restaurant Labor Shortage in 2026: Causes and Fixes Toast",
-      "query": "cafe shift handover software"
-    },
-    {
-      "title": "6 Best Restaurant POS Systems: Ranked and Reviewed (2026) - G2 Learn Hub",
-      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE10bkpaZ0dQSlQ3dF9xMHdRc01INUxOQ19zVXhIZlFlMHdoeTVCUVNfTEM2T1NjRDBjTmljNzhBU19IQ3p3STBOSDhlSW9NZmVuVkR3X2dWUUpDUUxV0gFsQVVfeXFMT3lMby1OYWdzbHhaakpST1h5Y0hGTTZjdlB6eGhSVkMySEFCU09vMUNuTWZSdjhwb2tIUUVPMzJORERhMlE2N3ROUllrRW1PTHQ2bWhEU0psSUFUT2YyQU53RlZFelBlMVgxNWdv?oc=5",
-      "published": "Mon, 20 Jul 2026 07:00:00 GMT",
-      "description": "6 Best Restaurant POS Systems: Ranked and Reviewed (2026) G2 Learn Hub",
-      "query": "cafe shift handover software"
-    },
-    {
-      "title": "Top 11 Benchmark KPIs Every Restaurant Owner Should Measure - Oracle NetSuite",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPZU54VVdhS2hxY3I5bjNzVzlGeWIyMGs0bUQxdTRMdzNMSS1MbVdEdFNNd2tpam1jenpWWnJHNUdLMFJXU2dUOUJKRXBPX1dMa28yNF9fb2hDMDl6MDNpZm90aWsxWVBXV0FxdTFUbXNRQ1dMdmlEZkNaMXJlc05CQg?oc=5",
-      "published": "Sun, 23 Feb 2025 08:00:00 GMT",
-      "description": "Top 11 Benchmark KPIs Every Restaurant Owner Should Measure Oracle NetSuite",
-      "query": "cafe shift handover software"
-    },
-    {
-      "title": "15 Best Staff Scheduling Software - HP",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQVV96aUtpODZ4YUxTeGxsMUJteG50ZlFlWV9NUjZ2c2FlWjdNcXhlQW1ISWVHYktuTk05Z2dGNlN2Q21fVjYtUl9BSUxYUUNJM3VuQ2l6ZXA4ZzZoU3lQSmUyMjR3QTRvN04xcFhTY3BlNXhIZlBFZnJOQlRDZWt0UmJGOWE3d0xXNDZ2amNn?oc=5",
-      "published": "Tue, 24 May 2022 07:00:00 GMT",
-      "description": "15 Best Staff Scheduling Software HP",
-      "query": "cafe shift handover software"
-    },
-    {
-      "title": "Chinese eatery boss praised for forgiving employee behind devastating fire - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQWmEwMUE2VWtiSktFb0ttRDlSSE01LWZ2S0VfV1AzbWxLdmVvSEs5Tjc3VkxqclFMM2I0QUg3OWM3OVM1d3V5VlV0dzB3YVFLRmRSNFo3QVNmeXEwazBKOFhSRUlQUXNncWlEcHpSVVpEb3ZjYnJmQlc3SDZyY3VqZVhPWFNjcGE1VHFPXzBVaUkyVzF5UEpvSjJ1azNNQ2l6NGlNeHEzcHNXTU1lNllpNmNpR0hfS2w0MWFCVWFlZHdmSWhsOGd2bmNkang1cWN0YTVZelIwdmFkaUxKR09QSkVyTlN2X3VC0gHoAUFVX3lxTFBFQlNqN1pFeEF5b2FOREl1ZUlhWFVIeG1XZVY2aFZZWVdRdEREaGp2ck1JRWZ3RGNEejdib1k1Tk9lekljc20tWV94SHRaMGs2enhUTHNmRzZmbHVmT25kQ3VOWFBFM0N1Z0Y0QXB5YkdCQ3ZjU3R3YVlDX05iRWRLdkFlQ3RuQXRkVVNyOUQyal9JajZYVUJ6eTVNNDFkMHBsbEZpaW1aNS1mNDVQVkRLb2pNQUg5OEYtUWE3X3BqNGRzUE5ZMWJ3LUdQQ3R0NzU1enYxWkkzb2tuMDlWRWhiX1BpdnB5Mnc?oc=5",
-      "published": "Fri, 10 Jul 2026 07:00:00 GMT",
-      "description": "Chinese eatery boss praised for forgiving employee behind devastating fire South China Morning Post",
-      "query": "restaurant shift handover app"
-    },
-    {
-      "title": "Esri Ireland supports daa in creating a digital twin of Dublin Airport as it scales for 40 million passengers - Business First Online",
-      "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQc2ZGWWlaRnVwMlhjZzV5SURnejVSR3lHU0NDakJYMTlVVlZENHBic0NneTVuY1hLQ3FHb25WY3NHeUZxbC1TUXZFaEpZdnZtWHBwNmpwbHhEYy1xY3VWbUdMMXZSclJTc2hTTzBWbzhURXNVX1RzR0lncDhCS1F2RUVTdy05SjNCSkRCSjF5SkNxYlBFUS1DbTRHNWVyWlFfU2FQUTA3YXJpam9KaThkcjh0N2VGTlZvM18tZ3AtSWU2SEFDRFo3S3czRldGQkowZHhxTG4zaU1VNE9QNVBBOVR1TmxVWTM3QlNxLU9HbjhzcWU0aVE?oc=5",
-      "published": "Mon, 28 Sep 2026 07:00:00 GMT",
-      "description": "Esri Ireland supports daa in creating a digital twin of Dublin Airport as it scales for 40 million passengers Business First Online",
-      "query": "restaurant shift handover app"
-    },
-    {
-      "title": "Show us the routine: Which AI job could a hotel switch on next Monday? - Hospitality Net",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNYjNvU2UyQVV0MkluNzUybUlIS0tqVDhYelBLb0w3ZW5kRHRSeUpxdnlTZ1FDbmswWFlsQUh6T0pTcVdYcTBCLVI0bWtpMVhxcUlSTUJsRWlNUElsT3Btdld3aHRJOWItVThpYXNnSnpKQnN5c3drX2ZvWGI5bU9QSk1penR1WFJoUlpDNjBtcFhYdkdUblZDRmNjTFhQbW1FUHQ3eG1WUVQxTXJvV0Q2eTVxSkhUU3g3U0dN?oc=5",
-      "published": "Mon, 09 Nov 2026 08:18:14 GMT",
-      "description": "Show us the routine: Which AI job could a hotel switch on next Monday? Hospitality Net",
-      "query": "hospitality staff communication shift log"
-    },
-    {
-      "title": "Effects of Poor Communication in Healthcare - 2026 Update - The HIPAA Journal",
-      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBVNkVtYUJIS3liMzg5b0IyR1FMUGlIUm1pcm9hVVpXXzhJSlRUeVRkZHltbjQ0dE1SWFFYQ1YtbHVwSTl3S0oxLTl3ZmlvNHNRZV80MHRvS1pNd0o1VjRXYkFpWERfeUo2clItRlU0QnpEckNwRE82RC1yTTFPUQ?oc=5",
-      "published": "Fri, 02 Jan 2026 08:00:00 GMT",
-      "description": "Effects of Poor Communication in Healthcare - 2026 Update The HIPAA Journal",
-      "query": "hospitality staff communication shift log"
-    },
-    {
-      "title": "The Future of Jobs Report 2023 - World Economic Forum",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5qZlljR2NXOVpSc3dpcXBXcjZiTVZIZUFuZEw1RUlWV2V2SHlLMERIRFBCUUZXTnpydHlHOG9ONDRfbHFFN2NUYUtGRHJSVVhyX2NSR19yOVlpYV94OU1hMnJuUXhNTTc0ZU5La1NuNS0xNEhZM2c?oc=5",
-      "published": "Sun, 30 Apr 2023 07:00:00 GMT",
-      "description": "The Future of Jobs Report 2023 World Economic Forum",
-      "query": "hospitality staff communication shift log"
-    },
-    {
-      "title": "Hybrid Work Is Just Work. Are We Doing It Wrong? - Microsoft",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOS2dheGpWbDBCRDRMM3l1VmpQVm5sMjVVR3FvWHQ1VEUxT2F1bUl0bE8wR3p1OEhSVTRfQUpSQUY5SEhqRVp1bE9aTVozajY4eDNYQTJtcm50TnlNNW02eGRMcV9xY2pQTE5mR1p1djFlNVR6Z2dmZENJeU84S01MZ2pqWlZCYURw?oc=5",
-      "published": "Thu, 22 Sep 2022 07:00:00 GMT",
-      "description": "Hybrid Work Is Just Work. Are We Doing It Wrong? Microsoft",
-      "query": "hospitality staff communication shift log"
-    },
-    {
-      "title": "2025 Employee Sentiment Study - www.aon.com",
-      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE5mclg4RXdJLUNGX0VMUkE0Wmh2OVp4VFNRczV2eVA0SncyWG9PMzZ1MDh2SFh6NlRDakRaUkFNTVh1V0lLY19qM29PdUVsMUtoSmFmNVJnZnc5RlYtODEtQ1NTMzNtMGt6QWg2OFgxNlgxQQ?oc=5",
-      "published": "Tue, 14 Jan 2025 03:33:50 GMT",
-      "description": "2025 Employee Sentiment Study www.aon.com",
-      "query": "hospitality staff communication shift log"
     }
   ],
   "research_hypotheses": {
@@ -276,20 +94,21 @@
     "shiftbrief_ai": "ShiftBrief AI"
   },
   "research_method": "Google News RSS, last 365 days, keyword relevance score >= 2",
-  "pm_run_count": 1,
+  "pm_run_count": 2,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T14:23:11.062374+00:00",
-    "task_id": "MR-001",
+    "timestamp": "2026-11-12T14:57:03.746625+00:00",
+    "task_id": "PS-001",
+    "role": "product_strategist",
     "status": "completed",
-    "summary": "Initial sourced competitor scan saved: 6 café template products/substitutes. See data/market_research.json; this is discovery evidence, not proof of sales."
+    "summary": "Compared both hypotheses. Willingness to pay is not demonstrated for either; recommend discovery interviews before choosing or building."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
-    "project_manager": "Plans work, manages dependencies, preserves progress and creates next tasks.",
-    "market_researcher": "Finds competitors, products, market opportunities and customer pain points.",
-    "business_analyst": "Evaluates pricing, demand signals, reviews, economics and profitability.",
-    "product_strategist": "Compares product ideas, tests assumptions and recommends next experiments.",
-    "quality_controller": "Checks evidence quality, output completeness and unsupported claims."
+    "project_manager": "Prioritises work, dependencies, continuity and execution limits.",
+    "market_researcher": "Organises sourced competitor and customer evidence.",
+    "business_analyst": "Compares pricing, customer pain, economics and evidence strength.",
+    "product_strategist": "Compares hypotheses and designs low-cost validation experiments.",
+    "quality_controller": "Audits sources, evidence limits and unsupported conclusions."
   },
   "project_plan": {
     "name": "Online Passive Income",
@@ -325,13 +144,13 @@
         "id": 2,
         "name": "Agent brain",
         "goal": "Orchestrator, specialist roles, memory, task queue and resume logic",
-        "status": "in_progress"
+        "status": "completed"
       },
       {
         "id": 3,
         "name": "Automated research",
         "goal": "Search, browser research, evidence capture and source checks",
-        "status": "planned"
+        "status": "in_progress"
       },
       {
         "id": 4,
@@ -382,13 +201,16 @@
         "phase": 3,
         "role": "market_researcher",
         "kind": "external_research",
-        "status": "queued",
+        "status": "done",
         "priority": 89,
         "depends_on": [
           "PM-001"
         ],
         "hypothesis": "shiftbrief_ai",
-        "acceptance": "At least five relevant products or substitutes with source, price, audience and core promise."
+        "acceptance": "At least five relevant products or substitutes with source, price, audience and core promise.",
+        "last_result": "Mapped six handover/logbook competitors and substitutes; official pricing pages checked for ShiftForce, Shifo, Venheim and Rotahr. See data/market_research.json and reports/market-research.md.",
+        "completed_at": "2026-11-12T14:30:12.485Z",
+        "updated_at": "2026-11-12T14:30:12.485Z"
       },
       {
         "id": "BA-001",
@@ -396,13 +218,16 @@
         "phase": 3,
         "role": "business_analyst",
         "kind": "external_research",
-        "status": "queued",
+        "status": "done",
         "priority": 80,
         "depends_on": [
           "MR-001",
           "MR-002"
         ],
-        "acceptance": "Pricing table distinguishes one-time, subscription, free and custom pricing."
+        "acceptance": "Pricing table distinguishes one-time, subscription, free and custom pricing.",
+        "last_result": "Compared visible one-time/free/subscription price anchors. Prices differ by currency, tax, venue/team size and scope; some older observations remain flagged for recheck.",
+        "completed_at": "2026-11-12T14:30:12.485Z",
+        "updated_at": "2026-11-12T14:30:12.485Z"
       },
       {
         "id": "BA-002",
@@ -410,13 +235,17 @@
         "phase": 3,
         "role": "business_analyst",
         "kind": "external_research",
-        "status": "queued",
+        "status": "done",
         "priority": 79,
         "depends_on": [
           "MR-001",
           "MR-002"
         ],
-        "acceptance": "Pain-point list backed by reviews or first-hand community discussions."
+        "acceptance": "Pain-point list backed by reviews or first-hand community discussions.",
+        "last_result": "Added first-hand/community discussion evidence for café stock consistency, staffing/owner overload and food waste, plus a hotel shift-handover example where buried notes led to forgotten guest requests. Evidence remains anecdotal and does not establish willingness to pay.",
+        "updated_at": "2026-11-12T14:44:38.553Z",
+        "completed_at": "2026-11-12T14:44:38.553Z",
+        "evidence_limit": "Qualitative discovery signals only; no representative sample, validated frequency or willingness-to-pay evidence."
       },
       {
         "id": "PS-001",
@@ -424,13 +253,18 @@
         "phase": 3,
         "role": "product_strategist",
         "kind": "analysis",
-        "status": "queued",
+        "status": "done",
         "priority": 70,
         "depends_on": [
           "BA-001",
           "BA-002"
         ],
-        "acceptance": "Evidence-based comparison, risks and a low-cost validation experiment."
+        "acceptance": "Evidence-based comparison, risks and a low-cost validation experiment.",
+        "started_at": "2026-11-12T14:57:03.746587+00:00",
+        "last_result": "Compared both hypotheses. Willingness to pay is not demonstrated for either; recommend discovery interviews before choosing or building.",
+        "updated_at": "2026-11-12T14:57:03.746625+00:00",
+        "attempts": 1,
+        "completed_at": "2026-11-12T14:57:03.746625+00:00"
       },
       {
         "id": "QC-001",
@@ -459,6 +293,96 @@
         "acceptance": "Smallest testable MVP, milestones, costs and approval gates."
       }
     ],
-    "created_at": "2026-11-12T14:23:11.062255+00:00"
-  }
+    "created_at": "2026-11-12T14:23:11.062255+00:00",
+    "agent_implementation": {
+      "description": "Technical completion tracker for the agent itself; separate from the passive-income business validation tasks.",
+      "components": [
+        {
+          "id": "AG-01",
+          "name": "Persistent task orchestration and dependency scheduler",
+          "status": "done",
+          "evidence": "agent/project_manager.py and agent/engine.py"
+        },
+        {
+          "id": "AG-02",
+          "name": "Five specialist role handlers with structured outputs",
+          "status": "done",
+          "evidence": "agent/engine.py"
+        },
+        {
+          "id": "AG-03",
+          "name": "Result validation, bounded retries, interrupted-run recovery and event log",
+          "status": "done",
+          "evidence": "agent/engine.py and agent/project_manager.py"
+        },
+        {
+          "id": "AG-04",
+          "name": "Unit test suite and CI test gate",
+          "status": "implemented_pending_first_run",
+          "evidence": "tests/test_engine.py and .github/workflows/daily-agent.yml"
+        },
+        {
+          "id": "AG-05",
+          "name": "Freshness filtering, deduplication and research error handling",
+          "status": "implemented",
+          "evidence": "agent/main.py"
+        },
+        {
+          "id": "AG-06",
+          "name": "Scheduled execution, report generation and dashboard data sync",
+          "status": "implemented_pending_deployment_verification",
+          "evidence": ".github/workflows/daily-agent.yml"
+        },
+        {
+          "id": "AG-07",
+          "name": "Dashboard accuracy and agent execution visibility",
+          "status": "implemented_pending_deployment_verification",
+          "evidence": "dashboard/index.html"
+        }
+      ],
+      "important_limit": "The current agent is deterministic and rules-based. It is not an LLM-powered autonomous researcher. Live browser/search and LLM reasoning require a separately approved integration; no paid API is enabled."
+    }
+  },
+  "specialist_outputs": {
+    "PS-001": {
+      "ok": true,
+      "summary": "Compared both hypotheses. Willingness to pay is not demonstrated for either; recommend discovery interviews before choosing or building.",
+      "artifact": {
+        "comparison": {
+          "cafe_starter_kit": {
+            "competitors": 8,
+            "customer_signals": 4,
+            "risk": "Generic checklists face free and low-cost substitutes; investigate a narrower operational job."
+          },
+          "shiftbrief_ai": {
+            "competitors": 6,
+            "customer_signals": 4,
+            "risk": "Established tools and app fatigue; validate adoption in existing workflows."
+          }
+        },
+        "experiment": {
+          "sample": "5–8 café owners/managers and 5–8 shift leads",
+          "method": "Ask respondents to demonstrate current workflows before pitching.",
+          "measure": [
+            "frequency",
+            "time spent",
+            "errors or waste",
+            "consequences",
+            "current workaround",
+            "existing spend"
+          ],
+          "success_gate": "A repeated costly problem plus evidence of a current workaround or spend; no product build based on anecdotes alone."
+        }
+      }
+    }
+  },
+  "event_log": [
+    {
+      "timestamp": "2026-11-12T14:57:03.746625+00:00",
+      "task_id": "PS-001",
+      "role": "product_strategist",
+      "status": "completed",
+      "summary": "Compared both hypotheses. Willingness to pay is not demonstrated for either; recommend discovery interviews before choosing or building."
+    }
+  ]
 }
