@@ -226,6 +226,12 @@
         "name": "Dashboard accuracy and agent execution visibility",
         "status": "implemented_pending_deployment_verification",
         "evidence": "dashboard/index.html"
+      },
+      {
+        "id": "AG-08",
+        "name": "Project Manager end-to-end integration test",
+        "status": "implemented_pending_first_run",
+        "evidence": "tests/test_project_manager.py"
       }
     ],
     "important_limit": "The current agent is deterministic and rules-based. It is not an LLM-powered autonomous researcher. Live browser/search and LLM reasoning require a separately approved integration; no paid API is enabled."
