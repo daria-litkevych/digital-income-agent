@@ -123,15 +123,17 @@
       "phase": 3,
       "role": "business_analyst",
       "kind": "external_research",
-      "status": "in_progress",
+      "status": "done",
       "priority": 79,
       "depends_on": [
         "MR-001",
         "MR-002"
       ],
       "acceptance": "Pain-point list backed by reviews or first-hand community discussions.",
-      "last_result": "Initial qualitative signals captured: worker discussions show handover/missed-task friction and app fatigue; free café checklist substitutes mapped. Need stronger first-hand reviews/interviews before claiming recurring unmet demand.",
-      "updated_at": "2026-11-12T14:30:12.485Z"
+      "last_result": "Added first-hand/community discussion evidence for café stock consistency, staffing/owner overload and food waste, plus a hotel shift-handover example where buried notes led to forgotten guest requests. Evidence remains anecdotal and does not establish willingness to pay.",
+      "updated_at": "2026-11-12T14:44:38.553Z",
+      "completed_at": "2026-11-12T14:44:38.553Z",
+      "evidence_limit": "Qualitative discovery signals only; no representative sample, validated frequency or willingness-to-pay evidence."
     },
     {
       "id": "PS-001",
