@@ -1,60 +1,73 @@
-# Digital Income Agent
+# Digital Product Studio
 
-A private, low-cost project agent for the **Online Passive Income** project.
+A private, low-cost project for discovering, validating, building and selling useful digital products across **B2C, B2B and prosumer** markets.
 
-## What it currently is
+## Business goal
 
-The repository contains a deterministic Python workflow agent. It does **not** call a paid LLM API and should not be described as a fully autonomous reasoning model. Specialist roles are implemented as auditable task handlers that read stored evidence, produce structured outputs, enforce evidence limits and persist their work.
+Build a mostly automated digital-product portfolio targeting **€1,000/month within five years**, with an initial revenue milestone of €100–300. The operating principle is to ship simple products that solve a concrete job and are immediately usable—not generic templates or generic AI wrappers.
 
-## Architecture
+## Studio operating model
 
-- `agent/main.py` — collects Google News RSS discovery signals, deduplicates and stores them.
-- `agent/engine.py` — role registry, task selection, specialist handlers, result validation, retry-safe state transitions and event logging.
-- `agent/project_manager.py` — bounded orchestration: one task per run, dependency checks, interrupted-run recovery, phase progress and reports.
-- `data/project_plan.json` — persistent task queue, dependencies, priorities and acceptance criteria.
-- `data/state.json` — run history, specialist outputs and bounded event log.
-- `data/market_research.json` — sourced competitor and qualitative customer evidence.
-- `reports/` — human-readable agent and research reports.
-- `dashboard/` — private project dashboard and synchronized data snapshots.
-- `tests/` — standard-library unit and Project Manager integration tests.
-- `benchmarks/cases.json` and `agent/benchmark.py` — synthetic specialty-café task set and offline-first model benchmark runner.
-- `agent/spend_ledger.py` — SQLite monthly spend reservations and settlement guard for future paid calls.
+The studio follows one product lifecycle:
 
-## Execution flow
+1. Opportunity discovery across consumer, small-business and independent-professional markets.
+2. Evidence collection: customer pain, workarounds, competitors, substitutes, pricing and distribution.
+3. Opportunity scoring and validation experiments.
+4. Product requirements, user journey and prototype.
+5. MVP development in an isolated product workspace.
+6. Quality assurance, privacy and usability checks.
+7. Sales assets and marketplace listing preparation.
+8. Explicit user approval before any public listing, payment, outreach or account change.
+9. Analytics, iteration or product retirement based on actual behaviour.
 
-1. Run the unit test suite.
-2. Collect RSS discovery signals; individual query failures are recorded without discarding successful results.
-3. Load plan, state and evidence.
-4. Recover interrupted tasks to the queue.
-5. Select the highest-priority eligible queued/failed task whose dependencies are complete.
-6. Execute its registered specialist handler and validate the output.
-7. Persist result, specialist artifact, event log, task status and phase progress.
-8. Sync dashboard snapshots and commit changed data.
+The current candidates are hypotheses, not validated business opportunities. See [the opportunity scan](reports/opportunity-scan.md) and [the project plan](data/project_plan.json).
 
-Only one task is executed per invocation. Failed tasks can be retried up to three times; blocked tasks require a deliberate correction or new evidence before re-queuing.
+## Current technical state — important distinction
 
-## Specialist roles
+The repository currently contains a **deterministic Python workflow**, not a fully autonomous AI studio.
 
-- **Project Manager** — priorities, dependencies, execution limits and continuity.
-- **Market Researcher** — source-linked competitor and substitute evidence.
-- **Business Analyst** — pricing, customer signals, economics and evidence strength.
-- **Product Strategist** — hypothesis comparison and low-cost validation design.
-- **Quality Controller** — evidence limits, traceability and unsupported-claim checks.
+- `agent/main.py` collects Google News RSS discovery signals. Its current query configuration is still focused on cafés and hospitality.
+- `agent/engine.py` contains five deterministic specialist handlers.
+- `agent/project_manager.py` executes one eligible task per run, checks dependencies, persists state and produces reports.
+- `agent/llm.py` provides a provider-neutral client and offline mock. The live client is **not connected** to specialist roles or scheduled runs.
+- `agent/spend_ledger.py` protects future live calls with reservations and settlement. No live provider request or charge is enabled.
+- `dashboard/` displays project plan, task, research and finance snapshots.
+- `tests/` and GitHub Actions provide automated checks.
 
-## Important limitations
+The next technical work is to implement cross-market research, evidence grading, opportunity scoring, product-specific workspaces, and eventually guarded AI role dispatch. Until those are implemented and tested, the planned roles must not be described as active autonomous agents.
 
-- This is a deterministic rules-based agent, not an LLM-powered agent. It cannot independently reason over arbitrary websites or browse the web beyond the RSS collector.
-- RSS results are discovery signals, not validated customer demand.
-- Community posts are anecdotal; they do not prove market size, willingness to pay or sales.
-- The agent does not contact customers, publish products, spend money, provision paid services or change account settings.
-- No paid API, subscription, server or domain is required by the current workflow.
-- GitHub Actions runs on GitHub-hosted infrastructure; its usage is subject to the account's GitHub plan and limits.
-- The dashboard deploy must remain private. Netlify auto-publishing is intentionally locked to prevent routine agent commits from triggering production deploys. Dashboard snapshots continue syncing in GitHub; publish manually only after an approved dashboard change. Do not move private project data to a public static host.
+## Specialist roster
 
-## Project spending and tool watchlist
+| Role | Current status |
+|---|---|
+| Project Manager | Deterministic workflow handler |
+| Market Researcher | Limited deterministic collection/organization; broad research pipeline planned |
+| Business Analyst | Deterministic analysis; richer evidence scoring planned |
+| Product Strategist | Deterministic candidate comparison; validation workflow planned |
+| Product Designer | Planned |
+| Developer | Planned |
+| Quality Controller | Deterministic evidence checks; product QA pipeline planned |
+| Growth & Launch | Planned |
 
-- **Netlify:** The user has spent **€9** on a Netlify plan upgrade (recorded 2026-11-12). Treat this as an actual project expense, not a recurring-cost assumption; verify the current billing cycle and renewal terms before recommending further Netlify use. Auto-publishing remains locked, and no deploy/unlock or plan change is authorized without explicit approval.
-- **Haimaker AI:** The user found https://haimaker.ai/ (2026-11-12). Preliminary assessment: potentially useful later as a pay-as-you-go, OpenAI-compatible gateway to many hosted LLMs; it could let the agent or a future AI product use different models without managing separate provider integrations. It is not needed for the current deterministic agent and does not itself host the finished customer-facing product. No integration or purchase is approved. Before any trial, recheck current model pricing and limits. Privacy caution: the privacy policy says prompts/responses are logged by default and deleted after 30 days (with an opt-out in API key settings); requests to third-party models are also subject to those providers' policies. Do not send private project/customer data. See https://haimaker.ai/docs, https://haimaker.ai/privacy-policy/ and https://haimaker.ai/terms-and-conditions/.
+## Product portfolio
+
+Discovery is deliberately open across three segments:
+
+- **B2C:** personal-finance decision tools, low-friction life-admin tools, modular wedding planning.
+- **B2B:** micro-business admin workflows, focused operations tools, café/hospitality tools.
+- **Prosumer:** freelancer scope/pricing tools and creator workflow utilities.
+
+These examples are research candidates only. The studio must compare them using evidence and buildability rather than choosing based on personal preference or trend articles.
+
+## Budget, privacy and approval gates
+
+- Initial project budget: €0–50; preferred recurring cost: ≤€10/month.
+- No paid API, subscription, domain, hosting change, credit purchase or other spending without explicit approval.
+- No customer outreach or public publishing without explicit approval.
+- Keep source, research and product work private until a specific launch is approved.
+- Do not treat marketplace search volume, competitor existence or anecdotal posts as proof of sales or willingness to pay.
+- GitHub Actions usage remains subject to the GitHub account plan and limits.
+- Netlify auto-publishing remains locked. The €9 plan upgrade is a recorded expense; verify renewal terms before recommending further use.
 
 ## Local test
 
@@ -64,13 +77,6 @@ python -m unittest discover -s tests -v
 
 ## Scheduled workflow
 
-GitHub Actions runs the bounded workflow on the configured schedule or by manual dispatch. The workflow commits updated state and dashboard snapshots when files change.
+GitHub Actions runs the bounded workflow on its configured schedule or by manual dispatch. It runs tests, collects RSS signals, executes one Project Manager task, syncs snapshots and commits changed state. The workflow does not make paid LLM calls, contact customers or publish products.
 
-## LLM integration foundation
-
-- `agent/llm.py` defines a provider-neutral request/response contract and a deterministic offline mock.
-- `OpenAICompatibleClient` exists, but it is **not connected** to role handlers or scheduled runs. The scheduled workflow remains offline; no provider request or charge is made by default.
-- A live request requires explicitly enabled settings, verified token prices, HTTPS, a per-call cap and a runtime API key supplied by a caller. No key is stored in the repository.
-- Every live client now requires a persistent `SpendLedger`: it reserves estimated cost before network I/O and settles against provider-reported usage. Failed or malformed requests leave the reservation committed for review. Live use remains disabled in the agent and scheduled workflow.
-- `python -m agent.benchmark` runs four synthetic specialty-café tasks against the offline mock and writes `reports/benchmark-latest.json`. Outputs are labelled mock and are not market evidence. Model scoring is a manual review rubric, not an automatic quality claim.
-- See [docs/LLM_INTEGRATION.md](docs/LLM_INTEGRATION.md) for safeguards and the next integration gate.
+See [docs/DIGITAL_PRODUCT_STUDIO.md](docs/DIGITAL_PRODUCT_STUDIO.md) for the architecture and implementation roadmap.
