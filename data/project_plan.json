@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "blocked"
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -501,17 +501,17 @@
       "phase": 9,
       "role": "developer",
       "kind": "budget_guard",
-      "status": "queued",
+      "status": "done",
       "priority": 117,
       "depends_on": [
         "AB-003"
       ],
       "acceptance": "Live calls remain disabled by default; any enabled call requires explicit provider, verified pricing, per-call cap, monthly cap, runtime credential and persistent ledger reservation/settlement before and after network use.",
-      "started_at": "2026-11-12T20:50:32.936166+00:00",
-      "last_result": "Re-queued for verification against the strengthened budget, role-evaluation and end-to-end acceptance checks.",
-      "updated_at": "2026-11-12T20:50:32.936225+00:00",
-      "attempts": 1,
-      "completed_at": "2026-11-12T20:50:32.936225+00:00"
+      "started_at": "2026-11-12T20:53:14.513211+00:00",
+      "last_result": "Live LLM remains disabled by default; runtime credentials, persistent ledger reservation, settlement and pre-network budget tests are present.",
+      "updated_at": "2026-11-12T20:53:14.513412+00:00",
+      "attempts": 2,
+      "completed_at": "2026-11-12T20:53:14.513412+00:00"
     },
     {
       "id": "AB-005",

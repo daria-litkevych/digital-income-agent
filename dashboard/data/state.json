@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 27,
+  "run_count": 28,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T20:52:54.753995+00:00",
-  "research_last_run_utc": "2026-11-12T20:52:52.751084+00:00",
+  "last_run_utc": "2026-11-12T20:53:14.513469+00:00",
+  "research_last_run_utc": "2026-11-12T20:53:12.118313+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -192,12 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 24,
+  "pm_run_count": 25,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T20:52:54.753953+00:00",
-    "task_id": null,
-    "status": "no_eligible_tasks",
-    "summary": "No queued or retryable task has all dependencies completed."
+    "timestamp": "2026-11-12T20:53:14.513412+00:00",
+    "task_id": "AB-004",
+    "role": "developer",
+    "status": "completed",
+    "summary": "Live LLM remains disabled by default; runtime credentials, persistent ledger reservation, settlement and pre-network budget tests are present."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -365,7 +366,7 @@
         "id": 9,
         "name": "Autonomous studio capability",
         "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-        "status": "blocked"
+        "status": "in_progress"
       }
     ],
     "tasks": [
@@ -716,11 +717,11 @@
           "AB-003"
         ],
         "acceptance": "Live calls remain disabled by default; any enabled call requires explicit provider, verified pricing, per-call cap, monthly cap, runtime credential and persistent ledger reservation/settlement before and after network use.",
-        "started_at": "2026-11-12T20:50:32.936166+00:00",
-        "last_result": "Live LLM remains disabled by default; the explicit client requires a runtime key and persistent ledger, reserves before network use and settles actual usage.",
-        "updated_at": "2026-11-12T20:50:32.936225+00:00",
-        "attempts": 1,
-        "completed_at": "2026-11-12T20:50:32.936225+00:00"
+        "started_at": "2026-11-12T20:53:14.513211+00:00",
+        "last_result": "Live LLM remains disabled by default; runtime credentials, persistent ledger reservation, settlement and pre-network budget tests are present.",
+        "updated_at": "2026-11-12T20:53:14.513412+00:00",
+        "attempts": 2,
+        "completed_at": "2026-11-12T20:53:14.513412+00:00"
       },
       {
         "id": "AB-005",
@@ -728,14 +729,14 @@
         "phase": 9,
         "role": "quality_controller",
         "kind": "evaluation",
-        "status": "done",
+        "status": "queued",
         "priority": 116,
         "depends_on": [
           "AB-003"
         ],
         "acceptance": "Each role has representative golden cases, structured-output checks, evidence/citation checks, hallucination traps and approval-boundary tests; mock output cannot pass as completed work.",
         "started_at": "2026-11-12T20:50:44.653565+00:00",
-        "last_result": "Agent Brain evaluation suite covers role coverage, offline/mock labelling, forbidden external actions, valid structured output, malformed JSON and missing contract fields. Per-role golden quality benchmarks remain a follow-up before claiming autonomous quality.",
+        "last_result": "Re-queued for verification against the strengthened budget, role-evaluation and end-to-end acceptance checks.",
         "updated_at": "2026-11-12T20:50:44.653609+00:00",
         "attempts": 1,
         "completed_at": "2026-11-12T20:50:44.653609+00:00"
@@ -746,7 +747,7 @@
         "phase": 9,
         "role": "project_manager",
         "kind": "end_to_end",
-        "status": "blocked",
+        "status": "queued",
         "priority": 115,
         "depends_on": [
           "AB-004",
@@ -754,11 +755,9 @@
         ],
         "acceptance": "A complete task moves from queue through role dispatch, validated result, persisted artifact and report; interrupted runs recover; no unapproved API call, spend, outreach or publication occurs.",
         "started_at": "2026-11-12T20:52:15.355365+00:00",
-        "last_result": "No safe executor is registered for AB-006.",
+        "last_result": "Re-queued for verification against the strengthened budget, role-evaluation and end-to-end acceptance checks.",
         "updated_at": "2026-11-12T20:52:15.355402+00:00",
-        "attempts": 1,
-        "blocked_reason": "No safe executor is registered for AB-006.",
-        "next_action": "Register a handler and acceptance checks before scheduling this task."
+        "attempts": 1
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -1036,14 +1035,17 @@
     "AB-004": {
       "ok": true,
       "blocked": false,
-      "summary": "Live LLM remains disabled by default; the explicit client requires a runtime key and persistent ledger, reserves before network use and settles actual usage.",
+      "summary": "Live LLM remains disabled by default; runtime credentials, persistent ledger reservation, settlement and pre-network budget tests are present.",
       "metrics": {
         "checks": {
           "live_disabled_by_default": true,
           "client_requires_explicit_key": true,
           "client_requires_persistent_ledger": true,
           "ledger_reserves_before_request": true,
-          "ledger_settles_actual_usage": true
+          "ledger_settles_actual_usage": true,
+          "monthly_cap_blocks_before_network": true,
+          "full_call_cap_reserved": true,
+          "failed_call_keeps_reservation": true
         }
       },
       "next_action": "Fix failed budget guard checks before any live-provider integration."
@@ -1217,6 +1219,13 @@
       "task_id": null,
       "status": "no_eligible_tasks",
       "summary": "No queued or retryable task has all dependencies completed."
+    },
+    {
+      "timestamp": "2026-11-12T20:53:14.513412+00:00",
+      "task_id": "AB-004",
+      "role": "developer",
+      "status": "completed",
+      "summary": "Live LLM remains disabled by default; runtime credentials, persistent ledger reservation, settlement and pre-network budget tests are present."
     }
   ]
 }
