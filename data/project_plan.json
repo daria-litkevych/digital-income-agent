@@ -1,4 +1,170 @@
 {
   "name": "Online Passive Income",
-  "note": "Canonical plan is initialized by agent/project_manager.py on first run."
+  "goal": "Build a low-cost, mostly automated digital product business targeting €1,000/month within five years.",
+  "constraints": {
+    "initial_budget_eur": 50,
+    "preferred_monthly_cost_eur": 10,
+    "paid_services_require_explicit_approval": true,
+    "publishing_and_outreach_require_explicit_approval": true
+  },
+  "hypotheses": [
+    {
+      "id": "cafe_starter_kit",
+      "name": "Small Café Manager Starter Kit",
+      "audience": "Independent specialty coffee shops",
+      "value": "Very simple, ready-to-use operating templates"
+    },
+    {
+      "id": "shiftbrief_ai",
+      "name": "ShiftBrief AI",
+      "audience": "Hospitality teams",
+      "value": "Turn shift notes or voice notes into clear handovers and tasks"
+    }
+  ],
+  "phases": [
+    {
+      "id": 1,
+      "name": "Cloud infrastructure",
+      "goal": "Private repository, persistent data, cloud execution and cost guardrails",
+      "status": "completed"
+    },
+    {
+      "id": 2,
+      "name": "Agent brain",
+      "goal": "Orchestrator, specialist roles, memory, task queue and resume logic",
+      "status": "in_progress"
+    },
+    {
+      "id": 3,
+      "name": "Automated research",
+      "goal": "Search, browser research, evidence capture and source checks",
+      "status": "planned"
+    },
+    {
+      "id": 4,
+      "name": "Scheduling and reports",
+      "goal": "Five bounded daily cycles, saved results and notifications",
+      "status": "planned"
+    },
+    {
+      "id": 5,
+      "name": "Management dashboard",
+      "goal": "Connect the MVP to persistent project data and show actual agent progress",
+      "status": "planned"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "PM-001",
+      "title": "Build persistent Project Manager and specialist role registry",
+      "phase": 2,
+      "role": "project_manager",
+      "kind": "internal",
+      "status": "done",
+      "priority": 100,
+      "depends_on": [],
+      "acceptance": "Orchestrator loads state, selects work, validates, saves progress and creates follow-up tasks."
+    },
+    {
+      "id": "MR-001",
+      "title": "Map direct competitors and substitutes for café starter kit",
+      "phase": 3,
+      "role": "market_researcher",
+      "kind": "external_research",
+      "status": "done",
+      "priority": 90,
+      "depends_on": [
+        "PM-001"
+      ],
+      "hypothesis": "cafe_starter_kit",
+      "acceptance": "At least five relevant products or substitutes with source, price, audience and core promise.",
+      "started_at": "2026-11-12T14:23:11.062376+00:00",
+      "last_result": "Initial sourced competitor scan saved: 6 café template products/substitutes. See data/market_research.json; this is discovery evidence, not proof of sales.",
+      "updated_at": "2026-11-12T14:23:11.062446+00:00",
+      "completed_at": "2026-11-12T14:23:11.062448+00:00"
+    },
+    {
+      "id": "MR-002",
+      "title": "Map direct competitors and substitutes for ShiftBrief AI",
+      "phase": 3,
+      "role": "market_researcher",
+      "kind": "external_research",
+      "status": "queued",
+      "priority": 89,
+      "depends_on": [
+        "PM-001"
+      ],
+      "hypothesis": "shiftbrief_ai",
+      "acceptance": "At least five relevant products or substitutes with source, price, audience and core promise."
+    },
+    {
+      "id": "BA-001",
+      "title": "Compare competitor pricing and business models",
+      "phase": 3,
+      "role": "business_analyst",
+      "kind": "external_research",
+      "status": "queued",
+      "priority": 80,
+      "depends_on": [
+        "MR-001",
+        "MR-002"
+      ],
+      "acceptance": "Pricing table distinguishes one-time, subscription, free and custom pricing."
+    },
+    {
+      "id": "BA-002",
+      "title": "Identify recurring customer complaints and unmet needs",
+      "phase": 3,
+      "role": "business_analyst",
+      "kind": "external_research",
+      "status": "queued",
+      "priority": 79,
+      "depends_on": [
+        "MR-001",
+        "MR-002"
+      ],
+      "acceptance": "Pain-point list backed by reviews or first-hand community discussions."
+    },
+    {
+      "id": "PS-001",
+      "title": "Compare the two hypotheses and choose the cheapest demand test",
+      "phase": 3,
+      "role": "product_strategist",
+      "kind": "analysis",
+      "status": "queued",
+      "priority": 70,
+      "depends_on": [
+        "BA-001",
+        "BA-002"
+      ],
+      "acceptance": "Evidence-based comparison, risks and a low-cost validation experiment."
+    },
+    {
+      "id": "QC-001",
+      "title": "Quality review of market evidence and recommendation",
+      "phase": 3,
+      "role": "quality_controller",
+      "kind": "quality_review",
+      "status": "queued",
+      "priority": 60,
+      "depends_on": [
+        "PS-001"
+      ],
+      "acceptance": "Sources checked, weak evidence labelled, unsupported claims removed."
+    },
+    {
+      "id": "PM-002",
+      "title": "Prepare first product MVP scope and launch roadmap",
+      "phase": 4,
+      "role": "project_manager",
+      "kind": "planning",
+      "status": "queued",
+      "priority": 50,
+      "depends_on": [
+        "QC-001"
+      ],
+      "acceptance": "Smallest testable MVP, milestones, costs and approval gates."
+    }
+  ],
+  "created_at": "2026-11-12T14:23:11.062255+00:00"
 }
