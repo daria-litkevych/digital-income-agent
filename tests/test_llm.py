@@ -110,7 +110,7 @@ class LLMInterfaceTests(unittest.TestCase):
     @patch("agent.llm.urlopen")
     def test_live_client_rejects_malformed_response(self, mocked_urlopen):
         mocked_urlopen.return_value = FakeHTTPResponse({"unexpected": True})
-        client = OpenAICompatibleClient(live_settings(), "test-secret")
+        client = OpenAICompatibleClient(live_settings(), "test-secret", self.ledger)
         with self.assertRaisesRegex(RuntimeError, "unexpected response"):
             client.generate(LLMRequest(task="test", system="", user="Hello", max_output_tokens=10))
 
