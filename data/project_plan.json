@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "completed"
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -713,6 +713,20 @@
       "updated_at": "2026-11-12T21:15:40.033243+00:00",
       "attempts": 1,
       "completed_at": "2026-11-12T21:15:40.033243+00:00"
+    },
+    {
+      "id": "AB-016",
+      "title": "Implement and verify one-time human approval queue for external actions",
+      "phase": 9,
+      "role": "quality_controller",
+      "kind": "approval_security",
+      "status": "queued",
+      "priority": 96,
+      "depends_on": [
+        "AB-014",
+        "AB-015"
+      ],
+      "acceptance": "Approval requests are persisted with expiry and immutable payload hash; secret-like fields and non-JSON data are rejected; approval is identity-attributed, one-time, tamper-evident and covered by lifecycle/security tests. Queue does not execute actions."
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
