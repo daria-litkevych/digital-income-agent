@@ -54,5 +54,11 @@ jobs:
           git add data/state.json data/project_plan.json data/market_research.json dashboard/data/project_plan.json dashboard/data/state.json dashboard/data/market_research.json reports/latest.md reports/market-research.md reports/project-manager.md
           if ! git diff --cached --quiet; then
             git commit -m "Update research state and report"
-            git push
+            for attempt in 1 2 3; do
+              git pull --rebase origin main && git push && exit 0
+              echo "Push attempt ${attempt} failed; retrying after rebase."
+              sleep 2
+            done
+            echo "Could not push generated state after three attempts."
+            exit 1
           fi
