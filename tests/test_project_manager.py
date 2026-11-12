@@ -158,5 +158,29 @@ class ProjectManagerIntegrationTests(unittest.TestCase):
             self.assertEqual(target.read_text(encoding="utf-8"), "complete report")
             self.assertFalse(target.with_suffix(".md.tmp").exists())
 
+
+    def test_phase_is_blocked_when_any_task_is_blocked(self):
+        plan = {
+            "phases": [{"id": 1, "status": "in_progress"}],
+            "tasks": [
+                {"id": "A", "phase": 1, "status": "done"},
+                {"id": "B", "phase": 1, "status": "blocked"},
+                {"id": "C", "phase": 1, "status": "queued"},
+            ],
+        }
+        project_manager.refresh_phases(plan)
+        self.assertEqual(plan["phases"][0]["status"], "blocked")
+
+    def test_phase_is_in_progress_when_task_failed_but_not_blocked(self):
+        plan = {
+            "phases": [{"id": 1, "status": "planned"}],
+            "tasks": [
+                {"id": "A", "phase": 1, "status": "done"},
+                {"id": "B", "phase": 1, "status": "failed"},
+            ],
+        }
+        project_manager.refresh_phases(plan)
+        self.assertEqual(plan["phases"][0]["status"], "in_progress")
+
 if __name__ == "__main__":
     unittest.main()
