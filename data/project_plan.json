@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "in_progress"
+      "status": "completed"
     }
   ],
   "tasks": [
@@ -739,12 +739,17 @@
       "phase": 9,
       "role": "market_researcher",
       "kind": "evidence_discovery",
-      "status": "queued",
+      "status": "done",
       "priority": 95,
       "depends_on": [
         "AB-016"
       ],
-      "acceptance": "Scheduled cross-market discovery leads are persisted with canonical URLs, stable IDs, publication/check timestamps, segment and hypothesis provenance, and explicit unreviewed/Unverified status. Duplicate leads are not re-added. Tests prove the store integration; discovery signals are never promoted to validated demand."
+      "acceptance": "Scheduled cross-market discovery leads are persisted with canonical URLs, stable IDs, publication/check timestamps, segment and hypothesis provenance, and explicit unreviewed/Unverified status. Duplicate leads are not re-added. Tests prove the store integration; discovery signals are never promoted to validated demand.",
+      "started_at": "2026-11-12T21:25:59.120719+00:00",
+      "last_result": "RSS discovery now feeds a persistent provenance-aware evidence store; leads remain explicitly unverified until inspected and graded.",
+      "updated_at": "2026-11-12T21:25:59.121031+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-12T21:25:59.121031+00:00"
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",

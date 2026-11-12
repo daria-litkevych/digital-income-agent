@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T21:25:43.975434+00:00
+**Last cycle:** 2026-11-12T21:25:59.121031+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 30 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 52
-- Last task: None (no_eligible_tasks)
+- Completed: 31 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
+- Project Manager cycles: 53
+- Last task: AB-017 (completed)
 
 ## Specialist registry
 
@@ -68,6 +68,8 @@
 - **PM-001 · Build persistent Project Manager and specialist role registry** — done · project_manager
 - **AB-016 · Implement and verify one-time human approval queue for external actions** — done · quality_controller
   - Latest: A persistent, expiring, payload-hash-bound, one-time human approval queue is covered by offline security and lifecycle tests; it records approvals but does not execute external actions.
+- **AB-017 · Connect cross-market RSS discovery to a provenance-aware evidence store** — done · market_researcher
+  - Latest: RSS discovery now feeds a persistent provenance-aware evidence store; leads remain explicitly unverified until inspected and graded.
 - **DS-002 · Build comparable opportunity scorecard and rank candidates** — done · business_analyst
   - Latest: Created a qualitative, evidence-confidence-aware comparison. No numerical market-size or sales claims were inferred from search results.
 - **DS-003 · Deep-dive top three opportunities and identify validation experiments** — done · market_researcher

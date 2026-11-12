@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 55,
+  "run_count": 56,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T21:25:43.975480+00:00",
-  "research_last_run_utc": "2026-11-12T21:25:41.510926+00:00",
+  "last_run_utc": "2026-11-12T21:25:59.121095+00:00",
+  "research_last_run_utc": "2026-11-12T21:25:56.985920+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -192,12 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 52,
+  "pm_run_count": 53,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T21:25:43.975434+00:00",
-    "task_id": null,
-    "status": "no_eligible_tasks",
-    "summary": "No queued or retryable task has all dependencies completed."
+    "timestamp": "2026-11-12T21:25:59.121031+00:00",
+    "task_id": "AB-017",
+    "role": "market_researcher",
+    "status": "completed",
+    "summary": "RSS discovery now feeds a persistent provenance-aware evidence store; leads remain explicitly unverified until inspected and graded."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -941,6 +942,24 @@
         "updated_at": "2026-11-12T21:23:44.930889+00:00",
         "attempts": 1,
         "completed_at": "2026-11-12T21:23:44.930889+00:00"
+      },
+      {
+        "id": "AB-017",
+        "title": "Connect cross-market RSS discovery to a provenance-aware evidence store",
+        "phase": 9,
+        "role": "market_researcher",
+        "kind": "evidence_discovery",
+        "status": "done",
+        "priority": 95,
+        "depends_on": [
+          "AB-016"
+        ],
+        "acceptance": "Scheduled cross-market discovery leads are persisted with canonical URLs, stable IDs, publication/check timestamps, segment and hypothesis provenance, and explicit unreviewed/Unverified status. Duplicate leads are not re-added. Tests prove the store integration; discovery signals are never promoted to validated demand.",
+        "started_at": "2026-11-12T21:25:59.120719+00:00",
+        "last_result": "RSS discovery now feeds a persistent provenance-aware evidence store; leads remain explicitly unverified until inspected and graded.",
+        "updated_at": "2026-11-12T21:25:59.121031+00:00",
+        "attempts": 1,
+        "completed_at": "2026-11-12T21:25:59.121031+00:00"
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -1554,6 +1573,33 @@
         ]
       },
       "next_action": "Integrate the queue with a separately reviewed external-action executor only after authentication and concurrency controls are designed."
+    },
+    "AB-017": {
+      "ok": true,
+      "blocked": false,
+      "summary": "RSS discovery now feeds a persistent provenance-aware evidence store; leads remain explicitly unverified until inspected and graded.",
+      "metrics": {
+        "checks": {
+          "persistent_evidence_store_exists": true,
+          "source_urls_are_canonicalized": true,
+          "discovery_leads_are_unverified": true,
+          "provenance_fields_are_recorded": true,
+          "records_are_deduplicated": true,
+          "rss_runner_persists_discovery": true,
+          "tests_cover_store_and_integration": true
+        }
+      },
+      "artifact": {
+        "store": "agent/evidence_store.py",
+        "runner": "agent/main.py",
+        "tests": "tests/test_evidence_store.py",
+        "limitations": [
+          "RSS is a discovery source, not market evidence",
+          "No automatic claim extraction or confidence upgrades",
+          "Fetched source text is not yet joined to these records"
+        ]
+      },
+      "next_action": "Connect reviewed public-source fetch results to the evidence ledger with human-verifiable excerpts and provenance."
     }
   },
   "event_log": [
@@ -1889,6 +1935,13 @@
       "task_id": null,
       "status": "no_eligible_tasks",
       "summary": "No queued or retryable task has all dependencies completed."
+    },
+    {
+      "timestamp": "2026-11-12T21:25:59.121031+00:00",
+      "task_id": "AB-017",
+      "role": "market_researcher",
+      "status": "completed",
+      "summary": "RSS discovery now feeds a persistent provenance-aware evidence store; leads remain explicitly unverified until inspected and graded."
     }
   ],
   "evidence_store_summary": {
