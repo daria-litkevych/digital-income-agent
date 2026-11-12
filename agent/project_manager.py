@@ -15,8 +15,37 @@ REPORT_FILE = ROOT / "reports" / "project-manager.md"
 MAX_ATTEMPTS = 3
 DEFAULT_BRAIN = build_offline_brain()
 
-def dispatch_task(task, state, evidence, brain=None):
-    """Route only explicitly flagged tasks through Agent Brain; deterministic execution is default."""
+def dispatch_task(task, state, evidence, brain=None, *, autonomous_approval=False, env=None):
+    """Route tasks to deterministic handlers, guarded Brain drafts or approved autonomy."""
+    if task.get("dispatch_to_autonomous_studio"):
+        if autonomous_approval is not True:
+            return {
+                "ok": False, "blocked": True,
+                "summary": "Autonomous studio execution is disabled in the Project Manager; explicit human approval was not supplied.",
+                "next_action": "Obtain explicit approval for provider, verified token prices, per-call cap, monthly cap and credentials before a live run.",
+            }
+        from agent.autonomous_studio import build_live_studio
+        workflow_steps = task.get("workflow_steps", [])
+        checkpoints = state.setdefault("autonomous_workflow_checkpoints", {})
+        studio = build_live_studio(
+            ROOT,
+            checkpoint_loader=lambda: checkpoints,
+            checkpoint_saver=lambda updated: checkpoints.update(updated),
+            approval_confirmed=True,
+            env=env,
+        )
+        try:
+            result = studio.orchestrator.run(
+                str(task.get("id", "autonomous-task")),
+                workflow_steps,
+                {"project_state": state, "evidence": evidence},
+            )
+        finally:
+            studio.close()
+        if result.get("status") == "review_required":
+            return {"ok": False, "blocked": True, "summary": "Autonomous specialist drafts are ready for human review; the Project Manager will not mark this task complete.", "artifact": result, "next_action": "Review all specialist drafts and evidence before accepting any result."}
+        return {"ok": False, "blocked": True, "summary": result.get("reason", "Autonomous studio did not complete the workflow."), "artifact": result, "next_action": "Resolve the blocked step and explicitly approve a later run."}
+
     if not task.get("dispatch_to_brain"):
         return execute(task, state, evidence)
     selected_brain = brain or DEFAULT_BRAIN
@@ -33,7 +62,6 @@ def dispatch_task(task, state, evidence, brain=None):
         "artifact": {"agent_brain_output": output},
         "next_action": "Review the structured draft, evidence and risks before accepting it as task output.",
     }
-
 def load_json(path, default):
     if not path.exists():
         return default
