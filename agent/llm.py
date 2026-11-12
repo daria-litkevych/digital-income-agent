@@ -120,11 +120,13 @@ class OpenAICompatibleClient:
     put credentials in repository files or log request headers.
     """
     def __init__(self, settings: LLMSettings, api_key: str,
-                 spend_ledger: SpendLedger | None = None):
+                 spend_ledger: SpendLedger):
         settings.validate_for_live_use()
         if not api_key or not api_key.strip():
             raise ValueError("An API key must be explicitly supplied at runtime")
         self.settings = settings
+        if not isinstance(spend_ledger, SpendLedger):
+            raise TypeError("A persistent SpendLedger is required for live use")
         self._api_key = api_key
         self.spend_ledger = spend_ledger
 
