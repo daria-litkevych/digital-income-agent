@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T20:54:51.211937+00:00
+**Last cycle:** 2026-11-12T20:55:26.530984+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 20 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 27
-- Last task: AB-006 (completed)
+- Completed: 20 | Queued: 4 | Running: 0 | Blocked: 2 | Failed: 0
+- Project Manager cycles: 28
+- Last task: AB-007 (blocked)
 
 ## Specialist registry
 
@@ -29,7 +29,7 @@
 - **6. Sales and launch assets** — planned: Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
 - **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
-- **9. Autonomous studio capability** — completed: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
+- **9. Autonomous studio capability** — blocked: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
 
 ## Task queue
 
@@ -45,6 +45,12 @@
   - Latest: Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality.
 - **AB-006 · Run end-to-end Agent Brain workflow and document autonomy limits** — done · project_manager
   - Latest: End-to-end tests cover queued/in-progress task recovery, guarded specialist dispatch, persisted mock draft and human-review blocking.
+- **AB-007 · Build bounded specialist tool-call runtime** — blocked · developer
+  - Latest: No safe executor is registered for AB-007.
+  - Next action: Register a handler and acceptance checks before scheduling this task.
+- **AB-008 · Add safe source-retrieval tools and evidence provenance** — queued · market_researcher
+- **AB-009 · Add sandboxed workspace editing and test execution tools** — queued · developer
+- **AB-010 · Integrate autonomous multi-step specialist orchestration** — queued · project_manager
 - **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher
   - Latest: Completed a first desk-research scan. Identified eight candidates across B2C, B2B and prosumer; this is directional evidence only, not validation or proof of sales.
 - **PM-001 · Build persistent Project Manager and specialist role registry** — done · project_manager

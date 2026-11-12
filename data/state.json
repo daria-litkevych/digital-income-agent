@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 30,
+  "run_count": 31,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T20:54:51.211981+00:00",
-  "research_last_run_utc": "2026-11-12T20:54:49.363689+00:00",
+  "last_run_utc": "2026-11-12T20:55:26.531014+00:00",
+  "research_last_run_utc": "2026-11-12T20:55:24.135066+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -192,13 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 27,
+  "pm_run_count": 28,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T20:54:51.211937+00:00",
-    "task_id": "AB-006",
-    "role": "project_manager",
-    "status": "completed",
-    "summary": "End-to-end tests cover queued/in-progress task recovery, guarded specialist dispatch, persisted mock draft and human-review blocking."
+    "timestamp": "2026-11-12T20:55:26.530984+00:00",
+    "task_id": "AB-007",
+    "role": "developer",
+    "status": "blocked",
+    "summary": "No safe executor is registered for AB-007."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -366,7 +366,7 @@
         "id": 9,
         "name": "Autonomous studio capability",
         "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-        "status": "completed"
+        "status": "blocked"
       }
     ],
     "tasks": [
@@ -759,6 +759,65 @@
         "updated_at": "2026-11-12T20:54:51.211937+00:00",
         "attempts": 2,
         "completed_at": "2026-11-12T20:54:51.211937+00:00"
+      },
+      {
+        "id": "AB-007",
+        "title": "Build bounded specialist tool-call runtime",
+        "phase": 9,
+        "role": "developer",
+        "kind": "agent_runtime",
+        "status": "blocked",
+        "priority": 114,
+        "depends_on": [
+          "AB-006"
+        ],
+        "acceptance": "Provider-neutral tool-call loop validates schemas, enforces allowlisted tools, iteration/token/time budgets, records tool observations and fails closed on unknown or forbidden actions. Offline fake-client tests prove tool use without network or paid inference.",
+        "started_at": "2026-11-12T20:55:26.530946+00:00",
+        "last_result": "No safe executor is registered for AB-007.",
+        "updated_at": "2026-11-12T20:55:26.530984+00:00",
+        "attempts": 1,
+        "blocked_reason": "No safe executor is registered for AB-007.",
+        "next_action": "Register a handler and acceptance checks before scheduling this task."
+      },
+      {
+        "id": "AB-008",
+        "title": "Add safe source-retrieval tools and evidence provenance",
+        "phase": 9,
+        "role": "market_researcher",
+        "kind": "research_tools",
+        "status": "queued",
+        "priority": 113,
+        "depends_on": [
+          "AB-007"
+        ],
+        "acceptance": "Agent tools can retrieve and store public source content safely, preserve canonical URL/title/retrieval time, reject unsafe URLs and distinguish primary sources from weak discovery signals. Tests use fixtures; no paid search provider."
+      },
+      {
+        "id": "AB-009",
+        "title": "Add sandboxed workspace editing and test execution tools",
+        "phase": 9,
+        "role": "developer",
+        "kind": "workspace_tools",
+        "status": "queued",
+        "priority": 112,
+        "depends_on": [
+          "AB-007"
+        ],
+        "acceptance": "Agents can inspect approved workspace files, propose bounded changes and run tests in isolated temporary workspaces. No secrets, deployment, public commits or writes outside allowlisted paths; all generated changes are reviewable."
+      },
+      {
+        "id": "AB-010",
+        "title": "Integrate autonomous multi-step specialist orchestration",
+        "phase": 9,
+        "role": "project_manager",
+        "kind": "autonomy_loop",
+        "status": "queued",
+        "priority": 111,
+        "depends_on": [
+          "AB-008",
+          "AB-009"
+        ],
+        "acceptance": "Project Manager coordinates multi-step role handoffs using live model only when explicitly approved; persists checkpoints, resumes safely, enforces budgets and gates external actions. End-to-end tests simulate the entire lifecycle with fake model/tools."
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -1279,6 +1338,13 @@
       "role": "project_manager",
       "status": "completed",
       "summary": "End-to-end tests cover queued/in-progress task recovery, guarded specialist dispatch, persisted mock draft and human-review blocking."
+    },
+    {
+      "timestamp": "2026-11-12T20:55:26.530984+00:00",
+      "task_id": "AB-007",
+      "role": "developer",
+      "status": "blocked",
+      "summary": "No safe executor is registered for AB-007."
     }
   ]
 }
