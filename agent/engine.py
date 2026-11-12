@@ -166,6 +166,23 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-014":
+        root = Path(__file__).resolve().parents[1]
+        e2e_path = root / "tests" / "test_autonomy_e2e.py"
+        pm_test_path = root / "tests" / "test_pm_autonomy_gate.py"
+        e2e = e2e_path.read_text(encoding="utf-8") if e2e_path.exists() else ""
+        checks = {
+            "offline_e2e_test_exists": e2e_path.exists(),
+            "project_manager_gate_test_exists": pm_test_path.exists(),
+            "fake_provider_client_used": "class ScriptedClient" in e2e,
+            "multiple_specialists_exercised": "market_researcher" in e2e and "developer" in e2e,
+            "tool_role_boundary_exercised": "wrong_role_cannot_call" in e2e,
+            "checkpoint_recovery_exercised": "interrupted_workflow_resumes" in e2e,
+            "human_review_gate_exercised": "review_required" in e2e,
+            "no_live_provider_required": "estimated_cost_usd=0.0" in e2e,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "Offline end-to-end fixtures cover multi-role tool execution, role permission boundaries, checkpoint persistence, interruption and resume without paid provider calls." if passed else "Autonomy end-to-end coverage is incomplete.", "metrics": {"checks": checks}, "artifact": {"test_file": "tests/test_autonomy_e2e.py", "pm_gate_test": "tests/test_pm_autonomy_gate.py", "limitations": ["Uses fake model responses and fake tool handlers", "Does not prove live model reasoning quality", "Does not enable production autonomy or external actions"]}, "next_action": "Complete final security review and confirm scheduled runs remain default-off."}
     if task_id == "AB-013":
         root = Path(__file__).resolve().parents[1]
         runtime_path = root / "agent" / "tool_runtime.py"
