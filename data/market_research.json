@@ -200,5 +200,95 @@
     "Additional first-hand/community discussions point to café pain around stock consistency, owner overload, staffing reliability and perishable-food waste. These suggest more valuable problem areas than a generic checklist pack, but evidence is still anecdotal.",
     "A hotel worker described shift notes being buried in an existing PMS and guest requests being lost between shifts. This supports the importance of visibility and adoption in handovers; it does not prove users want another standalone app."
   ],
-  "next_validation": "Prioritise discovery before building. Interview or observe 5–8 independent specialty coffee shop owners/managers: ask them to show current opening/closing, stock/waste, quality and onboarding workflows; quantify time, errors and cost. In parallel, interview 5–8 shift leads about handover frequency, existing tools, missed items and app fatigue. Specifically test whether stock/waste control, staff onboarding or handover is the most frequent costly problem. Do not pitch until their current process is understood."
+  "next_validation": "Prioritise discovery before building. Interview or observe 5–8 independent specialty coffee shop owners/managers: ask them to show current opening/closing, stock/waste, quality and onboarding workflows; quantify time, errors and cost. In parallel, interview 5–8 shift leads about handover frequency, existing tools, missed items and app fatigue. Specifically test whether stock/waste control, staff onboarding or handover is the most frequent costly problem. Do not pitch until their current process is understood.",
+  "opportunity_scan": {
+    "generated_at": "2026-11-12",
+    "scope": "Initial public desk research across B2C, B2B and prosumer segments. Directional discovery only; not proof of demand or sales.",
+    "candidates": [
+      {
+        "id": "adhd_life_admin",
+        "segment": "B2C",
+        "problem": "Low-friction daily/life admin and focus",
+        "sources": [
+          "https://efficient.app/blog/software-selection-report"
+        ],
+        "evidence_level": "secondary_survey"
+      },
+      {
+        "id": "personal_finance_tool",
+        "segment": "B2C",
+        "problem": "Focused personal-finance decision calculator",
+        "sources": [
+          "https://www.keepertax.com/posts/digital-products-to-sell"
+        ],
+        "evidence_level": "secondary_market_analysis"
+      },
+      {
+        "id": "wedding_ops_kit",
+        "segment": "B2C",
+        "problem": "Modular wedding guest/vendor/seating workflow",
+        "sources": [
+          "https://www.reddit.com/r/wedding/comments/1r3ocq4/finally-got-our-guest-list-under-control-after/",
+          "https://www.reddit.com/r/weddingplanning/comments/1sitnn9/how-are-you-all-actually-organizing-everything-bc/"
+        ],
+        "evidence_level": "anecdotal_community"
+      },
+      {
+        "id": "freelancer_scope_pricing",
+        "segment": "Prosumer",
+        "problem": "Scope creep and quote/change-request management",
+        "sources": [
+          "https://www.reddit.com/r/freelance/comments/1ozc3zq/lost_2300_to_scope_creep_on_one_project_how_do/"
+        ],
+        "evidence_level": "anecdotal_community"
+      },
+      {
+        "id": "microbusiness_admin",
+        "segment": "B2B",
+        "problem": "Recurring invoicing, reminders and admin reconciliation",
+        "sources": [
+          "https://www.visma.com/insights/content/insights-from-european-entrepreneurs-on-running-a-business",
+          "https://intandem.vcita.com/content-hub/the-2026-small-business-digital-adoption-report"
+        ],
+        "evidence_level": "secondary_survey"
+      },
+      {
+        "id": "creator_ops",
+        "segment": "Prosumer",
+        "problem": "Narrow creator workflow and deliverable coordination",
+        "sources": [
+          "https://www.keepertax.com/posts/digital-products-to-sell"
+        ],
+        "evidence_level": "secondary_market_analysis"
+      },
+      {
+        "id": "cafe_starter_kit",
+        "segment": "B2B",
+        "problem": "Small café operating routines",
+        "sources": [
+          "https://www.getbrewspace.com/resources/coffee-shop-opening-checklist/download/",
+          "https://www.assignright.com/checklists/coffee-shops"
+        ],
+        "evidence_level": "competitor_scan"
+      },
+      {
+        "id": "shiftbrief_ai",
+        "segment": "B2B",
+        "problem": "Shift handover and task capture",
+        "sources": [
+          "https://www.shiftforce.com/pricingshiftnote",
+          "https://shifo.nl/en",
+          "https://rotahr.com/pricing"
+        ],
+        "evidence_level": "competitor_scan"
+      }
+    ],
+    "limits": [
+      "No direct customer interviews",
+      "No verified sales or conversion data",
+      "Community posts are anecdotal",
+      "Search and listing counts are not sales",
+      "No candidate has been validated"
+    ]
+  }
 }
