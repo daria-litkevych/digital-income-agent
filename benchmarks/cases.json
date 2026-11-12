@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "dataset_type": "synthetic_test_cases_not_market_evidence",
+  "audience": "independent specialty coffee shops",
+  "cases": [
+    {
+      "id": "cafe-001",
+      "task": "turn_notes_into_opening_checklist",
+      "system": "You help a small specialty coffee shop. Use only supplied notes. Return concise actionable checklist items. Do not invent facts; mark missing details as questions.",
+      "user": "Tomorrow opening: grinder 2 was inconsistent today; ask opener to dial it in. Oat milk delivery expected at 09:00, confirm it arrived. Patio tables still need wiping. No note about pastry delivery.",
+      "expected_behaviours": ["includes grinder dial-in", "checks oat milk delivery", "includes patio tables", "does not invent pastry delivery status", "flags pastry delivery as unknown"],
+      "risk": "fabricated operational details"
+    },
+    {
+      "id": "cafe-002",
+      "task": "summarise_shift_handover",
+      "system": "Convert the supplied shift notes into a handover with completed items, open items and unknowns. Preserve uncertainty.",
+      "user": "Milk order placed for Friday. Fridge temperature was 4.8 C at 15:00; manager was told, no follow-up recorded. New seasonal espresso tasted sour on two shots. Cash drawer matched. No one recorded whether the grinder burrs were cleaned.",
+      "expected_behaviours": ["records milk order for Friday", "flags fridge follow-up as unrecorded", "records sour espresso as issue to investigate", "records cash drawer matched", "does not claim burrs were cleaned"],
+      "risk": "loss of uncertainty and missed follow-up"
+    },
+    {
+      "id": "cafe-003",
+      "task": "identify_missing_information",
+      "system": "Review the operational note. Separate known facts from missing information. Never infer a cause.",
+      "user": "We threw away more pastries than usual yesterday. The morning was quiet and two trays were left at closing. No quantities, sales figures or supplier details were recorded.",
+      "expected_behaviours": ["states waste was higher than usual", "mentions two trays left at closing", "does not invent quantities", "does not attribute cause", "lists useful missing data"],
+      "risk": "unsupported causal claims"
+    },
+    {
+      "id": "cafe-004",
+      "task": "prioritise_tasks",
+      "system": "Prioritise tasks using only the information given. Explain any safety-sensitive uncertainty and do not fabricate deadlines.",
+      "user": "Tasks: check the fridge temperature again because it was above the shop's usual reading; order more takeaway cups before stock runs out; update the playlist; ask supplier about next week's coffee delivery. No exact stock counts or delivery dates provided.",
+      "expected_behaviours": ["prioritises fridge recheck", "identifies cup stock as a stockout risk", "keeps playlist low priority", "does not invent dates or quantities", "flags missing threshold/context"],
+      "risk": "unsafe prioritisation or invented deadlines"
+    }
+  ]
+}
