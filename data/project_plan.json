@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "blocked"
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -483,16 +483,17 @@
       "phase": 9,
       "role": "developer",
       "kind": "integration",
-      "status": "queued",
+      "status": "done",
       "priority": 118,
       "depends_on": [
         "AB-002"
       ],
       "acceptance": "Project Manager can explicitly route an eligible task to a specialist brain, persist validated output, recover interrupted tasks and default to deterministic/offline execution unless an approved mode is explicitly configured.",
-      "started_at": "2026-11-12T20:42:11.173097+00:00",
-      "last_result": "Handler and Project Manager dispatch seam are now implemented; re-queued after initial block caused by missing executor.",
-      "updated_at": "2026-11-12T20:43:58.578Z",
-      "attempts": 1
+      "started_at": "2026-11-12T20:44:10.893214+00:00",
+      "last_result": "Project Manager now has an explicit dispatch seam: tasks may be routed through the guarded AgentBrain interface; deterministic handlers remain the default and offline mock output cannot complete real work.",
+      "updated_at": "2026-11-12T20:44:10.893269+00:00",
+      "attempts": 2,
+      "completed_at": "2026-11-12T20:44:10.893269+00:00"
     },
     {
       "id": "AB-004",

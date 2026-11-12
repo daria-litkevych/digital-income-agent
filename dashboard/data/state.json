@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 22,
+  "run_count": 23,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T20:43:40.708939+00:00",
-  "research_last_run_utc": "2026-11-12T20:43:38.073291+00:00",
+  "last_run_utc": "2026-11-12T20:44:10.893323+00:00",
+  "research_last_run_utc": "2026-11-12T20:44:09.041340+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -14,7 +14,7 @@
     "freelancer consultant scope creep pricing quotes change requests client work",
     "creator freelancer content business workflow client deliverables digital tools"
   ],
-  "research_new_items": 1,
+  "research_new_items": 0,
   "research_errors": [],
   "research_items": [
     {
@@ -192,12 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 19,
+  "pm_run_count": 20,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T20:43:40.708886+00:00",
-    "task_id": null,
-    "status": "no_eligible_tasks",
-    "summary": "No queued or retryable task has all dependencies completed."
+    "timestamp": "2026-11-12T20:44:10.893269+00:00",
+    "task_id": "AB-003",
+    "role": "developer",
+    "status": "completed",
+    "summary": "Project Manager now has an explicit dispatch seam: tasks may be routed through the guarded AgentBrain interface; deterministic handlers remain the default and offline mock output cannot complete real work."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -365,7 +366,7 @@
         "id": 9,
         "name": "Autonomous studio capability",
         "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-        "status": "blocked"
+        "status": "in_progress"
       }
     ],
     "tasks": [
@@ -692,18 +693,17 @@
         "phase": 9,
         "role": "developer",
         "kind": "integration",
-        "status": "blocked",
+        "status": "done",
         "priority": 118,
         "depends_on": [
           "AB-002"
         ],
         "acceptance": "Project Manager can explicitly route an eligible task to a specialist brain, persist validated output, recover interrupted tasks and default to deterministic/offline execution unless an approved mode is explicitly configured.",
-        "started_at": "2026-11-12T20:42:11.173097+00:00",
-        "last_result": "No safe executor is registered for AB-003.",
-        "updated_at": "2026-11-12T20:42:11.173134+00:00",
-        "attempts": 1,
-        "blocked_reason": "No safe executor is registered for AB-003.",
-        "next_action": "Register a handler and acceptance checks before scheduling this task."
+        "started_at": "2026-11-12T20:44:10.893214+00:00",
+        "last_result": "Project Manager now has an explicit dispatch seam: tasks may be routed through the guarded AgentBrain interface; deterministic handlers remain the default and offline mock output cannot complete real work.",
+        "updated_at": "2026-11-12T20:44:10.893269+00:00",
+        "attempts": 2,
+        "completed_at": "2026-11-12T20:44:10.893269+00:00"
       },
       {
         "id": "AB-004",
@@ -1006,6 +1006,17 @@
         ],
         "cost": "€0 planned; no paid API, subscription or hosting change."
       }
+    },
+    "AB-003": {
+      "ok": true,
+      "summary": "Project Manager now has an explicit dispatch seam: tasks may be routed through the guarded AgentBrain interface; deterministic handlers remain the default and offline mock output cannot complete real work.",
+      "artifact": {
+        "dispatch_contract": "dispatch_task(task, state, evidence, brain=None)",
+        "default_mode": "deterministic",
+        "brain_mode": "explicit task flag only",
+        "mock_completion": false,
+        "live_calls": "disabled"
+      }
     }
   },
   "event_log": [
@@ -1121,6 +1132,13 @@
       "task_id": null,
       "status": "no_eligible_tasks",
       "summary": "No queued or retryable task has all dependencies completed."
+    },
+    {
+      "timestamp": "2026-11-12T20:44:10.893269+00:00",
+      "task_id": "AB-003",
+      "role": "developer",
+      "status": "completed",
+      "summary": "Project Manager now has an explicit dispatch seam: tasks may be routed through the guarded AgentBrain interface; deterministic handlers remain the default and offline mock output cannot complete real work."
     }
   ]
 }
