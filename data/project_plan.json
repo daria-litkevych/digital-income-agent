@@ -247,5 +247,37 @@
       }
     ],
     "important_limit": "The current agent is deterministic and rules-based. It is not an LLM-powered autonomous researcher. Live browser/search and LLM reasoning require a separately approved integration; no paid API is enabled."
+  },
+  "project_notes": {
+    "spending": [
+      {
+        "date": "2026-11-12",
+        "item": "Netlify plan upgrade",
+        "amount_eur": 9,
+        "status": "spent",
+        "note": "Actual expense; renewal and billing terms must be checked before further use."
+      }
+    ],
+    "tools_to_evaluate": [
+      {
+        "name": "Haimaker AI",
+        "url": "https://haimaker.ai/",
+        "status": "unassessed_watchlist",
+        "added_date": "2026-11-12",
+        "reason": "User found the service and wants to assess possible future usefulness.",
+        "approval_required_before_use": true,
+        "evaluation_checks": [
+          "current capabilities and use cases",
+          "pricing and recurring charges",
+          "privacy and data handling",
+          "export and portability",
+          "fit with project constraints"
+        ]
+      }
+    ],
+    "guardrails": [
+      "Do not subscribe to, integrate, connect accounts to, or upload private project data to Haimaker AI without checking it and receiving explicit user approval.",
+      "Netlify auto-publishing remains locked; no unlock, deploy, or plan change without explicit user approval."
+    ]
   }
 }
