@@ -6,8 +6,7 @@
 mock client, explicit live-configuration validation, token-price estimation
 and fail-closed per-request limits.
 
-**No live provider client is implemented or called.** The Project Manager and
-scheduled workflow remain deterministic. Tests use only the offline mock.
+`OpenAICompatibleClient` is now implemented for future explicit use, with HTTPS-only endpoints, an explicitly supplied runtime API key, bounded timeouts, response validation and usage-based cost reporting. **It is not called by the Project Manager or scheduled workflow.** Tests mock the HTTP response; no real provider is contacted.
 
 ## Safety defaults
 
@@ -25,8 +24,7 @@ scheduled workflow remain deterministic. Tests use only the offline mock.
 
 1. Select a provider only after checking official current prices, model ID,
    structured-output support, rate limits, privacy terms and EU data handling.
-2. Implement an OpenAI-compatible HTTP client behind `LLMClient`; keep secrets
-   in GitHub Actions secrets or local environment variables, never repository files.
+2. Before any live call, choose one provider and model and verify its official current price and API compatibility. Supply its key only at runtime through a secret store; never commit it to the repository.
 3. Add mocked HTTP tests for success, timeout, malformed JSON, provider errors
    and missing credentials.
 4. Add a persistent monthly spend ledger and hard monthly ceiling before
