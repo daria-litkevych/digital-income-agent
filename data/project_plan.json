@@ -262,7 +262,7 @@
       {
         "name": "Haimaker AI",
         "url": "https://haimaker.ai/",
-        "status": "unassessed_watchlist",
+        "status": "preliminary_reviewed_watchlist",
         "added_date": "2026-11-12",
         "reason": "User found the service and wants to assess possible future usefulness.",
         "approval_required_before_use": true,
@@ -272,7 +272,16 @@
           "privacy and data handling",
           "export and portability",
           "fit with project constraints"
-        ]
+        ],
+        "preliminary_assessment": {
+          "potential_fit": "Later LLM backend/model gateway for the agent or an AI-powered product; not required for the current deterministic agent and not a customer-facing app host.",
+          "pricing": "Pay-as-you-go per-token pricing; free signup does not mean ongoing free inference. Check live model rates and any deposit/credit conditions before use.",
+          "privacy_caution": "Privacy policy states prompts and responses are logged by default and deleted after 30 days; opt-out is available in API key settings. Third-party model providers' own policies also apply.",
+          "docs": "https://haimaker.ai/docs",
+          "privacy_policy": "https://haimaker.ai/privacy-policy/",
+          "terms": "https://haimaker.ai/terms-and-conditions/",
+          "decision": "Watchlist only. No signup, integration, data upload, API key or payment without explicit approval."
+        }
       }
     ],
     "guardrails": [
