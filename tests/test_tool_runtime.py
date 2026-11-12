@@ -30,6 +30,12 @@ class ToolRuntimeAcceptanceTests(unittest.TestCase):
         self.assertTrue(all(result["metrics"]["checks"].values()))
 
 
+class ToolPermissionAcceptanceTests(unittest.TestCase):
+    def test_ab013_acceptance_handler_checks_role_permissions(self):
+        result = execute({"id": "AB-013", "role": "quality_controller", "kind": "tool_permissions"}, {}, {})
+        self.assertTrue(result["ok"], result.get("metrics"))
+        self.assertTrue(all(result["metrics"]["checks"].values()))
+
 class ToolRegistryTests(unittest.TestCase):
     def test_unknown_tool_is_rejected(self):
         with self.assertRaisesRegex(BrainError, "Unknown tool"):
