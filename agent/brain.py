@@ -160,8 +160,30 @@ class AgentBrain:
             raise BrainError("Specialist response has no summary.")
         if not isinstance(payload["requires_human_approval"], bool):
             raise BrainError("Human-approval flag must be boolean.")
+        if not isinstance(payload["artifact"], dict):
+            raise BrainError("Specialist artifact must be a JSON object.")
         if not all(isinstance(payload[key], list) for key in ("evidence", "assumptions", "risks")):
             raise BrainError("Evidence, assumptions and risks must be arrays.")
+        if payload["confidence"] not in {"none", "low", "medium", "high"}:
+            raise BrainError("Confidence must be none, low, medium or high.")
+        # Evidence records must point to URLs actually supplied in task context.
+        supplied_urls = set()
+        def collect_urls(value):
+            if isinstance(value, dict):
+                for child in value.values():
+                    collect_urls(child)
+            elif isinstance(value, list):
+                for child in value:
+                    collect_urls(child)
+            elif isinstance(value, str) and value.startswith(("https://", "http://")):
+                supplied_urls.add(value)
+        collect_urls(context)
+        for item in payload["evidence"]:
+            if not isinstance(item, dict):
+                raise BrainError("Each evidence record must be a JSON object.")
+            source = item.get("source") or item.get("url")
+            if not isinstance(source, str) or source not in supplied_urls:
+                raise BrainError("Evidence source was not supplied in task context.")
         payload["execution_mode"] = "live"
         payload["model"] = response.model
         payload["provider"] = response.provider
