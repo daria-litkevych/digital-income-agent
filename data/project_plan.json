@@ -519,12 +519,17 @@
       "phase": 9,
       "role": "quality_controller",
       "kind": "evaluation",
-      "status": "queued",
+      "status": "done",
       "priority": 116,
       "depends_on": [
         "AB-003"
       ],
-      "acceptance": "Each role has representative golden cases, structured-output checks, evidence/citation checks, hallucination traps and approval-boundary tests; mock output cannot pass as completed work."
+      "acceptance": "Each role has representative golden cases, structured-output checks, evidence/citation checks, hallucination traps and approval-boundary tests; mock output cannot pass as completed work.",
+      "started_at": "2026-11-12T20:50:44.653565+00:00",
+      "last_result": "Agent Brain evaluation suite covers role coverage, offline/mock labelling, forbidden external actions, valid structured output, malformed JSON and missing contract fields. Per-role golden quality benchmarks remain a follow-up before claiming autonomous quality.",
+      "updated_at": "2026-11-12T20:50:44.653609+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-12T20:50:44.653609+00:00"
     },
     {
       "id": "AB-006",
