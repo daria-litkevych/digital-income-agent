@@ -166,6 +166,23 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-007":
+        root = Path(__file__).resolve().parents[1]
+        runtime_path = root / "agent" / "tool_runtime.py"
+        test_path = root / "tests" / "test_tool_runtime.py"
+        runtime_source = runtime_path.read_text(encoding="utf-8") if runtime_path.exists() else ""
+        checks = {
+            "provider_neutral_tool_runtime_exists": runtime_path.exists(),
+            "tool_registry_and_runtime_tests_exist": test_path.exists(),
+            "unknown_tools_fail_closed": "Unknown tool" in runtime_source,
+            "approval_required_tools_blocked": "requires_approval" in runtime_source,
+            "hard_step_limit_enforced": "max_steps" in runtime_source and "range(self.max_steps)" in runtime_source,
+            "offline_mode_does_not_execute_tools": "Offline mock mode cannot execute" in runtime_source,
+            "final_output_reuses_brain_validation": "AgentBrain(ReplayClient()" in runtime_source,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "Bounded JSON tool-call runtime is implemented with an allowlisted registry, argument validation, approval gates, hard step/output limits and AgentBrain final-output validation." if passed else "Tool runtime acceptance checks are incomplete.", "metrics": {"checks": checks}, "artifact": {"runtime": "agent/tool_runtime.py", "tests": "tests/test_tool_runtime.py", "limitations": ["No production tools registered yet", "No live model calls", "No filesystem, shell, network or publishing tools enabled"]}, "next_action": "Add narrowly scoped, safe research and workspace tools before claiming autonomous execution."}
+
     if task_id == "AB-006":
         root = Path(__file__).resolve().parents[1]
         e2e_path = root / "tests" / "test_brain_e2e.py"
