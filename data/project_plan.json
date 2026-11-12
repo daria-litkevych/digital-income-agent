@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "in_progress"
+      "status": "blocked"
     }
   ],
   "tasks": [
@@ -483,12 +483,18 @@
       "phase": 9,
       "role": "developer",
       "kind": "integration",
-      "status": "queued",
+      "status": "blocked",
       "priority": 118,
       "depends_on": [
         "AB-002"
       ],
-      "acceptance": "Project Manager can explicitly route an eligible task to a specialist brain, persist validated output, recover interrupted tasks and default to deterministic/offline execution unless an approved mode is explicitly configured."
+      "acceptance": "Project Manager can explicitly route an eligible task to a specialist brain, persist validated output, recover interrupted tasks and default to deterministic/offline execution unless an approved mode is explicitly configured.",
+      "started_at": "2026-11-12T20:41:53.821831+00:00",
+      "last_result": "No safe executor is registered for AB-003.",
+      "updated_at": "2026-11-12T20:41:53.821865+00:00",
+      "attempts": 1,
+      "blocked_reason": "No safe executor is registered for AB-003.",
+      "next_action": "Register a handler and acceptance checks before scheduling this task."
     },
     {
       "id": "AB-004",

@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T20:41:42.000287+00:00
+**Last cycle:** 2026-11-12T20:41:53.821865+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 14 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 16
-- Last task: None (no_eligible_tasks)
+- Completed: 16 | Queued: 4 | Running: 0 | Blocked: 2 | Failed: 0
+- Project Manager cycles: 17
+- Last task: AB-003 (blocked)
 
 ## Specialist registry
 
@@ -29,10 +29,20 @@
 - **6. Sales and launch assets** — planned: Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
 - **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
-- **9. Autonomous studio capability** — planned: Connect guarded AI specialist roles to the workflow, with human approval gates, spend limits, traceable outputs and evals.
+- **9. Autonomous studio capability** — blocked: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
 
 ## Task queue
 
+- **AB-001 · Create central specialist registry and guarded Agent Brain dispatcher** — done · project_manager
+  - Latest: Implemented agent/brain.py with nine specialist roles, common dispatch contract, fail-closed JSON validation and offline mock default. Live calls are not enabled.
+- **AB-002 · Add Agent Brain safety, role coverage and contract tests** — done · quality_controller
+  - Latest: Added tests/test_brain.py with fake-client tests; no network calls or paid services.
+- **AB-003 · Integrate guarded Agent Brain dispatch into Project Manager** — blocked · developer
+  - Latest: No safe executor is registered for AB-003.
+  - Next action: Register a handler and acceptance checks before scheduling this task.
+- **AB-004 · Connect live LLM dispatch to spend ledger and approval configuration** — queued · developer
+- **AB-005 · Build specialist evaluation suite and evidence-quality tests** — queued · quality_controller
+- **AB-006 · Run end-to-end Agent Brain workflow and document autonomy limits** — queued · project_manager
 - **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher
   - Latest: Completed a first desk-research scan. Identified eight candidates across B2C, B2B and prosumer; this is directional evidence only, not validation or proof of sales.
 - **PM-001 · Build persistent Project Manager and specialist role registry** — done · project_manager
