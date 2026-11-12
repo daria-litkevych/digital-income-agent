@@ -501,12 +501,17 @@
       "phase": 9,
       "role": "developer",
       "kind": "budget_guard",
-      "status": "queued",
+      "status": "done",
       "priority": 117,
       "depends_on": [
         "AB-003"
       ],
-      "acceptance": "Live calls remain disabled by default; any enabled call requires explicit provider, verified pricing, per-call cap, monthly cap, runtime credential and persistent ledger reservation/settlement before and after network use."
+      "acceptance": "Live calls remain disabled by default; any enabled call requires explicit provider, verified pricing, per-call cap, monthly cap, runtime credential and persistent ledger reservation/settlement before and after network use.",
+      "started_at": "2026-11-12T20:50:18.100352+00:00",
+      "last_result": "Live LLM remains disabled by default; the explicit client requires a runtime key and persistent ledger, reserves before network use and settles actual usage.",
+      "updated_at": "2026-11-12T20:50:18.100397+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-12T20:50:18.100397+00:00"
     },
     {
       "id": "AB-005",

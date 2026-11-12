@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T20:44:10.893269+00:00
+**Last cycle:** 2026-11-12T20:50:18.100397+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 17 | Queued: 4 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 20
-- Last task: AB-003 (completed)
+- Completed: 18 | Queued: 3 | Running: 0 | Blocked: 1 | Failed: 0
+- Project Manager cycles: 21
+- Last task: AB-004 (completed)
 
 ## Specialist registry
 
@@ -39,7 +39,8 @@
   - Latest: Added tests/test_brain.py with fake-client tests; no network calls or paid services.
 - **AB-003 · Integrate guarded Agent Brain dispatch into Project Manager** — done · developer
   - Latest: Project Manager now has an explicit dispatch seam: tasks may be routed through the guarded AgentBrain interface; deterministic handlers remain the default and offline mock output cannot complete real work.
-- **AB-004 · Connect live LLM dispatch to spend ledger and approval configuration** — queued · developer
+- **AB-004 · Connect live LLM dispatch to spend ledger and approval configuration** — done · developer
+  - Latest: Live LLM remains disabled by default; the explicit client requires a runtime key and persistent ledger, reserves before network use and settles actual usage.
 - **AB-005 · Build specialist evaluation suite and evidence-quality tests** — queued · quality_controller
 - **AB-006 · Run end-to-end Agent Brain workflow and document autonomy limits** — queued · project_manager
 - **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher
