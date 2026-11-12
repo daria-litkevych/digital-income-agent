@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T16:11:49.141229+00:00
+**Last cycle:** 2026-11-12T16:14:05.971671+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 9 | Queued: 0 | Running: 0 | Blocked: 0 | Failed: 0
-- Project Manager cycles: 8
-- Last task: None (no_eligible_tasks)
+- Completed: 13 | Queued: 0 | Running: 0 | Blocked: 1 | Failed: 0
+- Project Manager cycles: 9
+- Last task: DS-006 (blocked)
 
 ## Specialist registry
 
@@ -22,9 +22,9 @@
 
 - **0. Existing workflow foundation** — completed: Private repository, deterministic orchestration, scheduled RSS discovery, reports, dashboard and spend guardrails; this is not yet an autonomous LLM studio.
 - **1. Cross-market opportunity discovery** — completed: Scan B2C, B2B and prosumer markets; collect competitor, pricing, pain-point and substitute evidence; score evidence quality.
-- **2. Demand validation and opportunity selection** — planned: Narrow the best candidates, identify target users, test current workarounds and willingness to pay before committing to a build.
-- **3. Product requirements and design** — planned: Create a concise PRD, user journey, prototype, acceptance criteria and smallest useful MVP.
-- **4. Product development** — planned: Build a working product in its own product folder with reproducible setup and documentation.
+- **2. Demand validation and opportunity selection** — completed: Narrow the best candidates, identify target users, test current workarounds and willingness to pay before committing to a build.
+- **3. Product requirements and design** — completed: Create a concise PRD, user journey, prototype, acceptance criteria and smallest useful MVP.
+- **4. Product development** — blocked: Build a working product in its own product folder with reproducible setup and documentation.
 - **5. Quality assurance** — planned: Test core flows, edge cases, accessibility, mobile usability, privacy and reliability.
 - **6. Sales and launch assets** — planned: Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
@@ -36,19 +36,25 @@
 - **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher
   - Latest: Completed a first desk-research scan. Identified eight candidates across B2C, B2B and prosumer; this is directional evidence only, not validation or proof of sales.
 - **PM-001 · Build persistent Project Manager and specialist role registry** — done · project_manager
-- **DS-002 · Build comparable opportunity scorecard and rank candidates** — planned · business_analyst
-- **DS-003 · Deep-dive top three opportunities and identify validation experiments** — planned · market_researcher
+- **DS-002 · Build comparable opportunity scorecard and rank candidates** — done · business_analyst
+  - Latest: Created a qualitative, evidence-confidence-aware comparison. No numerical market-size or sales claims were inferred from search results.
+- **DS-003 · Deep-dive top three opportunities and identify validation experiments** — done · market_researcher
+  - Latest: Deep-dived freelancer scope changes, micro-business invoice follow-up and wedding workflows. Competitors/free alternatives are material in all three.
 - **MR-001 · Map direct competitors and substitutes for café starter kit** — done · market_researcher
   - Latest: Initial sourced competitor scan saved: 6 café template products/substitutes. See data/market_research.json; this is discovery evidence, not proof of sales.
 - **MR-002 · Map direct competitors and substitutes for ShiftBrief AI** — done · market_researcher
   - Latest: Mapped six handover/logbook competitors and substitutes; official pricing pages checked for ShiftForce, Shifo, Venheim and Rotahr. See data/market_research.json and reports/market-research.md.
-- **DS-004 · Recommend one first MVP based on evidence and buildability** — planned · product_strategist
+- **DS-004 · Recommend one first MVP based on evidence and buildability** — done · product_strategist
+  - Latest: Selected ScopeSnap as the first low-cost MVP hypothesis: a no-login scope-change estimator and client-ready approval brief. Rationale: repeated first-hand pain signals, narrow build, immediate utility, no integrations or sensitive data required. Confidence remains low-to-moderate until user testing.
 - **BA-001 · Compare competitor pricing and business models** — done · business_analyst
   - Latest: Compared visible one-time/free/subscription price anchors. Prices differ by currency, tax, venue/team size and scope; some older observations remain flagged for recheck.
-- **DS-005 · Create product-specific workspace and product requirements** — planned · product_designer
+- **DS-005 · Create product-specific workspace and product requirements** — done · product_designer
+  - Latest: Created product workspace, PRD and an initial working browser prototype. Product is a testable hypothesis, not a validated or published product.
 - **BA-002 · Identify recurring customer complaints and unmet needs** — done · business_analyst
   - Latest: Added first-hand/community discussion evidence for café stock consistency, staffing/owner overload and food waste, plus a hotel shift-handover example where buried notes led to forgotten guest requests. Evidence remains anecdotal and does not establish willingness to pay.
-- **DS-006 · Build the first usable MVP** — planned · developer
+- **DS-006 · Build the first usable MVP** — blocked · developer
+  - Latest: No safe executor is registered for DS-006.
+  - Next action: Register a handler and acceptance checks before scheduling this task.
 - **DS-007 · Test MVP and fix release-blocking issues** — planned · quality_controller
 - **PS-001 · Compare the two hypotheses and choose the cheapest demand test** — done · product_strategist
   - Latest: Compared both hypotheses. Willingness to pay is not demonstrated for either; recommend discovery interviews before choosing or building.

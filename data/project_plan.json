@@ -126,7 +126,7 @@
       "id": 4,
       "name": "Product development",
       "goal": "Build a working product in its own product folder with reproducible setup and documentation.",
-      "status": "in_progress"
+      "status": "blocked"
     },
     {
       "id": 5,
@@ -375,14 +375,19 @@
       "phase": 4,
       "role": "developer",
       "kind": "development",
-      "status": "in_progress",
+      "status": "blocked",
       "priority": 75,
       "depends_on": [
         "DS-005"
       ],
       "acceptance": "Working, locally testable product with source code, setup instructions and no unapproved paid dependencies.",
-      "started_at": "2026-11-12T16:35:00Z",
-      "last_result": "Initial browser MVP source created; functional QA and usability checks remain."
+      "started_at": "2026-11-12T16:14:05.971643+00:00",
+      "last_result": "No safe executor is registered for DS-006.",
+      "recovered_at": "2026-11-12T16:14:05.971614+00:00",
+      "updated_at": "2026-11-12T16:14:05.971671+00:00",
+      "attempts": 1,
+      "blocked_reason": "No safe executor is registered for DS-006.",
+      "next_action": "Register a handler and acceptance checks before scheduling this task."
     },
     {
       "id": "DS-007",
