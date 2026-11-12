@@ -247,5 +247,46 @@
       }
     ],
     "important_limit": "The current agent is deterministic and rules-based. It is not an LLM-powered autonomous researcher. Live browser/search and LLM reasoning require a separately approved integration; no paid API is enabled."
+  },
+  "project_notes": {
+    "spending": [
+      {
+        "date": "2026-11-12",
+        "item": "Netlify plan upgrade",
+        "amount_eur": 9,
+        "status": "spent",
+        "note": "Actual expense; renewal and billing terms must be checked before further use."
+      }
+    ],
+    "tools_to_evaluate": [
+      {
+        "name": "Haimaker AI",
+        "url": "https://haimaker.ai/",
+        "status": "preliminary_reviewed_watchlist",
+        "added_date": "2026-11-12",
+        "reason": "User found the service and wants to assess possible future usefulness.",
+        "approval_required_before_use": true,
+        "evaluation_checks": [
+          "current capabilities and use cases",
+          "pricing and recurring charges",
+          "privacy and data handling",
+          "export and portability",
+          "fit with project constraints"
+        ],
+        "preliminary_assessment": {
+          "potential_fit": "Later LLM backend/model gateway for the agent or an AI-powered product; not required for the current deterministic agent and not a customer-facing app host.",
+          "pricing": "Pay-as-you-go per-token pricing; free signup does not mean ongoing free inference. Check live model rates and any deposit/credit conditions before use.",
+          "privacy_caution": "Privacy policy states prompts and responses are logged by default and deleted after 30 days; opt-out is available in API key settings. Third-party model providers' own policies also apply.",
+          "docs": "https://haimaker.ai/docs",
+          "privacy_policy": "https://haimaker.ai/privacy-policy/",
+          "terms": "https://haimaker.ai/terms-and-conditions/",
+          "decision": "Watchlist only. No signup, integration, data upload, API key or payment without explicit approval."
+        }
+      }
+    ],
+    "guardrails": [
+      "Do not subscribe to, integrate, connect accounts to, or upload private project data to Haimaker AI without checking it and receiving explicit user approval.",
+      "Netlify auto-publishing remains locked; no unlock, deploy, or plan change without explicit user approval."
+    ]
   }
 }
