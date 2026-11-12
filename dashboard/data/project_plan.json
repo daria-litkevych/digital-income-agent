@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "blocked"
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -574,18 +574,17 @@
       "phase": 9,
       "role": "market_researcher",
       "kind": "research_tools",
-      "status": "blocked",
+      "status": "done",
       "priority": 113,
       "depends_on": [
         "AB-007"
       ],
       "acceptance": "Agent tools can retrieve and store public source content safely, preserve canonical URL/title/retrieval time, reject unsafe URLs and distinguish primary sources from weak discovery signals. Tests use fixtures; no paid search provider.",
-      "started_at": "2026-11-12T20:57:26.879817+00:00",
-      "last_result": "No safe executor is registered for AB-008.",
-      "updated_at": "2026-11-12T20:57:26.879861+00:00",
-      "attempts": 1,
-      "blocked_reason": "No safe executor is registered for AB-008.",
-      "next_action": "Register a handler and acceptance checks before scheduling this task."
+      "started_at": "2026-11-12T21:03:38.717927+00:00",
+      "last_result": "Read-only public-source retrieval is implemented with HTTPS and public-IP checks, redirect refusal, response bounds and explicit ungraded evidence metadata.",
+      "updated_at": "2026-11-12T21:03:38.718173+00:00",
+      "attempts": 2,
+      "completed_at": "2026-11-12T21:03:38.718173+00:00"
     },
     {
       "id": "AB-009",
@@ -593,18 +592,16 @@
       "phase": 9,
       "role": "developer",
       "kind": "workspace_tools",
-      "status": "blocked",
+      "status": "queued",
       "priority": 112,
       "depends_on": [
         "AB-007"
       ],
       "acceptance": "Agents can inspect approved workspace files, propose bounded changes and run tests in isolated temporary workspaces. No secrets, deployment, public commits or writes outside allowlisted paths; all generated changes are reviewable.",
       "started_at": "2026-11-12T20:59:43.786507+00:00",
-      "last_result": "No safe executor is registered for AB-009.",
+      "last_result": "Re-queued after the missing acceptance handler/tool implementation was added.",
       "updated_at": "2026-11-12T20:59:43.786544+00:00",
-      "attempts": 1,
-      "blocked_reason": "No safe executor is registered for AB-009.",
-      "next_action": "Register a handler and acceptance checks before scheduling this task."
+      "attempts": 1
     },
     {
       "id": "AB-010",

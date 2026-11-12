@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T21:02:54.698233+00:00
+**Last cycle:** 2026-11-12T21:03:38.718173+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 21 | Queued: 2 | Running: 0 | Blocked: 3 | Failed: 0
-- Project Manager cycles: 35
-- Last task: None (no_eligible_tasks)
+- Completed: 22 | Queued: 3 | Running: 0 | Blocked: 1 | Failed: 0
+- Project Manager cycles: 36
+- Last task: AB-008 (completed)
 
 ## Specialist registry
 
@@ -29,7 +29,7 @@
 - **6. Sales and launch assets** — planned: Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
 - **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
-- **9. Autonomous studio capability** — blocked: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
+- **9. Autonomous studio capability** — in_progress: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
 
 ## Task queue
 
@@ -47,12 +47,10 @@
   - Latest: End-to-end tests cover queued/in-progress task recovery, guarded specialist dispatch, persisted mock draft and human-review blocking.
 - **AB-007 · Build bounded specialist tool-call runtime** — done · developer
   - Latest: Bounded JSON tool-call runtime is implemented with an allowlisted registry, argument validation, approval gates, hard step/output limits and AgentBrain final-output validation.
-- **AB-008 · Add safe source-retrieval tools and evidence provenance** — blocked · market_researcher
-  - Latest: No safe executor is registered for AB-008.
-  - Next action: Register a handler and acceptance checks before scheduling this task.
-- **AB-009 · Add sandboxed workspace editing and test execution tools** — blocked · developer
-  - Latest: No safe executor is registered for AB-009.
-  - Next action: Register a handler and acceptance checks before scheduling this task.
+- **AB-008 · Add safe source-retrieval tools and evidence provenance** — done · market_researcher
+  - Latest: Read-only public-source retrieval is implemented with HTTPS and public-IP checks, redirect refusal, response bounds and explicit ungraded evidence metadata.
+- **AB-009 · Add sandboxed workspace editing and test execution tools** — queued · developer
+  - Latest: Re-queued after the missing acceptance handler/tool implementation was added.
 - **AB-010 · Integrate autonomous multi-step specialist orchestration** — queued · project_manager
 - **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher
   - Latest: Completed a first desk-research scan. Identified eight candidates across B2C, B2B and prosumer; this is directional evidence only, not validation or proof of sales.
