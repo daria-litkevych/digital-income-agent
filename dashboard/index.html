@@ -107,11 +107,26 @@ function renderTasks(){
 function renderRoadmap(){const p=state.plan;if(!p)return;$("roadmapContent").innerHTML='<div class="card">'+(p.phases||[]).map(x=>'<div class="phase"><div class="phasehead"><strong>Этап '+esc(x.id)+': '+esc(x.name)+'</strong>'+pill(x.status)+'</div><div class="small muted">'+esc(x.goal)+'</div></div>').join("")+'</div>'}
 function renderAgents(){const p=state.plan;if(!p)return;const roles=[["project_manager","Project Manager","Планирует работу, управляет зависимостями и сохраняет прогресс."],["market_researcher","Market Researcher","Ищет конкурентов, продукты, рыночные возможности и проблемы клиентов."],["business_analyst","Business Analyst","Сравнивает цены, модели оплаты, сигналы спроса и экономику."],["product_strategist","Product Strategist","Сравнивает гипотезы и предлагает дешёвые эксперименты проверки."],["quality_controller","Quality Controller","Проверяет качество доказательств и убирает неподтверждённые выводы."]];$("agentsContent").innerHTML='<div class="two">'+roles.map(x=>'<div class="role"><strong>'+x[1]+'</strong><p>'+x[2]+'</p><p>Задач в плане: '+(p.tasks||[]).filter(t=>t.role===x[0]).length+'</p></div>').join("")+'</div>'}
 function renderResearch(){
- const d=state.research;if(!d)return;let html='<div class="card"><h3 class="sectiontitle">Ранние выводы</h3><ul class="small">'+(d.early_findings||[]).map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul><p class="small muted">'+esc(d.scope||"")+'</p></div><div class="two" style="margin-top:14px">';
- for(const [key,title] of [["cafe_starter_kit","Small Café Manager Starter Kit"],["shiftbrief_ai","ShiftBrief AI"]]){
- const items=d.hypotheses?.[key]||[];html+='<div class="card"><h3 class="sectiontitle">'+title+'</h3><div class="tablewrap"><table class="data"><thead><tr><th>Конкурент / продукт</th><th>Цена</th><th>Тип</th></tr></thead><tbody>'+items.map(x=>'<tr><td><a href="'+esc(x.source)+'" target="_blank" rel="noopener">'+esc(x.name)+'</a><div class="small muted">'+esc(x.offer)+'</div><div class="small muted">'+esc(x.evidence_note||"")+'</div></td><td>'+esc(x.price)+'</td><td>'+esc(x.type)+'</td></tr>').join("")+'</tbody></table></div></div>';
+ const d=state.research;if(!d)return;
+ const scan=d.opportunity_scan||{},dives=d.deep_dives||{};
+ let html='';
+ if(scan.candidates?.length){
+  html+='<div class="card"><h3 class="sectiontitle">Портфель возможностей · B2C / B2B / Prosumer</h3><p class="small muted">'+esc(scan.scope||"Первичный поиск; не подтверждение спроса.")+'</p><div class="tablewrap"><table class="data"><thead><tr><th>Гипотеза</th><th>Сегмент</th><th>Проблема</th><th>Уровень сигнала</th></tr></thead><tbody>';
+  html+=scan.candidates.map(x=>'<tr><td><strong>'+esc(x.id)+'</strong></td><td>'+esc(x.segment)+'</td><td>'+esc(x.problem)+'</td><td>'+esc(x.evidence_level)+'</td></tr>').join("");
+  html+='</tbody></table></div></div>';
  }
- html+='</div><div class="card" style="margin-top:14px"><h3 class="sectiontitle">Сигналы от клиентов</h3>'+((d.customer_signals||[]).map(x=>'<div class="task"><strong>'+esc(x.hypothesis)+'</strong><p class="small">'+esc(x.signal)+'</p><a class="small" href="'+esc(x.source)+'" target="_blank" rel="noopener">Источник</a><p class="small muted">'+esc(x.limitation||"")+'</p></div>').join("")||"Нет загруженных сигналов")+'</div><div class="notice" style="margin-top:14px">Важно: эти данные — первичный поиск, а не подтверждение продаж или готовности платить. Цены нужно перепроверить на страницах поставщиков.</div>';
+ if(dives.decision){
+  html+='<div class="card" style="margin-top:14px"><h3 class="sectiontitle">Первый MVP-кандидат: '+esc(dives.decision.selected||"")+'</h3><p class="small">'+(dives.decision.why||[]).map(esc).join(" · ")+'</p><p class="small muted">'+(dives.decision.risks||[]).map(esc).join(" · ")+'</p><p class="small"><strong>Следующий тест:</strong> '+esc(dives.decision.next_test||"")+'</p></div>';
+ }
+ if(dives.candidates?.length){
+  html+='<div class="two" style="margin-top:14px">'+dives.candidates.map(x=>'<div class="card"><h3 class="sectiontitle">'+esc(x.name)+'</h3><p class="small muted">'+esc(x.assessment)+'</p><div class="small"><strong>Конкуренты:</strong> '+(x.competitors||[]).map(u=>'<a href="'+esc(u)+'" target="_blank" rel="noopener">ссылка</a>').join(" · ")+'</div></div>').join("")+'</div>';
+ }
+ html+='<div class="card" style="margin-top:14px"><h3 class="sectiontitle">Первоначальные конкуренты horeca</h3><div class="two">';
+ for(const [key,title] of [["cafe_starter_kit","Small Café Manager Starter Kit"],["shiftbrief_ai","ShiftBrief AI"]]){
+  const items=d.hypotheses?.[key]||[];html+='<div><h4>'+title+'</h4><div class="tablewrap"><table class="data"><thead><tr><th>Продукт</th><th>Цена</th><th>Тип</th></tr></thead><tbody>'+items.map(x=>'<tr><td><a href="'+esc(x.source)+'" target="_blank" rel="noopener">'+esc(x.name)+'</a><div class="small muted">'+esc(x.evidence_note||"")+'</div></td><td>'+esc(x.price)+'</td><td>'+esc(x.type)+'</td></tr>').join("")+'</tbody></table></div></div>';
+ }
+ html+='</div></div>';
+ html+='<div class="notice" style="margin-top:14px">Важно: поиск и обсуждения дают гипотезы, а не подтверждение продаж или готовности платить. Первый MVP ещё нужно проверить на реальных пользователях.</div>';
  $("researchContent").innerHTML=html;
 }
 $("tabs").addEventListener("click",e=>{const b=e.target.closest("button[data-tab]");if(!b)return;document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".panel").forEach(x=>x.classList.toggle("active",x.id===b.dataset.tab))});
