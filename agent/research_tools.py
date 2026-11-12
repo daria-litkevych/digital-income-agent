@@ -8,7 +8,7 @@ from html.parser import HTMLParser
 from typing import Any, Callable
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from agent.tool_runtime import AgentTool, ToolRegistry
 
@@ -77,13 +77,20 @@ def validate_public_https_url(url: str, resolver: Callable[[str], list[str]] = _
     return url
 
 
+class _NoRedirect(HTTPRedirectHandler):
+    def redirect_request(self, request, fp, code, message, headers, newurl):
+        return None
+
+
 def _network_transport(url: str, timeout: int, max_bytes: int) -> dict[str, Any]:
     request = Request(url, headers={
         "User-Agent": "DigitalProductStudioResearch/1.0",
         "Accept": "text/html,text/plain,application/xhtml+xml,application/xml,text/xml,application/rss+xml",
     })
     try:
-        with urlopen(request, timeout=timeout) as response:
+        # Refuse redirects rather than risk following an unvalidated Location.
+        opener = build_opener(_NoRedirect())
+        with opener.open(request, timeout=timeout) as response:
             content_type = response.headers.get("Content-Type", "").split(";")[0].strip().lower()
             body = response.read(max_bytes + 1)
             final_url = response.geturl()
