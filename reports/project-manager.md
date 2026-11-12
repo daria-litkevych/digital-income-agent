@@ -1,15 +1,15 @@
 # Project Manager — Online Passive Income
 
-Last cycle: 2026-11-12T14:23:11.062374+00:00
+**Research update:** 2026-11-12
 
 **Goal:** Build a low-cost, mostly automated digital product business targeting €1,000/month within five years.
 
 ## Current status
 
-- Completed: 2 | Queued: 6 | In progress: 0 | Blocked: 0
-- Total cycles: 1
-- Last selected task: MR-001
-- Cycle result: completed
+- Completed: 4 tasks | In progress: 1 | Queued: 3 | Blocked: 0
+- Research tasks completed: competitor mapping for both hypotheses and first pricing comparison.
+- Next active work: strengthen customer pain evidence before choosing a product.
+- Dashboard: local-first interface in `dashboard/index.html`; no public hosting.
 
 ## Specialist roles
 
@@ -23,33 +23,39 @@ Last cycle: 2026-11-12T14:23:11.062374+00:00
 
 1. **Cloud infrastructure** — completed. Private repository, persistent data, cloud execution and cost guardrails
 2. **Agent brain** — in_progress. Orchestrator, specialist roles, memory, task queue and resume logic
-3. **Automated research** — planned. Search, browser research, evidence capture and source checks
+3. **Automated research** — in_progress. Search, browser research, evidence capture and source checks
 4. **Scheduling and reports** — planned. Five bounded daily cycles, saved results and notifications
-5. **Management dashboard** — planned. Connect the MVP to persistent project data and show actual agent progress
+5. **Management dashboard** — implementation started. Local-first HTML dashboard created; data import and browser use are manual, not automatic sync.
 
 ## Task queue
 
-- **PM-001 · Build persistent Project Manager and specialist role registry** — done · Project Manager
-  - Acceptance: Orchestrator loads state, selects work, validates, saves progress and creates follow-up tasks.
-- **MR-001 · Map direct competitors and substitutes for café starter kit** — done · Market Researcher
-  - Acceptance: At least five relevant products or substitutes with source, price, audience and core promise.
-  - Latest: Initial sourced competitor scan saved: 6 café template products/substitutes. See data/market_research.json; this is discovery evidence, not proof of sales.
-- **MR-002 · Map direct competitors and substitutes for ShiftBrief AI** — queued · Market Researcher
-  - Acceptance: At least five relevant products or substitutes with source, price, audience and core promise.
-- **BA-001 · Compare competitor pricing and business models** — queued · Business Analyst
-  - Acceptance: Pricing table distinguishes one-time, subscription, free and custom pricing.
-- **BA-002 · Identify recurring customer complaints and unmet needs** — queued · Business Analyst
-  - Acceptance: Pain-point list backed by reviews or first-hand community discussions.
-- **PS-001 · Compare the two hypotheses and choose the cheapest demand test** — queued · Product Strategist
-  - Acceptance: Evidence-based comparison, risks and a low-cost validation experiment.
-- **QC-001 · Quality review of market evidence and recommendation** — queued · Quality Controller
-  - Acceptance: Sources checked, weak evidence labelled, unsupported claims removed.
-- **PM-002 · Prepare first product MVP scope and launch roadmap** — queued · Project Manager
-  - Acceptance: Smallest testable MVP, milestones, costs and approval gates.
+- **PM-001 · Build persistent Project Manager and specialist role registry** — done
+- **MR-001 · Map café starter-kit competitors and substitutes** — done. Six paid Etsy marketplace results/substitutes recorded.
+- **MR-002 · Map ShiftBrief AI competitors and substitutes** — done. Six competitors/substitutes mapped; official prices checked for ShiftForce, Shifo, Venheim and Rotahr.
+- **BA-001 · Compare competitor pricing and business models** — done. Price anchors recorded with tax, currency and scope caveats.
+- **BA-002 · Identify recurring customer complaints and unmet needs** — in progress. Current evidence includes anecdotal worker discussions and free café checklist substitutes; stronger first-hand review/interview evidence is still needed.
+- **PS-001 · Compare the two hypotheses and choose the cheapest demand test** — queued; depends on BA-002.
+- **QC-001 · Quality review of market evidence and recommendation** — queued; depends on PS-001.
+- **PM-002 · Prepare first product MVP scope and launch roadmap** — queued; depends on QC-001.
+
+## Current evidence-based observations
+
+1. Generic café checklists are difficult to sell as a standalone paid product: cheap paid templates and free specialty-coffee checklist resources already exist.
+2. A café product would need to solve a more specific recurring and costly job, such as waste reduction, quality consistency or barista onboarding.
+3. Shift handover is an established software category with existing competitors and bundled operations suites.
+4. Worker discussions indicate both handover friction and app fatigue; a new app must prove that it reduces friction rather than adding another communication channel.
+5. Neither hypothesis has demonstrated willingness to pay. Do not select a winner or build a full product yet.
+
+## Next validation
+
+- Observe/interview 5–8 independent specialty coffee shop owners/managers about their current routines and costly operational problems.
+- Interview 5–8 shift leads about handover failures, consequences, current tools and app fatigue.
+- Record actual workflow, frequency, consequences, workaround and existing spend. Avoid pitching before understanding the process.
 
 ## Guardrails
 
 - No paid APIs, subscriptions, servers or domains are enabled.
 - No product is published and no commercial messages are sent without explicit approval.
-- Research tasks that need live web evidence remain blocked rather than inventing facts.
-- Each invocation handles at most one task to keep runs bounded and resumable.
+- Research claims without live evidence remain labelled as incomplete.
+- Each automated invocation handles at most one task to keep runs bounded and resumable.
+- Dashboard data is loaded locally by the user; no private data is published through GitHub Pages.
