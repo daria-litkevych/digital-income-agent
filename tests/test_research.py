@@ -1,7 +1,9 @@
 import unittest
+import tempfile
+from pathlib import Path
 from datetime import timezone
 
-from agent.main import clean_text, parse_date
+from agent.main import atomic_write_text, clean_text, parse_date
 
 class ResearchParsingTests(unittest.TestCase):
     def test_clean_text_removes_html_and_decodes_entities(self):
@@ -15,6 +17,14 @@ class ResearchParsingTests(unittest.TestCase):
 
     def test_invalid_date_returns_none(self):
         self.assertIsNone(parse_date("not a date"))
+
+    def test_atomic_write_replaces_complete_file(self):
+        with tempfile.TemporaryDirectory() as directory:
+            target = Path(directory) / "state.json"
+            target.write_text('{"old": true}', encoding="utf-8")
+            atomic_write_text(target, '{"new": true}\\n')
+            self.assertEqual(target.read_text(encoding="utf-8"), '{"new": true}\\n')
+            self.assertFalse(target.with_suffix(".json.tmp").exists())
 
 if __name__ == "__main__":
     unittest.main()
