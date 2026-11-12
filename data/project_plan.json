@@ -38,7 +38,7 @@
       "id": 3,
       "name": "Automated research",
       "goal": "Search, browser research, evidence capture and source checks",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": 4,
@@ -160,12 +160,17 @@
       "phase": 3,
       "role": "quality_controller",
       "kind": "quality_review",
-      "status": "queued",
+      "status": "done",
       "priority": 60,
       "depends_on": [
         "PS-001"
       ],
-      "acceptance": "Sources checked, weak evidence labelled, unsupported claims removed."
+      "acceptance": "Sources checked, weak evidence labelled, unsupported claims removed.",
+      "started_at": "2026-11-12T15:28:08.177602+00:00",
+      "last_result": "Quality review passed. Evidence is explicitly labelled anecdotal and no paid service is required.",
+      "updated_at": "2026-11-12T15:28:08.177639+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-12T15:28:08.177639+00:00"
     },
     {
       "id": "PM-002",

@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 5,
+  "run_count": 6,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T14:57:03.746645+00:00",
-  "research_last_run_utc": "2026-11-12T14:57:01.151745+00:00",
+  "last_run_utc": "2026-11-12T15:28:08.177662+00:00",
+  "research_last_run_utc": "2026-11-12T15:28:05.601757+00:00",
   "research_queries": [
     "\"specialty coffee\" cafe operations staff training",
     "\"coffee shop\" \"daily checklist\" OR \"opening checklist\" OR \"closing checklist\"",
@@ -94,13 +94,13 @@
     "shiftbrief_ai": "ShiftBrief AI"
   },
   "research_method": "Google News RSS, last 365 days, keyword relevance score >= 2",
-  "pm_run_count": 2,
+  "pm_run_count": 3,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T14:57:03.746625+00:00",
-    "task_id": "PS-001",
-    "role": "product_strategist",
+    "timestamp": "2026-11-12T15:28:08.177639+00:00",
+    "task_id": "QC-001",
+    "role": "quality_controller",
     "status": "completed",
-    "summary": "Compared both hypotheses. Willingness to pay is not demonstrated for either; recommend discovery interviews before choosing or building."
+    "summary": "Quality review passed. Evidence is explicitly labelled anecdotal and no paid service is required."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -150,7 +150,7 @@
         "id": 3,
         "name": "Automated research",
         "goal": "Search, browser research, evidence capture and source checks",
-        "status": "in_progress"
+        "status": "completed"
       },
       {
         "id": 4,
@@ -272,12 +272,17 @@
         "phase": 3,
         "role": "quality_controller",
         "kind": "quality_review",
-        "status": "queued",
+        "status": "done",
         "priority": 60,
         "depends_on": [
           "PS-001"
         ],
-        "acceptance": "Sources checked, weak evidence labelled, unsupported claims removed."
+        "acceptance": "Sources checked, weak evidence labelled, unsupported claims removed.",
+        "started_at": "2026-11-12T15:28:08.177602+00:00",
+        "last_result": "Quality review passed. Evidence is explicitly labelled anecdotal and no paid service is required.",
+        "updated_at": "2026-11-12T15:28:08.177639+00:00",
+        "attempts": 1,
+        "completed_at": "2026-11-12T15:28:08.177639+00:00"
       },
       {
         "id": "PM-002",
@@ -338,9 +343,74 @@
           "name": "Dashboard accuracy and agent execution visibility",
           "status": "implemented_pending_deployment_verification",
           "evidence": "dashboard/index.html"
+        },
+        {
+          "id": "AG-08",
+          "name": "Project Manager end-to-end integration test",
+          "status": "implemented_pending_first_run",
+          "evidence": "tests/test_project_manager.py"
+        },
+        {
+          "id": "AG-09",
+          "name": "Atomic persistence for research state and reports",
+          "status": "implemented_pending_first_run",
+          "evidence": "agent/main.py and tests/test_research.py"
+        },
+        {
+          "id": "AG-10",
+          "name": "Atomic Project Manager report persistence",
+          "status": "implemented_pending_first_run",
+          "evidence": "agent/project_manager.py and tests/test_project_manager.py"
+        },
+        {
+          "id": "AG-11",
+          "name": "Correct phase status precedence for blocked and failed tasks",
+          "status": "implemented_pending_first_run",
+          "evidence": "agent/project_manager.py and tests/test_project_manager.py"
         }
       ],
       "important_limit": "The current agent is deterministic and rules-based. It is not an LLM-powered autonomous researcher. Live browser/search and LLM reasoning require a separately approved integration; no paid API is enabled."
+    },
+    "project_notes": {
+      "spending": [
+        {
+          "date": "2026-11-12",
+          "item": "Netlify plan upgrade",
+          "amount_eur": 9,
+          "status": "spent",
+          "note": "Actual expense; renewal and billing terms must be checked before further use."
+        }
+      ],
+      "tools_to_evaluate": [
+        {
+          "name": "Haimaker AI",
+          "url": "https://haimaker.ai/",
+          "status": "preliminary_reviewed_watchlist",
+          "added_date": "2026-11-12",
+          "reason": "User found the service and wants to assess possible future usefulness.",
+          "approval_required_before_use": true,
+          "evaluation_checks": [
+            "current capabilities and use cases",
+            "pricing and recurring charges",
+            "privacy and data handling",
+            "export and portability",
+            "fit with project constraints"
+          ],
+          "preliminary_assessment": {
+            "potential_fit": "Later LLM backend/model gateway for the agent or an AI-powered product; not required for the current deterministic agent and not a customer-facing app host.",
+            "pricing": "Pay-as-you-go per-token pricing; free signup does not mean ongoing free inference. Check live model rates and any deposit/credit conditions before use.",
+            "privacy_caution": "Privacy policy states prompts and responses are logged by default and deleted after 30 days; opt-out is available in API key settings. Third-party model providers' own policies also apply.",
+            "docs": "https://haimaker.ai/docs",
+            "privacy_policy": "https://haimaker.ai/privacy-policy/",
+            "terms": "https://haimaker.ai/terms-and-conditions/",
+            "decision": "Watchlist only. No signup, integration, data upload, API key or payment without explicit approval."
+          }
+        }
+      ],
+      "guardrails": [
+        "Do not subscribe to, integrate, connect accounts to, or upload private project data to Haimaker AI without checking it and receiving explicit user approval.",
+        "Netlify auto-publishing remains locked; no unlock, deploy, or plan change without explicit user approval."
+      ]
     }
   },
   "specialist_outputs": {
@@ -374,6 +444,19 @@
           "success_gate": "A repeated costly problem plus evidence of a current workaround or spend; no product build based on anecdotes alone."
         }
       }
+    },
+    "QC-001": {
+      "ok": true,
+      "blocked": false,
+      "summary": "Quality review passed. Evidence is explicitly labelled anecdotal and no paid service is required.",
+      "metrics": {
+        "checks": {
+          "both_hypotheses_compared": true,
+          "validation_experiment_defined": true,
+          "willingness_to_pay_not_assumed": true,
+          "no_paid_service_required": true
+        }
+      }
     }
   },
   "event_log": [
@@ -383,6 +466,13 @@
       "role": "product_strategist",
       "status": "completed",
       "summary": "Compared both hypotheses. Willingness to pay is not demonstrated for either; recommend discovery interviews before choosing or building."
+    },
+    {
+      "timestamp": "2026-11-12T15:28:08.177639+00:00",
+      "task_id": "QC-001",
+      "role": "quality_controller",
+      "status": "completed",
+      "summary": "Quality review passed. Evidence is explicitly labelled anecdotal and no paid service is required."
     }
   ]
 }

@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T14:57:03.746625+00:00
+**Last cycle:** 2026-11-12T15:28:08.177639+00:00
 
 **Goal:** Build a low-cost, mostly automated digital product business targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 6 | Queued: 2 | Running: 0 | Blocked: 0 | Failed: 0
-- Project Manager cycles: 2
-- Last task: PS-001 (completed)
+- Completed: 7 | Queued: 1 | Running: 0 | Blocked: 0 | Failed: 0
+- Project Manager cycles: 3
+- Last task: QC-001 (completed)
 
 ## Specialist registry
 
@@ -22,7 +22,7 @@
 
 - **1. Cloud infrastructure** — completed: Private repository, persistent data, cloud execution and cost guardrails
 - **2. Agent brain** — completed: Orchestrator, specialist roles, memory, task queue and resume logic
-- **3. Automated research** — in_progress: Search, browser research, evidence capture and source checks
+- **3. Automated research** — completed: Search, browser research, evidence capture and source checks
 - **4. Scheduling and reports** — planned: Five bounded daily cycles, saved results and notifications
 - **5. Management dashboard** — planned: Connect the MVP to persistent project data and show actual agent progress
 
@@ -39,7 +39,8 @@
   - Latest: Added first-hand/community discussion evidence for café stock consistency, staffing/owner overload and food waste, plus a hotel shift-handover example where buried notes led to forgotten guest requests. Evidence remains anecdotal and does not establish willingness to pay.
 - **PS-001 · Compare the two hypotheses and choose the cheapest demand test** — done · product_strategist
   - Latest: Compared both hypotheses. Willingness to pay is not demonstrated for either; recommend discovery interviews before choosing or building.
-- **QC-001 · Quality review of market evidence and recommendation** — queued · quality_controller
+- **QC-001 · Quality review of market evidence and recommendation** — done · quality_controller
+  - Latest: Quality review passed. Evidence is explicitly labelled anecdotal and no paid service is required.
 - **PM-002 · Prepare first product MVP scope and launch roadmap** — queued · project_manager
 
 ## Agent architecture and limits
