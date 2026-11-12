@@ -48,7 +48,8 @@ class PublicSourceSafetyTests(unittest.TestCase):
 
     def test_https_connection_uses_validated_ip_not_a_second_dns_lookup(self):
         class FakeSocket:
-            pass
+            def close(self):
+                pass
         class FakeContext:
             def wrap_socket(self, raw_socket, server_hostname):
                 self.server_hostname = server_hostname
