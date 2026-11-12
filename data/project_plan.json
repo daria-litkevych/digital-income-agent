@@ -232,6 +232,12 @@
         "name": "Project Manager end-to-end integration test",
         "status": "implemented_pending_first_run",
         "evidence": "tests/test_project_manager.py"
+      },
+      {
+        "id": "AG-09",
+        "name": "Atomic persistence for research state and reports",
+        "status": "implemented_pending_first_run",
+        "evidence": "agent/main.py and tests/test_research.py"
       }
     ],
     "important_limit": "The current agent is deterministic and rules-based. It is not an LLM-powered autonomous researcher. Live browser/search and LLM reasoning require a separately approved integration; no paid API is enabled."
