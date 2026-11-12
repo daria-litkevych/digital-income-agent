@@ -166,6 +166,26 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-019":
+        root = Path(__file__).resolve().parents[1]
+        pm_path = root / "agent" / "project_manager.py"
+        studio_path = root / "agent" / "autonomous_studio.py"
+        test_path = root / "tests" / "test_pm_autonomy_gate.py"
+        pm_source = pm_path.read_text(encoding="utf-8") if pm_path.exists() else ""
+        studio_source = studio_path.read_text(encoding="utf-8") if studio_path.exists() else ""
+        tests = test_path.read_text(encoding="utf-8") if test_path.exists() else ""
+        checks = {
+            "live_dispatch_requires_trusted_approval": "autonomous_approval is not True" in pm_source,
+            "checkpoint_path_is_workflow_scoped": "agent_checkpoints" in pm_source and "hashlib.sha256(workflow_id.encode" in pm_source,
+            "checkpoints_are_saved_atomically_per_step": "save_checkpoints(updated)" in pm_source and "save_json(checkpoint_path, updated)" in pm_source,
+            "resume_loader_reads_persisted_checkpoint": "return load_json(checkpoint_path, {})" in pm_source,
+            "research_registry_receives_persistent_evidence_store": "EvidenceStore(Path(repository_root) / \"data\" / \"evidence_store.json\")" in studio_source and "build_research_tool_registry(evidence_store=evidence_store)" in studio_source,
+            "tests_cover_durable_checkpoint_and_review_gate": "test_approved_dispatch_persists_each_checkpoint_to_disk_and_keeps_review_gate" in tests,
+            "scheduled_entrypoint_does_not_supply_approval": "dispatch_task(selected, state, evidence)" in pm_source,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "Project Manager now persists specialist checkpoints after every handoff, reloads them on resume, and injects the provenance-aware evidence store into the approved research tool registry. Scheduled execution still supplies no live approval and all outputs remain subject to human review." if passed else "Project Manager-to-orchestrator integration is incomplete.", "metrics": {"checks": checks}, "artifact": {"project_manager": "agent/project_manager.py", "composition_root": "agent/autonomous_studio.py", "tests": "tests/test_pm_autonomy_gate.py", "limitations": ["Live provider remains disabled unless a trusted caller supplies explicit approval and complete spend configuration", "Scheduled runs remain deterministic and do not invoke live inference", "Evidence retrieval requires a supplied URL and fetched text remains ungraded", "No external action executor is connected"]}, "next_action": "Complete provider-independent role evaluations, recovery observability and scheduled dry-run proofs without enabling paid inference."}
+
     if task_id == "AB-018":
         root = Path(__file__).resolve().parents[1]
         store_path = root / "agent" / "evidence_store.py"
