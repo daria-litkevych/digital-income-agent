@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 62,
+  "run_count": 63,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T21:57:11.223394+00:00",
-  "research_last_run_utc": "2026-11-12T21:57:09.323936+00:00",
+  "last_run_utc": "2026-11-12T21:57:29.961500+00:00",
+  "research_last_run_utc": "2026-11-12T21:57:27.804295+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -192,12 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 59,
+  "pm_run_count": 60,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T21:57:11.223341+00:00",
-    "task_id": null,
-    "status": "no_eligible_tasks",
-    "summary": "No queued or retryable task has all dependencies completed."
+    "timestamp": "2026-11-12T21:57:29.961438+00:00",
+    "task_id": "AB-019",
+    "role": "project_manager",
+    "status": "blocked",
+    "summary": "Project Manager-to-orchestrator integration is incomplete."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -365,7 +366,7 @@
         "id": 9,
         "name": "Autonomous studio capability",
         "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-        "status": "completed"
+        "status": "blocked"
       }
     ],
     "tasks": [
@@ -977,6 +978,25 @@
         "updated_at": "2026-11-12T21:31:49.635511+00:00",
         "attempts": 2,
         "completed_at": "2026-11-12T21:31:49.635511+00:00"
+      },
+      {
+        "id": "AB-019",
+        "title": "Integrate durable specialist orchestration and evidence tools into Project Manager",
+        "phase": 9,
+        "role": "project_manager",
+        "kind": "pm_orchestrator_integration",
+        "status": "blocked",
+        "priority": 93,
+        "depends_on": [
+          "AB-018"
+        ],
+        "acceptance": "Approved Project Manager dispatch writes each specialist checkpoint atomically to a workflow-scoped file, reloads prior checkpoints on restart, injects the provenance-aware evidence store into role-scoped research tools, keeps scheduled dispatch approval-free, and never marks specialist drafts complete without human review. Tests prove durable persistence and review gating.",
+        "next_action": "Complete provider-independent role evaluations, recovery observability and scheduled dry-run proofs without enabling paid inference.",
+        "started_at": "2026-11-12T21:57:29.961156+00:00",
+        "last_result": "Project Manager-to-orchestrator integration is incomplete.",
+        "updated_at": "2026-11-12T21:57:29.961438+00:00",
+        "attempts": 1,
+        "blocked_reason": "Project Manager-to-orchestrator integration is incomplete."
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -1644,6 +1664,34 @@
         ]
       },
       "next_action": "Integrate the research tool registry and orchestrator into a default-off Project Manager workflow with persisted checkpoints and review gates."
+    },
+    "AB-019": {
+      "ok": false,
+      "blocked": true,
+      "summary": "Project Manager-to-orchestrator integration is incomplete.",
+      "metrics": {
+        "checks": {
+          "live_dispatch_requires_trusted_approval": true,
+          "checkpoint_path_is_workflow_scoped": true,
+          "checkpoints_are_saved_atomically_per_step": true,
+          "resume_loader_reads_persisted_checkpoint": true,
+          "research_registry_receives_persistent_evidence_store": true,
+          "tests_cover_durable_checkpoint_and_review_gate": false,
+          "scheduled_entrypoint_does_not_supply_approval": true
+        }
+      },
+      "artifact": {
+        "project_manager": "agent/project_manager.py",
+        "composition_root": "agent/autonomous_studio.py",
+        "tests": "tests/test_pm_autonomy_gate.py",
+        "limitations": [
+          "Live provider remains disabled unless a trusted caller supplies explicit approval and complete spend configuration",
+          "Scheduled runs remain deterministic and do not invoke live inference",
+          "Evidence retrieval requires a supplied URL and fetched text remains ungraded",
+          "No external action executor is connected"
+        ]
+      },
+      "next_action": "Complete provider-independent role evaluations, recovery observability and scheduled dry-run proofs without enabling paid inference."
     }
   },
   "event_log": [
@@ -2024,6 +2072,13 @@
       "task_id": null,
       "status": "no_eligible_tasks",
       "summary": "No queued or retryable task has all dependencies completed."
+    },
+    {
+      "timestamp": "2026-11-12T21:57:29.961438+00:00",
+      "task_id": "AB-019",
+      "role": "project_manager",
+      "status": "blocked",
+      "summary": "Project Manager-to-orchestrator integration is incomplete."
     }
   ],
   "evidence_store_summary": {

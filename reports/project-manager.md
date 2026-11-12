@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T21:57:11.223341+00:00
+**Last cycle:** 2026-11-12T21:57:29.961438+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 32 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 59
-- Last task: None (no_eligible_tasks)
+- Completed: 32 | Queued: 1 | Running: 0 | Blocked: 2 | Failed: 0
+- Project Manager cycles: 60
+- Last task: AB-019 (blocked)
 
 ## Specialist registry
 
@@ -29,7 +29,7 @@
 - **6. Sales and launch assets** — planned: Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
 - **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
-- **9. Autonomous studio capability** — completed: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
+- **9. Autonomous studio capability** — blocked: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
 
 ## Task queue
 
@@ -74,6 +74,9 @@
   - Latest: Created a qualitative, evidence-confidence-aware comparison. No numerical market-size or sales claims were inferred from search results.
 - **AB-018 · Join safe source retrieval to the evidence ledger with reviewable provenance** — done · market_researcher
   - Latest: A role-scoped research tool now fetches the exact public HTTPS URL for a known discovery record and stores a bounded, hash-addressed excerpt while preserving Unverified status.
+- **AB-019 · Integrate durable specialist orchestration and evidence tools into Project Manager** — blocked · project_manager
+  - Latest: Project Manager-to-orchestrator integration is incomplete.
+  - Next action: Complete provider-independent role evaluations, recovery observability and scheduled dry-run proofs without enabling paid inference.
 - **DS-003 · Deep-dive top three opportunities and identify validation experiments** — done · market_researcher
   - Latest: Deep-dived freelancer scope changes, micro-business invoice follow-up and wedding workflows. Competitors/free alternatives are material in all three.
 - **MR-001 · Map direct competitors and substitutes for café starter kit** — done · market_researcher
