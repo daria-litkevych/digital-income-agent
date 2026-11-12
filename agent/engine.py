@@ -166,6 +166,25 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-016":
+        root = Path(__file__).resolve().parents[1]
+        queue_path = root / "agent" / "approval_queue.py"
+        test_path = root / "tests" / "test_approval_queue.py"
+        queue_source = queue_path.read_text(encoding="utf-8") if queue_path.exists() else ""
+        tests = test_path.read_text(encoding="utf-8") if test_path.exists() else ""
+        checks = {
+            "persistent_queue_exists": queue_path.exists(),
+            "known_action_types_are_allowlisted": "ALLOWED_ACTIONS" in queue_source,
+            "payload_hash_is_verified": "_payload_hash" in queue_source and "expected_payload_sha256" in queue_source,
+            "expiry_is_enforced": "expires_at" in queue_source and 'record["status"] = "expired"' in queue_source,
+            "secret_like_keys_are_rejected": "FORBIDDEN_SECRET_MARKERS" in queue_source,
+            "one_time_consumption_is_enforced": 'record["status"] = "consumed"' in queue_source,
+            "queue_never_executes_external_actions": "It never performs the" in queue_source,
+            "lifecycle_and_security_tests_exist": test_path.exists() and "test_approval_requires_exact_payload_hash" in tests and "test_nested_secret_like_keys" in tests,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "A persistent, expiring, payload-hash-bound, one-time human approval queue is covered by offline security and lifecycle tests; it records approvals but does not execute external actions." if passed else "Human approval queue acceptance checks are incomplete.", "metrics": {"checks": checks}, "artifact": {"module": "agent/approval_queue.py", "tests": "tests/test_approval_queue.py", "limitations": ["No external-action executor is connected", "Queue storage is local JSON and is not yet concurrency-hardened", "Approval identity is supplied by the trusted caller, not authenticated by this module"]}, "next_action": "Integrate the queue with a separately reviewed external-action executor only after authentication and concurrency controls are designed."}
+
     if task_id == "AB-015":
         root = Path(__file__).resolve().parents[1]
         source_path = root / "agent" / "research_tools.py"
