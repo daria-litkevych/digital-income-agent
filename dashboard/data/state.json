@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 29,
+  "run_count": 30,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T20:53:59.117131+00:00",
-  "research_last_run_utc": "2026-11-12T20:53:56.592041+00:00",
+  "last_run_utc": "2026-11-12T20:54:51.211981+00:00",
+  "research_last_run_utc": "2026-11-12T20:54:49.363689+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -192,13 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 26,
+  "pm_run_count": 27,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T20:53:59.117068+00:00",
-    "task_id": "AB-005",
-    "role": "quality_controller",
+    "timestamp": "2026-11-12T20:54:51.211937+00:00",
+    "task_id": "AB-006",
+    "role": "project_manager",
     "status": "completed",
-    "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality."
+    "summary": "End-to-end tests cover queued/in-progress task recovery, guarded specialist dispatch, persisted mock draft and human-review blocking."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -366,7 +366,7 @@
         "id": 9,
         "name": "Autonomous studio capability",
         "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-        "status": "in_progress"
+        "status": "completed"
       }
     ],
     "tasks": [
@@ -747,17 +747,18 @@
         "phase": 9,
         "role": "project_manager",
         "kind": "end_to_end",
-        "status": "queued",
+        "status": "done",
         "priority": 115,
         "depends_on": [
           "AB-004",
           "AB-005"
         ],
         "acceptance": "A complete task moves from queue through role dispatch, validated result, persisted artifact and report; interrupted runs recover; no unapproved API call, spend, outreach or publication occurs.",
-        "started_at": "2026-11-12T20:52:15.355365+00:00",
-        "last_result": "Re-queued for verification against the strengthened budget, role-evaluation and end-to-end acceptance checks.",
-        "updated_at": "2026-11-12T20:52:15.355402+00:00",
-        "attempts": 1
+        "started_at": "2026-11-12T20:54:51.211698+00:00",
+        "last_result": "End-to-end tests cover queued/in-progress task recovery, guarded specialist dispatch, persisted mock draft and human-review blocking.",
+        "updated_at": "2026-11-12T20:54:51.211937+00:00",
+        "attempts": 2,
+        "completed_at": "2026-11-12T20:54:51.211937+00:00"
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -1083,6 +1084,31 @@
         ]
       },
       "next_action": "Complete missing role/evidence evaluations before proceeding."
+    },
+    "AB-006": {
+      "ok": true,
+      "blocked": false,
+      "summary": "End-to-end tests cover queued/in-progress task recovery, guarded specialist dispatch, persisted mock draft and human-review blocking.",
+      "metrics": {
+        "checks": {
+          "end_to_end_test_exists": true,
+          "project_manager_recovery_test_exists": true,
+          "interrupted_tasks_requeued": true,
+          "brain_dispatch_artifacts_persisted": true,
+          "mock_output_not_auto_completed": true
+        }
+      },
+      "artifact": {
+        "test_file": "tests/test_brain_e2e.py",
+        "recovery_test": "tests/test_project_manager.py",
+        "limits": [
+          "Offline mock only",
+          "No live provider call",
+          "No task completion from mock output",
+          "No publishing or outreach"
+        ]
+      },
+      "next_action": "Complete missing persistence and recovery checks before closing Agent Brain."
     }
   },
   "event_log": [
@@ -1246,6 +1272,13 @@
       "role": "quality_controller",
       "status": "completed",
       "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality."
+    },
+    {
+      "timestamp": "2026-11-12T20:54:51.211937+00:00",
+      "task_id": "AB-006",
+      "role": "project_manager",
+      "status": "completed",
+      "summary": "End-to-end tests cover queued/in-progress task recovery, guarded specialist dispatch, persisted mock draft and human-review blocking."
     }
   ]
 }
