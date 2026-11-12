@@ -198,7 +198,11 @@ def main():
         if link:
             by_link[link] = item
 
-    merged = list(by_link.values())
+    cutoff_date = (datetime.now(timezone.utc) - timedelta(days=365)).date().isoformat()
+    merged = [
+        item for item in by_link.values()
+        if item.get("published_date") and item["published_date"] >= cutoff_date
+    ]
     merged.sort(key=lambda x: (x.get("published_date") or "", x.get("relevance_score", 0)), reverse=True)
     state["run_count"] = state.get("run_count", 0) + 1
     state["status"] = "research_ok" if collected and not errors else ("research_partial" if collected else "research_failed")
