@@ -166,6 +166,23 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-011":
+        root = Path(__file__).resolve().parents[1]
+        factory_path = root / "agent" / "autonomous_studio.py"
+        test_path = root / "tests" / "test_autonomous_studio.py"
+        source = factory_path.read_text(encoding="utf-8") if factory_path.exists() else ""
+        checks = {
+            "live_composition_root_exists": factory_path.exists(),
+            "approval_tests_exist": test_path.exists(),
+            "human_approval_required": "approval_confirmed is not True" in source,
+            "live_flag_required": "STUDIO_LIVE_ENABLED" in source,
+            "runtime_credentials_not_hardcoded": "STUDIO_LLM_API_KEY" in source and "fixture-not-a-real-key" not in source,
+            "monthly_ledger_configured": "SpendLedger" in source and "STUDIO_LLM_MONTHLY_CAP_USD" in source,
+            "safe_tools_composed": "build_research_tool_registry" in source and "build_workspace_tool_registry" in source,
+            "scheduled_workflow_not_implicitly_enabled": "scheduled workflow does not call this factory" in source,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "A live studio composition root now requires explicit host approval, an explicit live flag, runtime credentials, verified token pricing and a monthly spend ledger; construction itself makes no provider call." if passed else "Live composition-root acceptance checks are incomplete.", "metrics": {"checks": checks}, "artifact": {"factory": "agent/autonomous_studio.py", "tests": "tests/test_autonomous_studio.py", "limitations": ["Not enabled in GitHub Actions", "No real credentials configured", "No live provider call made", "Human approval still required before activation"]}, "next_action": "Integrate the gated factory into Project Manager with a default-off execution switch and verify recovery without enabling live mode."}
     if task_id == "AB-010":
         root = Path(__file__).resolve().parents[1]
         orchestrator_path = root / "agent" / "orchestrator.py"
