@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "in_progress"
+      "status": "completed"
     }
   ],
   "tasks": [
@@ -701,13 +701,18 @@
       "phase": 9,
       "role": "quality_controller",
       "kind": "security_audit",
-      "status": "queued",
+      "status": "done",
       "priority": 105,
       "depends_on": [
         "AB-008",
         "AB-014"
       ],
-      "acceptance": "All public HTTPS requests connect to the exact validated public IP, preserve original hostname TLS verification, refuse redirects, reject private/reserved addresses and enforce response bounds. Unit tests prove IP pinning; fetched evidence remains ungraded."
+      "acceptance": "All public HTTPS requests connect to the exact validated public IP, preserve original hostname TLS verification, refuse redirects, reject private/reserved addresses and enforce response bounds. Unit tests prove IP pinning; fetched evidence remains ungraded.",
+      "started_at": "2026-11-12T21:15:40.033061+00:00",
+      "last_result": "Public-source retrieval now pins the HTTPS socket to a validated public IP while preserving hostname TLS verification, preventing DNS rebinding between validation and connection.",
+      "updated_at": "2026-11-12T21:15:40.033243+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-12T21:15:40.033243+00:00"
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",

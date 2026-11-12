@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 50,
+  "run_count": 51,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T21:14:19.817599+00:00",
-  "research_last_run_utc": "2026-11-12T21:14:17.714604+00:00",
+  "last_run_utc": "2026-11-12T21:15:40.033290+00:00",
+  "research_last_run_utc": "2026-11-12T21:15:37.596995+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -192,13 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 47,
+  "pm_run_count": 48,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T21:14:19.817561+00:00",
-    "task_id": "AB-008",
-    "role": "market_researcher",
+    "timestamp": "2026-11-12T21:15:40.033243+00:00",
+    "task_id": "AB-015",
+    "role": "quality_controller",
     "status": "completed",
-    "summary": "Read-only public-source retrieval is implemented with HTTPS and public-IP checks, redirect refusal, response bounds and explicit ungraded evidence metadata."
+    "summary": "Public-source retrieval now pins the HTTPS socket to a validated public IP while preserving hostname TLS verification, preventing DNS rebinding between validation and connection."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -366,7 +366,7 @@
         "id": 9,
         "name": "Autonomous studio capability",
         "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-        "status": "in_progress"
+        "status": "completed"
       }
     ],
     "tasks": [
@@ -911,13 +911,18 @@
         "phase": 9,
         "role": "quality_controller",
         "kind": "security_audit",
-        "status": "queued",
+        "status": "done",
         "priority": 105,
         "depends_on": [
           "AB-008",
           "AB-014"
         ],
-        "acceptance": "All public HTTPS requests connect to the exact validated public IP, preserve original hostname TLS verification, refuse redirects, reject private/reserved addresses and enforce response bounds. Unit tests prove IP pinning; fetched evidence remains ungraded."
+        "acceptance": "All public HTTPS requests connect to the exact validated public IP, preserve original hostname TLS verification, refuse redirects, reject private/reserved addresses and enforce response bounds. Unit tests prove IP pinning; fetched evidence remains ungraded.",
+        "started_at": "2026-11-12T21:15:40.033061+00:00",
+        "last_result": "Public-source retrieval now pins the HTTPS socket to a validated public IP while preserving hostname TLS verification, preventing DNS rebinding between validation and connection.",
+        "updated_at": "2026-11-12T21:15:40.033243+00:00",
+        "attempts": 1,
+        "completed_at": "2026-11-12T21:15:40.033243+00:00"
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -1480,6 +1485,30 @@
         ]
       },
       "next_action": "Complete final security review and confirm scheduled runs remain default-off."
+    },
+    "AB-015": {
+      "ok": true,
+      "blocked": false,
+      "summary": "Public-source retrieval now pins the HTTPS socket to a validated public IP while preserving hostname TLS verification, preventing DNS rebinding between validation and connection.",
+      "metrics": {
+        "checks": {
+          "https_connections_pin_validated_ip": true,
+          "tls_uses_original_hostname": true,
+          "dns_resolution_is_public_only": true,
+          "redirects_are_refused": true,
+          "connection_pin_test_exists": true,
+          "body_size_is_bounded": true
+        }
+      },
+      "artifact": {
+        "source": "agent/research_tools.py",
+        "tests": "tests/test_research_tools.py",
+        "limitations": [
+          "Fetched content is still ungraded until reviewed",
+          "No search discovery provider is connected"
+        ]
+      },
+      "next_action": "Run the final full offline suite and inspect scheduled workflow defaults."
     }
   },
   "event_log": [
@@ -1783,6 +1812,13 @@
       "role": "market_researcher",
       "status": "completed",
       "summary": "Read-only public-source retrieval is implemented with HTTPS and public-IP checks, redirect refusal, response bounds and explicit ungraded evidence metadata."
+    },
+    {
+      "timestamp": "2026-11-12T21:15:40.033243+00:00",
+      "task_id": "AB-015",
+      "role": "quality_controller",
+      "status": "completed",
+      "summary": "Public-source retrieval now pins the HTTPS socket to a validated public IP while preserving hostname TLS verification, preventing DNS rebinding between validation and connection."
     }
   ]
 }
