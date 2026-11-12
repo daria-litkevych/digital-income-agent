@@ -1,46 +1,60 @@
 # Digital Income Agent
 
-Cloud-based autonomous project-management and research system for the **Online Passive Income** project.
+A private, low-cost project agent for the **Online Passive Income** project.
 
-## Main Project Manager
+## What it currently is
 
-On each scheduled or manual GitHub Actions run, the Project Manager:
-1. Loads the saved project plan and previous state.
-2. Checks unfinished tasks and dependencies.
-3. Selects the highest-priority eligible task.
-4. Invokes the relevant specialist role.
-5. validates the result or marks the task as blocked when required evidence/tools are unavailable.
-6. Saves state and progress.
-7. Keeps the next tasks in the persistent queue.
+The repository contains a deterministic Python workflow agent. It does **not** call a paid LLM API and should not be described as a fully autonomous reasoning model. Specialist roles are implemented as auditable task handlers that read stored evidence, produce structured outputs, enforce evidence limits and persist their work.
+
+## Architecture
+
+- `agent/main.py` — collects Google News RSS discovery signals, deduplicates and stores them.
+- `agent/engine.py` — role registry, task selection, specialist handlers, result validation, retry-safe state transitions and event logging.
+- `agent/project_manager.py` — bounded orchestration: one task per run, dependency checks, interrupted-run recovery, phase progress and reports.
+- `data/project_plan.json` — persistent task queue, dependencies, priorities and acceptance criteria.
+- `data/state.json` — run history, specialist outputs and bounded event log.
+- `data/market_research.json` — sourced competitor and qualitative customer evidence.
+- `reports/` — human-readable agent and research reports.
+- `dashboard/` — private project dashboard and synchronized data snapshots.
+- `tests/` — standard-library unit tests.
+
+## Execution flow
+
+1. Run the unit test suite.
+2. Collect RSS discovery signals; individual query failures are recorded without discarding successful results.
+3. Load plan, state and evidence.
+4. Recover interrupted tasks to the queue.
+5. Select the highest-priority eligible queued/failed task whose dependencies are complete.
+6. Execute its registered specialist handler and validate the output.
+7. Persist result, specialist artifact, event log, task status and phase progress.
+8. Sync dashboard snapshots and commit changed data.
+
+Only one task is executed per invocation. Failed tasks can be retried up to three times; blocked tasks require a deliberate correction or new evidence before re-queuing.
 
 ## Specialist roles
 
-- **Market Researcher** — competitors, products and market opportunities.
-- **Business Analyst** — pricing, demand signals, reviews and unit economics.
-- **Product Strategist** — product hypotheses and low-cost validation experiments.
-- **Quality Controller** — evidence quality, source checks and unsupported claims.
-- **Project Manager** — priorities, dependencies, task queue and continuity.
+- **Project Manager** — priorities, dependencies, execution limits and continuity.
+- **Market Researcher** — source-linked competitor and substitute evidence.
+- **Business Analyst** — pricing, customer signals, economics and evidence strength.
+- **Product Strategist** — hypothesis comparison and low-cost validation design.
+- **Quality Controller** — evidence limits, traceability and unsupported-claim checks.
 
-## Five implementation stages
+## Important limitations
 
-1. Cloud infrastructure — private GitHub repository, persistent files and cloud execution.
-2. Agent brain — orchestration, specialist roles, memory, task queue and resume logic.
-3. Automated research — search/browser automation, evidence capture and source verification.
-4. Scheduling and reports — bounded daily cycles, saved results and notifications.
-5. Management dashboard — display actual agent progress and project data.
+- This is a deterministic rules-based agent, not an LLM-powered agent. It cannot independently reason over arbitrary websites or browse the web beyond the RSS collector.
+- RSS results are discovery signals, not validated customer demand.
+- Community posts are anecdotal; they do not prove market size, willingness to pay or sales.
+- The agent does not contact customers, publish products, spend money, provision paid services or change account settings.
+- No paid API, subscription, server or domain is required by the current workflow.
+- GitHub Actions runs on GitHub-hosted infrastructure; its usage is subject to the account's GitHub plan and limits.
+- The dashboard deploy must remain private. Do not move private project data to a public static host.
 
-## Current limitations and safety
+## Local test
 
-The GitHub runner currently collects Google News RSS signals and runs the task orchestrator. An initial sourced competitor scan is stored in `data/market_research.json` and summarized in `reports/market-research.md`. The runner itself still has no live browser/search integration; future research tasks requiring fresh external evidence must remain blocked unless a supported integration is added. The current specialist executor can process the saved evidence but does not independently browse competitor sites.
+```bash
+python -m unittest discover -s tests -v
+```
 
-No paid API, subscription, server or domain is enabled. No product publication, customer outreach or paid action occurs without explicit approval.
+## Scheduled workflow
 
-## Main files
-
-- `agent/main.py` — RSS signal collection.
-- `agent/project_manager.py` — persistent task orchestration and specialist role registry.
-- `data/state.json` — saved execution and research state.
-- `data/project_plan.json` — persistent project phases and task queue.\n- `data/market_research.json` — sourced competitor and customer-signal evidence.
-- `reports/latest.md` — research signals report.
-- `reports/project-manager.md` — current project dashboard and task status.
-- `.github/workflows/daily-agent.yml` — cloud schedule and execution.
+GitHub Actions runs the bounded workflow on the configured schedule or by manual dispatch. The workflow commits updated state and dashboard snapshots when files change.
