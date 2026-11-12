@@ -1,5 +1,6 @@
 import unittest
 
+from agent.engine import execute
 from agent.research_tools import (
     SourceFetchError, build_research_tool_registry, fetch_public_source,
     validate_public_https_url,
@@ -7,6 +8,16 @@ from agent.research_tools import (
 
 
 PUBLIC_RESOLVER = lambda host: ["93.184.216.34"]
+
+
+class ResearchToolAcceptanceTests(unittest.TestCase):
+    def test_ab008_acceptance_handler_checks_source_tool_and_tests(self):
+        result = execute(
+            {"id": "AB-008", "role": "market_researcher", "kind": "research_tools"},
+            {}, {},
+        )
+        self.assertTrue(result["ok"], result.get("metrics"))
+        self.assertTrue(all(result["metrics"]["checks"].values()))
 
 
 class PublicSourceSafetyTests(unittest.TestCase):
