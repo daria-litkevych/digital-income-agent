@@ -36,7 +36,8 @@ def dispatch_task(task, state, evidence, brain=None, *, autonomous_approval=Fals
                 "next_action": "Use a stable workflow task ID of at most 120 characters.",
             }
         checkpoint_name = hashlib.sha256(workflow_id.encode("utf-8")).hexdigest() + ".json"
-        checkpoint_path = CHECKPOINT_DIR / checkpoint_name
+        checkpoint_dir = ROOT / "data" / "agent_checkpoints"
+        checkpoint_path = checkpoint_dir / checkpoint_name
         def load_checkpoints():
             return load_json(checkpoint_path, {})
         def save_checkpoints(updated):
