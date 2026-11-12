@@ -1,6 +1,9 @@
 import unittest
 
 from agent.engine import execute
+from unittest.mock import patch
+
+from agent.research_tools import _PinnedHTTPSConnection
 from agent.research_tools import (
     SourceFetchError, build_research_tool_registry, fetch_public_source,
     validate_public_https_url,
@@ -37,6 +40,22 @@ class PublicSourceSafetyTests(unittest.TestCase):
                 with self.assertRaises(SourceFetchError):
                     validate_public_https_url(url, PUBLIC_RESOLVER)
 
+    def test_https_connection_uses_validated_ip_not_a_second_dns_lookup(self):
+        class FakeSocket:
+            pass
+        class FakeContext:
+            def wrap_socket(self, raw_socket, server_hostname):
+                self.server_hostname = server_hostname
+                return raw_socket
+        fake_socket = FakeSocket()
+        context = FakeContext()
+        with patch('agent.research_tools.ssl.create_default_context', return_value=context), patch('agent.research_tools.socket.create_connection', return_value=fake_socket) as connect:
+            connection = _PinnedHTTPSConnection('example.test', '93.184.216.34', 5)
+            connection.connect()
+            self.assertEqual(connection.sock, fake_socket)
+            connect.assert_called_once_with(('93.184.216.34', 443), 5)
+            self.assertEqual(context.server_hostname, 'example.test')
+            connection.close()
     def test_private_dns_resolution_is_rejected(self):
         with self.assertRaisesRegex(SourceFetchError, "Private"):
             validate_public_https_url(
