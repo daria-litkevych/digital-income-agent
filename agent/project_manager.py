@@ -21,6 +21,14 @@ def load_json(path, default):
     except (json.JSONDecodeError, OSError) as error:
         raise RuntimeError(f"Cannot safely load {path}: {error}") from error
 
+def atomic_write_text(path, content):
+    """Atomically replace a text file after the complete new content is written."""
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp = path.with_suffix(path.suffix + ".tmp")
+    temp.write_text(content, encoding="utf-8")
+    temp.replace(path)
+
 def save_json(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
     temp = path.with_suffix(path.suffix + ".tmp")
@@ -119,7 +127,7 @@ def main():
     save_json(PLAN_FILE, plan)
     save_json(STATE_FILE, state)
     REPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    REPORT_FILE.write_text(render_report(plan, state, record), encoding="utf-8")
+    atomic_write_text(REPORT_FILE, render_report(plan, state, record))
     print(json.dumps(record, ensure_ascii=False))
     print(f"Saved plan, state and report. Selected task: {record.get('task_id')}")
 
