@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Create a clear, priced scope-change summary for your client in about a minute.">
+<title>ScopeSnap — Scope Change Builder</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#202431;background:#f5f6f8;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}header{background:#171927;color:#fff;padding:28px 20px}header .wrap,main{max-width:1040px;margin:auto}header h1{font-size:26px;margin:0 0 5px}header p{margin:0;color:#c7c9d4;font-size:14px}.tag{display:inline-block;margin-top:14px;border:1px solid #56596a;border-radius:30px;padding:4px 9px;font-size:11px;color:#ddd}
+main{padding:24px 18px 50px}.intro{margin:0 0 20px;color:#596173;font-size:14px}.layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}.panel{background:white;border:1px solid #e4e7ee;border-radius:14px;padding:20px;box-shadow:0 8px 24px #20243108}.panel h2{font-size:17px;margin:0 0 16px}.field{margin-bottom:13px}.field label{display:block;font-size:12px;font-weight:650;margin-bottom:5px}.field input,.field textarea,.field select{width:100%;border:1px solid #d9deea;border-radius:8px;padding:10px 11px;font:inherit;font-size:14px;color:#202431;background:#fff}.field textarea{min-height:74px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid #d9d5ff;border-color:#6657d9}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hint{font-size:11px;color:#737b8c;margin-top:5px}.total{background:#f4f2ff;border-radius:10px;padding:13px;margin:14px 0}.total span{display:block;color:#66617d;font-size:12px}.total strong{display:block;font-size:26px;margin-top:3px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.btn{border:1px solid #d9deea;border-radius:8px;padding:10px 13px;font:inherit;font-size:13px;font-weight:650;cursor:pointer;background:#fff;color:#202431}.btn.primary{background:#6657d9;border-color:#6657d9;color:white}.btn:hover{filter:brightness(.97)}.preview{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;color:#303747;background:#fafbfc;border:1px solid #e7e9ef;border-radius:9px;padding:14px;min-height:300px}.privacy{font-size:11px;color:#6f7788;margin-top:14px;line-height:1.5}.toast{min-height:18px;font-size:12px;color:#16845b;margin-top:8px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}header h1{font-size:23px}.panel{padding:16px}}
+@media print{body{background:#fff}header,.intro,.form-panel,.actions,.privacy,.toast{display:none!important}main{padding:0}.layout{display:block}.preview-panel{border:0;box-shadow:none;padding:0}.preview-panel h2{display:none}.preview{border:0;padding:0;min-height:0;font:12pt/1.5 Georgia,serif;color:#000}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>ScopeSnap</h1><p>A clearer way to handle extra client requests.</p><span class="tag">FREE BROWSER PROTOTYPE · NO ACCOUNT</span></div></header>
+<main>
+<p class="intro">Estimate the extra work, show the price and timeline impact, and prepare a change summary before you begin.</p>
+<div class="layout">
+<section class="panel form-panel">
+<h2>1. Describe the change</h2>
+<div class="field"><label for="business">Your name / business (optional)</label><input id="business" placeholder="e.g. North Studio"></div>
+<div class="row">
+<div class="field"><label for="client">Client (optional)</label><input id="client" placeholder="e.g. Alex"></div>
+<div class="field"><label for="project">Project (optional)</label><input id="project" placeholder="e.g. Website redesign"></div>
+</div>
+<div class="field"><label for="scope">What was originally agreed?</label><textarea id="scope" placeholder="Briefly describe the agreed deliverables..."></textarea></div>
+<div class="field"><label for="change">What is the new request?</label><textarea id="change" placeholder="Describe the additional work..."></textarea></div>
+<h2 style="margin-top:20px">2. Estimate the impact</h2>
+<div class="row">
+<div class="field"><label for="hours">Additional hours</label><input id="hours" type="number" min="0" step="0.25" value="2"></div>
+<div class="field"><label for="rate">Hourly rate</label><input id="rate" type="number" min="0" step="0.01" value="60"></div>
+</div>
+<div class="row">
+<div class="field"><label for="costs">Extra expenses</label><input id="costs" type="number" min="0" step="0.01" value="0"></div>
+<div class="field"><label for="currency">Currency</label><select id="currency"><option value="EUR">EUR €</option><option value="USD">USD $</option><option value="GBP">GBP £</option></select></div>
+</div>
+<div class="field"><label for="timeline">Timeline impact</label><input id="timeline" placeholder="e.g. Adds 2 business days"></div>
+<div class="field"><label for="valid">Offer valid until (optional)</label><input id="valid" type="date"></div>
+<div class="total"><span>Estimated additional amount</span><strong id="total">€120.00</strong></div>
+<p class="hint">Labour = additional hours × hourly rate. Extra expenses are added separately.</p>
+</section>
+<section class="panel preview-panel">
+<h2>3. Client-ready summary</h2>
+<div class="preview" id="preview" aria-live="polite"></div>
+<div class="actions"><button class="btn primary" id="copy">Copy summary</button><button class="btn" id="print">Print / Save PDF</button></div>
+<div class="toast" id="toast" role="status"></div>
+<p class="privacy">Privacy: this prototype does not send your entries to a server or save them between sessions. It is a commercial communication aid, not a contract or legal advice. Review all details before sending.</p>
+</section>
+</div>
+</main>
+<script>
+const ids=["business","client","project","scope","change","hours","rate","costs","currency","timeline","valid"];
+const el=id=>document.getElementById(id);
+const val=id=>el(id).value.trim();
+const num=id=>Math.max(0,Number(el(id).value)||0);
+const money=(n)=>new Intl.NumberFormat(undefined,{style:"currency",currency:val("currency")||"EUR"}).format(n);
+function build(){
+ const labour=num("hours")*num("rate"), total=labour+num("costs");
+ el("total").textContent=money(total);
+ const lines=[
+  "SCOPE CHANGE SUMMARY",
+  "====================",
+  val("business")?"Prepared by: "+val("business"):null,
+  val("client")?"Client: "+val("client"):null,
+  val("project")?"Project: "+val("project"):null,
+  "",
+  "ORIGINAL AGREEMENT",
+  val("scope")||"[Add a short reference to the original agreed scope]",
+  "",
+  "REQUESTED CHANGE",
+  val("change")||"[Describe the additional request]",
+  "",
+  "ESTIMATED IMPACT",
+  "Additional effort: "+num("hours")+" hours",
+  "Rate: "+money(num("rate"))+" per hour",
+  "Labour: "+money(labour),
+  "Additional expenses: "+money(num("costs")),
+  "TOTAL ADDITIONAL PRICE: "+money(total),
+  val("timeline")?"Timeline impact: "+val("timeline"):null,
+  val("valid")?"Offer valid until: "+val("valid"):null,
+  "",
+  "APPROVAL",
+  "Please confirm in writing that you approve the additional work, price and timeline above before the work begins.",
+  "",
+  "This summary records a proposed change for discussion. It does not replace or amend a signed contract unless both parties separately agree to that effect."
+ ].filter(x=>x!==null);
+ el("preview").textContent=lines.join("\n");
+}
+ids.forEach(id=>el(id).addEventListener("input",build));
+el("copy").addEventListener("click",async()=>{
+ try{await navigator.clipboard.writeText(el("preview").textContent);el("toast").textContent="Summary copied."}
+ catch(e){el("toast").textContent="Copy unavailable in this browser. Select the summary text manually."}
+});
+el("print").addEventListener("click",()=>window.print());
+build();
+</script>
+</body>
+</html>
