@@ -3,9 +3,13 @@ import tempfile
 from pathlib import Path
 from datetime import timezone
 
-from agent.main import atomic_write_text, clean_text, parse_date
+from agent.main import SEARCHES, atomic_write_text, clean_text, parse_date
 
 class ResearchParsingTests(unittest.TestCase):
+    def test_search_configuration_covers_all_studio_segments(self):
+        self.assertEqual({item["segment"] for item in SEARCHES}, {"B2C", "B2B", "Prosumer"})
+        self.assertGreaterEqual(len(SEARCHES), 6)
+
     def test_clean_text_removes_html_and_decodes_entities(self):
         self.assertEqual(clean_text("<b>Café</b> &amp; coffee"), "Café & coffee")
 
