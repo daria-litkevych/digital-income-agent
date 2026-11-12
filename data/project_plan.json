@@ -574,17 +574,17 @@
       "phase": 9,
       "role": "market_researcher",
       "kind": "research_tools",
-      "status": "queued",
+      "status": "done",
       "priority": 113,
       "depends_on": [
         "AB-007"
       ],
       "acceptance": "Agent tools can retrieve and store public source content safely, preserve canonical URL/title/retrieval time, reject unsafe URLs and distinguish primary sources from weak discovery signals. Tests use fixtures; no paid search provider.",
-      "started_at": "2026-11-12T21:03:38.717927+00:00",
-      "last_result": "Re-queued after DNS-pinning hardening was added to the source fetcher.",
-      "updated_at": "2026-11-12T21:03:38.718173+00:00",
-      "attempts": 2,
-      "completed_at": "2026-11-12T21:03:38.718173+00:00"
+      "started_at": "2026-11-12T21:14:19.817409+00:00",
+      "last_result": "Read-only public-source retrieval is implemented with HTTPS and public-IP checks, redirect refusal, response bounds and explicit ungraded evidence metadata.",
+      "updated_at": "2026-11-12T21:14:19.817561+00:00",
+      "attempts": 3,
+      "completed_at": "2026-11-12T21:14:19.817561+00:00"
     },
     {
       "id": "AB-009",

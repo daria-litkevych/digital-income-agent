@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "completed"
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -580,11 +580,11 @@
         "AB-007"
       ],
       "acceptance": "Agent tools can retrieve and store public source content safely, preserve canonical URL/title/retrieval time, reject unsafe URLs and distinguish primary sources from weak discovery signals. Tests use fixtures; no paid search provider.",
-      "started_at": "2026-11-12T21:03:38.717927+00:00",
+      "started_at": "2026-11-12T21:14:19.817409+00:00",
       "last_result": "Read-only public-source retrieval is implemented with HTTPS and public-IP checks, redirect refusal, response bounds and explicit ungraded evidence metadata.",
-      "updated_at": "2026-11-12T21:03:38.718173+00:00",
-      "attempts": 2,
-      "completed_at": "2026-11-12T21:03:38.718173+00:00"
+      "updated_at": "2026-11-12T21:14:19.817561+00:00",
+      "attempts": 3,
+      "completed_at": "2026-11-12T21:14:19.817561+00:00"
     },
     {
       "id": "AB-009",
@@ -694,6 +694,20 @@
       "updated_at": "2026-11-12T21:11:00.954145+00:00",
       "attempts": 1,
       "completed_at": "2026-11-12T21:11:00.954145+00:00"
+    },
+    {
+      "id": "AB-015",
+      "title": "Audit public source retrieval against DNS rebinding and transport risks",
+      "phase": 9,
+      "role": "quality_controller",
+      "kind": "security_audit",
+      "status": "queued",
+      "priority": 105,
+      "depends_on": [
+        "AB-008",
+        "AB-014"
+      ],
+      "acceptance": "All public HTTPS requests connect to the exact validated public IP, preserve original hostname TLS verification, refuse redirects, reject private/reserved addresses and enforce response bounds. Unit tests prove IP pinning; fetched evidence remains ungraded."
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
