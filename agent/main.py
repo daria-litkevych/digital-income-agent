@@ -225,8 +225,8 @@ def main():
         "shiftbrief_ai": "ShiftBrief AI",
     }
     state["research_method"] = "Google News RSS, last 365 days, keyword relevance score >= 2"
-    REPORT_PATH.write_text(make_report(state, now), encoding="utf-8")
-    STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    atomic_write_text(REPORT_PATH, make_report(state, now))
+    atomic_write_text(STATE_PATH, json.dumps(state, ensure_ascii=False, indent=2) + "\n")
     print("Research complete. New:", len(new_items), "Stored:", len(state["research_items"]), "Errors:", len(errors))
     print("Report written to reports/latest.md")
 
