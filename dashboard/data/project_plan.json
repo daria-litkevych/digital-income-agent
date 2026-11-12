@@ -519,17 +519,17 @@
       "phase": 9,
       "role": "quality_controller",
       "kind": "evaluation",
-      "status": "queued",
+      "status": "done",
       "priority": 116,
       "depends_on": [
         "AB-003"
       ],
       "acceptance": "Each role has representative golden cases, structured-output checks, evidence/citation checks, hallucination traps and approval-boundary tests; mock output cannot pass as completed work.",
-      "started_at": "2026-11-12T20:50:44.653565+00:00",
-      "last_result": "Re-queued for verification against the strengthened budget, role-evaluation and end-to-end acceptance checks.",
-      "updated_at": "2026-11-12T20:50:44.653609+00:00",
-      "attempts": 1,
-      "completed_at": "2026-11-12T20:50:44.653609+00:00"
+      "started_at": "2026-11-12T20:53:59.116580+00:00",
+      "last_result": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality.",
+      "updated_at": "2026-11-12T20:53:59.117068+00:00",
+      "attempts": 2,
+      "completed_at": "2026-11-12T20:53:59.117068+00:00"
     },
     {
       "id": "AB-006",

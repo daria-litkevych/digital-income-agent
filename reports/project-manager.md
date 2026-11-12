@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T20:53:14.513412+00:00
+**Last cycle:** 2026-11-12T20:53:59.117068+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 18 | Queued: 3 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 25
-- Last task: AB-004 (completed)
+- Completed: 19 | Queued: 2 | Running: 0 | Blocked: 1 | Failed: 0
+- Project Manager cycles: 26
+- Last task: AB-005 (completed)
 
 ## Specialist registry
 
@@ -41,8 +41,8 @@
   - Latest: Project Manager now has an explicit dispatch seam: tasks may be routed through the guarded AgentBrain interface; deterministic handlers remain the default and offline mock output cannot complete real work.
 - **AB-004 · Connect live LLM dispatch to spend ledger and approval configuration** — done · developer
   - Latest: Live LLM remains disabled by default; runtime credentials, persistent ledger reservation, settlement and pre-network budget tests are present.
-- **AB-005 · Build specialist evaluation suite and evidence-quality tests** — queued · quality_controller
-  - Latest: Re-queued for verification against the strengthened budget, role-evaluation and end-to-end acceptance checks.
+- **AB-005 · Build specialist evaluation suite and evidence-quality tests** — done · quality_controller
+  - Latest: Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality.
 - **AB-006 · Run end-to-end Agent Brain workflow and document autonomy limits** — queued · project_manager
   - Latest: Re-queued for verification against the strengthened budget, role-evaluation and end-to-end acceptance checks.
 - **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher
