@@ -10,6 +10,7 @@ on:
       - "products/**"
       - "data/**"
       - "reports/**"
+      - "dashboard/**"
       - "README.md"
       - ".github/workflows/daily-agent.yml"
   schedule:
