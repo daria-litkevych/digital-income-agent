@@ -28,6 +28,15 @@ class ApprovalQueueTests(unittest.TestCase):
             expected_payload_sha256=record["payload_sha256"], now=self.now,
         )
 
+    def test_ab016_acceptance_handler_checks_queue_and_tests(self):
+        from agent.engine import execute
+        result = execute(
+            {"id": "AB-016", "role": "quality_controller", "kind": "approval_security"},
+            {}, {},
+        )
+        self.assertTrue(result["ok"], result.get("metrics"))
+        self.assertTrue(all(result["metrics"]["checks"].values()))
+
     def test_request_is_persisted_as_pending_and_json_has_real_newlines(self):
         record = self.request()
         raw = self.path.read_text(encoding="utf-8")
