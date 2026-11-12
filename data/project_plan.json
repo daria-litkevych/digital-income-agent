@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "blocked"
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -757,18 +757,16 @@
       "phase": 9,
       "role": "market_researcher",
       "kind": "evidence_enrichment",
-      "status": "blocked",
+      "status": "queued",
       "priority": 94,
       "depends_on": [
         "AB-017"
       ],
       "acceptance": "A specialist can fetch a supplied public HTTPS source through the DNS-pinned read-only adapter, store a bounded text excerpt and content hash alongside the discovery record, preserve source URL and checked timestamp, and leave claim confidence ungraded until a human/review step assigns a supported claim. Tests cover URL mismatch, source limits, duplicate updates and evidence provenance.",
       "started_at": "2026-11-12T21:26:50.966866+00:00",
-      "last_result": "No safe executor is registered for AB-018.",
-      "updated_at": "2026-11-12T21:26:50.966910+00:00",
-      "attempts": 1,
-      "blocked_reason": "No safe executor is registered for AB-018.",
-      "next_action": "Register a handler and acceptance checks before scheduling this task."
+      "last_result": "Source-to-evidence implementation and acceptance tests are now present; requeued after an earlier cycle ran before the handler was available.",
+      "updated_at": null,
+      "attempts": 1
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
