@@ -34,6 +34,11 @@ class FakeHTTPResponse:
 
 
 class LLMInterfaceTests(unittest.TestCase):
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp_dir.cleanup)
+        self.ledger = SpendLedger(Path(self.temp_dir.name) / "spend.sqlite3", 1.0)
+
     def test_offline_mock_is_explicitly_mock_and_free(self):
         result = OfflineMockClient().generate(
             LLMRequest(task="market scan", system="Be careful", user="Compare offers")
@@ -60,7 +65,7 @@ class LLMInterfaceTests(unittest.TestCase):
 
     def test_client_requires_explicit_key(self):
         with self.assertRaisesRegex(ValueError, "API key"):
-            OpenAICompatibleClient(live_settings(), "")
+            OpenAICompatibleClient(live_settings(), "", self.ledger)
 
     def test_cost_estimate(self):
         self.assertAlmostEqual(estimate_cost_usd(1_000_000, 1_000_000, 0.2, 1.2), 1.4)
@@ -88,7 +93,7 @@ class LLMInterfaceTests(unittest.TestCase):
             "choices": [{"message": {"content": "A careful test answer"}}],
             "usage": {"prompt_tokens": 100, "completion_tokens": 50},
         })
-        client = OpenAICompatibleClient(live_settings(), "test-secret")
+        client = OpenAICompatibleClient(live_settings(), "test-secret", self.ledger)
         result = client.generate(LLMRequest(
             task="test", system="Be accurate", user="Summarise this public example",
             max_output_tokens=20,
