@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "in_progress"
+      "status": "blocked"
     }
   ],
   "tasks": [
@@ -574,12 +574,18 @@
       "phase": 9,
       "role": "market_researcher",
       "kind": "research_tools",
-      "status": "queued",
+      "status": "blocked",
       "priority": 113,
       "depends_on": [
         "AB-007"
       ],
-      "acceptance": "Agent tools can retrieve and store public source content safely, preserve canonical URL/title/retrieval time, reject unsafe URLs and distinguish primary sources from weak discovery signals. Tests use fixtures; no paid search provider."
+      "acceptance": "Agent tools can retrieve and store public source content safely, preserve canonical URL/title/retrieval time, reject unsafe URLs and distinguish primary sources from weak discovery signals. Tests use fixtures; no paid search provider.",
+      "started_at": "2026-11-12T20:57:26.879817+00:00",
+      "last_result": "No safe executor is registered for AB-008.",
+      "updated_at": "2026-11-12T20:57:26.879861+00:00",
+      "attempts": 1,
+      "blocked_reason": "No safe executor is registered for AB-008.",
+      "next_action": "Register a handler and acceptance checks before scheduling this task."
     },
     {
       "id": "AB-009",
