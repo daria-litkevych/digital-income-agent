@@ -629,12 +629,17 @@
       "phase": 9,
       "role": "developer",
       "kind": "live_composition",
-      "status": "queued",
+      "status": "done",
       "priority": 110,
       "depends_on": [
         "AB-010"
       ],
-      "acceptance": "A composition root builds the live client, monthly ledger, bounded tool registry and checkpointed orchestrator only after a separate explicit approval flag, live-enabled setting, runtime credential, verified prices and hard caps. Construction itself makes no provider request."
+      "acceptance": "A composition root builds the live client, monthly ledger, bounded tool registry and checkpointed orchestrator only after a separate explicit approval flag, live-enabled setting, runtime credential, verified prices and hard caps. Construction itself makes no provider request.",
+      "started_at": "2026-11-12T21:06:37.380753+00:00",
+      "last_result": "A live studio composition root now requires explicit host approval, an explicit live flag, runtime credentials, verified token pricing and a monthly spend ledger; construction itself makes no provider call.",
+      "updated_at": "2026-11-12T21:06:37.380911+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-12T21:06:37.380911+00:00"
     },
     {
       "id": "AB-012",

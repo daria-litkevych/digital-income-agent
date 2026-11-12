@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T21:06:24.865995+00:00
+**Last cycle:** 2026-11-12T21:06:37.380911+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 24 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
+- Completed: 25 | Queued: 4 | Running: 0 | Blocked: 1 | Failed: 0
 - Project Manager cycles: 41
-- Last task: None (no_eligible_tasks)
+- Last task: AB-011 (completed)
 
 ## Specialist registry
 
@@ -29,7 +29,7 @@
 - **6. Sales and launch assets** — planned: Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
 - **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
-- **9. Autonomous studio capability** — completed: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
+- **9. Autonomous studio capability** — in_progress: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
 
 ## Task queue
 
@@ -53,6 +53,11 @@
   - Latest: Temporary proposal workspace tools are implemented with path allowlists, repository-isolated edits, allowlisted test modules and execution timeouts.
 - **AB-010 · Integrate autonomous multi-step specialist orchestration** — done · project_manager
   - Latest: Checkpointed multi-specialist orchestration is implemented with bounded workflows, role validation, recovery and human-review gates.
+- **AB-011 · Build explicitly approved live studio composition root** — done · developer
+  - Latest: A live studio composition root now requires explicit host approval, an explicit live flag, runtime credentials, verified token pricing and a monthly spend ledger; construction itself makes no provider call.
+- **AB-012 · Integrate default-off autonomous dispatch into Project Manager** — queued · project_manager
+- **AB-013 · Enforce role-specific tool permissions and audit boundaries** — queued · quality_controller
+- **AB-014 · Run full offline autonomy integration and recovery suite** — queued · quality_controller
 - **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher
   - Latest: Completed a first desk-research scan. Identified eight candidates across B2C, B2B and prosumer; this is directional evidence only, not validation or proof of sales.
 - **PM-001 · Build persistent Project Manager and specialist role registry** — done · project_manager
