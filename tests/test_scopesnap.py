@@ -16,7 +16,7 @@ class ScopeSnapPrototypeTests(unittest.TestCase):
 
     def test_first_mvp_does_not_use_external_services_or_persist_data(self):
         self.assertNotRegex(self.html, r'<script[^>]+src=')
-        self.assertNotRegex(self.html, r'<link[^>]+href=["\']https?://')
+        self.assertNotRegex(self.html, r"<link[^>]+href=[\"\']https?://")
         for forbidden in ["localStorage", "sessionStorage", "XMLHttpRequest", "fetch("]:
             self.assertNotIn(forbidden, self.html)
 
