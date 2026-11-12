@@ -29,24 +29,25 @@ The repository currently contains a **deterministic Python workflow**, not a ful
 - `agent/main.py` collects Google News RSS discovery signals. It now collects Google News RSS discovery signals across B2C, B2B and prosumer. RSS is a weak discovery input, not customer research or demand validation.
 - `agent/engine.py` contains five deterministic specialist handlers.
 - `agent/project_manager.py` executes one eligible task per run, checks dependencies, persists state and produces reports.
-- `agent/llm.py` provides a provider-neutral client and offline mock. The live client is **not connected** to specialist roles or scheduled runs.
+- `agent/brain.py` now defines nine specialist roles and a guarded structured-output dispatcher. It defaults to an explicitly labelled offline mock; Project Manager integration, role evaluations and live budget-gated dispatch are still in progress.
+- `agent/llm.py` provides a provider-neutral client and offline mock. The live client is **not enabled** in scheduled runs.
 - `agent/spend_ledger.py` protects future live calls with reservations and settlement. No live provider request or charge is enabled.
 - `dashboard/` displays project plan, task, research and finance snapshots.
 - `tests/` and GitHub Actions provide automated checks.
 
-The next technical work is source-level research, evidence grading, comparable opportunity scoring, product-specific workspaces, and eventually guarded AI role dispatch. Web research performed in ChatGPT is not automatically performed by the scheduled repository agent. Until those are implemented and tested, the planned roles must not be described as active autonomous agents.
+The active phase is **Agent Brain** (see [docs/AGENT_BRAIN.md](docs/AGENT_BRAIN.md) and phase 9 in `data/project_plan.json`). It must be integrated with Project Manager, spend controls and role evaluations before we resume product expansion. The scheduled workflow still uses deterministic handlers and RSS discovery; it does not yet run autonomous LLM specialists. Web research performed in ChatGPT is not automatically performed by the scheduled repository agent. Until those are implemented and tested, the planned roles must not be described as active autonomous agents.
 
 ## Specialist roster
 
 | Role | Current status |
 |---|---|
-| Project Manager | Deterministic workflow handler |
-| Market Researcher | Limited deterministic collection/organization; broad research pipeline planned |
-| Business Analyst | Deterministic analysis; richer evidence scoring planned |
-| Product Strategist | Deterministic candidate comparison; validation workflow planned |
+| Project Manager | Deterministic workflow handler; Agent Brain routing in progress |
+| Market Researcher | RSS discovery and evidence organisation; role prompt/dispatcher registered, task tools and evals pending |
+| Business Analyst | Deterministic analysis; role prompt/dispatcher registered, task tools and evals pending |
+| Product Strategist | Deterministic candidate comparison; role prompt/dispatcher registered, task tools and evals pending |
 | Product Designer | Planned |
 | Developer | Planned |
-| Quality Controller | Deterministic evidence checks; product QA pipeline planned |
+| Quality Controller | Deterministic evidence checks; role prompt/dispatcher registered, task tools and evals pending |
 | Growth & Launch | Planned |
 
 ## Product portfolio
