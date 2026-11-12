@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T21:04:09.718861+00:00
+**Last cycle:** 2026-11-12T21:04:48.160508+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 23 | Queued: 2 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 37
-- Last task: AB-009 (completed)
+- Completed: 24 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
+- Project Manager cycles: 38
+- Last task: AB-010 (completed)
 
 ## Specialist registry
 
@@ -29,7 +29,7 @@
 - **6. Sales and launch assets** — planned: Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
 - **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
-- **9. Autonomous studio capability** — in_progress: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
+- **9. Autonomous studio capability** — completed: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
 
 ## Task queue
 
@@ -51,7 +51,8 @@
   - Latest: Read-only public-source retrieval is implemented with HTTPS and public-IP checks, redirect refusal, response bounds and explicit ungraded evidence metadata.
 - **AB-009 · Add sandboxed workspace editing and test execution tools** — done · developer
   - Latest: Temporary proposal workspace tools are implemented with path allowlists, repository-isolated edits, allowlisted test modules and execution timeouts.
-- **AB-010 · Integrate autonomous multi-step specialist orchestration** — queued · project_manager
+- **AB-010 · Integrate autonomous multi-step specialist orchestration** — done · project_manager
+  - Latest: Checkpointed multi-specialist orchestration is implemented with bounded workflows, role validation, recovery and human-review gates.
 - **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher
   - Latest: Completed a first desk-research scan. Identified eight candidates across B2C, B2B and prosumer; this is directional evidence only, not validation or proof of sales.
 - **PM-001 · Build persistent Project Manager and specialist role registry** — done · project_manager
