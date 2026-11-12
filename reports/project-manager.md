@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T21:26:10.846547+00:00
+**Last cycle:** 2026-11-12T21:26:50.966910+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 31 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 53
-- Last task: AB-017 (completed)
+- Completed: 31 | Queued: 1 | Running: 0 | Blocked: 2 | Failed: 0
+- Project Manager cycles: 54
+- Last task: AB-018 (blocked)
 
 ## Specialist registry
 
@@ -29,7 +29,7 @@
 - **6. Sales and launch assets** — planned: Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
 - **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
-- **9. Autonomous studio capability** — completed: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
+- **9. Autonomous studio capability** — blocked: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
 
 ## Task queue
 
@@ -72,6 +72,9 @@
   - Latest: RSS discovery now feeds a persistent provenance-aware evidence store; leads remain explicitly unverified until inspected and graded.
 - **DS-002 · Build comparable opportunity scorecard and rank candidates** — done · business_analyst
   - Latest: Created a qualitative, evidence-confidence-aware comparison. No numerical market-size or sales claims were inferred from search results.
+- **AB-018 · Join safe source retrieval to the evidence ledger with reviewable provenance** — blocked · market_researcher
+  - Latest: No safe executor is registered for AB-018.
+  - Next action: Register a handler and acceptance checks before scheduling this task.
 - **DS-003 · Deep-dive top three opportunities and identify validation experiments** — done · market_researcher
   - Latest: Deep-dived freelancer scope changes, micro-business invoice follow-up and wedding workflows. Competitors/free alternatives are material in all three.
 - **MR-001 · Map direct competitors and substitutes for café starter kit** — done · market_researcher
