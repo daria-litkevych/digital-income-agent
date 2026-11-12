@@ -5,9 +5,18 @@ from pathlib import Path
 from unittest.mock import patch
 
 from agent import project_manager
+from agent.engine import execute
 
 
 class AgentBrainEndToEndTests(unittest.TestCase):
+    def test_ab006_acceptance_handler_checks_real_e2e_artifacts(self):
+        result = execute(
+            {"id": "AB-006", "role": "project_manager", "kind": "end_to_end"},
+            {}, {},
+        )
+        self.assertTrue(result["ok"], result.get("metrics"))
+        self.assertTrue(all(result["metrics"]["checks"].values()))
+
     def test_offline_brain_draft_is_dispatched_persisted_and_not_marked_done(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
