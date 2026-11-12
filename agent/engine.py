@@ -166,6 +166,26 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-017":
+        root = Path(__file__).resolve().parents[1]
+        store_path = root / "agent" / "evidence_store.py"
+        test_path = root / "tests" / "test_evidence_store.py"
+        main_path = root / "agent" / "main.py"
+        store_source = store_path.read_text(encoding="utf-8") if store_path.exists() else ""
+        tests = test_path.read_text(encoding="utf-8") if test_path.exists() else ""
+        main_source = main_path.read_text(encoding="utf-8") if main_path.exists() else ""
+        checks = {
+            "persistent_evidence_store_exists": store_path.exists(),
+            "source_urls_are_canonicalized": "canonicalize_url" in store_source and "utm_" in store_source,
+            "discovery_leads_are_unverified": 'DISCOVERY_CONFIDENCE = "Unverified"' in store_source and '"evidence_status": "unreviewed"' in store_source,
+            "provenance_fields_are_recorded": all(field in store_source for field in ("source_url", "source_type", "published_at", "checked_at", "segment", "hypothesis", "payment_signal")),
+            "records_are_deduplicated": "by_id" in store_source and "evidence_id" in store_source,
+            "rss_runner_persists_discovery": "EvidenceStore(EVIDENCE_STORE_PATH)" in main_source and "ingest_discovery" in main_source,
+            "tests_cover_store_and_integration": test_path.exists() and "test_ingest_is_persistent_and_deduplicates" in tests,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "RSS discovery now feeds a persistent provenance-aware evidence store; leads remain explicitly unverified until inspected and graded." if passed else "Evidence discovery and persistence acceptance checks are incomplete.", "metrics": {"checks": checks}, "artifact": {"store": "agent/evidence_store.py", "runner": "agent/main.py", "tests": "tests/test_evidence_store.py", "limitations": ["RSS is a discovery source, not market evidence", "No automatic claim extraction or confidence upgrades", "Fetched source text is not yet joined to these records"]}, "next_action": "Connect reviewed public-source fetch results to the evidence ledger with human-verifiable excerpts and provenance."}
+
     if task_id == "AB-016":
         root = Path(__file__).resolve().parents[1]
         queue_path = root / "agent" / "approval_queue.py"
