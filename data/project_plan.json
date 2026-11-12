@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "blocked"
+      "status": "completed"
     }
   ],
   "tasks": [
@@ -775,16 +775,17 @@
       "phase": 9,
       "role": "project_manager",
       "kind": "pm_orchestrator_integration",
-      "status": "queued",
+      "status": "done",
       "priority": 93,
       "depends_on": [
         "AB-018"
       ],
       "acceptance": "Approved Project Manager dispatch writes each specialist checkpoint atomically to a workflow-scoped file, reloads prior checkpoints on restart, injects the provenance-aware evidence store into role-scoped research tools, keeps scheduled dispatch approval-free, and never marks specialist drafts complete without human review. Tests prove durable persistence and review gating.",
-      "started_at": "2026-11-12T21:57:29.961156+00:00",
-      "last_result": "Checkpoint path resolution fixed in commit 418d3f4; CI run 147 passed all tests and PM workflow steps. Re-queued for deterministic acceptance-handler verification.",
-      "updated_at": "2026-11-12T21:57:29.961438+00:00",
-      "attempts": 1
+      "started_at": "2026-11-12T22:29:29.194711+00:00",
+      "last_result": "Project Manager now persists specialist checkpoints after every handoff, reloads them on resume, and injects the provenance-aware evidence store into the approved research tool registry. Scheduled execution still supplies no live approval and all outputs remain subject to human review.",
+      "updated_at": "2026-11-12T22:29:29.194956+00:00",
+      "attempts": 2,
+      "completed_at": "2026-11-12T22:29:29.194956+00:00"
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
