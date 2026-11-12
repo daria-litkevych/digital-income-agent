@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "blocked"
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -556,16 +556,17 @@
       "phase": 9,
       "role": "developer",
       "kind": "agent_runtime",
-      "status": "queued",
+      "status": "done",
       "priority": 114,
       "depends_on": [
         "AB-006"
       ],
       "acceptance": "Provider-neutral tool-call loop validates schemas, enforces allowlisted tools, iteration/token/time budgets, records tool observations and fails closed on unknown or forbidden actions. Offline fake-client tests prove tool use without network or paid inference.",
-      "started_at": "2026-11-12T20:55:26.530946+00:00",
-      "last_result": "Re-queued after tool runtime and acceptance tests were added.",
-      "updated_at": "2026-11-12T20:55:26.530984+00:00",
-      "attempts": 1
+      "started_at": "2026-11-12T20:56:52.085909+00:00",
+      "last_result": "Bounded JSON tool-call runtime is implemented with an allowlisted registry, argument validation, approval gates, hard step/output limits and AgentBrain final-output validation.",
+      "updated_at": "2026-11-12T20:56:52.086116+00:00",
+      "attempts": 2,
+      "completed_at": "2026-11-12T20:56:52.086116+00:00"
     },
     {
       "id": "AB-008",
