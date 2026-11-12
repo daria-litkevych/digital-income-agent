@@ -7,6 +7,9 @@ from typing import Protocol
 from urllib.error import URLError
 from urllib.parse import urlparse
 from urllib.request import Request as HTTPRequest, urlopen
+from uuid import uuid4
+
+from agent.spend_ledger import SpendLedger
 
 
 @dataclass(frozen=True)
@@ -116,15 +119,28 @@ class OpenAICompatibleClient:
     The caller must explicitly provide the API key and enabled settings. Never
     put credentials in repository files or log request headers.
     """
-    def __init__(self, settings: LLMSettings, api_key: str):
+    def __init__(self, settings: LLMSettings, api_key: str,
+                 spend_ledger: SpendLedger | None = None):
         settings.validate_for_live_use()
         if not api_key or not api_key.strip():
             raise ValueError("An API key must be explicitly supplied at runtime")
         self.settings = settings
         self._api_key = api_key
+        self.spend_ledger = spend_ledger
 
-    def generate(self, request: LLMRequest) -> LLMResponse:
+    def generate(self, request: LLMRequest,
+                 request_id: str | None = None) -> LLMResponse:
         enforce_request_limits(request, self.settings)
+        reservation_id = request_id or str(uuid4())
+        prompt_size = len(request.system) + len(request.user)
+        estimated_input_tokens = (prompt_size + 3) // 4
+        reserved_cost = estimate_cost_usd(
+            estimated_input_tokens, request.max_output_tokens,
+            self.settings.input_price_per_million_usd or 0.0,
+            self.settings.output_price_per_million_usd or 0.0,
+        )
+        if self.spend_ledger is not None:
+            self.spend_ledger.reserve(reservation_id, reserved_cost)
         endpoint = self.settings.base_url.rstrip("/") + "/chat/completions"
         payload = {
             "model": self.settings.model,
@@ -166,6 +182,8 @@ class OpenAICompatibleClient:
             self.settings.input_price_per_million_usd or 0.0,
             self.settings.output_price_per_million_usd or 0.0,
         )
+        if self.spend_ledger is not None:
+            self.spend_ledger.settle(reservation_id, cost)
         return LLMResponse(
             text=text, model=self.settings.model, provider=self.settings.provider,
             input_tokens=input_tokens, output_tokens=output_tokens,
