@@ -71,6 +71,6 @@ GitHub Actions runs the bounded workflow on the configured schedule or by manual
 - `agent/llm.py` defines a provider-neutral request/response contract and a deterministic offline mock.
 - `OpenAICompatibleClient` exists, but it is **not connected** to role handlers or scheduled runs. The scheduled workflow remains offline; no provider request or charge is made by default.
 - A live request requires explicitly enabled settings, verified token prices, HTTPS, a per-call cap and a runtime API key supplied by a caller. No key is stored in the repository.
-- `SpendLedger` provides a SQLite monthly ceiling with pre-request reservations, but it is not yet wired into the live client. Treat live use as disabled until that integration is tested and explicitly approved.
+- Every live client now requires a persistent `SpendLedger`: it reserves estimated cost before network I/O and settles against provider-reported usage. Failed or malformed requests leave the reservation committed for review. Live use remains disabled in the agent and scheduled workflow.
 - `python -m agent.benchmark` runs four synthetic specialty-café tasks against the offline mock and writes `reports/benchmark-latest.json`. Outputs are labelled mock and are not market evidence. Model scoring is a manual review rubric, not an automatic quality claim.
 - See [docs/LLM_INTEGRATION.md](docs/LLM_INTEGRATION.md) for safeguards and the next integration gate.
