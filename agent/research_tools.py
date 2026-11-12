@@ -1,14 +1,14 @@
-"""Safe, read-only public source retrieval tools for specialist agents."""
+"""Safe, read-only public source retrieval with DNS-pinned HTTPS requests."""
 from __future__ import annotations
 
+import http.client
 import ipaddress
 import socket
+import ssl
 from datetime import datetime, timezone
 from html.parser import HTMLParser
 from typing import Any, Callable
-from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
-from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from agent.tool_runtime import AgentTool, ToolRegistry
 
@@ -37,7 +37,7 @@ class _TextExtractor(HTMLParser):
         if tag == "title":
             self._in_title = False
         if tag in {"p", "div", "li", "h1", "h2", "h3", "br"}:
-            self.parts.append("\n")
+            self.parts.append("\\n")
 
     def handle_data(self, data):
         if self._in_title:
@@ -49,18 +49,10 @@ class _TextExtractor(HTMLParser):
 
 
 def _default_resolver(host: str) -> list[str]:
-    return sorted({item[4][0] for item in socket.getaddrinfo(host, None, type=socket.SOCK_STREAM)})
+    return sorted({item[4][0] for item in socket.getaddrinfo(host, 443, type=socket.SOCK_STREAM)})
 
 
-def validate_public_https_url(url: str, resolver: Callable[[str], list[str]] = _default_resolver) -> str:
-    parsed = urlparse(url)
-    if parsed.scheme != "https" or not parsed.hostname:
-        raise SourceFetchError("Only absolute HTTPS URLs are allowed.")
-    if parsed.username or parsed.password or parsed.port not in (None, 443):
-        raise SourceFetchError("Credentials and non-standard ports are not allowed.")
-    host = parsed.hostname.lower().rstrip(".")
-    if host in {"localhost", "localhost.localdomain"} or host.endswith(".localhost"):
-        raise SourceFetchError("Local hostnames are not allowed.")
+def _resolve_public_addresses(host: str, resolver: Callable[[str], list[str]]) -> list[str]:
     try:
         literal_ip = ipaddress.ip_address(host)
     except ValueError:
@@ -81,31 +73,72 @@ def validate_public_https_url(url: str, resolver: Callable[[str], list[str]] = _
             raise SourceFetchError("Resolver returned an invalid IP address.") from error
         if not ip.is_global:
             raise SourceFetchError("Private, local or reserved network addresses are not allowed.")
+    return addresses
+
+
+def validate_public_https_url(url: str, resolver: Callable[[str], list[str]] = _default_resolver) -> str:
+    parsed = urlparse(url)
+    if parsed.scheme != "https" or not parsed.hostname:
+        raise SourceFetchError("Only absolute HTTPS URLs are allowed.")
+    try:
+        port = parsed.port
+    except ValueError as error:
+        raise SourceFetchError("Invalid URL port.") from error
+    if parsed.username or parsed.password or port not in (None, 443):
+        raise SourceFetchError("Credentials and non-standard ports are not allowed.")
+    host = parsed.hostname.lower().rstrip(".")
+    if host in {"localhost", "localhost.localdomain"} or host.endswith(".localhost"):
+        raise SourceFetchError("Local hostnames are not allowed.")
+    _resolve_public_addresses(host, resolver)
     return url
 
 
-class _NoRedirect(HTTPRedirectHandler):
-    def redirect_request(self, request, fp, code, message, headers, newurl):
-        return None
+class _PinnedHTTPSConnection(http.client.HTTPSConnection):
+    """HTTPS connection pinned to an already validated public IP address."""
+    def __init__(self, host: str, address: str, timeout: int):
+        super().__init__(host=host, port=443, timeout=timeout, context=ssl.create_default_context())
+        self._pinned_address = address
+
+    def connect(self):
+        raw_socket = socket.create_connection((self._pinned_address, self.port), self.timeout)
+        self.sock = self._context.wrap_socket(raw_socket, server_hostname=self.host)
 
 
 def _network_transport(url: str, timeout: int, max_bytes: int) -> dict[str, Any]:
-    request = Request(url, headers={
-        "User-Agent": "DigitalProductStudioResearch/1.0",
-        "Accept": "text/html,text/plain,application/xhtml+xml,application/xml,text/xml,application/rss+xml",
-    })
-    try:
-        # Refuse redirects rather than risk following an unvalidated Location.
-        opener = build_opener(_NoRedirect())
-        with opener.open(request, timeout=timeout) as response:
-            content_type = response.headers.get("Content-Type", "").split(";")[0].strip().lower()
+    parsed = urlparse(url)
+    if not parsed.hostname:
+        raise SourceFetchError("Source URL has no hostname.")
+    addresses = _resolve_public_addresses(parsed.hostname.lower().rstrip("."), _default_resolver)
+    path = parsed.path or "/"
+    if parsed.query:
+        path += "?" + parsed.query
+    last_error: Exception | None = None
+    for address in addresses:
+        connection = _PinnedHTTPSConnection(parsed.hostname, address, timeout)
+        try:
+            connection.request("GET", path, headers={
+                "Host": parsed.netloc,
+                "User-Agent": "DigitalProductStudioResearch/1.0",
+                "Accept": "text/html,text/plain,application/xhtml+xml,application/xml,text/xml,application/rss+xml",
+                "Connection": "close",
+            })
+            response = connection.getresponse()
+            if 300 <= response.status < 400:
+                raise SourceFetchError("HTTP redirects are not followed.")
+            if response.status < 200 or response.status >= 300:
+                raise SourceFetchError(f"Public source returned HTTP {response.status}.")
+            content_type = response.getheader("Content-Type", "").split(";")[0].strip().lower()
             body = response.read(max_bytes + 1)
-            final_url = response.geturl()
-    except (HTTPError, URLError, TimeoutError, OSError) as error:
-        raise SourceFetchError(f"Public source fetch failed: {error}") from error
-    if len(body) > max_bytes:
-        raise SourceFetchError("Source exceeds the configured response-size limit.")
-    return {"final_url": final_url, "content_type": content_type, "body": body}
+            if len(body) > max_bytes:
+                raise SourceFetchError("Source exceeds the configured response-size limit.")
+            return {"final_url": url, "content_type": content_type, "body": body}
+        except SourceFetchError:
+            raise
+        except (OSError, TimeoutError, http.client.HTTPException) as error:
+            last_error = error
+        finally:
+            connection.close()
+    raise SourceFetchError(f"Public source fetch failed: {last_error}")
 
 
 def fetch_public_source(
@@ -161,9 +194,7 @@ def build_research_tool_registry(
     return ToolRegistry([AgentTool(
         name="fetch_public_url",
         description="Fetch and extract a bounded amount of text from a public HTTPS source.",
-        handler=lambda args: fetch_public_source(
-            args["url"], transport=transport, resolver=resolver,
-        ),
+        handler=lambda args: fetch_public_source(args["url"], transport=transport, resolver=resolver),
         required_arguments=("url",),
         allowed_arguments=("url",),
         allowed_roles=("market_researcher", "business_analyst", "product_strategist", "quality_controller"),
