@@ -49,6 +49,11 @@ Only one task is executed per invocation. Failed tasks can be retried up to thre
 - GitHub Actions runs on GitHub-hosted infrastructure; its usage is subject to the account's GitHub plan and limits.
 - The dashboard deploy must remain private. Netlify auto-publishing is intentionally locked to prevent routine agent commits from triggering production deploys. Dashboard snapshots continue syncing in GitHub; publish manually only after an approved dashboard change. Do not move private project data to a public static host.
 
+## Project spending and tool watchlist
+
+- **Netlify:** The user has spent **€9** on a Netlify plan upgrade (recorded 2026-11-12). Treat this as an actual project expense, not a recurring-cost assumption; verify the current billing cycle and renewal terms before recommending further Netlify use. Auto-publishing remains locked, and no deploy/unlock or plan change is authorized without explicit approval.
+- **Haimaker AI:** The user found https://haimaker.ai/ and asked whether it may be useful later. Status: **unassessed / watchlist only**. Do not integrate, subscribe, connect accounts, upload private project data, or incur costs until its current capabilities, pricing, privacy/data handling, export options and fit with the project's needs have been independently checked and the user approves.
+
 ## Local test
 
 ```bash
