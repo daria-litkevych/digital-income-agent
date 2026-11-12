@@ -62,9 +62,16 @@ def validate_public_https_url(url: str, resolver: Callable[[str], list[str]] = _
     if host in {"localhost", "localhost.localdomain"} or host.endswith(".localhost"):
         raise SourceFetchError("Local hostnames are not allowed.")
     try:
-        addresses = resolver(host)
-    except (OSError, ValueError) as error:
-        raise SourceFetchError("Could not safely resolve source hostname.") from error
+        literal_ip = ipaddress.ip_address(host)
+    except ValueError:
+        literal_ip = None
+    if literal_ip is not None:
+        addresses = [host]
+    else:
+        try:
+            addresses = resolver(host)
+        except (OSError, ValueError) as error:
+            raise SourceFetchError("Could not safely resolve source hostname.") from error
     if not addresses:
         raise SourceFetchError("Source hostname did not resolve.")
     for address in addresses:
