@@ -5,6 +5,7 @@ from pathlib import Path
 import json
 
 from agent.engine import ROLES, apply_result, execute, select_task, utc_now
+from agent.brain import build_offline_brain
 
 ROOT = Path(__file__).resolve().parents[1]
 STATE_FILE = ROOT / "data" / "state.json"
@@ -12,6 +13,26 @@ PLAN_FILE = ROOT / "data" / "project_plan.json"
 EVIDENCE_FILE = ROOT / "data" / "market_research.json"
 REPORT_FILE = ROOT / "reports" / "project-manager.md"
 MAX_ATTEMPTS = 3
+DEFAULT_BRAIN = build_offline_brain()
+
+def dispatch_task(task, state, evidence, brain=None):
+    \"\"\"Route only explicitly flagged tasks through Agent Brain; deterministic execution is default.\"\"\"
+    if not task.get(\"dispatch_to_brain\"):
+        return execute(task, state, evidence)
+    selected_brain = brain or DEFAULT_BRAIN
+    output = selected_brain.dispatch(
+        task.get(\"role\", \"\"),
+        task.get(\"title\", \"Execute specialist task\"),
+        {\"task\": task, \"project_state\": state, \"evidence\": evidence},
+    )
+    # Drafts from a model are never auto-marked as completed work.
+    return {
+        \"ok\": False,
+        \"blocked\": True,
+        \"summary\": \"Agent Brain returned a draft requiring review; no task was auto-completed.\",
+        \"artifact\": {\"agent_brain_output\": output},
+        \"next_action\": \"Review the structured draft, evidence and risks before accepting it as task output.\",
+    }
 
 def load_json(path, default):
     if not path.exists():
@@ -106,7 +127,7 @@ def main():
         selected["status"] = "in_progress"
         selected["started_at"] = timestamp
         state["project_plan"] = plan
-        result = execute(selected, state, evidence)
+        result = dispatch_task(selected, state, evidence)
         event = apply_result(selected, result, state)
         if selected.get("status") == "failed" and selected.get("attempts", 0) >= MAX_ATTEMPTS:
             selected["status"] = "blocked"
