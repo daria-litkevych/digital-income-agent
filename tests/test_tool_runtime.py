@@ -4,6 +4,7 @@ import unittest
 from agent.brain import BrainError
 from agent.llm import LLMResponse, OfflineMockClient
 from agent.tool_runtime import AgentTool, AgentToolRuntime, ToolRegistry
+from agent.engine import execute
 
 
 class SequenceClient:
@@ -17,6 +18,16 @@ class SequenceClient:
             text=json.dumps(text), model="fixture-model", provider="fixture",
             input_tokens=10, output_tokens=20, estimated_cost_usd=0.0, is_mock=False,
         )
+
+
+class ToolRuntimeAcceptanceTests(unittest.TestCase):
+    def test_ab007_acceptance_handler_checks_runtime_and_test_artifacts(self):
+        result = execute(
+            {"id": "AB-007", "role": "developer", "kind": "agent_runtime"},
+            {}, {},
+        )
+        self.assertTrue(result["ok"], result.get("metrics"))
+        self.assertTrue(all(result["metrics"]["checks"].values()))
 
 
 class ToolRegistryTests(unittest.TestCase):
