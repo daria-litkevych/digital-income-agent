@@ -166,6 +166,26 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-018":
+        root = Path(__file__).resolve().parents[1]
+        store_path = root / "agent" / "evidence_store.py"
+        research_path = root / "agent" / "research_tools.py"
+        tests_path = root / "tests" / "test_research_tools.py"
+        store_source = store_path.read_text(encoding="utf-8") if store_path.exists() else ""
+        research_source = research_path.read_text(encoding="utf-8") if research_path.exists() else ""
+        tests = tests_path.read_text(encoding="utf-8") if tests_path.exists() else ""
+        checks = {
+            "evidence_store_can_attach_inspection": "def enrich_source(" in store_source,
+            "fetched_url_is_bound_to_existing_record": "record.get(\"source_url\") != args[\"url\"]" in research_source,
+            "tool_persists_inspected_source": "evidence_store.enrich_source" in research_source and "fetch_and_record_evidence" in research_source,
+            "excerpt_is_bounded_and_hash_addressed": '"excerpt": text[:2000]' in store_source and '"content_sha256": content_hash' in store_source,
+            "source_remains_ungraded": 'record["confidence"] = DISCOVERY_CONFIDENCE' in store_source and '"review_status": "ungraded"' in store_source,
+            "untrusted_content_is_labelled": '"untrusted_source_text": True' in store_source,
+            "integration_tests_cover_success_and_url_mismatch": "test_fetch_and_record_tool_persists_ungraded_excerpt" in tests and "test_fetch_and_record_tool_rejects_url_mismatch" in tests,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "A role-scoped research tool now fetches the exact public HTTPS URL for a known discovery record and stores a bounded, hash-addressed excerpt while preserving Unverified status." if passed else "Source retrieval-to-evidence integration is incomplete.", "metrics": {"checks": checks}, "artifact": {"store": "agent/evidence_store.py", "adapter": "agent/research_tools.py", "tests": "tests/test_research_tools.py", "limitations": ["Only explicit supplied URLs can be fetched; no search discovery provider is connected", "Page text remains untrusted and ungraded", "No live AI specialist is scheduled to call this tool"]}, "next_action": "Integrate the research tool registry and orchestrator into a default-off Project Manager workflow with persisted checkpoints and review gates."}
+
     if task_id == "AB-017":
         root = Path(__file__).resolve().parents[1]
         store_path = root / "agent" / "evidence_store.py"
