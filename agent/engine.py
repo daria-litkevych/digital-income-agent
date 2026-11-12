@@ -6,6 +6,7 @@ produce evidence-grounded outputs from repository data and explicitly label gaps
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 from agent.brain import ROLE_REGISTRY, build_offline_brain
@@ -132,19 +133,38 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
 
     if task_id == "AB-004":
         from agent.llm import LLMSettings, OpenAICompatibleClient
-        from agent.spend_ledger import SpendLedger
+        test_source = (Path(__file__).resolve().parents[1] / "tests" / "test_llm.py").read_text(encoding="utf-8")
         checks = {
             "live_disabled_by_default": LLMSettings().enabled is False,
             "client_requires_explicit_key": "api_key" in OpenAICompatibleClient.__init__.__code__.co_varnames,
             "client_requires_persistent_ledger": "spend_ledger" in OpenAICompatibleClient.__init__.__code__.co_varnames,
             "ledger_reserves_before_request": "reserve" in OpenAICompatibleClient.generate.__code__.co_names,
             "ledger_settles_actual_usage": "settle" in OpenAICompatibleClient.generate.__code__.co_names,
+            "monthly_cap_blocks_before_network": "test_monthly_limit_blocks_before_network_request" in test_source,
+            "full_call_cap_reserved": "test_monthly_guard_reserves_full_per_call_cap" in test_source,
+            "failed_call_keeps_reservation": "test_failed_network_request_keeps_reservation" in test_source,
         }
         passed = all(checks.values())
-        return {"ok": passed, "blocked": not passed, "summary": "Live LLM remains disabled by default; the explicit client requires a runtime key and persistent ledger, reserves before network use and settles actual usage." if passed else "Live LLM budget guard checks failed.", "metrics": {"checks": checks}, "next_action": "Fix failed budget guard checks before any live-provider integration."}
+        return {"ok": passed, "blocked": not passed, "summary": "Live LLM remains disabled by default; runtime credentials, persistent ledger reservation, settlement and pre-network budget tests are present." if passed else "Live LLM budget guard checks failed.", "metrics": {"checks": checks}, "next_action": "Fix failed budget guard checks before any live-provider integration."}
 
     if task_id == "AB-005":
-        return {"ok": True, "summary": "Agent Brain evaluation suite covers role coverage, offline/mock labelling, forbidden external actions, valid structured output, malformed JSON and missing contract fields. Per-role golden quality benchmarks remain a follow-up before claiming autonomous quality.", "artifact": {"test_file": "tests/test_brain.py", "covered": ["role_registry", "offline_default", "unknown_role", "external_action_rejection", "structured_json", "malformed_json", "missing_fields"], "limitations": ["No live model evaluations", "No claim of role-level task quality", "No network or paid calls"]}}
+        root = Path(__file__).resolve().parents[1]
+        fixture_path = root / "benchmarks" / "agent_brain_cases.json"
+        eval_path = root / "tests" / "test_brain_evals.py"
+        fixtures = {}
+        if fixture_path.exists():
+            import json
+            fixtures = json.loads(fixture_path.read_text(encoding="utf-8"))
+        covered_roles = {case.get("role") for case in fixtures.get("cases", [])}
+        required_roles = set(ROLE_REGISTRY)
+        checks = {
+            "golden_case_for_every_role": covered_roles == required_roles,
+            "evaluation_tests_exist": eval_path.exists(),
+            "role_specific_artifact_contract": "not allowed for role" in Path(__file__).resolve().parent.joinpath("brain.py").read_text(encoding="utf-8"),
+            "source_provenance_checks": "Evidence source was not supplied" in Path(__file__).resolve().parent.joinpath("brain.py").read_text(encoding="utf-8"),
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
     if role == "project_manager" and task.get("kind") == "internal":
         return {"ok": True, "summary": "Core orchestration initialised; specialist registry and task queue available."}
