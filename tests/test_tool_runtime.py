@@ -33,7 +33,7 @@ class ToolRuntimeAcceptanceTests(unittest.TestCase):
 class ToolRegistryTests(unittest.TestCase):
     def test_unknown_tool_is_rejected(self):
         with self.assertRaisesRegex(BrainError, "Unknown tool"):
-            ToolRegistry().invoke("not_registered", {})
+            ToolRegistry().invoke("not_registered", {}, role="market_researcher")
 
     def test_arguments_are_schema_checked(self):
         registry = ToolRegistry([AgentTool(
@@ -46,6 +46,16 @@ class ToolRegistryTests(unittest.TestCase):
             registry.invoke("lookup", {"key": "x", "extra": True}, role="market_researcher")
         self.assertEqual(registry.invoke("lookup", {"key": "x"}, role="market_researcher"), {"value": "x"})
 
+    def test_role_permissions_are_enforced_and_filtered(self):
+        registry = ToolRegistry([AgentTool(
+            name="edit", description="Propose code edits",
+            handler=lambda args: {"ok": True}, allowed_arguments=(),
+            allowed_roles=("developer",),
+        )])
+        self.assertEqual(registry.descriptions(role="market_researcher"), [])
+        self.assertEqual(len(registry.descriptions(role="developer")), 1)
+        with self.assertRaisesRegex(BrainError, "not allowed"):
+            registry.invoke("edit", {}, role="market_researcher")
     def test_side_effect_tool_is_blocked(self):
         registry = ToolRegistry([AgentTool(
             name="publish", description="Publish externally",
@@ -120,6 +130,7 @@ class AgentToolRuntimeTests(unittest.TestCase):
         registry = ToolRegistry([AgentTool(
             name="lookup", description="Fixture lookup",
             handler=lambda args: {"ok": True}, allowed_arguments=(),
+            allowed_roles=("market_researcher",),
         )])
         result = AgentToolRuntime(
             client, registry, live_approved=True, max_steps=2
