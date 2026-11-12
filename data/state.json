@@ -2,8 +2,8 @@
   "agent_name": "Digital Income Agent",
   "run_count": 55,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T21:25:18.392819+00:00",
-  "research_last_run_utc": "2026-11-12T21:25:16.265658+00:00",
+  "last_run_utc": "2026-11-12T21:25:43.975480+00:00",
+  "research_last_run_utc": "2026-11-12T21:25:41.510926+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -194,7 +194,7 @@
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
   "pm_run_count": 52,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T21:25:18.392767+00:00",
+    "timestamp": "2026-11-12T21:25:43.975434+00:00",
     "task_id": null,
     "status": "no_eligible_tasks",
     "summary": "No queued or retryable task has all dependencies completed."
@@ -1885,10 +1885,14 @@
       "summary": "No queued or retryable task has all dependencies completed."
     },
     {
-      "timestamp": "2026-11-12T21:25:18.392767+00:00",
+      "timestamp": "2026-11-12T21:25:43.975434+00:00",
       "task_id": null,
       "status": "no_eligible_tasks",
       "summary": "No queued or retryable task has all dependencies completed."
     }
-  ]
+  ],
+  "evidence_store_summary": {
+    "added": 11,
+    "total": 11
+  }
 }
