@@ -13,54 +13,14 @@ STATE_PATH = ROOT / "data" / "state.json"
 REPORT_PATH = ROOT / "reports" / "latest.md"
 
 SEARCHES = [
-    {
-        "hypothesis": "cafe_starter_kit",
-        "name": "Small Café Manager Starter Kit",
-        "query": '"specialty coffee" cafe operations staff training',
-        "terms": ["specialty coffee", "coffee shop", "cafe", "barista", "opening checklist", "closing checklist", "staff training", "workflow", "inventory", "waste", "operations", "standard operating procedure", "sop"],
-    },
-    {
-        "hypothesis": "cafe_starter_kit",
-        "name": "Small Café Manager Starter Kit",
-        "query": '"coffee shop" "daily checklist" OR "opening checklist" OR "closing checklist"',
-        "terms": ["coffee shop", "cafe", "checklist", "opening", "closing", "cleaning", "daily", "routine", "manager"],
-    },
-    {
-        "hypothesis": "cafe_starter_kit",
-        "name": "Small Café Manager Starter Kit",
-        "query": '"specialty cafe" staff retention OR training OR workflow OR inventory',
-        "terms": ["specialty cafe", "coffee shop", "barista", "staff", "training", "retention", "workflow", "inventory", "waste", "manager"],
-    },
-    {
-        "hypothesis": "cafe_starter_kit",
-        "name": "Small Café Manager Starter Kit",
-        "query": 'independent coffee shop owner operational challenges costs labor',
-        "terms": ["independent coffee", "coffee shop", "cafe", "owner", "labor", "cost", "margin", "operations", "challenge", "profit"],
-    },
-    {
-        "hypothesis": "shiftbrief_ai",
-        "name": "ShiftBrief AI",
-        "query": 'restaurant hospitality shift handover log communication software',
-        "terms": ["shift handover", "handover", "shift log", "restaurant", "hospitality", "communication", "staff", "logbook", "task"],
-    },
-    {
-        "hypothesis": "shiftbrief_ai",
-        "name": "ShiftBrief AI",
-        "query": 'hotel restaurant staff shift notes task handoff app',
-        "terms": ["shift", "handoff", "handover", "restaurant", "hotel", "staff", "notes", "task", "app", "communication"],
-    },
-    {
-        "hypothesis": "shiftbrief_ai",
-        "name": "ShiftBrief AI",
-        "query": '"restaurant shift report" OR "daily shift report" software',
-        "terms": ["restaurant", "shift report", "daily report", "software", "manager", "team", "task", "communication"],
-    },
-    {
-        "hypothesis": "shiftbrief_ai",
-        "name": "ShiftBrief AI",
-        "query": 'hospitality operations frontline employee communication shift change problems',
-        "terms": ["hospitality", "frontline", "employee", "communication", "shift change", "shift", "restaurant", "hotel", "operations", "problem"],
-    },
+    {"hypothesis":"b2c_life_admin","segment":"B2C","name":"Consumer life admin and focus tools","query":'consumer daily planning focus life admin app spreadsheet template', "terms":["daily planner","focus","life admin","planning","routine","organize","organise","productivity","calendar","task"]},
+    {"hypothesis":"b2c_personal_finance","segment":"B2C","name":"Personal finance decision tools","query":'personal finance budget spreadsheet savings calculator irregular expenses tool', "terms":["budget","savings","spreadsheet","calculator","personal finance","expenses","money","financial planning","cash flow"]},
+    {"hypothesis":"b2c_wedding","segment":"B2C","name":"Wedding planning workflows","query":'wedding planning guest list RSVP budget vendor seating spreadsheet tool', "terms":["wedding","guest list","rsvp","seating","vendor","budget","spreadsheet","planning","template"]},
+    {"hypothesis":"b2b_microbusiness_admin","segment":"B2B","name":"Micro-business administration","query":'small business invoicing quoting payment reminders admin automation software', "terms":["small business","invoicing","invoice","quoting","payment","reminder","automation","admin","cash flow","workflow"]},
+    {"hypothesis":"b2b_service_ops","segment":"B2B","name":"Small service business operations","query":'small service business scheduling client management recurring admin workflow software', "terms":["service business","scheduling","client","appointment","workflow","admin","operations","small business","booking"]},
+    {"hypothesis":"b2b_cafe_ops","segment":"B2B","name":"Café and hospitality operations","query":'independent cafe coffee shop hospitality operations staffing inventory waste workflow', "terms":["cafe","coffee shop","hospitality","staff","inventory","waste","operations","barista","workflow","restaurant"]},
+    {"hypothesis":"prosumer_freelancer","segment":"Prosumer","name":"Freelancer scope and pricing workflows","query":'freelancer consultant scope creep pricing quotes change requests client work', "terms":["freelancer","consultant","scope creep","pricing","quote","client","change request","invoice","project"]},
+    {"hypothesis":"prosumer_creator","segment":"Prosumer","name":"Creator and independent professional workflows","query":'creator freelancer content business workflow client deliverables digital tools', "terms":["creator","content","deliverables","workflow","client","creator economy","independent","freelance","template"]},
 ]
 
 def clean_text(value):
@@ -108,6 +68,7 @@ def collect_news(search):
             "description": description,
             "query": search["query"],
             "hypothesis": search["hypothesis"],
+            "segment": search.get("segment", "Unclassified"),
             "relevance_score": score,
             "matched_terms": matched[:8],
             "published_date": date.date().isoformat() if date else None,
@@ -136,29 +97,34 @@ def make_report(state, run_time):
         f"- Collection errors: {len(state.get('research_errors', []))}",
         "- Research window: approximately the last 12 months",
         "",
-        "> Important: news coverage is a discovery signal, not proof of customer demand or willingness to pay. The next validation step is competitor/pricing research and direct conversations with café owners or managers.",
+        "> Important: news coverage is only a discovery signal, not proof of customer demand or willingness to pay. Research now spans B2C, B2B and prosumer categories; source checks, customer evidence and validation are separate tasks.",
         "",
     ]
-    for key, name in [
-        ("cafe_starter_kit", "1. Small Café Manager Starter Kit"),
-        ("shiftbrief_ai", "2. ShiftBrief AI"),
-    ]:
-        selected = [x for x in items if x.get("hypothesis") == key]
-        selected.sort(key=lambda x: (x.get("relevance_score", 0), x.get("published_date") or ""), reverse=True)
-        sections.extend(["## " + name, "", f"Relevant items found: {len(selected)}", ""])
-        if not selected:
-            sections.extend(["No sufficiently relevant articles found in this run.", ""])
-        for item in selected[:15]:
-            date = item.get("published_date") or item.get("published") or "Date unknown"
-            sections.extend([
-                f"### {item.get('title', 'Untitled')}",
-                f"- Date: {date}",
-                f"- Relevance score: {item.get('relevance_score', 0)}",
-                f"- Matched topics: {', '.join(item.get('matched_terms', []))}",
-                f"- Search: {item.get('query', '')}",
-                f"- Source: {item.get('link', '')}",
-                "",
-            ])
+    for segment in ["B2C", "B2B", "Prosumer"]:
+        sections.extend(["## " + segment, ""])
+        segment_items = [x for x in items if x.get("segment") == segment]
+        hypotheses = []
+        for search in SEARCHES:
+            if search.get("segment") == segment and search["hypothesis"] not in hypotheses:
+                hypotheses.append(search["hypothesis"])
+        for key in hypotheses:
+            selected = [x for x in segment_items if x.get("hypothesis") == key]
+            selected.sort(key=lambda x: (x.get("relevance_score", 0), x.get("published_date") or ""), reverse=True)
+            label = next((s["name"] for s in SEARCHES if s["hypothesis"] == key), key)
+            sections.extend(["### " + label, "", f"Relevant news items stored: {len(selected)}", ""])
+            for item in selected[:10]:
+                date = item.get("published_date") or item.get("published") or "Date unknown"
+                sections.extend([
+                    f"#### {item.get('title', 'Untitled')}",
+                    f"- Date: {date}",
+                    f"- Relevance score: {item.get('relevance_score', 0)}",
+                    f"- Matched topics: {', '.join(item.get('matched_terms', []))}",
+                    f"- Search: {item.get('query', '')}",
+                    f"- Source: {item.get('link', '')}",
+                    "",
+                ])
+            if not selected:
+                sections.extend(["No sufficiently relevant articles found in this run.", ""])
     sections.extend([
         "## Collection limitations",
         "",
@@ -221,10 +187,9 @@ def main():
     state["research_errors"] = errors
     state["research_items"] = merged[:200]
     state["research_hypotheses"] = {
-        "cafe_starter_kit": "Small Café Manager Starter Kit",
-        "shiftbrief_ai": "ShiftBrief AI",
+        **{item["hypothesis"]: item["name"] for item in SEARCHES},
     }
-    state["research_method"] = "Google News RSS, last 365 days, keyword relevance score >= 2"
+    state["research_method"] = "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2"
     atomic_write_text(REPORT_PATH, make_report(state, now))
     atomic_write_text(STATE_PATH, json.dumps(state, ensure_ascii=False, indent=2) + "\n")
     print("Research complete. New:", len(new_items), "Stored:", len(state["research_items"]), "Errors:", len(errors))
