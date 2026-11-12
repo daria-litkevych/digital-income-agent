@@ -166,6 +166,23 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-010":
+        root = Path(__file__).resolve().parents[1]
+        orchestrator_path = root / "agent" / "orchestrator.py"
+        test_path = root / "tests" / "test_orchestrator.py"
+        source = orchestrator_path.read_text(encoding="utf-8") if orchestrator_path.exists() else ""
+        checks = {
+            "multi_specialist_orchestrator_exists": orchestrator_path.exists(),
+            "orchestration_tests_exist": test_path.exists(),
+            "checkpoint_loader_and_saver": "checkpoint_loader" in source and "checkpoint_saver" in source,
+            "resume_from_completed_steps": "if step_id in completed" in source,
+            "stops_on_blocked_specialist": '"status": "blocked"' in source,
+            "human_review_required": '"status": "review_required"' in source and "requires_human_approval" in source,
+            "workflow_size_bounded": "max_tasks" in source,
+            "registered_roles_only": "ROLE_REGISTRY" in source,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "Checkpointed multi-specialist orchestration is implemented with bounded workflows, role validation, recovery and human-review gates." if passed else "Multi-specialist orchestration checks are incomplete.", "metrics": {"checks": checks}, "artifact": {"coordinator": "agent/orchestrator.py", "tests": "tests/test_orchestrator.py", "limitations": ["No live LLM calls enabled", "No autonomous tools enabled in scheduled runs", "External actions remain prohibited", "Outputs require human review"]}, "next_action": "Connect approved tool adapters to the Project Manager only after end-to-end permission and persistence tests pass."}
     if task_id == "AB-009":
         root = Path(__file__).resolve().parents[1]
         workspace_path = root / "agent" / "workspace_tools.py"
