@@ -22,7 +22,7 @@ class ProposalWorkspaceTests(unittest.TestCase):
         (self.repo / "agent" / "sample.py").write_text("ORIGINAL", encoding="utf-8")
         (self.repo / "tests").mkdir()
         (self.repo / "tests" / "test_sample.py").write_text(
-            "import unittest\\nclass SampleTest(unittest.TestCase):\\n def test_ok(self): self.assertEqual(1 + 1, 2)\\n",
+            "import unittest\nclass SampleTest(unittest.TestCase):\n def test_ok(self): self.assertEqual(1 + 1, 2)\n",
             encoding="utf-8",
         )
         self.workspace = ProposalWorkspace(
