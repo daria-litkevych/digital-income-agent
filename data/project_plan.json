@@ -89,13 +89,16 @@
       "phase": 3,
       "role": "market_researcher",
       "kind": "external_research",
-      "status": "queued",
+      "status": "done",
       "priority": 89,
       "depends_on": [
         "PM-001"
       ],
       "hypothesis": "shiftbrief_ai",
-      "acceptance": "At least five relevant products or substitutes with source, price, audience and core promise."
+      "acceptance": "At least five relevant products or substitutes with source, price, audience and core promise.",
+      "last_result": "Mapped six handover/logbook competitors and substitutes; official pricing pages checked for ShiftForce, Shifo, Venheim and Rotahr. See data/market_research.json and reports/market-research.md.",
+      "completed_at": "2026-11-12T14:30:12.485Z",
+      "updated_at": "2026-11-12T14:30:12.485Z"
     },
     {
       "id": "BA-001",
@@ -103,13 +106,16 @@
       "phase": 3,
       "role": "business_analyst",
       "kind": "external_research",
-      "status": "queued",
+      "status": "done",
       "priority": 80,
       "depends_on": [
         "MR-001",
         "MR-002"
       ],
-      "acceptance": "Pricing table distinguishes one-time, subscription, free and custom pricing."
+      "acceptance": "Pricing table distinguishes one-time, subscription, free and custom pricing.",
+      "last_result": "Compared visible one-time/free/subscription price anchors. Prices differ by currency, tax, venue/team size and scope; some older observations remain flagged for recheck.",
+      "completed_at": "2026-11-12T14:30:12.485Z",
+      "updated_at": "2026-11-12T14:30:12.485Z"
     },
     {
       "id": "BA-002",
@@ -117,13 +123,15 @@
       "phase": 3,
       "role": "business_analyst",
       "kind": "external_research",
-      "status": "queued",
+      "status": "in_progress",
       "priority": 79,
       "depends_on": [
         "MR-001",
         "MR-002"
       ],
-      "acceptance": "Pain-point list backed by reviews or first-hand community discussions."
+      "acceptance": "Pain-point list backed by reviews or first-hand community discussions.",
+      "last_result": "Initial qualitative signals captured: worker discussions show handover/missed-task friction and app fatigue; free café checklist substitutes mapped. Need stronger first-hand reviews/interviews before claiming recurring unmet demand.",
+      "updated_at": "2026-11-12T14:30:12.485Z"
     },
     {
       "id": "PS-001",
