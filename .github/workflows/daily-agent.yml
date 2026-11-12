@@ -26,14 +26,17 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run agent
+      - name: Collect research signals
         run: python -m agent.main
+
+      - name: Run Project Manager cycle
+        run: python -m agent.project_manager
 
       - name: Save state and report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/state.json reports/latest.md
+          git add data/state.json data/project_plan.json reports/latest.md reports/project-manager.md
           if ! git diff --cached --quiet; then
             git commit -m "Update research state and report"
             git push
