@@ -244,6 +244,12 @@
         "name": "Atomic Project Manager report persistence",
         "status": "implemented_pending_first_run",
         "evidence": "agent/project_manager.py and tests/test_project_manager.py"
+      },
+      {
+        "id": "AG-11",
+        "name": "Correct phase status precedence for blocked and failed tasks",
+        "status": "implemented_pending_first_run",
+        "evidence": "agent/project_manager.py and tests/test_project_manager.py"
       }
     ],
     "important_limit": "The current agent is deterministic and rules-based. It is not an LLM-powered autonomous researcher. Live browser/search and LLM reasoning require a separately approved integration; no paid API is enabled."
