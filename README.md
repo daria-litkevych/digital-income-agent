@@ -16,7 +16,7 @@ The repository contains a deterministic Python workflow agent. It does **not** c
 - `data/market_research.json` — sourced competitor and qualitative customer evidence.
 - `reports/` — human-readable agent and research reports.
 - `dashboard/` — private project dashboard and synchronized data snapshots.
-- `tests/` — standard-library unit tests.
+- `tests/` — standard-library unit and Project Manager integration tests.
 
 ## Execution flow
 
@@ -47,7 +47,7 @@ Only one task is executed per invocation. Failed tasks can be retried up to thre
 - The agent does not contact customers, publish products, spend money, provision paid services or change account settings.
 - No paid API, subscription, server or domain is required by the current workflow.
 - GitHub Actions runs on GitHub-hosted infrastructure; its usage is subject to the account's GitHub plan and limits.
-- The dashboard deploy must remain private. Do not move private project data to a public static host.
+- The dashboard deploy must remain private. Netlify auto-publishing is intentionally locked to prevent routine agent commits from triggering production deploys. Dashboard snapshots continue syncing in GitHub; publish manually only after an approved dashboard change. Do not move private project data to a public static host.
 
 ## Local test
 
