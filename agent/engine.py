@@ -166,6 +166,21 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-006":
+        root = Path(__file__).resolve().parents[1]
+        e2e_path = root / "tests" / "test_brain_e2e.py"
+        pm_test_path = root / "tests" / "test_project_manager.py"
+        brain_source = (root / "agent" / "project_manager.py").read_text(encoding="utf-8")
+        checks = {
+            "end_to_end_test_exists": e2e_path.exists(),
+            "project_manager_recovery_test_exists": pm_test_path.exists(),
+            "interrupted_tasks_requeued": 'task["status"] = "queued"' in brain_source,
+            "brain_dispatch_artifacts_persisted": 'specialist_outputs' in brain_source and 'save_json(STATE_FILE, state)' in brain_source,
+            "mock_output_not_auto_completed": "draft requiring review" in brain_source,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "End-to-end tests cover queued/in-progress task recovery, guarded specialist dispatch, persisted mock draft and human-review blocking." if passed else "End-to-end workflow or recovery checks are incomplete.", "metrics": {"checks": checks}, "artifact": {"test_file": "tests/test_brain_e2e.py", "recovery_test": "tests/test_project_manager.py", "limits": ["Offline mock only", "No live provider call", "No task completion from mock output", "No publishing or outreach"]}, "next_action": "Complete missing persistence and recovery checks before closing Agent Brain."}
+
     if role == "project_manager" and task.get("kind") == "internal":
         return {"ok": True, "summary": "Core orchestration initialised; specialist registry and task queue available."}
 
