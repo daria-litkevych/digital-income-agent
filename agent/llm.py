@@ -136,11 +136,9 @@ class OpenAICompatibleClient:
         reservation_id = request_id or str(uuid4())
         prompt_size = len(request.system) + len(request.user)
         estimated_input_tokens = (prompt_size + 3) // 4
-        reserved_cost = estimate_cost_usd(
-            estimated_input_tokens, request.max_output_tokens,
-            self.settings.input_price_per_million_usd or 0.0,
-            self.settings.output_price_per_million_usd or 0.0,
-        )
+        # Reserve the full configured per-call ceiling, not a tokenizer estimate.
+        # This is conservative but protects the monthly ceiling before network use.
+        reserved_cost = self.settings.max_cost_per_call_usd
         if self.spend_ledger is not None:
             self.spend_ledger.reserve(reservation_id, reserved_cost)
         endpoint = self.settings.base_url.rstrip("/") + "/chat/completions"
