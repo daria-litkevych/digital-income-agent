@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 47,
+  "run_count": 48,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T21:09:37.827887+00:00",
-  "research_last_run_utc": "2026-11-12T21:09:35.660436+00:00",
+  "last_run_utc": "2026-11-12T21:10:23.115692+00:00",
+  "research_last_run_utc": "2026-11-12T21:10:20.900009+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -192,12 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 44,
+  "pm_run_count": 45,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T21:09:37.827819+00:00",
-    "task_id": null,
-    "status": "no_eligible_tasks",
-    "summary": "No queued or retryable task has all dependencies completed."
+    "timestamp": "2026-11-12T21:10:23.115639+00:00",
+    "task_id": "AB-013",
+    "role": "quality_controller",
+    "status": "completed",
+    "summary": "Specialist tool permissions are now enforced by role at both discovery and invocation; cross-role access fails closed."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -365,7 +366,7 @@
         "id": 9,
         "name": "Autonomous studio capability",
         "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-        "status": "blocked"
+        "status": "in_progress"
       }
     ],
     "tasks": [
@@ -874,18 +875,17 @@
         "phase": 9,
         "role": "quality_controller",
         "kind": "tool_permissions",
-        "status": "blocked",
+        "status": "done",
         "priority": 108,
         "depends_on": [
           "AB-012"
         ],
         "acceptance": "Every registered tool declares allowed specialist roles; runtime filters visible tools and refuses cross-role invocation. Tests prove research, workspace and privileged actions cannot be used by the wrong role.",
-        "started_at": "2026-11-12T21:08:57.168796+00:00",
-        "last_result": "No safe executor is registered for AB-013.",
-        "updated_at": "2026-11-12T21:08:57.168836+00:00",
-        "attempts": 1,
-        "blocked_reason": "No safe executor is registered for AB-013.",
-        "next_action": "Register a handler and acceptance checks before scheduling this task."
+        "started_at": "2026-11-12T21:10:23.115425+00:00",
+        "last_result": "Specialist tool permissions are now enforced by role at both discovery and invocation; cross-role access fails closed.",
+        "updated_at": "2026-11-12T21:10:23.115639+00:00",
+        "attempts": 2,
+        "completed_at": "2026-11-12T21:10:23.115639+00:00"
       },
       {
         "id": "AB-014",
@@ -1410,6 +1410,29 @@
         ]
       },
       "next_action": "Run full end-to-end integration tests in offline mode, then perform a security and permission audit."
+    },
+    "AB-013": {
+      "ok": true,
+      "blocked": false,
+      "summary": "Specialist tool permissions are now enforced by role at both discovery and invocation; cross-role access fails closed.",
+      "metrics": {
+        "checks": {
+          "tool_role_allowlist_exists": true,
+          "runtime_filters_visible_tools_by_role": true,
+          "runtime_checks_role_before_invoke": true,
+          "research_tools_have_role_scopes": true,
+          "workspace_tools_have_role_scopes": true,
+          "permission_tests_exist": true,
+          "side_effects_still_approval_gated": true
+        }
+      },
+      "artifact": {
+        "runtime": "agent/tool_runtime.py",
+        "research_tools": "agent/research_tools.py",
+        "workspace_tools": "agent/workspace_tools.py",
+        "tests": "tests/test_tool_runtime.py"
+      },
+      "next_action": "Run the full offline autonomy integration and recovery suite."
     }
   },
   "event_log": [
@@ -1692,6 +1715,13 @@
       "task_id": null,
       "status": "no_eligible_tasks",
       "summary": "No queued or retryable task has all dependencies completed."
+    },
+    {
+      "timestamp": "2026-11-12T21:10:23.115639+00:00",
+      "task_id": "AB-013",
+      "role": "quality_controller",
+      "status": "completed",
+      "summary": "Specialist tool permissions are now enforced by role at both discovery and invocation; cross-role access fails closed."
     }
   ]
 }
