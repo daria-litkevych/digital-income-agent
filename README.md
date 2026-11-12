@@ -17,6 +17,8 @@ The repository contains a deterministic Python workflow agent. It does **not** c
 - `reports/` — human-readable agent and research reports.
 - `dashboard/` — private project dashboard and synchronized data snapshots.
 - `tests/` — standard-library unit and Project Manager integration tests.
+- `benchmarks/cases.json` and `agent/benchmark.py` — synthetic specialty-café task set and offline-first model benchmark runner.
+- `agent/spend_ledger.py` — SQLite monthly spend reservations and settlement guard for future paid calls.
 
 ## Execution flow
 
@@ -67,7 +69,8 @@ GitHub Actions runs the bounded workflow on the configured schedule or by manual
 ## LLM integration foundation
 
 - `agent/llm.py` defines a provider-neutral request/response contract and a deterministic offline mock.
-- Live provider calls are **not implemented or enabled**. No API key is read and no network request is made.
-- Per-request input/output limits and a verified-price cost preflight are included for a future client.
-- See [docs/LLM_INTEGRATION.md](docs/LLM_INTEGRATION.md) for the staged implementation and benchmark plan.
-- The mock is test scaffolding only; its output is never valid market evidence.
+- `OpenAICompatibleClient` exists, but it is **not connected** to role handlers or scheduled runs. The scheduled workflow remains offline; no provider request or charge is made by default.
+- A live request requires explicitly enabled settings, verified token prices, HTTPS, a per-call cap and a runtime API key supplied by a caller. No key is stored in the repository.
+- `SpendLedger` provides a SQLite monthly ceiling with pre-request reservations, but it is not yet wired into the live client. Treat live use as disabled until that integration is tested and explicitly approved.
+- `python -m agent.benchmark` runs four synthetic specialty-café tasks against the offline mock and writes `reports/benchmark-latest.json`. Outputs are labelled mock and are not market evidence. Model scoring is a manual review rubric, not an automatic quality claim.
+- See [docs/LLM_INTEGRATION.md](docs/LLM_INTEGRATION.md) for safeguards and the next integration gate.
