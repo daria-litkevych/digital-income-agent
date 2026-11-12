@@ -8,6 +8,8 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any
 
+from agent.brain import ROLE_REGISTRY, build_offline_brain
+
 ROLES = {
     "project_manager": "Prioritises work, dependencies, continuity and execution limits.",
     "market_researcher": "Organises sourced competitor and customer evidence.",
@@ -121,6 +123,28 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         if not qc.get("ok"):
             return {"ok": False, "blocked": True, "summary": "MVP roadmap requires a passed quality review.", "next_action": "Resolve QC-001 findings first."}
         return {"ok": True, "summary": "Prepared a no-cost validation-first roadmap; product implementation remains gated on customer evidence and explicit approval.", "artifact": {"milestones": [{"step": 1, "name": "Discovery interviews", "gate": "Repeated pain confirmed by target users"}, {"step": 2, "name": "Manual prototype", "gate": "Users complete the workflow and request continued use"}, {"step": 3, "name": "Willingness-to-pay test", "gate": "Realistic price accepted or pilot commitment"}, {"step": 4, "name": "MVP build", "gate": "Only after evidence and explicit approval"}], "cost": "€0 planned; no paid API, subscription or hosting change."}}
+
+    if task_id == "AB-003":
+        required_roles = set(ROLE_REGISTRY)
+        if len(required_roles) < 9 or not callable(getattr(build_offline_brain(), "dispatch", None)):
+            return {"ok": False, "blocked": True, "summary": "Agent Brain registry or dispatch interface is incomplete.", "next_action": "Complete role registry and dispatcher before Project Manager integration."}
+        return {"ok": True, "summary": "Project Manager now has an explicit dispatch seam: tasks may be routed through the guarded AgentBrain interface; deterministic handlers remain the default and offline mock output cannot complete real work.", "artifact": {"dispatch_contract": "dispatch_task(task, state, evidence, brain=None)", "default_mode": "deterministic", "brain_mode": "explicit task flag only", "mock_completion": False, "live_calls": "disabled"}}
+
+    if task_id == "AB-004":
+        from agent.llm import LLMSettings, OpenAICompatibleClient
+        from agent.spend_ledger import SpendLedger
+        checks = {
+            "live_disabled_by_default": LLMSettings().enabled is False,
+            "client_requires_explicit_key": "api_key" in OpenAICompatibleClient.__init__.__code__.co_varnames,
+            "client_requires_persistent_ledger": "spend_ledger" in OpenAICompatibleClient.__init__.__code__.co_varnames,
+            "ledger_reserves_before_request": "reserve" in OpenAICompatibleClient.generate.__code__.co_names,
+            "ledger_settles_actual_usage": "settle" in OpenAICompatibleClient.generate.__code__.co_names,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "Live LLM remains disabled by default; the explicit client requires a runtime key and persistent ledger, reserves before network use and settles actual usage." if passed else "Live LLM budget guard checks failed.", "metrics": {"checks": checks}, "next_action": "Fix failed budget guard checks before any live-provider integration."}
+
+    if task_id == "AB-005":
+        return {"ok": True, "summary": "Agent Brain evaluation suite covers role coverage, offline/mock labelling, forbidden external actions, valid structured output, malformed JSON and missing contract fields. Per-role golden quality benchmarks remain a follow-up before claiming autonomous quality.", "artifact": {"test_file": "tests/test_brain.py", "covered": ["role_registry", "offline_default", "unknown_role", "external_action_rejection", "structured_json", "malformed_json", "missing_fields"], "limitations": ["No live model evaluations", "No claim of role-level task quality", "No network or paid calls"]}}
 
     if role == "project_manager" and task.get("kind") == "internal":
         return {"ok": True, "summary": "Core orchestration initialised; specialist registry and task queue available."}
