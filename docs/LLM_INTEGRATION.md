@@ -11,8 +11,9 @@
   ledger. It reserves estimated cost before a call and replaces the
   reservation with actual reported cost after settlement. Unsettled
   reservations continue to consume budget, which is intentionally fail-safe.
-- The ledger is not yet wired into `OpenAICompatibleClient`; no live use is
-  authorized until this integration is completed and tested.
+- `OpenAICompatibleClient` now requires a `SpendLedger` instance. It reserves
+  the preflight estimate before network I/O and settles against provider usage.
+  Network/response failures leave the reservation committed for manual review.
 - `benchmarks/cases.json` contains four synthetic specialty-café tasks.
   `python -m agent.benchmark` runs them with the offline mock by default.
   The report labels mock output and leaves human scoring blank.
@@ -22,9 +23,9 @@
 - Live use is disabled by default and no API key is read from environment or
   repository files.
 - The scheduled workflow does not call an LLM provider.
-- A future live caller must explicitly supply enabled settings and a runtime
-  API key, use HTTPS, set verified input/output prices and obey per-call
-  request limits.
+- A live caller must explicitly supply enabled settings, a runtime API key
+  and a persistent `SpendLedger`, use HTTPS, set verified input/output prices
+  and obey per-call and monthly request limits.
 - The cost preflight is an estimate, not a guaranteed invoice ceiling.
   Provider tokenization, retries, taxes and billing rules may differ.
 - Monthly reservations are a second guard, not a substitute for provider-side
@@ -55,13 +56,10 @@ market evidence and must not be written into `data/market_research.json`.
 
 1. Verify one provider's official current model ID, prices, rate limits,
    API compatibility, privacy terms and EU data-processing terms.
-2. Wire the monthly ledger into the request lifecycle: reserve before network
-   I/O, settle from provider usage, retain failed/unsettled reservations, and
-   ensure duplicate request IDs cannot be charged twice.
-3. Add tests for timeout, HTTP errors, malformed responses, settlement,
-   concurrent reservations and monthly rollover.
-4. Run offline tests and inspect benchmark reports.
-5. Obtain explicit approval for the provider, model and maximum monthly
+2. Add tests for HTTP errors, timeout behaviour, concurrent reservations,
+   and provider-reported usage that exceeds the preflight estimate.
+3. Run offline tests and inspect benchmark reports.
+4. Obtain explicit approval for the provider, model and maximum monthly
    spend before configuring any runtime key or making a live request.
 
 No signup, key creation, payment, provider call, customer outreach or public
