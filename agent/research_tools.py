@@ -166,4 +166,5 @@ def build_research_tool_registry(
         ),
         required_arguments=("url",),
         allowed_arguments=("url",),
+        allowed_roles=("market_researcher", "business_analyst", "product_strategist", "quality_controller"),
     )])
