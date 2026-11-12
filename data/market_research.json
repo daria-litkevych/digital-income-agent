@@ -56,17 +56,35 @@
         "offer": "Sales, inventory, cost, cleaning, shift and expense logs",
         "source": "https://www.etsy.com/market/coffee_shop_checklist",
         "evidence_note": "Marketplace result showed 506 displayed review count; verify on product page."
+      },
+      {
+        "name": "Brewspace — Complete Coffee Shop Operations Checklist",
+        "type": "free direct substitute",
+        "price": "Free; no signup",
+        "audience": "Specialty coffee shops",
+        "offer": "74 recurring tasks across opening, closing, maintenance, quality control, compliance, safety, cleaning and management",
+        "source": "https://www.getbrewspace.com/resources/coffee-shop-opening-checklist/download/",
+        "evidence_note": "Public resource page; checklist is free and progress is saved in browser. Strong free substitute for a generic checklist pack."
+      },
+      {
+        "name": "AssignRight — Coffee Shop Checklist Templates",
+        "type": "free direct substitute / checklist software",
+        "price": "10 free checklist templates",
+        "audience": "Independent cafes and coffee shops",
+        "offer": "Opening, closing, cleaning, espresso machine maintenance, inventory, manager and shift handoff checklists",
+        "source": "https://www.assignright.com/checklists/coffee-shops",
+        "evidence_note": "Public template catalogue; free availability does not establish usage or customer demand."
       }
     ],
     "shiftbrief_ai": [
       {
         "name": "ShiftForce (formerly ShiftNote)",
         "type": "direct competitor",
-        "price": "From $40/location/month",
+        "price": "From $50/location/month (official pricing page)",
         "audience": "Restaurants, bars, hotels; especially multi-location operators",
         "offer": "Manager logbook, shift notes, tasks, schedules and staff messaging",
-        "source": "https://foodbusinessapps.com/sites/site/shiftnote",
-        "evidence_note": "Third-party product directory reviewed Sep 29 2026; vendor identity/price should be confirmed on current official site."
+        "source": "https://www.shiftforce.com/pricingshiftnote",
+        "evidence_note": "Official vendor pricing page: $50/month logbook plan, $100/month with scheduler, $150/month enterprise; unlimited employees per location."
       },
       {
         "name": "Front Desk",
@@ -75,34 +93,34 @@
         "audience": "Hotels and shift-based teams",
         "offer": "Shift handover and digital logbook with web and mobile apps",
         "source": "https://front-desk.fr/en/",
-        "evidence_note": "Vendor pricing page search result."
+        "evidence_note": "Pricing result observed in earlier scan; recheck official page before decision."
       },
       {
         "name": "Shifo",
         "type": "substitute / broader horeca platform",
-        "price": "€32/month excl. VAT Starter",
+        "price": "€32/month excl. VAT (15 team members; 3 sections)",
         "audience": "Dutch restaurants, hotels, cafes and bars",
         "offer": "Scheduling, tasks, time clock, recurring tasks, HACCP logbook and exports",
         "source": "https://shifo.nl/en",
-        "evidence_note": "Vendor pricing page; not a pure handover tool."
+        "evidence_note": "Official vendor pricing page; +€12/month per extra 10 users and +€6/month per extra section."
       },
       {
         "name": "Venheim Operations Logbook",
         "type": "substitute / broader operations platform",
-        "price": "Free Start; €39.90/site/month Pro",
+        "price": "Free Start (up to 5 staff); €39.90/site/month Pro",
         "audience": "Hospitality businesses",
         "offer": "Roster, time clock, team chat, onboarding, HACCP, inventory and reports",
-        "source": "https://venheim.com/en/operations-logbook",
-        "evidence_note": "Vendor pricing page; handover is adjacent to the wider operations logbook."
+        "source": "https://venheim.com/en",
+        "evidence_note": "Official vendor pricing page; Pro includes unlimited team and has €199 setup fee on monthly billing, waived annually."
       },
       {
         "name": "Rotahr",
         "type": "substitute / broader restaurant operations platform",
-        "price": "€49/month Starter; €89/month Pro",
+        "price": "€49/month incl. VAT Starter (up to 15 staff); €89 Pro",
         "audience": "Small cafes and independent restaurants",
         "offer": "Rota, daily brief, logbook, equipment register, messaging and AI features",
-        "source": "https://rotahr.com/",
-        "evidence_note": "Vendor pricing page."
+        "source": "https://rotahr.com/pricing",
+        "evidence_note": "Official pricing page; three months free, no card needed; broad operations suite, not handover-only."
       },
       {
         "name": "HospiX DS",
@@ -129,14 +147,35 @@
       "source": "https://www.reddit.com/r/KitchenConfidential/comments/1s1w644/does_everyone_use_apps_now_to_communicate/",
       "type": "community discussion",
       "limitation": "Anecdotal thread; mixed sentiment."
+    },
+    {
+      "hypothesis": "cafe_starter_kit",
+      "signal": "A specialty-coffee operations resource offers 74 free recurring tasks covering opening, closing, maintenance, quality control, compliance, safety, cleaning and management.",
+      "source": "https://www.getbrewspace.com/resources/coffee-shop-opening-checklist/download/",
+      "type": "competitor free resource",
+      "limitation": "Competitor positioning and available content only; no usage or willingness-to-pay data."
+    },
+    {
+      "hypothesis": "cafe_starter_kit",
+      "signal": "A checklist catalogue lists 10 free coffee-shop templates including opening, closing, espresso cleaning, inventory, manager and shift handoff.",
+      "source": "https://www.assignright.com/checklists/coffee-shops",
+      "type": "competitor free resource",
+      "limitation": "Catalogue page; does not establish adoption, customer satisfaction or conversion."
+    },
+    {
+      "hypothesis": "shiftbrief_ai",
+      "signal": "Official ShiftForce pricing starts at $50/location/month for logbook and shift notes, $100 with scheduling, and $150 enterprise.",
+      "source": "https://www.shiftforce.com/pricingshiftnote",
+      "type": "official competitor pricing",
+      "limitation": "USD pricing; not a like-for-like comparison with European vendors."
     }
   ],
   "early_findings": [
-    "Café checklist and SOP templates are already a crowded low-price marketplace category. Competing on generic checklists alone is unlikely to be attractive.",
-    "A potential differentiation for the café kit is a highly curated, specialty-coffee-specific workflow pack with exceptionally low setup friction and genuinely useful manager routines; this remains unvalidated.",
-    "ShiftBrief AI faces established direct and adjacent software competitors. Dutch horeca products already bundle tasks, logbooks, messaging and scheduling at roughly €32–€49/month at entry levels.",
-    "Community signals suggest a real communication/handover problem, but also highlight a product risk: too many notifications, app complexity and perceived micromanagement.",
-    "No willingness-to-pay conclusion can be drawn from this scan."
+    "Generic café checklists face not only cheap paid Etsy templates but also free, specialty-coffee-specific alternatives: Brewspace advertises 74 tasks at no charge and AssignRight lists 10 free café checklists. A paid generic checklist bundle is a weak proposition.",
+    "A paid café product would need a sharper job than providing checklists: for example, ready-to-use manager routines that reduce waste, improve consistency or onboard baristas faster, with proof that owners currently struggle and will pay.",
+    "ShiftBrief AI faces established handover and operations products. Official pricing examples include ShiftForce from $50/location/month, Shifo €32/month excl. VAT and Venheim free entry / €39.90 Pro; Rotahr is €49 incl. VAT and offers a broad suite.",
+    "Competitors bundle many functions. A narrow handover-first tool must prove that users want a separate lightweight workflow rather than another app; notification overload and app fatigue remain key risks.",
+    "Public product pages establish competitor supply and price anchors, not market size, sales, retention or willingness to pay."
   ],
-  "next_validation": "Interview or observe 5–8 independent specialty coffee shop owners/managers and 5–8 horeca shift leads; ask them to show current handover/checklist workflow before presenting a solution."
+  "next_validation": "Prioritise discovery before building. Interview or observe 5–8 independent specialty coffee shop owners/managers: ask them to show current opening/closing, stock/waste, quality and onboarding workflows; quantify time, errors and cost. In parallel, interview 5–8 shift leads about handover frequency, existing tools, missed items and app fatigue. Do not pitch until their current process is understood."
 }
