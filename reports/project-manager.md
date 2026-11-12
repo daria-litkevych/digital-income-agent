@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T20:50:44.653609+00:00
+**Last cycle:** 2026-11-12T20:52:15.355402+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 19 | Queued: 2 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 22
-- Last task: AB-005 (completed)
+- Completed: 19 | Queued: 1 | Running: 0 | Blocked: 2 | Failed: 0
+- Project Manager cycles: 23
+- Last task: AB-006 (blocked)
 
 ## Specialist registry
 
@@ -29,7 +29,7 @@
 - **6. Sales and launch assets** — planned: Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
 - **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
-- **9. Autonomous studio capability** — in_progress: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
+- **9. Autonomous studio capability** — blocked: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
 
 ## Task queue
 
@@ -43,7 +43,9 @@
   - Latest: Live LLM remains disabled by default; the explicit client requires a runtime key and persistent ledger, reserves before network use and settles actual usage.
 - **AB-005 · Build specialist evaluation suite and evidence-quality tests** — done · quality_controller
   - Latest: Agent Brain evaluation suite covers role coverage, offline/mock labelling, forbidden external actions, valid structured output, malformed JSON and missing contract fields. Per-role golden quality benchmarks remain a follow-up before claiming autonomous quality.
-- **AB-006 · Run end-to-end Agent Brain workflow and document autonomy limits** — queued · project_manager
+- **AB-006 · Run end-to-end Agent Brain workflow and document autonomy limits** — blocked · project_manager
+  - Latest: No safe executor is registered for AB-006.
+  - Next action: Register a handler and acceptance checks before scheduling this task.
 - **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher
   - Latest: Completed a first desk-research scan. Identified eight candidates across B2C, B2B and prosumer; this is directional evidence only, not validation or proof of sales.
 - **PM-001 · Build persistent Project Manager and specialist role registry** — done · project_manager

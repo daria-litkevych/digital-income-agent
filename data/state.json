@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 25,
+  "run_count": 26,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T20:50:44.653658+00:00",
-  "research_last_run_utc": "2026-11-12T20:50:42.496271+00:00",
+  "last_run_utc": "2026-11-12T20:52:15.355450+00:00",
+  "research_last_run_utc": "2026-11-12T20:52:12.916748+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -192,13 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 22,
+  "pm_run_count": 23,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T20:50:44.653609+00:00",
-    "task_id": "AB-005",
-    "role": "quality_controller",
-    "status": "completed",
-    "summary": "Agent Brain evaluation suite covers role coverage, offline/mock labelling, forbidden external actions, valid structured output, malformed JSON and missing contract fields. Per-role golden quality benchmarks remain a follow-up before claiming autonomous quality."
+    "timestamp": "2026-11-12T20:52:15.355402+00:00",
+    "task_id": "AB-006",
+    "role": "project_manager",
+    "status": "blocked",
+    "summary": "No safe executor is registered for AB-006."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -366,7 +366,7 @@
         "id": 9,
         "name": "Autonomous studio capability",
         "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-        "status": "in_progress"
+        "status": "blocked"
       }
     ],
     "tasks": [
@@ -747,13 +747,19 @@
         "phase": 9,
         "role": "project_manager",
         "kind": "end_to_end",
-        "status": "queued",
+        "status": "blocked",
         "priority": 115,
         "depends_on": [
           "AB-004",
           "AB-005"
         ],
-        "acceptance": "A complete task moves from queue through role dispatch, validated result, persisted artifact and report; interrupted runs recover; no unapproved API call, spend, outreach or publication occurs."
+        "acceptance": "A complete task moves from queue through role dispatch, validated result, persisted artifact and report; interrupted runs recover; no unapproved API call, spend, outreach or publication occurs.",
+        "started_at": "2026-11-12T20:52:15.355365+00:00",
+        "last_result": "No safe executor is registered for AB-006.",
+        "updated_at": "2026-11-12T20:52:15.355402+00:00",
+        "attempts": 1,
+        "blocked_reason": "No safe executor is registered for AB-006.",
+        "next_action": "Register a handler and acceptance checks before scheduling this task."
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -1199,6 +1205,13 @@
       "role": "quality_controller",
       "status": "completed",
       "summary": "Agent Brain evaluation suite covers role coverage, offline/mock labelling, forbidden external actions, valid structured output, malformed JSON and missing contract fields. Per-role golden quality benchmarks remain a follow-up before claiming autonomous quality."
+    },
+    {
+      "timestamp": "2026-11-12T20:52:15.355402+00:00",
+      "task_id": "AB-006",
+      "role": "project_manager",
+      "status": "blocked",
+      "summary": "No safe executor is registered for AB-006."
     }
   ]
 }
