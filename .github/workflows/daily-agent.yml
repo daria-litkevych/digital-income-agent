@@ -36,7 +36,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/state.json data/project_plan.json data/market_research.json reports/latest.md reports/project-manager.md
+          git add data/state.json data/project_plan.json data/market_research.json reports/latest.md reports/market-research.md reports/project-manager.md
           if ! git diff --cached --quiet; then
             git commit -m "Update research state and report"
             git push
