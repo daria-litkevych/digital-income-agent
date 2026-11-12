@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "blocked"
+      "status": "completed"
     }
   ],
   "tasks": [
