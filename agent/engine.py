@@ -166,6 +166,23 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-009":
+        root = Path(__file__).resolve().parents[1]
+        workspace_path = root / "agent" / "workspace_tools.py"
+        test_path = root / "tests" / "test_workspace_tools.py"
+        source = workspace_path.read_text(encoding="utf-8") if workspace_path.exists() else ""
+        checks = {
+            "temporary_workspace_exists": workspace_path.exists(),
+            "workspace_tests_exist": test_path.exists(),
+            "only_allowlisted_paths": "allowed_files" in source and "path traversal" in source,
+            "proposal_writes_not_repository_writes": "proposal_only" in source and "repository_modified" in source,
+            "test_modules_allowlisted": "allowed_tests" in source,
+            "test_timeout_enforced": "timeout=self.timeout_seconds" in source,
+            "no_claim_of_os_sandbox": "is_os_sandbox" in source and "not a hardened OS sandbox" in source,
+            "tools_explicitly_registered": "build_workspace_tool_registry" in source,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "Temporary proposal workspace tools are implemented with path allowlists, repository-isolated edits, allowlisted test modules and execution timeouts." if passed else "Workspace tool acceptance checks are incomplete.", "metrics": {"checks": checks}, "artifact": {"adapter": "agent/workspace_tools.py", "tests": "tests/test_workspace_tools.py", "limitations": ["Temporary workspace is not an OS security sandbox", "No shell, network, secrets, deployment or repository write tools", "Proposed edits require later review and explicit application"]}, "next_action": "Connect workspace tools to the bounded runtime only after reviewing the full tool permission model."}
     if task_id == "AB-008":
         root = Path(__file__).resolve().parents[1]
         source_path = root / "agent" / "research_tools.py"
