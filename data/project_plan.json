@@ -665,18 +665,16 @@
       "phase": 9,
       "role": "quality_controller",
       "kind": "tool_permissions",
-      "status": "blocked",
+      "status": "queued",
       "priority": 108,
       "depends_on": [
         "AB-012"
       ],
       "acceptance": "Every registered tool declares allowed specialist roles; runtime filters visible tools and refuses cross-role invocation. Tests prove research, workspace and privileged actions cannot be used by the wrong role.",
       "started_at": "2026-11-12T21:08:57.168796+00:00",
-      "last_result": "No safe executor is registered for AB-013.",
+      "last_result": "Re-queued after role-specific tool enforcement and acceptance tests were added.",
       "updated_at": "2026-11-12T21:08:57.168836+00:00",
-      "attempts": 1,
-      "blocked_reason": "No safe executor is registered for AB-013.",
-      "next_action": "Register a handler and acceptance checks before scheduling this task."
+      "attempts": 1
     },
     {
       "id": "AB-014",
