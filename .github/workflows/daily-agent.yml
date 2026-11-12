@@ -26,6 +26,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Run automated tests
+        run: python -m unittest discover -s tests -v
+
       - name: Collect research signals
         run: python -m agent.main
 
