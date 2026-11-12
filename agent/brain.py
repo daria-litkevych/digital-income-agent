@@ -99,6 +99,9 @@ class AgentBrain:
             raise BrainError(f"Unknown specialist role: {role}")
         if not task.strip():
             raise ValueError("Task description is required")
+        # Never invoke a live-capable client unless live mode was explicitly approved.
+        if not self.live_approved and not isinstance(self.client, OfflineMockClient):
+            raise BrainError("Live model client is not approved; refusing provider invocation.")
         task_lower = task.lower()
         if any(term in task_lower for term in FORBIDDEN_REQUESTS):
             raise BrainError("This task requests an external side effect; explicit approval is required outside the agent.")
