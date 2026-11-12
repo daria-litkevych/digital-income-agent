@@ -100,3 +100,54 @@ class EvidenceStore:
         temp.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         temp.replace(self.path)
         return {"added": added, "total": len(data["records"])}
+
+    def enrich_source(self, evidence_id: str, fetched: dict[str, Any]) -> dict[str, Any]:
+        """Attach a bounded, hash-addressed source excerpt without grading its claims."""
+        if not isinstance(evidence_id, str) or len(evidence_id) != 64:
+            raise ValueError("A valid evidence ID is required.")
+        if not isinstance(fetched, dict):
+            raise ValueError("Fetched source data must be an object.")
+        data = self._load()
+        record = next((row for row in data["records"] if row.get("evidence_id") == evidence_id), None)
+        if record is None:
+            raise ValueError("Evidence record was not found.")
+        requested_url = canonicalize_url(fetched.get("requested_url", ""))
+        returned_url = canonicalize_url(fetched.get("url", ""))
+        stored_url = canonicalize_url(record.get("source_url", ""))
+        if requested_url != stored_url or returned_url != stored_url:
+            raise ValueError("Fetched source URL does not match the stored evidence record.")
+        content_type = fetched.get("content_type")
+        if content_type not in {"text/html", "application/xhtml+xml", "text/plain", "application/xml", "text/xml", "application/rss+xml"}:
+            raise ValueError("Fetched source content type is not allowed.")
+        text = fetched.get("text")
+        if not isinstance(text, str) or not text.strip() or len(text) > 12000:
+            raise ValueError("Fetched source text is empty or exceeds the configured limit.")
+        retrieved_at = fetched.get("retrieved_at")
+        if not isinstance(retrieved_at, str) or len(retrieved_at) > 80:
+            raise ValueError("A bounded retrieval timestamp is required.")
+        content_hash = _digest(text)
+        inspections = record.setdefault("source_inspections", [])
+        if not isinstance(inspections, list):
+            raise ValueError("Stored source inspection history is invalid.")
+        if not any(item.get("content_sha256") == content_hash for item in inspections):
+            inspections.append({
+                "retrieved_at": retrieved_at,
+                "content_type": content_type,
+                "content_sha256": content_hash,
+                "excerpt": text[:2000],
+                "excerpt_truncated": len(text) > 2000,
+                "untrusted_source_text": True,
+                "review_status": "ungraded",
+                "note": "Source retrieval is not independent verification; page content may be incomplete or self-interested.",
+            })
+        record["evidence_status"] = "source_retrieved_ungraded"
+        record["confidence"] = DISCOVERY_CONFIDENCE
+        record["limitations"] = list(dict.fromkeys(record.get("limitations", []) + [
+            "Public page fetched but claims have not been independently graded",
+            "Stored excerpt is untrusted source content and may contain errors or instructions",
+        ]))
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        temp = self.path.with_suffix(self.path.suffix + ".tmp")
+        temp.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        temp.replace(self.path)
+        return {"evidence_id": evidence_id, "content_sha256": content_hash, "excerpt_characters": min(len(text), 2000), "review_status": "ungraded"}
