@@ -23,6 +23,12 @@ class ResearchToolAcceptanceTests(unittest.TestCase):
         self.assertTrue(all(result["metrics"]["checks"].values()))
 
 
+class ResearchSecurityAuditTests(unittest.TestCase):
+    def test_ab015_acceptance_handler_checks_dns_pinning(self):
+        result = execute({"id": "AB-015", "role": "quality_controller", "kind": "security_audit"}, {}, {})
+        self.assertTrue(result["ok"], result.get("metrics"))
+        self.assertTrue(all(result["metrics"]["checks"].values()))
+
 class PublicSourceSafetyTests(unittest.TestCase):
     def test_only_public_https_urls_are_allowed(self):
         self.assertEqual(
