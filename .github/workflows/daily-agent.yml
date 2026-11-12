@@ -59,8 +59,12 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Update research state and report"
             for attempt in 1 2 3; do
-              git pull --rebase origin main && git push && exit 0
-              echo "Push attempt ${attempt} failed; retrying after rebase."
+              git fetch origin main
+              if git rebase -X theirs origin/main && git push; then
+                exit 0
+              fi
+              git rebase --abort || true
+              echo "Push attempt ${attempt} failed; retrying with generated state preferred on conflicts."
               sleep 2
             done
             echo "Could not push generated state after three attempts."
