@@ -174,8 +174,12 @@ class AgentToolRuntime:
                             input_tokens=0, output_tokens=0,
                             estimated_cost_usd=0.0, is_mock=False,
                         )
+                validation_context = {
+                    **context,
+                    "tool_observations": transcript,
+                }
                 validated = AgentBrain(ReplayClient(), live_approved=True).dispatch(
-                    role, task, context
+                    role, task, validation_context
                 )
                 validated["tool_trace"] = transcript
                 validated["tool_steps"] = step + 1
