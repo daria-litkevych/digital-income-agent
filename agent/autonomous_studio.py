@@ -14,6 +14,7 @@ from typing import Any, Callable
 from agent.llm import LLMSettings, OpenAICompatibleClient
 from agent.orchestrator import MultiAgentOrchestrator
 from agent.research_tools import build_research_tool_registry
+from agent.evidence_store import EvidenceStore
 from agent.spend_ledger import SpendLedger
 from agent.tool_runtime import AgentToolRuntime, ToolRegistry
 from agent.workspace_tools import ProposalWorkspace, build_workspace_tool_registry
@@ -78,7 +79,8 @@ def build_live_studio(
     client = OpenAICompatibleClient(settings, api_key, ledger)
 
     workspace = ProposalWorkspace(repository_root)
-    research_tools = build_research_tool_registry()
+    evidence_store = EvidenceStore(Path(repository_root) / "data" / "evidence_store.json")
+    research_tools = build_research_tool_registry(evidence_store=evidence_store)
     workspace_tools = build_workspace_tool_registry(workspace)
     registry = ToolRegistry(
         list(research_tools._tools.values()) + list(workspace_tools._tools.values())
