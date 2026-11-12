@@ -2,7 +2,7 @@
 
 Reservations count against the monthly ceiling before a request is sent. An
 unsettled reservation remains charged against the available budget (fail-safe).
-This module is not wired into the agent or any provider call yet.
+The live provider client reserves the full per-call ceiling before network use and settles reported usage afterwards.
 """
 from __future__ import annotations
 
