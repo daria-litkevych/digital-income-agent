@@ -1,58 +1,86 @@
 # Digital Income Agent — Research Report
 
-Generated: 2026-11-12T15:57:38.618025+00:00
+Generated: 2026-11-12T16:11:46.477100+00:00
 
 ## Executive snapshot
 
-- New articles this run: 0
-- Relevant articles stored: 5
+- New articles this run: 3
+- Relevant articles stored: 8
 - Collection errors: 0
 - Research window: approximately the last 12 months
 
-> Important: news coverage is a discovery signal, not proof of customer demand or willingness to pay. The next validation step is competitor/pricing research and direct conversations with café owners or managers.
+> Important: news coverage is only a discovery signal, not proof of customer demand or willingness to pay. Research now spans B2C, B2B and prosumer categories; source checks, customer evidence and validation are separate tasks.
 
-## 1. Small Café Manager Starter Kit
+## B2C
 
-Relevant items found: 1
+### Consumer life admin and focus tools
 
-### The high cost of high turnover: How barista retention is stalling coffee shop growth across the US - Coffee Intelligence
-- Date: 2026-06-03
+Relevant news items stored: 0
+
+No sufficiently relevant articles found in this run.
+
+### Personal finance decision tools
+
+Relevant news items stored: 1
+
+#### I turned NotebookLM into my personal finance coach — and it called out my worst money habits - Android Police
+- Date: 2025-12-26
 - Relevance score: 2
-- Matched topics: coffee shop, cost
-- Search: independent coffee shop owner operational challenges costs labor
-- Source: https://news.google.com/rss/articles/CBMifkFVX3lxTFBVcVdPYUdQamhxWEJ3RkoyRUQyVDNYTlU3VnlIVmFoU3gxVHVhbE95dThic0xDaDc3NlI2VkxhM0NZamRQWDhzSXN3V2NFOWE5d19ZbmdfTXIyc3BKaXQzeTh2STFHWjYxWWMzYWswaDl3Z0NvT09VVzNSSlFSdw?oc=5
+- Matched topics: personal finance, money
+- Search: personal finance budget spreadsheet savings calculator irregular expenses tool
+- Source: https://news.google.com/rss/articles/CBMihAFBVV95cUxON1BkYkNoSTZ3NVdkejQ2VnVHdlZSNE9WcV9jbXQ3WGwtMjdBX2NoTTk5OEd5NWtYZmVKTjhFbWRNQUlSQ1k0UUR1TkhUNFFaX2JtOU9ZWnMyQVpCcHY1NnRHaXBaQmhSMXVPWWNCOEpKNWRHTk82QlhDblNlWlZNcG42NUI?oc=5
 
-## 2. ShiftBrief AI
+### Wedding planning workflows
 
-Relevant items found: 4
+Relevant news items stored: 0
 
-### HN TV: Why Running Hotel Operations on WhatsApp Is the Equivalent of Managing Your Business on Personal Gmail — A Conversation with Guy Weiss, CEO of Zenzap - Hospitality Net
-- Date: 2026-06-17
-- Relevance score: 3
-- Matched topics: hospitality, hotel, operations
-- Search: hospitality operations frontline employee communication shift change problems
-- Source: https://news.google.com/rss/articles/CBMioAJBVV95cUxNa1hOVzlwWk1mMXdEaFdCNUV3dERobnBvWkIwcDZMUUZ6UzNJQ1JXanctbVlPb0FGamdvNmtFVG01ZlFlclJXTG1kUEc5SFRBaDIyUmZLT3RwQnBqdDZCdmk3NnF6NEdwTm05MXdGWTBUNWJzREl3MGJRd2pNRlBIaGU0RVZjNkZwZGpOU08tNWluVTZqNmlRTzhsUndYbDZpY19pNnV3SjRtUUtDZzlFdkVIUnpHYUg2dVVWVEctaEhZbWV4dzZMTEEzdVRzcWtuLTdULUJGY0RHMHphR29kczNZOEluVFoyREFEbEYwQjQ0NlVQOTRjbU5UM0kyUlNXeHVqN1o0aUZCNFBWM2tkOXpGaU1lNTJ3UkNiN3BoRzg?oc=5
+No sufficiently relevant articles found in this run.
 
-### Relay Raises $36M to Expand AI Platform for Frontline Operations - citybiz
-- Date: 2026-09-30
+## B2B
+
+### Micro-business administration
+
+Relevant news items stored: 0
+
+No sufficiently relevant articles found in this run.
+
+### Small service business operations
+
+Relevant news items stored: 2
+
+#### The Best Scheduling Tools for Small Businesses and Startups - Salesforce
+- Date: 2026-01-14
 - Relevance score: 2
-- Matched topics: frontline, operations
-- Search: hospitality operations frontline employee communication shift change problems
-- Source: https://news.google.com/rss/articles/CBMipAFBVV95cUxPU2lqd2tWeWpoRDFnV0N4cWY5N3AtcGpWR1lfNHNUMVR3aDRUbUlzU04tYmlDS1owR3A4WWpMa1E4QVU3SUFMNFlqQ0VIUjRkSGdoOFJuWjNCQTFIZV83ZDNNUERqQ2JKN1RHM2I3M201a290MDdrbnkxWEdkbVZ1dFowQml0SXNwajEwQm1GN2p6RmxTWTgxcWJicXlWNy1paXFWcQ?oc=5
+- Matched topics: scheduling, small business
+- Search: small service business scheduling client management recurring admin workflow software
+- Source: https://news.google.com/rss/articles/CBMifEFVX3lxTE9SdmJWOWl0eWYxWFMwbkxwLUlVV0UxdEsyQ0dGZkRRVXJidTlMZDVwM2RGWXl0V29kS04zVEFTM3dnRm84cFdDTjhFeG1NWFNMSzQwanhGWGlNekZRSlp0U3JJbWJUNTQwY1VNSE0zN215djMxb0k3TFFQeGk?oc=5
 
-### Blink Raises $17 Million and Partners With Shake Shack to Advance Frontline Workforce Technology for Restaurants - Restaurant Technology News
-- Date: 2026-06-27
+#### I Reviewed 7 Best Free Appointment Scheduling Tools - G2 Learn Hub
+- Date: 2025-12-11
 - Relevance score: 2
-- Matched topics: frontline, restaurant
-- Search: hospitality operations frontline employee communication shift change problems
-- Source: https://news.google.com/rss/articles/CBMi7gFBVV95cUxOTUJiTkQ5aWJTc2ltYlBvdjFBZjg5cWVqU0JWY1FaUTJPUjFOZEE2YkNLVllRcGR1bVFmRjdDR29tbFNFZkJqVEx4T2pzdUFEWXp5MHBDenNrRjJkQjZqN3RNdV9HLUtIYlpxWUREYlpzUlNsWWtXdjUxQXRfdTFmdWJIQS1MT1hzTmFIR1FIa3h0YzhaNTRRbGdwS1NFNUtwWWlQZUZXMC1LNGI0bVhDX083MkctelZZYl8zeENURG9XYmhVcTBHLVV5cHJPbHk2SWpNT3p2eVNaUnpKcTl6M0FPeUxwWklMOUJ4WlZB?oc=5
+- Matched topics: scheduling, appointment
+- Search: small service business scheduling client management recurring admin workflow software
+- Source: https://news.google.com/rss/articles/CBMib0FVX3lxTE5XeFloM3lmUEdaOXJ5dFlLNVZRallmUWpBSzZxYmtxbTZuNkFsWEhnRmM4MjNnb1BKcHNYem5NcmltbzJPUHpoOUliN3p5Tk1hXzJfbDJneHdFcTJrWXpuUzM0NGRUdzJlQ0dZNGhtb9IBf0FVX3lxTFBJVnhXYnh6QXdlUDhabjJ0Ujl1eHk0b3ZrNUNSQUlRSzB0Z3pQWDV4RG0wdkxVbWFXNUlzTHE3QXZsdDNQcWVrLUhEY2tkQWhGMXVJd2tzcHpUTWtaWE1IQWl5d1hnUS00TVZqdFcyZ0RwUkQ2bVBCaW9OeWxtT2s?oc=5
 
-### Enhancing Processes in the Hospitality Sector Through Operational Excellence: A Strategic Framework for Future-Ready Hotels - Hospitality Net
-- Date: 2026-05-05
-- Relevance score: 2
-- Matched topics: hospitality, hotel
-- Search: hospitality operations frontline employee communication shift change problems
-- Source: https://news.google.com/rss/articles/CBMi_gFBVV95cUxNRG9oMUdhSmVIWFR3Xy1tVnFlQWx5VmJYd19jUUhUUmRHM1JKcEY0WWFSdERlYlVwbE5EYzFJUFpta3Raa2RrZGkxMktsZ2hUZEVOVHY4NUF0eldDdGRMcVdUMVk5MU15cE5PMVdmZDFPQ0hhQV9rX19rd1N3T2VaQmh3WkVZeVNnWWRUdGlJaF9jY1plbnY0ZGMwWkRTbG95NF9QTm1xUjlLamZ3Zm1jTzNtNUpLcFRLaklYUXF2NUFqNGUxMFZ2Ykw2R002bjhrb3B1cm5LUE41ZVoyZ1FnQ0NmX3d3bmYwemhNSXJmd1BKOHdkZTVsYkhubGN4dw?oc=5
+### Café and hospitality operations
+
+Relevant news items stored: 0
+
+No sufficiently relevant articles found in this run.
+
+## Prosumer
+
+### Freelancer scope and pricing workflows
+
+Relevant news items stored: 0
+
+No sufficiently relevant articles found in this run.
+
+### Creator and independent professional workflows
+
+Relevant news items stored: 0
+
+No sufficiently relevant articles found in this run.
 
 ## Collection limitations
 

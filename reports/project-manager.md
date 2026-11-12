@@ -1,13 +1,13 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-12T15:57:40.972837+00:00
+**Last cycle:** 2026-11-12T16:11:49.141229+00:00
 
-**Goal:** Build a low-cost, mostly automated digital product business targeting €1,000/month within five years.
+**Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 8 | Queued: 0 | Running: 0 | Blocked: 0 | Failed: 0
-- Project Manager cycles: 7
+- Completed: 9 | Queued: 0 | Running: 0 | Blocked: 0 | Failed: 0
+- Project Manager cycles: 8
 - Last task: None (no_eligible_tasks)
 
 ## Specialist registry
@@ -20,27 +20,43 @@
 
 ## Phases
 
-- **1. Cloud infrastructure** — completed: Private repository, persistent data, cloud execution and cost guardrails
-- **2. Agent brain** — completed: Orchestrator, specialist roles, memory, task queue and resume logic
-- **3. Automated research** — completed: Search, browser research, evidence capture and source checks
-- **4. Scheduling and reports** — completed: Five bounded daily cycles, saved results and notifications
-- **5. Management dashboard** — planned: Connect the MVP to persistent project data and show actual agent progress
+- **0. Existing workflow foundation** — completed: Private repository, deterministic orchestration, scheduled RSS discovery, reports, dashboard and spend guardrails; this is not yet an autonomous LLM studio.
+- **1. Cross-market opportunity discovery** — completed: Scan B2C, B2B and prosumer markets; collect competitor, pricing, pain-point and substitute evidence; score evidence quality.
+- **2. Demand validation and opportunity selection** — planned: Narrow the best candidates, identify target users, test current workarounds and willingness to pay before committing to a build.
+- **3. Product requirements and design** — planned: Create a concise PRD, user journey, prototype, acceptance criteria and smallest useful MVP.
+- **4. Product development** — planned: Build a working product in its own product folder with reproducible setup and documentation.
+- **5. Quality assurance** — planned: Test core flows, edge cases, accessibility, mobile usability, privacy and reliability.
+- **6. Sales and launch assets** — planned: Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.
+- **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
+- **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
+- **9. Autonomous studio capability** — planned: Connect guarded AI specialist roles to the workflow, with human approval gates, spend limits, traceable outputs and evals.
 
 ## Task queue
 
+- **DS-001 · Run initial cross-market opportunity scan across B2C, B2B and prosumer** — done · market_researcher
+  - Latest: Completed a first desk-research scan. Identified eight candidates across B2C, B2B and prosumer; this is directional evidence only, not validation or proof of sales.
 - **PM-001 · Build persistent Project Manager and specialist role registry** — done · project_manager
+- **DS-002 · Build comparable opportunity scorecard and rank candidates** — planned · business_analyst
+- **DS-003 · Deep-dive top three opportunities and identify validation experiments** — planned · market_researcher
 - **MR-001 · Map direct competitors and substitutes for café starter kit** — done · market_researcher
   - Latest: Initial sourced competitor scan saved: 6 café template products/substitutes. See data/market_research.json; this is discovery evidence, not proof of sales.
 - **MR-002 · Map direct competitors and substitutes for ShiftBrief AI** — done · market_researcher
   - Latest: Mapped six handover/logbook competitors and substitutes; official pricing pages checked for ShiftForce, Shifo, Venheim and Rotahr. See data/market_research.json and reports/market-research.md.
+- **DS-004 · Recommend one first MVP based on evidence and buildability** — planned · product_strategist
 - **BA-001 · Compare competitor pricing and business models** — done · business_analyst
   - Latest: Compared visible one-time/free/subscription price anchors. Prices differ by currency, tax, venue/team size and scope; some older observations remain flagged for recheck.
+- **DS-005 · Create product-specific workspace and product requirements** — planned · product_designer
 - **BA-002 · Identify recurring customer complaints and unmet needs** — done · business_analyst
   - Latest: Added first-hand/community discussion evidence for café stock consistency, staffing/owner overload and food waste, plus a hotel shift-handover example where buried notes led to forgotten guest requests. Evidence remains anecdotal and does not establish willingness to pay.
+- **DS-006 · Build the first usable MVP** — planned · developer
+- **DS-007 · Test MVP and fix release-blocking issues** — planned · quality_controller
 - **PS-001 · Compare the two hypotheses and choose the cheapest demand test** — done · product_strategist
   - Latest: Compared both hypotheses. Willingness to pay is not demonstrated for either; recommend discovery interviews before choosing or building.
+- **DS-008 · Prepare sales page and marketplace listing package** — planned · growth_launch
+- **DS-009 · Obtain explicit approval and publish first product** — planned · project_manager
 - **QC-001 · Quality review of market evidence and recommendation** — done · quality_controller
   - Latest: Quality review passed. Evidence is explicitly labelled anecdotal and no paid service is required.
+- **DS-010 · Review launch metrics and decide iteration** — planned · business_analyst
 - **PM-002 · Prepare first product MVP scope and launch roadmap** — done · project_manager
   - Latest: Prepared a no-cost validation-first roadmap; product implementation remains gated on customer evidence and explicit approval.
 

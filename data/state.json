@@ -1,20 +1,20 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 10,
+  "run_count": 11,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T15:57:40.972888+00:00",
-  "research_last_run_utc": "2026-11-12T15:57:38.618025+00:00",
+  "last_run_utc": "2026-11-12T16:11:49.141279+00:00",
+  "research_last_run_utc": "2026-11-12T16:11:46.477100+00:00",
   "research_queries": [
-    "\"specialty coffee\" cafe operations staff training",
-    "\"coffee shop\" \"daily checklist\" OR \"opening checklist\" OR \"closing checklist\"",
-    "\"specialty cafe\" staff retention OR training OR workflow OR inventory",
-    "independent coffee shop owner operational challenges costs labor",
-    "restaurant hospitality shift handover log communication software",
-    "hotel restaurant staff shift notes task handoff app",
-    "\"restaurant shift report\" OR \"daily shift report\" software",
-    "hospitality operations frontline employee communication shift change problems"
+    "consumer daily planning focus life admin app spreadsheet template",
+    "personal finance budget spreadsheet savings calculator irregular expenses tool",
+    "wedding planning guest list RSVP budget vendor seating spreadsheet tool",
+    "small business invoicing quoting payment reminders admin automation software",
+    "small service business scheduling client management recurring admin workflow software",
+    "independent cafe coffee shop hospitality operations staffing inventory waste workflow",
+    "freelancer consultant scope creep pricing quotes change requests client work",
+    "creator freelancer content business workflow client deliverables digital tools"
   ],
-  "research_new_items": 0,
+  "research_new_items": 3,
   "research_errors": [],
   "research_items": [
     {
@@ -87,16 +87,67 @@
         "hotel"
       ],
       "published_date": "2026-05-05"
+    },
+    {
+      "title": "The Best Scheduling Tools for Small Businesses and Startups - Salesforce",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9SdmJWOWl0eWYxWFMwbkxwLUlVV0UxdEsyQ0dGZkRRVXJidTlMZDVwM2RGWXl0V29kS04zVEFTM3dnRm84cFdDTjhFeG1NWFNMSzQwanhGWGlNekZRSlp0U3JJbWJUNTQwY1VNSE0zN215djMxb0k3TFFQeGk?oc=5",
+      "published": "Wed, 14 Jan 2026 08:00:00 GMT",
+      "description": "The Best Scheduling Tools for Small Businesses and Startups Salesforce",
+      "query": "small service business scheduling client management recurring admin workflow software",
+      "hypothesis": "b2b_service_ops",
+      "segment": "B2B",
+      "relevance_score": 2,
+      "matched_terms": [
+        "scheduling",
+        "small business"
+      ],
+      "published_date": "2026-01-14"
+    },
+    {
+      "title": "I turned NotebookLM into my personal finance coach — and it called out my worst money habits - Android Police",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxON1BkYkNoSTZ3NVdkejQ2VnVHdlZSNE9WcV9jbXQ3WGwtMjdBX2NoTTk5OEd5NWtYZmVKTjhFbWRNQUlSQ1k0UUR1TkhUNFFaX2JtOU9ZWnMyQVpCcHY1NnRHaXBaQmhSMXVPWWNCOEpKNWRHTk82QlhDblNlWlZNcG42NUI?oc=5",
+      "published": "Fri, 26 Dec 2025 08:00:00 GMT",
+      "description": "I turned NotebookLM into my personal finance coach — and it called out my worst money habits Android Police",
+      "query": "personal finance budget spreadsheet savings calculator irregular expenses tool",
+      "hypothesis": "b2c_personal_finance",
+      "segment": "B2C",
+      "relevance_score": 2,
+      "matched_terms": [
+        "personal finance",
+        "money"
+      ],
+      "published_date": "2025-12-26"
+    },
+    {
+      "title": "I Reviewed 7 Best Free Appointment Scheduling Tools - G2 Learn Hub",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5XeFloM3lmUEdaOXJ5dFlLNVZRallmUWpBSzZxYmtxbTZuNkFsWEhnRmM4MjNnb1BKcHNYem5NcmltbzJPUHpoOUliN3p5Tk1hXzJfbDJneHdFcTJrWXpuUzM0NGRUdzJlQ0dZNGhtb9IBf0FVX3lxTFBJVnhXYnh6QXdlUDhabjJ0Ujl1eHk0b3ZrNUNSQUlRSzB0Z3pQWDV4RG0wdkxVbWFXNUlzTHE3QXZsdDNQcWVrLUhEY2tkQWhGMXVJd2tzcHpUTWtaWE1IQWl5d1hnUS00TVZqdFcyZ0RwUkQ2bVBCaW9OeWxtT2s?oc=5",
+      "published": "Thu, 11 Dec 2025 08:00:00 GMT",
+      "description": "I Reviewed 7 Best Free Appointment Scheduling Tools G2 Learn Hub",
+      "query": "small service business scheduling client management recurring admin workflow software",
+      "hypothesis": "b2b_service_ops",
+      "segment": "B2B",
+      "relevance_score": 2,
+      "matched_terms": [
+        "scheduling",
+        "appointment"
+      ],
+      "published_date": "2025-12-11"
     }
   ],
   "research_hypotheses": {
-    "cafe_starter_kit": "Small Café Manager Starter Kit",
-    "shiftbrief_ai": "ShiftBrief AI"
+    "b2c_life_admin": "Consumer life admin and focus tools",
+    "b2c_personal_finance": "Personal finance decision tools",
+    "b2c_wedding": "Wedding planning workflows",
+    "b2b_microbusiness_admin": "Micro-business administration",
+    "b2b_service_ops": "Small service business operations",
+    "b2b_cafe_ops": "Café and hospitality operations",
+    "prosumer_freelancer": "Freelancer scope and pricing workflows",
+    "prosumer_creator": "Creator and independent professional workflows"
   },
-  "research_method": "Google News RSS, last 365 days, keyword relevance score >= 2",
-  "pm_run_count": 7,
+  "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
+  "pm_run_count": 8,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T15:57:40.972837+00:00",
+    "timestamp": "2026-11-12T16:11:49.141229+00:00",
     "task_id": null,
     "status": "no_eligible_tasks",
     "summary": "No queued or retryable task has all dependencies completed."
@@ -111,7 +162,7 @@
   },
   "project_plan": {
     "name": "Online Passive Income",
-    "goal": "Build a low-cost, mostly automated digital product business targeting €1,000/month within five years.",
+    "goal": "Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.",
     "constraints": {
       "initial_budget_eur": 50,
       "preferred_monthly_cost_eur": 10,
@@ -120,47 +171,153 @@
     },
     "hypotheses": [
       {
+        "id": "adhd_life_admin",
+        "name": "Low-friction life-admin toolkit",
+        "audience": "Consumers who struggle with planning and recurring admin",
+        "segment": "B2C",
+        "format": "Interactive web tool or simple spreadsheet/template",
+        "problem_hypothesis": "Existing planning systems can be too complex to start and maintain; a narrow tool may reduce setup and decision friction.",
+        "status": "discovery_candidate",
+        "validation": "Find first-hand complaints, compare free alternatives, test a clickable/manual prototype and price acceptance.",
+        "note": "Illustrative hypothesis only; not validated."
+      },
+      {
+        "id": "personal_finance_tool",
+        "name": "Simple personal-finance decision calculator",
+        "audience": "Consumers managing irregular expenses, budgets or savings goals",
+        "segment": "B2C",
+        "format": "Calculator or spreadsheet",
+        "problem_hypothesis": "People need a clear answer to a specific money decision without setting up a full finance app.",
+        "status": "discovery_candidate",
+        "validation": "Identify one repeated decision, check existing free calculators and test usefulness with target users.",
+        "note": "Illustrative hypothesis only; avoid regulated financial advice."
+      },
+      {
+        "id": "wedding_ops_kit",
+        "name": "Modular wedding planning toolkit",
+        "audience": "DIY couples organising a wedding",
+        "segment": "B2C",
+        "format": "Spreadsheet plus focused mini-tools",
+        "problem_hypothesis": "Generic mega-planners can be unwieldy; separate guest, budget, vendor and seating workflows may be easier to use.",
+        "status": "discovery_candidate",
+        "validation": "Investigate specific spreadsheet failure points and test one module rather than a broad planner.",
+        "note": "Illustrative hypothesis only; existing free tools are strong substitutes."
+      },
+      {
+        "id": "freelancer_scope_pricing",
+        "name": "Freelancer scope and pricing calculator",
+        "audience": "Freelancers and independent service providers",
+        "segment": "Prosumer",
+        "format": "Interactive calculator and client-ready scope summary",
+        "problem_hypothesis": "Scope creep and unclear change requests can turn into unpaid work; a lightweight estimator/change-order workflow may help.",
+        "status": "discovery_candidate",
+        "validation": "Research repeated first-hand examples, existing contracts/calculators and willingness to pay.",
+        "note": "Illustrative hypothesis only."
+      },
+      {
+        "id": "microbusiness_admin",
+        "name": "Micro-business admin workflow kit",
+        "audience": "Solo operators and small service businesses",
+        "segment": "B2B",
+        "format": "Templates, calculators and lightweight workflow tool",
+        "problem_hypothesis": "Recurring invoicing, reminders, quoting and record reconciliation create admin burden.",
+        "status": "discovery_candidate",
+        "validation": "Choose one narrow recurring workflow; map current tools and test whether owners pay to remove it.",
+        "note": "Illustrative hypothesis only; do not handle payments or sensitive records in the first MVP."
+      },
+      {
+        "id": "creator_ops",
+        "name": "Creator workflow utilities",
+        "audience": "Independent creators and small content businesses",
+        "segment": "Prosumer",
+        "format": "Content planning, pricing or asset workflow tool",
+        "problem_hypothesis": "Creators repeatedly coordinate content, client work and deliverables across disconnected tools.",
+        "status": "discovery_candidate",
+        "validation": "Look for one measurable bottleneck with existing spend or workaround.",
+        "note": "Illustrative hypothesis only."
+      },
+      {
         "id": "cafe_starter_kit",
         "name": "Small Café Manager Starter Kit",
         "audience": "Independent specialty coffee shops",
-        "value": "Very simple, ready-to-use operating templates"
+        "segment": "B2B",
+        "format": "Ready-to-use operating templates",
+        "problem_hypothesis": "Simple operational systems may save owner/manager time.",
+        "status": "existing_candidate",
+        "validation": "Existing initial scan only; free substitutes are strong and willingness to pay is unproven.",
+        "note": "Keep as one vertical, not the studio's exclusive market."
       },
       {
         "id": "shiftbrief_ai",
         "name": "ShiftBrief AI",
         "audience": "Hospitality teams",
-        "value": "Turn shift notes or voice notes into clear handovers and tasks"
+        "segment": "B2B",
+        "format": "Shift handover workflow tool",
+        "problem_hypothesis": "Important shift notes and tasks can be missed in fragmented communication.",
+        "status": "existing_candidate",
+        "validation": "Existing initial scan only; competitors exist and willingness to pay/adoption is unproven.",
+        "note": "Keep as one vertical, not the studio's exclusive market."
       }
     ],
     "phases": [
       {
+        "id": 0,
+        "name": "Existing workflow foundation",
+        "goal": "Private repository, deterministic orchestration, scheduled RSS discovery, reports, dashboard and spend guardrails; this is not yet an autonomous LLM studio.",
+        "status": "completed"
+      },
+      {
         "id": 1,
-        "name": "Cloud infrastructure",
-        "goal": "Private repository, persistent data, cloud execution and cost guardrails",
+        "name": "Cross-market opportunity discovery",
+        "goal": "Scan B2C, B2B and prosumer markets; collect competitor, pricing, pain-point and substitute evidence; score evidence quality.",
         "status": "completed"
       },
       {
         "id": 2,
-        "name": "Agent brain",
-        "goal": "Orchestrator, specialist roles, memory, task queue and resume logic",
-        "status": "completed"
+        "name": "Demand validation and opportunity selection",
+        "goal": "Narrow the best candidates, identify target users, test current workarounds and willingness to pay before committing to a build.",
+        "status": "planned"
       },
       {
         "id": 3,
-        "name": "Automated research",
-        "goal": "Search, browser research, evidence capture and source checks",
-        "status": "completed"
+        "name": "Product requirements and design",
+        "goal": "Create a concise PRD, user journey, prototype, acceptance criteria and smallest useful MVP.",
+        "status": "planned"
       },
       {
         "id": 4,
-        "name": "Scheduling and reports",
-        "goal": "Five bounded daily cycles, saved results and notifications",
-        "status": "completed"
+        "name": "Product development",
+        "goal": "Build a working product in its own product folder with reproducible setup and documentation.",
+        "status": "planned"
       },
       {
         "id": 5,
-        "name": "Management dashboard",
-        "goal": "Connect the MVP to persistent project data and show actual agent progress",
+        "name": "Quality assurance",
+        "goal": "Test core flows, edge cases, accessibility, mobile usability, privacy and reliability.",
+        "status": "planned"
+      },
+      {
+        "id": 6,
+        "name": "Sales and launch assets",
+        "goal": "Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.",
+        "status": "planned"
+      },
+      {
+        "id": 7,
+        "name": "Approval and publication",
+        "goal": "Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.",
+        "status": "planned"
+      },
+      {
+        "id": 8,
+        "name": "Analytics and iteration",
+        "goal": "Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.",
+        "status": "planned"
+      },
+      {
+        "id": 9,
+        "name": "Autonomous studio capability",
+        "goal": "Connect guarded AI specialist roles to the workflow, with human approval gates, spend limits, traceable outputs and evals.",
         "status": "planned"
       }
     ],
@@ -168,7 +325,7 @@
       {
         "id": "PM-001",
         "title": "Build persistent Project Manager and specialist role registry",
-        "phase": 2,
+        "phase": 0,
         "role": "project_manager",
         "kind": "internal",
         "status": "done",
@@ -179,7 +336,7 @@
       {
         "id": "MR-001",
         "title": "Map direct competitors and substitutes for café starter kit",
-        "phase": 3,
+        "phase": 0,
         "role": "market_researcher",
         "kind": "external_research",
         "status": "done",
@@ -197,7 +354,7 @@
       {
         "id": "MR-002",
         "title": "Map direct competitors and substitutes for ShiftBrief AI",
-        "phase": 3,
+        "phase": 0,
         "role": "market_researcher",
         "kind": "external_research",
         "status": "done",
@@ -214,7 +371,7 @@
       {
         "id": "BA-001",
         "title": "Compare competitor pricing and business models",
-        "phase": 3,
+        "phase": 0,
         "role": "business_analyst",
         "kind": "external_research",
         "status": "done",
@@ -231,7 +388,7 @@
       {
         "id": "BA-002",
         "title": "Identify recurring customer complaints and unmet needs",
-        "phase": 3,
+        "phase": 0,
         "role": "business_analyst",
         "kind": "external_research",
         "status": "done",
@@ -249,7 +406,7 @@
       {
         "id": "PS-001",
         "title": "Compare the two hypotheses and choose the cheapest demand test",
-        "phase": 3,
+        "phase": 0,
         "role": "product_strategist",
         "kind": "analysis",
         "status": "done",
@@ -268,7 +425,7 @@
       {
         "id": "QC-001",
         "title": "Quality review of market evidence and recommendation",
-        "phase": 3,
+        "phase": 0,
         "role": "quality_controller",
         "kind": "quality_review",
         "status": "done",
@@ -286,7 +443,7 @@
       {
         "id": "PM-002",
         "title": "Prepare first product MVP scope and launch roadmap",
-        "phase": 4,
+        "phase": 0,
         "role": "project_manager",
         "kind": "planning",
         "status": "done",
@@ -300,80 +457,246 @@
         "updated_at": "2026-11-12T15:49:46.547749+00:00",
         "attempts": 1,
         "completed_at": "2026-11-12T15:49:46.547749+00:00"
+      },
+      {
+        "id": "DS-001",
+        "title": "Run initial cross-market opportunity scan across B2C, B2B and prosumer",
+        "phase": 1,
+        "role": "market_researcher",
+        "kind": "research",
+        "status": "done",
+        "priority": 100,
+        "depends_on": [],
+        "acceptance": "At least six distinct opportunity hypotheses across all three segments, with sourced market signals, competitor/substitute context and explicit evidence limitations.",
+        "last_result": "Completed a first desk-research scan. Identified eight candidates across B2C, B2B and prosumer; this is directional evidence only, not validation or proof of sales.",
+        "evidence": "reports/opportunity-scan.md and data/market_research.json"
+      },
+      {
+        "id": "DS-002",
+        "title": "Build comparable opportunity scorecard and rank candidates",
+        "phase": 2,
+        "role": "business_analyst",
+        "kind": "analysis",
+        "status": "planned",
+        "priority": 95,
+        "depends_on": [
+          "DS-001"
+        ],
+        "acceptance": "Score all candidates on pain intensity, recurrence, buyer clarity, existing spend/workarounds, competition, MVP effort, distribution and support burden; show evidence confidence separately."
+      },
+      {
+        "id": "DS-003",
+        "title": "Deep-dive top three opportunities and identify validation experiments",
+        "phase": 2,
+        "role": "market_researcher",
+        "kind": "research",
+        "status": "planned",
+        "priority": 90,
+        "depends_on": [
+          "DS-002"
+        ],
+        "acceptance": "For each top candidate, source competitor pricing and user pain, identify a narrow user group, and propose a no/low-cost test."
+      },
+      {
+        "id": "DS-004",
+        "title": "Recommend one first MVP based on evidence and buildability",
+        "phase": 2,
+        "role": "product_strategist",
+        "kind": "decision",
+        "status": "planned",
+        "priority": 85,
+        "depends_on": [
+          "DS-003"
+        ],
+        "acceptance": "One recommendation with alternatives, confidence, assumptions, validation gate and expected MVP scope; no claim of demand without evidence."
+      },
+      {
+        "id": "DS-005",
+        "title": "Create product-specific workspace and product requirements",
+        "phase": 3,
+        "role": "product_designer",
+        "kind": "product_design",
+        "status": "planned",
+        "priority": 80,
+        "depends_on": [
+          "DS-004"
+        ],
+        "acceptance": "Create products/<slug>/ with PRD, target user, core job, flow, wireframe or prototype, acceptance criteria and out-of-scope list."
+      },
+      {
+        "id": "DS-006",
+        "title": "Build the first usable MVP",
+        "phase": 4,
+        "role": "developer",
+        "kind": "development",
+        "status": "planned",
+        "priority": 75,
+        "depends_on": [
+          "DS-005"
+        ],
+        "acceptance": "Working, locally testable product with source code, setup instructions and no unapproved paid dependencies."
+      },
+      {
+        "id": "DS-007",
+        "title": "Test MVP and fix release-blocking issues",
+        "phase": 5,
+        "role": "quality_controller",
+        "kind": "quality_assurance",
+        "status": "planned",
+        "priority": 70,
+        "depends_on": [
+          "DS-006"
+        ],
+        "acceptance": "Automated/manual test record, known limitations, privacy review and no critical defects in core flow."
+      },
+      {
+        "id": "DS-008",
+        "title": "Prepare sales page and marketplace listing package",
+        "phase": 6,
+        "role": "growth_launch",
+        "kind": "launch_preparation",
+        "status": "planned",
+        "priority": 65,
+        "depends_on": [
+          "DS-007"
+        ],
+        "acceptance": "Draft positioning, pricing hypothesis, screenshots, listing copy, instructions, refund/support policy and platform fee comparison."
+      },
+      {
+        "id": "DS-009",
+        "title": "Obtain explicit approval and publish first product",
+        "phase": 7,
+        "role": "project_manager",
+        "kind": "approval_gate",
+        "status": "planned",
+        "priority": 60,
+        "depends_on": [
+          "DS-008"
+        ],
+        "acceptance": "User explicitly approves exact platform, listing, price and any fees before any public release or payment."
+      },
+      {
+        "id": "DS-010",
+        "title": "Review launch metrics and decide iteration",
+        "phase": 8,
+        "role": "business_analyst",
+        "kind": "analytics",
+        "status": "planned",
+        "priority": 55,
+        "depends_on": [
+          "DS-009"
+        ],
+        "acceptance": "Review actual traffic, conversion, sales, refunds and support; decide improve, reposition or stop."
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
     "agent_implementation": {
-      "description": "Technical completion tracker for the agent itself; separate from the passive-income business validation tasks.",
-      "components": [
+      "description": "Separate technical maturity tracker. Existing components are deterministic workflow code; planned roles are not yet autonomous LLM agents.",
+      "current_components": [
         {
           "id": "AG-01",
           "name": "Persistent task orchestration and dependency scheduler",
-          "status": "done",
+          "status": "implemented",
           "evidence": "agent/project_manager.py and agent/engine.py"
         },
         {
           "id": "AG-02",
-          "name": "Five specialist role handlers with structured outputs",
-          "status": "done",
+          "name": "Five deterministic specialist handlers",
+          "status": "implemented",
           "evidence": "agent/engine.py"
         },
         {
           "id": "AG-03",
-          "name": "Result validation, bounded retries, interrupted-run recovery and event log",
-          "status": "done",
-          "evidence": "agent/engine.py and agent/project_manager.py"
+          "name": "Unit tests and CI test gate",
+          "status": "implemented",
+          "evidence": "tests/ and .github/workflows/daily-agent.yml"
         },
         {
           "id": "AG-04",
-          "name": "Unit test suite and CI test gate",
-          "status": "implemented_pending_first_run",
-          "evidence": "tests/test_engine.py and .github/workflows/daily-agent.yml"
+          "name": "RSS-based discovery collector",
+          "status": "implemented_limited",
+          "evidence": "agent/main.py; currently hard-coded around café and hospitality hypotheses"
         },
         {
           "id": "AG-05",
-          "name": "Freshness filtering, deduplication and research error handling",
-          "status": "implemented",
-          "evidence": "agent/main.py"
+          "name": "LLM client with spend ledger",
+          "status": "implemented_not_connected",
+          "evidence": "agent/llm.py and agent/spend_ledger.py; no scheduled role uses it"
         },
         {
           "id": "AG-06",
-          "name": "Scheduled execution, report generation and dashboard data sync",
+          "name": "Private dashboard and state snapshots",
           "status": "implemented_pending_deployment_verification",
-          "evidence": ".github/workflows/daily-agent.yml"
+          "evidence": "dashboard/ and dashboard/data/"
         },
         {
           "id": "AG-07",
-          "name": "Dashboard accuracy and agent execution visibility",
-          "status": "implemented_pending_deployment_verification",
-          "evidence": "dashboard/index.html"
+          "name": "Cross-market research pipeline",
+          "status": "planned",
+          "evidence": "Needs multi-segment query configuration, source capture and evidence grading"
         },
         {
           "id": "AG-08",
-          "name": "Project Manager end-to-end integration test",
-          "status": "implemented_pending_first_run",
-          "evidence": "tests/test_project_manager.py"
+          "name": "AI role dispatch and structured agent outputs",
+          "status": "planned",
+          "evidence": "Must remain offline/mock by default and require approval for live provider calls"
         },
         {
           "id": "AG-09",
-          "name": "Atomic persistence for research state and reports",
-          "status": "implemented_pending_first_run",
-          "evidence": "agent/main.py and tests/test_research.py"
+          "name": "Product design/development/QA artifact pipeline",
+          "status": "planned",
+          "evidence": "Product-specific workspaces and test gates not yet implemented"
         },
         {
           "id": "AG-10",
-          "name": "Atomic Project Manager report persistence",
-          "status": "implemented_pending_first_run",
-          "evidence": "agent/project_manager.py and tests/test_project_manager.py"
-        },
-        {
-          "id": "AG-11",
-          "name": "Correct phase status precedence for blocked and failed tasks",
-          "status": "implemented_pending_first_run",
-          "evidence": "agent/project_manager.py and tests/test_project_manager.py"
+          "name": "Listing preparation and analytics pipeline",
+          "status": "planned",
+          "evidence": "No marketplace integration or sales analytics connected"
         }
       ],
-      "important_limit": "The current agent is deterministic and rules-based. It is not an LLM-powered autonomous researcher. Live browser/search and LLM reasoning require a separately approved integration; no paid API is enabled."
+      "role_registry": [
+        {
+          "role": "project_manager",
+          "status": "deterministic",
+          "responsibility": "Priorities, dependencies, task execution and approval gates"
+        },
+        {
+          "role": "market_researcher",
+          "status": "deterministic_limited",
+          "responsibility": "RSS discovery and stored evidence; broad web research still needs implementation"
+        },
+        {
+          "role": "business_analyst",
+          "status": "deterministic_limited",
+          "responsibility": "Evidence comparison, pricing and opportunity scoring"
+        },
+        {
+          "role": "product_strategist",
+          "status": "deterministic_limited",
+          "responsibility": "Candidate comparison and validation experiment design"
+        },
+        {
+          "role": "product_designer",
+          "status": "planned",
+          "responsibility": "PRD, user journey, prototype and acceptance criteria"
+        },
+        {
+          "role": "developer",
+          "status": "planned",
+          "responsibility": "Build working product artifacts"
+        },
+        {
+          "role": "quality_controller",
+          "status": "deterministic_limited",
+          "responsibility": "Evidence and output checks; product QA pipeline planned"
+        },
+        {
+          "role": "growth_launch",
+          "status": "planned",
+          "responsibility": "Positioning, listing assets and launch preparation"
+        }
+      ],
+      "important_limit": "The current scheduled system is deterministic and rules-based. The live LLM client is disconnected from role handlers. No automatic customer outreach, public publishing, paid API calls or spending is enabled."
     },
     "project_notes": {
       "spending": [
@@ -413,8 +736,33 @@
       ],
       "guardrails": [
         "Do not subscribe to, integrate, connect accounts to, or upload private project data to Haimaker AI without checking it and receiving explicit user approval.",
-        "Netlify auto-publishing remains locked; no unlock, deploy, or plan change without explicit user approval."
+        "Netlify auto-publishing remains locked; no unlock, deploy, or plan change without explicit user approval.",
+        "The studio explores B2C, B2B and prosumer markets; specialty coffee and hospitality are only two candidates, not the exclusive focus.",
+        "No product candidate is considered validated from search volume, competitor listings, anecdotes or model-generated scores alone.",
+        "Build and publish one real product through the full lifecycle; do not keep expanding infrastructure without producing customer-facing value.",
+        "Create products in private repository workspaces first. Public launch, paid services, account changes and customer outreach require explicit user approval."
       ]
+    },
+    "strategy": {
+      "operating_model": "Portfolio-first studio: discover opportunities across multiple markets; score evidence; select one narrow problem; ship a small useful product; measure real buyer behaviour; repeat.",
+      "audiences": [
+        "B2C consumers",
+        "B2B small businesses and teams",
+        "Prosumer freelancers, creators and independent professionals"
+      ],
+      "product_principle": "Simple to understand, immediately usable, low-friction onboarding, focused on a concrete job rather than a generic template or generic AI wrapper.",
+      "lifecycle": [
+        "opportunity_discovery",
+        "evidence_and_validation",
+        "product_selection",
+        "product_requirements_and_design",
+        "development",
+        "quality_assurance",
+        "sales_assets",
+        "user_approval_and_publication",
+        "analytics_and_iteration"
+      ],
+      "decision_rule": "No idea is considered validated based on search volume, competitor presence, community anecdotes or AI-generated scores alone. Seek evidence of repeated pain, existing workarounds/spend and willingness to pay."
     }
   },
   "specialist_outputs": {
@@ -528,6 +876,12 @@
     },
     {
       "timestamp": "2026-11-12T15:57:40.972837+00:00",
+      "task_id": null,
+      "status": "no_eligible_tasks",
+      "summary": "No queued or retryable task has all dependencies completed."
+    },
+    {
+      "timestamp": "2026-11-12T16:11:49.141229+00:00",
       "task_id": null,
       "status": "no_eligible_tasks",
       "summary": "No queued or retryable task has all dependencies completed."
