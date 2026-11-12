@@ -92,7 +92,7 @@ function renderOverview(){
  const phases=p.phases||[];
  $("overviewContent").className="";
  $("overviewContent").innerHTML='<div class="grid">'+
- metric("Выполнено задач",done+"/"+ts.length,"по загруженному плану")+metric("В очереди",queued,"следующие задачи")+metric("Этапы завершены",phases.filter(x=>x.status==="completed").length+"/"+phases.length,"дорожная карта")+metric("Циклы агента",r?.run_count??"—",r?.last_run_utc?"последний запуск: "+new Date(r.last_run_utc).toLocaleString():"нет данных")+'</div>'+
+ metric("Выполнено задач",done+"/"+ts.length,"по загруженному плану")+metric("В очереди",queued,"следующие задачи")+metric("Этапы завершены",phases.filter(x=>x.status==="completed").length+"/"+phases.length,"дорожная карта")+metric("Циклы Project Manager",r?.pm_run_count??"—",r?.pm_last_cycle?.timestamp?"последний цикл: "+new Date(r.pm_last_cycle.timestamp).toLocaleString():"нет данных")+'</div>'+
  '<div class="cols"><div class="card"><h3 class="sectiontitle">Текущий прогресс</h3><div class="phasehead"><span>Задачи</span><strong>'+pct+'%</strong></div><div class="bar"><i style="width:'+pct+'%"></i></div><div style="margin-top:20px"><h3 class="sectiontitle">Ближайшие задачи</h3>'+ts.filter(t=>!["done","completed"].includes(t.status)).sort((a,b)=>(b.priority||0)-(a.priority||0)).slice(0,4).map(taskHtml).join("")+'</div></div>'+
  '<div class="card"><h3 class="sectiontitle">Этапы проекта</h3>'+phases.map(x=>'<div class="phase"><div class="phasehead"><strong>'+esc(x.id)+'. '+esc(x.name)+'</strong>'+pill(x.status)+'</div><div class="small muted">'+esc(x.goal)+'</div></div>').join("")+'</div></div>';
 }
