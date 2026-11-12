@@ -74,7 +74,7 @@ class ApprovalQueue:
     def _save(self, data: dict[str, Any]) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         temp = self.path.with_suffix(self.path.suffix + ".tmp")
-        temp.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+        temp.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         os.replace(temp, self.path)
 
     def request(self, action_type: str, description: str, payload: dict[str, Any], *, now: datetime | None = None, ttl_hours: int = 24) -> dict[str, Any]:
