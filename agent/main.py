@@ -87,6 +87,7 @@ def collect_news(search):
         root = ET.fromstring(response.read())
 
     results = []
+    cutoff_date = datetime.now(timezone.utc).date() - timedelta(days=365)
     for item in root.findall(".//item")[:12]:
         title = clean_text(item.findtext("title"))
         description = clean_text(item.findtext("description"))
@@ -95,6 +96,9 @@ def collect_news(search):
         matched = [term for term in search["terms"] if term.lower() in text]
         score = len(matched)
         date = parse_date(published)
+        # RSS search operators are not a hard guarantee: enforce the date window locally.
+        if not date or date.date() < cutoff_date:
+            continue
         if score < 2 or not item.findtext("link"):
             continue
         results.append({
