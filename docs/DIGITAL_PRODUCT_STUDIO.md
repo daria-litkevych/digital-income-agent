@@ -55,7 +55,7 @@ products/<product-slug>/
 | QA Tester | Functional, edge-case, mobile, accessibility and privacy checks | Existing evidence QC only; product QA planned |
 | Growth & Launch | Positioning, listing assets, pricing tests and distribution | Planned |
 
-The LLM client is currently disconnected from these handlers. The scheduled system is not yet an autonomous LLM team. Offline/mock operation remains the default; live model use requires a separate approval and budget decision.
+A guarded Agent Brain foundation now exists in `agent/brain.py`: central role registry, injected provider interface, structured JSON contract, offline mock default and fail-closed output validation. It is not yet fully integrated into Project Manager. The scheduled system is still deterministic, not an autonomous LLM team. Live model use remains disabled and requires explicit provider, pricing, spend caps and credential approval.
 
 ## 4. Opportunity discovery framework
 
