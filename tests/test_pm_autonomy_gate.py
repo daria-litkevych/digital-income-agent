@@ -72,7 +72,7 @@ class ProjectManagerAutonomyGateTests(unittest.TestCase):
             self.assertTrue(result["blocked"])
             self.assertIn("human review", result["summary"].lower())
             self.assertEqual(holder["studio"].orchestrator.persisted_during_handoff["workflows"]["AB-TEST-DURABLE"]["completed"]["1"]["status"], "draft")
-            self.assertEqual(holder["loader](), holder["studio"].orchestrator.persisted_during_handoff)
+            self.assertEqual(holder["loader"](), holder["studio"].orchestrator.persisted_during_handoff)
             self.assertEqual(len(list(checkpoint_dir.glob("*.json"))), 1)
 
 if __name__ == "__main__":
