@@ -176,5 +176,53 @@
       "acceptance": "Smallest testable MVP, milestones, costs and approval gates."
     }
   ],
-  "created_at": "2026-11-12T14:23:11.062255+00:00"
+  "created_at": "2026-11-12T14:23:11.062255+00:00",
+  "agent_implementation": {
+    "description": "Technical completion tracker for the agent itself; separate from the passive-income business validation tasks.",
+    "components": [
+      {
+        "id": "AG-01",
+        "name": "Persistent task orchestration and dependency scheduler",
+        "status": "done",
+        "evidence": "agent/project_manager.py and agent/engine.py"
+      },
+      {
+        "id": "AG-02",
+        "name": "Five specialist role handlers with structured outputs",
+        "status": "done",
+        "evidence": "agent/engine.py"
+      },
+      {
+        "id": "AG-03",
+        "name": "Result validation, bounded retries, interrupted-run recovery and event log",
+        "status": "done",
+        "evidence": "agent/engine.py and agent/project_manager.py"
+      },
+      {
+        "id": "AG-04",
+        "name": "Unit test suite and CI test gate",
+        "status": "implemented_pending_first_run",
+        "evidence": "tests/test_engine.py and .github/workflows/daily-agent.yml"
+      },
+      {
+        "id": "AG-05",
+        "name": "Freshness filtering, deduplication and research error handling",
+        "status": "implemented",
+        "evidence": "agent/main.py"
+      },
+      {
+        "id": "AG-06",
+        "name": "Scheduled execution, report generation and dashboard data sync",
+        "status": "implemented_pending_deployment_verification",
+        "evidence": ".github/workflows/daily-agent.yml"
+      },
+      {
+        "id": "AG-07",
+        "name": "Dashboard accuracy and agent execution visibility",
+        "status": "implemented_pending_deployment_verification",
+        "evidence": "dashboard/index.html"
+      }
+    ],
+    "important_limit": "The current agent is deterministic and rules-based. It is not an LLM-powered autonomous researcher. Live browser/search and LLM reasoning require a separately approved integration; no paid API is enabled."
+  }
 }
