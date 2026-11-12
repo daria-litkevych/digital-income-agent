@@ -23,7 +23,11 @@ Agent Brain is the guarded intelligence layer between the Project Manager and sp
 - The scheduled workflow does not call a live LLM.
 - No API key, provider, endpoint, paid call or automatic top-up is configured.
 - The live client remains disabled unless the user explicitly approves a provider, price, hard cap and credential setup.
-- The dispatcher is still a guarded foundation, not a finished autonomous studio. Specialist work still lacks tool adapters and live tool-use loops for source retrieval, repository changes, execution and verification.
+- Bounded tool-call runtime exists, with explicit registry, argument validation, approval checks and step/output limits.
+- Read-only public-source retrieval exists for supplied HTTPS URLs, with public-IP checks, redirect refusal and response bounds. It does not discover URLs itself and fetched content remains ungraded.
+- Temporary workspace tools exist for allowlisted file proposals and named test modules. They do not modify the checked-out repository and are not an OS security sandbox.
+- A checkpointed multi-specialist coordinator exists with resume support and human-review gates.
+- These adapters are not yet connected as production tools in the scheduled Project Manager cycle. Live inference remains disabled; therefore this is not yet an autonomous studio.
 
 ## Definition of done for Agent Brain
 
@@ -34,7 +38,8 @@ Agent Brain is the guarded intelligence layer between the Project Manager and sp
 5. Side effects require approval and cannot be executed by model output.
 6. Budget enforcement and actual token settlement protect live calls.
 7. Each role has task-specific tools, evidence contracts and evaluations.
-8. The Project Manager can route eligible tasks to the brain, persist outputs and resume safely.
-9. End-to-end tests prove a complete task cycle without unapproved network calls or spending.
+8. Safe research and workspace tools are integrated with role permissions, provenance and execution limits.
+9. The Project Manager coordinates multi-step role handoffs, persists checkpoints and resumes safely.
+10. End-to-end tests prove a complete task cycle without unapproved network calls or spending.
 
-Items 1–8 now have code or test coverage as a guarded foundation, including budget controls, role-contract fixtures, PM routing, persistence and recovery. Item 9 is being verified by the end-to-end workflow. Actual autonomous specialist work remains incomplete because live inference is disabled and tool adapters/tool-use loops have not yet been implemented. These are distinct from the mock contract tests.
+Items 1–7 have code or test coverage as a guarded foundation. Bounded tool adapters and a checkpointed coordinator have also been added, but they are not yet integrated into scheduled Project Manager execution. Live inference is disabled. The studio must not be described as autonomous until the full tool permissions, source provenance, persistence, recovery and end-to-end handoff are integrated and tested.
