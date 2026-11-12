@@ -168,6 +168,27 @@
       "source": "https://www.shiftforce.com/pricingshiftnote",
       "type": "official competitor pricing",
       "limitation": "USD pricing; not a like-for-like comparison with European vendors."
+    },
+    {
+      "hypothesis": "cafe_starter_kit",
+      "signal": "A person identifying as a former cafe owner described staff lateness/last-minute absence, rising milk/coffee/utility costs, inconsistent stock ordering, owner overload and marketing being neglected. Suggested systems included automatic weekly stock orders and clear staff responsibilities.",
+      "source": "https://www.reddit.com/r/cafe/comments/1n1ln2q/cafe_owners_sick_and_tired/",
+      "type": "first-person community discussion",
+      "evidence_note": "One self-reported former operator; useful for generating interview questions, not representative evidence or proof of willingness to pay."
+    },
+    {
+      "hypothesis": "cafe_starter_kit",
+      "signal": "A coffee-shop discussion raised balancing pastry/food availability against spoilage as a practical operational difficulty; a reply specifically mentioned balancing sell-outs with waste.",
+      "source": "https://www.reddit.com/r/Coffee_Shop/comments/1tgqppl/whats_the_most_operationally_difficult_part_about/",
+      "type": "community discussion",
+      "evidence_note": "Small thread with limited engagement; directional signal only."
+    },
+    {
+      "hypothesis": "shiftbrief_ai",
+      "signal": "A hotel worker described shift notes being buried in the property-management system and not used consistently, leading to guest requests being forgotten between morning and evening shifts. Replies mentioned a dry-erase board and the need for a strict logbook.",
+      "source": "https://www.reddit.com/r/CustomerService/comments/1rmj1ia/hotel_staff_communication_between_shifts_is_non/",
+      "type": "first-hand worker discussion",
+      "evidence_note": "Single workplace example; supports a handover-friction hypothesis but not the need for a new standalone app."
     }
   ],
   "early_findings": [
@@ -175,7 +196,9 @@
     "A paid café product would need a sharper job than providing checklists: for example, ready-to-use manager routines that reduce waste, improve consistency or onboard baristas faster, with proof that owners currently struggle and will pay.",
     "ShiftBrief AI faces established handover and operations products. Official pricing examples include ShiftForce from $50/location/month, Shifo €32/month excl. VAT and Venheim free entry / €39.90 Pro; Rotahr is €49 incl. VAT and offers a broad suite.",
     "Competitors bundle many functions. A narrow handover-first tool must prove that users want a separate lightweight workflow rather than another app; notification overload and app fatigue remain key risks.",
-    "Public product pages establish competitor supply and price anchors, not market size, sales, retention or willingness to pay."
+    "Public product pages establish competitor supply and price anchors, not market size, sales, retention or willingness to pay.",
+    "Additional first-hand/community discussions point to café pain around stock consistency, owner overload, staffing reliability and perishable-food waste. These suggest more valuable problem areas than a generic checklist pack, but evidence is still anecdotal.",
+    "A hotel worker described shift notes being buried in an existing PMS and guest requests being lost between shifts. This supports the importance of visibility and adoption in handovers; it does not prove users want another standalone app."
   ],
-  "next_validation": "Prioritise discovery before building. Interview or observe 5–8 independent specialty coffee shop owners/managers: ask them to show current opening/closing, stock/waste, quality and onboarding workflows; quantify time, errors and cost. In parallel, interview 5–8 shift leads about handover frequency, existing tools, missed items and app fatigue. Do not pitch until their current process is understood."
+  "next_validation": "Prioritise discovery before building. Interview or observe 5–8 independent specialty coffee shop owners/managers: ask them to show current opening/closing, stock/waste, quality and onboarding workflows; quantify time, errors and cost. In parallel, interview 5–8 shift leads about handover frequency, existing tools, missed items and app fatigue. Specifically test whether stock/waste control, staff onboarding or handover is the most frequent costly problem. Do not pitch until their current process is understood."
 }
