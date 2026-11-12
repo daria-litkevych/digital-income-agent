@@ -7,6 +7,9 @@ on:
       - "agent/**"
       - "tests/**"
       - "docs/**"
+      - "products/**"
+      - "data/**"
+      - "reports/**"
       - "README.md"
       - ".github/workflows/daily-agent.yml"
   schedule:
