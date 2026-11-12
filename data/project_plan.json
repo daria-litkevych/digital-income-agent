@@ -556,18 +556,16 @@
       "phase": 9,
       "role": "developer",
       "kind": "agent_runtime",
-      "status": "blocked",
+      "status": "queued",
       "priority": 114,
       "depends_on": [
         "AB-006"
       ],
       "acceptance": "Provider-neutral tool-call loop validates schemas, enforces allowlisted tools, iteration/token/time budgets, records tool observations and fails closed on unknown or forbidden actions. Offline fake-client tests prove tool use without network or paid inference.",
       "started_at": "2026-11-12T20:55:26.530946+00:00",
-      "last_result": "No safe executor is registered for AB-007.",
+      "last_result": "Re-queued after tool runtime and acceptance tests were added.",
       "updated_at": "2026-11-12T20:55:26.530984+00:00",
-      "attempts": 1,
-      "blocked_reason": "No safe executor is registered for AB-007.",
-      "next_action": "Register a handler and acceptance checks before scheduling this task."
+      "attempts": 1
     },
     {
       "id": "AB-008",
