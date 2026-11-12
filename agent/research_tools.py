@@ -11,6 +11,7 @@ from typing import Any, Callable
 from urllib.parse import urlparse
 
 from agent.tool_runtime import AgentTool, ToolRegistry
+from agent.evidence_store import EvidenceStore
 
 
 class SourceFetchError(RuntimeError):
@@ -189,13 +190,40 @@ def build_research_tool_registry(
     *,
     transport: Callable[[str, int, int], dict[str, Any]] = _network_transport,
     resolver: Callable[[str], list[str]] = _default_resolver,
+    evidence_store: EvidenceStore | None = None,
 ) -> ToolRegistry:
     """Create an explicit registry; no network tool is enabled unless this is called."""
-    return ToolRegistry([AgentTool(
+    tools = [AgentTool(
         name="fetch_public_url",
         description="Fetch and extract a bounded amount of text from a public HTTPS source.",
         handler=lambda args: fetch_public_source(args["url"], transport=transport, resolver=resolver),
         required_arguments=("url",),
         allowed_arguments=("url",),
         allowed_roles=("market_researcher", "business_analyst", "product_strategist", "quality_controller"),
-    )])
+    )]
+    if evidence_store is not None:
+        def fetch_and_record(args: dict[str, Any]) -> dict[str, Any]:
+            record = next(
+                (row for row in evidence_store._load()["records"] if row.get("evidence_id") == args["evidence_id"]),
+                None,
+            )
+            if record is None:
+                raise SourceFetchError("Evidence record was not found.")
+            if record.get("source_url") != args["url"]:
+                raise SourceFetchError("Requested URL does not match the evidence record.")
+            fetched = fetch_public_source(args["url"], transport=transport, resolver=resolver)
+            try:
+                stored = evidence_store.enrich_source(args["evidence_id"], fetched)
+            except ValueError as error:
+                raise SourceFetchError(str(error)) from error
+            return {"source": fetched, "stored": stored}
+
+        tools.append(AgentTool(
+            name="fetch_and_record_evidence",
+            description="Fetch the exact public HTTPS URL attached to an existing evidence ID, then store a bounded, hash-addressed excerpt as ungraded untrusted source material.",
+            handler=fetch_and_record,
+            required_arguments=("evidence_id", "url"),
+            allowed_arguments=("evidence_id", "url"),
+            allowed_roles=("market_researcher", "business_analyst", "product_strategist", "quality_controller"),
+        ))
+    return ToolRegistry(tools)
