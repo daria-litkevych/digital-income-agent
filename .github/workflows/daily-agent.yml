@@ -2,6 +2,13 @@ name: Digital Income Agent
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - "agent/**"
+      - "tests/**"
+      - "docs/**"
+      - "README.md"
+      - ".github/workflows/daily-agent.yml"
   schedule:
     - cron: "15 7,10,13,16,19 * * *"
 
