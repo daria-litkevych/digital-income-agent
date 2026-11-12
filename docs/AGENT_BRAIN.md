@@ -26,9 +26,9 @@ Agent Brain is the guarded intelligence layer between the Project Manager and sp
 - Bounded tool-call runtime exists, with explicit registry, argument validation, approval checks and step/output limits.
 - Read-only public-source retrieval exists for supplied HTTPS URLs, with public-IP checks, redirect refusal and response bounds. It does not discover URLs itself and fetched content remains ungraded.
 - Temporary workspace tools exist for allowlisted file proposals and named test modules. They do not modify the checked-out repository and are not an OS security sandbox.
-- A checkpointed multi-specialist coordinator exists with resume support and human-review gates.
+- A checkpointed multi-specialist coordinator exists with resume support and human-review gates.\n- The Project Manager writes each specialist checkpoint atomically to a workflow-specific file under `data/agent_checkpoints/`, so a process restart can reload completed steps rather than relying on end-of-cycle state persistence.\n- The live composition root injects the persistent evidence store into role-scoped research tools; source retrieval still occurs only when a live specialist explicitly calls a supplied-URL tool.
 - A persistent JSON approval-request queue now supports expiry, payload-hash matching, secret-like field rejection and one-time consumption. It records approval state only; it does not authenticate a person or execute an external action.
-- These adapters are not yet connected as production tools in the scheduled Project Manager cycle. Live inference remains disabled; therefore this is not yet an autonomous studio.
+- The live orchestration path is now connected to Project Manager behind a trusted explicit approval argument, with durable per-step checkpoints and the evidence store available to the read-only research tool registry. The scheduled workflow does not supply that approval and remains deterministic. Live inference remains disabled by default; this is not yet a production autonomous studio.
 
 ## Definition of done for Agent Brain
 
@@ -40,7 +40,7 @@ Agent Brain is the guarded intelligence layer between the Project Manager and sp
 6. Budget enforcement and actual token settlement protect live calls.
 7. Each role has task-specific tools, evidence contracts and evaluations.
 8. Safe research and workspace tools are integrated with role permissions, provenance and execution limits.
-9. The Project Manager coordinates multi-step role handoffs, persists checkpoints and resumes safely.
+9. The Project Manager coordinates multi-step role handoffs behind a trusted approval gate, persists each checkpoint atomically and resumes safely.
 10. End-to-end tests prove a complete task cycle without unapproved network calls or spending.
 
-Items 1–7 have code or test coverage as a guarded foundation. Bounded tool adapters, a checkpointed coordinator and a separately tested approval-request queue have also been added, but the queue is not connected to an authenticated external-action executor and the specialist toolchain is not integrated into scheduled Project Manager execution. The JSON queue is not concurrency-hardened. Live inference is disabled. The studio must not be described as autonomous until source discovery/evidence storage, authenticated human approval, safe external-action execution, persistence, recovery and end-to-end scheduled handoff are integrated and tested.
+Items 1–7 have code or test coverage as a guarded foundation. Bounded tool adapters, a checkpointed coordinator and a separately tested approval-request queue have also been added, but the queue is not connected to an authenticated external-action executor and the specialist toolchain is not integrated into scheduled Project Manager execution. The JSON approval queue is not concurrency-hardened and does not authenticate a human. The live execution path is approval-gated but no provider credentials or prices are configured. Live inference is disabled in scheduled runs. The studio must not be described as autonomous until source discovery/evidence storage, authenticated human approval, safe external-action execution, persistence, recovery and end-to-end scheduled handoff are integrated and tested.
