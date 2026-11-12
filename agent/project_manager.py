@@ -40,12 +40,14 @@ def refresh_phases(plan):
         phase_tasks = [t for t in plan.get("tasks", []) if t.get("phase") == phase.get("id")]
         if not phase_tasks:
             continue
-        if all(t.get("status") == "done" for t in phase_tasks):
+        if any(t.get("status") == "blocked" for t in phase_tasks):
+            phase["status"] = "blocked"
+        elif any(t.get("status") == "failed" for t in phase_tasks):
+            phase["status"] = "in_progress"
+        elif all(t.get("status") == "done" for t in phase_tasks):
             phase["status"] = "completed"
         elif any(t.get("status") in {"in_progress", "done"} for t in phase_tasks):
             phase["status"] = "in_progress"
-        elif any(t.get("status") == "blocked" for t in phase_tasks):
-            phase["status"] = "blocked"
         else:
             phase["status"] = "planned"
 
