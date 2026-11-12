@@ -70,7 +70,7 @@
     {
       "id": "EVAL-developer",
       "role": "developer",
-      "task": "Prepare an implementation plan and test plan; do not deploy.",
+      "task": "Write an implementation plan and test plan within the approved product requirements.",
       "context": {
         "constraints": [
           "Use only this supplied context"
@@ -96,7 +96,7 @@
     {
       "id": "EVAL-growth_launch",
       "role": "growth_launch",
-      "task": "Draft private positioning and listing materials; do not publish.",
+      "task": "Draft positioning and marketplace copy for internal review.",
       "context": {
         "constraints": [
           "Use only this supplied context"
