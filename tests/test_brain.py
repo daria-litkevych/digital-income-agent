@@ -60,6 +60,40 @@ class AgentBrainTests(unittest.TestCase):
         self.assertEqual(result["model"], "fake-model")
         self.assertTrue(client.requests)
 
+    def test_live_client_is_not_called_without_explicit_approval(self):
+        client = FakeClient("{}")
+        brain = AgentBrain(client, live_approved=False)
+        with self.assertRaisesRegex(BrainError, "not approved"):
+            brain.dispatch("market_researcher", "Summarise supplied sources", {})
+        self.assertEqual(client.requests, [])
+
+    def test_hallucinated_evidence_url_is_rejected(self):
+        payload = {
+            "status": "draft", "summary": "Found a source.",
+            "artifact": {}, "evidence": [{"source": "https://invented.example/source"}],
+            "assumptions": [], "risks": [], "confidence": "low",
+            "requires_human_approval": True,
+        }
+        brain = AgentBrain(FakeClient(json.dumps(payload)), live_approved=True)
+        with self.assertRaisesRegex(BrainError, "not supplied"):
+            brain.dispatch("market_researcher", "Summarise supplied sources", {
+                "sources": [{"url": "https://real.example/source"}]
+            })
+
+    def test_supplied_evidence_url_is_accepted(self):
+        source = "https://real.example/source"
+        payload = {
+            "status": "draft", "summary": "Summary grounded in supplied source.",
+            "artifact": {}, "evidence": [{"source": source}],
+            "assumptions": [], "risks": [], "confidence": "medium",
+            "requires_human_approval": True,
+        }
+        brain = AgentBrain(FakeClient(json.dumps(payload)), live_approved=True)
+        result = brain.dispatch("market_researcher", "Summarise supplied sources", {
+            "sources": [{"url": source}]
+        })
+        self.assertEqual(result["evidence"][0]["source"], source)
+
     def test_malformed_live_output_fails_closed(self):
         brain = AgentBrain(FakeClient("not json"), live_approved=True)
         with self.assertRaisesRegex(BrainError, "valid JSON"):
