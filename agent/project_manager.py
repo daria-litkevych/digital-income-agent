@@ -139,6 +139,8 @@ def render_dashboard(plan, state, run_record):
 
 def main():
     plan = load_json(PLAN_FILE, seed_plan())
+    if "tasks" not in plan:
+        plan = seed_plan()
     state = load_json(STATE_FILE, {"agent_name": "Digital Income Agent", "run_count": 0})
     for task in plan["tasks"]:
         if task["status"] == "in_progress":
