@@ -150,6 +150,13 @@ class ProjectManagerIntegrationTests(unittest.TestCase):
             self.assertEqual(saved_plan["tasks"][0]["status"], "done")
             self.assertIn("recovered_at", saved_plan["tasks"][0])
 
+    def test_project_manager_report_is_written_atomically(self):
+        with tempfile.TemporaryDirectory() as directory:
+            target = Path(directory) / "report.md"
+            target.write_text("old report", encoding="utf-8")
+            project_manager.atomic_write_text(target, "complete report")
+            self.assertEqual(target.read_text(encoding="utf-8"), "complete report")
+            self.assertFalse(target.with_suffix(".md.tmp").exists())
 
 if __name__ == "__main__":
     unittest.main()
