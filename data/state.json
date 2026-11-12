@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 7,
+  "run_count": 8,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T15:49:46.547771+00:00",
-  "research_last_run_utc": "2026-11-12T15:49:43.962579+00:00",
+  "last_run_utc": "2026-11-12T15:53:04.190982+00:00",
+  "research_last_run_utc": "2026-11-12T15:53:01.639968+00:00",
   "research_queries": [
     "\"specialty coffee\" cafe operations staff training",
     "\"coffee shop\" \"daily checklist\" OR \"opening checklist\" OR \"closing checklist\"",
@@ -94,13 +94,12 @@
     "shiftbrief_ai": "ShiftBrief AI"
   },
   "research_method": "Google News RSS, last 365 days, keyword relevance score >= 2",
-  "pm_run_count": 4,
+  "pm_run_count": 5,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T15:49:46.547749+00:00",
-    "task_id": "PM-002",
-    "role": "project_manager",
-    "status": "completed",
-    "summary": "Prepared a no-cost validation-first roadmap; product implementation remains gated on customer evidence and explicit approval."
+    "timestamp": "2026-11-12T15:53:04.190955+00:00",
+    "task_id": null,
+    "status": "no_eligible_tasks",
+    "summary": "No queued or retryable task has all dependencies completed."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -514,6 +513,12 @@
       "role": "project_manager",
       "status": "completed",
       "summary": "Prepared a no-cost validation-first roadmap; product implementation remains gated on customer evidence and explicit approval."
+    },
+    {
+      "timestamp": "2026-11-12T15:53:04.190955+00:00",
+      "task_id": null,
+      "status": "no_eligible_tasks",
+      "summary": "No queued or retryable task has all dependencies completed."
     }
   ]
 }
