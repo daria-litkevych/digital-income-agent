@@ -290,5 +290,89 @@
       "Search and listing counts are not sales",
       "No candidate has been validated"
     ]
+  },
+  "deep_dives": {
+    "generated_at": "2026-11-12",
+    "status": "desk_research_complete_not_customer_validated",
+    "candidates": [
+      {
+        "id": "prosumer_freelancer",
+        "name": "Freelancer scope-change workflow",
+        "signals": [
+          "https://www.reddit.com/r/freelance/comments/1ozc3zq/lost_2300_to_scope_creep_on_one_project_how_do/",
+          "https://www.reddit.com/r/freelancing/comments/1v4c8n4/do_you_charge_extra_when_a_client_asks_for_extra/",
+          "https://www.reddit.com/r/freelance/comments/1to9m9h/nightmare_client_from_hell_please_help/"
+        ],
+        "competitors": [
+          "https://www.dubsado.com/pricing/",
+          "https://www.dubsado.com/llm-info",
+          "https://scopedue.com/templates/change-request/freelance-change-request-template/",
+          "https://www.scopeyes.com/guides/client-change-request-template"
+        ],
+        "assessment": "Clear recurring qualitative pain and measurable financial impact in anecdotes. Broad CRM suites may feel heavy for a single change request; templates are easy substitutes. A no-login, instant calculator/document generator is a plausible narrow wedge, not yet proven."
+      },
+      {
+        "id": "b2b_microbusiness_admin",
+        "name": "Invoice follow-up for micro-businesses",
+        "signals": [
+          "https://www.visma.com/insights/content/insights-from-european-entrepreneurs-on-running-a-business",
+          "https://intandem.vcita.com/content-hub/the-2026-small-business-digital-adoption-report"
+        ],
+        "competitors": [
+          "https://vordero.eu/en/prijzen",
+          "https://dunlio.com/",
+          "https://babara.app/pricing",
+          "https://dunningly.app/",
+          "https://www.quotup.com/"
+        ],
+        "assessment": "Recurring and monetisable problem; European products range from free to paid plans. High competition, email/accounting integrations, deliverability, GDPR and support make this a heavier first MVP."
+      },
+      {
+        "id": "b2c_wedding",
+        "name": "Wedding planning workflows",
+        "signals": [
+          "https://www.reddit.com/r/wedding/comments/1r3ocq4/finally_got_our_guest_list_under_control_after/",
+          "https://www.reddit.com/r/weddingplanning/comments/1sitnn9/how_are_you_all_actually_organizing_everything_bc/"
+        ],
+        "competitors": [
+          "https://wedmap.wedding/",
+          "https://www.stellanza.com/en",
+          "https://shaadi.diy/",
+          "https://everafterlist.com/features/guest-list",
+          "https://www.journey2yes.com/"
+        ],
+        "assessment": "Real organisational friction appears in first-hand posts, but several broad products already provide guest lists, seating, budgets and RSVPs free. Seasonal, one-time usage and strong free substitutes reduce first-product attractiveness."
+      },
+      {
+        "id": "b2c_personal_finance",
+        "name": "Personal finance calculator/planner",
+        "signals": [
+          "https://www.keepertax.com/posts/digital-products-to-sell"
+        ],
+        "competitors": [
+          "https://www.ynab.com/",
+          "https://www.spendee.com/pricing/",
+          "https://www.actualbudget.com/",
+          "https://www.rocketmoney.com/"
+        ],
+        "assessment": "Large established free and paid alternatives; finance trust and privacy create additional barriers. Only a highly specific calculator would merit another scan."
+      }
+    ],
+    "decision": {
+      "selected": "scopesnap",
+      "why": [
+        "Smallest feasible product with immediate output",
+        "No account, backend, payments or third-party integrations in first version",
+        "Pain has multiple independent qualitative examples",
+        "Can be tested with a prototype before spending money"
+      ],
+      "risks": [
+        "Anecdotal evidence is not representative",
+        "Freelancers may rely on existing contracts, email and templates",
+        "Users may not pay for a single-purpose utility",
+        "Must not present generated document as legal advice or binding contract"
+      ],
+      "next_test": "5–8 usability sessions with freelancers, then a price-sensitivity test; do not publicly launch or spend without approval."
+    }
   }
 }
