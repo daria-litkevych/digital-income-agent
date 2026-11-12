@@ -175,7 +175,7 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
             "end_to_end_test_exists": e2e_path.exists(),
             "project_manager_recovery_test_exists": pm_test_path.exists(),
             "interrupted_tasks_requeued": 'task["status"] = "queued"' in brain_source,
-            "brain_dispatch_artifacts_persisted": 'specialist_outputs' in brain_source and 'save_json(STATE_FILE, state)' in brain_source,
+            "brain_dispatch_artifacts_persisted": 'specialist_outputs' in (root / "agent" / "engine.py").read_text(encoding="utf-8") and 'save_json(STATE_FILE, state)' in brain_source,
             "mock_output_not_auto_completed": "draft requiring review" in brain_source,
         }
         passed = all(checks.values())
