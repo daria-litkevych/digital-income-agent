@@ -1,11 +1,14 @@
 import json
+import tempfile
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 from agent.llm import (
     LLMRequest, LLMSettings, OfflineMockClient, OpenAICompatibleClient,
     enforce_request_limits, estimate_cost_usd,
 )
+from agent.spend_ledger import SpendLedger, SpendLimitExceeded
 
 
 def live_settings(**overrides):
@@ -105,6 +108,50 @@ class LLMInterfaceTests(unittest.TestCase):
         client = OpenAICompatibleClient(live_settings(), "test-secret")
         with self.assertRaisesRegex(RuntimeError, "unexpected response"):
             client.generate(LLMRequest(task="test", system="", user="Hello", max_output_tokens=10))
+
+    @patch("agent.llm.urlopen")
+    def test_live_client_reserves_and_settles_monthly_spend(self, mocked_urlopen):
+        with tempfile.TemporaryDirectory() as folder:
+            ledger = SpendLedger(Path(folder) / "ledger.sqlite3", 1.0)
+            mocked_urlopen.return_value = FakeHTTPResponse({
+                "choices": [{"message": {"content": "ok"}}],
+                "usage": {"prompt_tokens": 100, "completion_tokens": 50},
+            })
+            client = OpenAICompatibleClient(live_settings(), "test-secret", ledger)
+            result = client.generate(
+                LLMRequest(task="test", system="system", user="hello", max_output_tokens=20),
+                request_id="test-success",
+            )
+            self.assertAlmostEqual(result.estimated_cost_usd, 0.00008)
+            self.assertAlmostEqual(ledger.monthly_committed_usd(), 0.00008)
+
+    @patch("agent.llm.urlopen")
+    def test_monthly_limit_blocks_before_network_request(self, mocked_urlopen):
+        with tempfile.TemporaryDirectory() as folder:
+            ledger = SpendLedger(Path(folder) / "ledger.sqlite3", 0.000001)
+            client = OpenAICompatibleClient(live_settings(), "test-secret", ledger)
+            with self.assertRaises(SpendLimitExceeded):
+                client.generate(
+                    LLMRequest(task="test", system="s" * 100, user="u" * 100,
+                               max_output_tokens=20),
+                    request_id="over-budget",
+                )
+            mocked_urlopen.assert_not_called()
+
+    @patch("agent.llm.urlopen")
+    def test_failed_network_request_keeps_reservation(self, mocked_urlopen):
+        from urllib.error import URLError
+        mocked_urlopen.side_effect = URLError("offline")
+        with tempfile.TemporaryDirectory() as folder:
+            ledger = SpendLedger(Path(folder) / "ledger.sqlite3", 1.0)
+            client = OpenAICompatibleClient(live_settings(), "test-secret", ledger)
+            with self.assertRaisesRegex(RuntimeError, "request failed"):
+                client.generate(
+                    LLMRequest(task="test", system="system", user="hello",
+                               max_output_tokens=20),
+                    request_id="network-failure",
+                )
+            self.assertGreater(ledger.monthly_committed_usd(), 0)
 
 if __name__ == "__main__":
     unittest.main()
