@@ -33,6 +33,14 @@ class ResearchSecurityAuditTests(unittest.TestCase):
         self.assertTrue(all(result["metrics"]["checks"].values()))
 
 class PublicSourceSafetyTests(unittest.TestCase):
+    def test_ab018_acceptance_handler_checks_source_to_evidence_integration(self):
+        result = execute(
+            {"id": "AB-018", "role": "market_researcher", "kind": "evidence_enrichment"},
+            {}, {},
+        )
+        self.assertTrue(result["ok"], result.get("metrics"))
+        self.assertTrue(all(result["metrics"]["checks"].values()))
+
     def test_only_public_https_urls_are_allowed(self):
         self.assertEqual(
             validate_public_https_url("https://example.test/page", PUBLIC_RESOLVER),
