@@ -49,7 +49,7 @@ class EngineTests(unittest.TestCase):
         self.assertTrue(result["blocked"])
 
     def test_quality_controller_accepts_auditable_strategy_output(self):
-        prior={"ok":True,"summary":"Neither hypothesis has demonstrated willingness to pay.","artifact":{"comparison":{"a":1},"experiment":{"method":"interviews"}}}
+        prior={"ok":True,"summary":"Willingness to pay is not demonstrated for either hypothesis.","artifact":{"comparison":{"a":1},"experiment":{"method":"interviews"}}}
         result=execute({"id":"QC-001","role":"quality_controller"},{"specialist_outputs":{"PS-001":prior}},{})
         self.assertTrue(result["ok"])
         self.assertTrue(all(result["metrics"]["checks"].values()))
