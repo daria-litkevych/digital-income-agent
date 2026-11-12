@@ -19,7 +19,7 @@ ALLOWED_ACTIONS = {
     "publish", "deploy", "send_message", "send_email", "purchase",
     "change_billing", "change_account", "public_commit", "submit_listing",
 }
-FORBIDDEN_SECRET_KEYS = {"api_key", "password", "token", "secret", "authorization", "access_token"}
+FORBIDDEN_SECRET_MARKERS = ("api_key", "password", "token", "secret", "authorization", "private_key", "credential")
 
 
 class ApprovalError(RuntimeError):
@@ -36,7 +36,8 @@ def _utc(value: datetime | None = None) -> datetime:
 def _reject_secrets(value: Any) -> None:
     if isinstance(value, dict):
         for key, child in value.items():
-            if str(key).lower() in FORBIDDEN_SECRET_KEYS:
+            normalized_key = "".join(char for char in str(key).lower() if char.isalnum() or char == "_")
+            if any(marker in normalized_key for marker in FORBIDDEN_SECRET_MARKERS):
                 raise ApprovalError("Secrets and credentials must never be stored in approval requests.")
             _reject_secrets(child)
     elif isinstance(value, list):
@@ -84,6 +85,10 @@ class ApprovalQueue:
         if not isinstance(payload, dict):
             raise ApprovalError("Action payload must be a JSON object.")
         _reject_secrets(payload)
+        try:
+            _payload_hash(payload)
+        except (TypeError, ValueError) as error:
+            raise ApprovalError("Action payload must contain only JSON-safe values.") from error
         if ttl_hours < 1 or ttl_hours > self.max_ttl_hours:
             raise ApprovalError("Approval expiry exceeds the configured limit.")
         timestamp = _utc(now)
@@ -135,10 +140,12 @@ class ApprovalQueue:
         record = data["requests"].get(request_id)
         if not record or record.get("status") != "pending":
             raise ApprovalError("Only an existing pending request can be rejected.")
-        if not rejected_by.strip():
+        if not isinstance(rejected_by, str) or not rejected_by.strip():
             raise ApprovalError("Rejector identity is required.")
         record["status"] = "rejected"
         record["rejected_by"] = rejected_by.strip()
+        if not isinstance(reason, str):
+            raise ApprovalError("Rejection reason must be text.")
         record["rejection_reason"] = reason[:500]
         self._save(data)
         return dict(record)
@@ -154,8 +161,12 @@ class ApprovalQueue:
             self._save(data)
             raise ApprovalError("Approval has expired.")
         _reject_secrets(payload)
-        actual_hash = _payload_hash(payload)
-        if actual_hash != record.get("payload_sha256"):
+        try:
+            actual_hash = _payload_hash(payload)
+            stored_hash = _payload_hash(record["payload"])
+        except (TypeError, ValueError, KeyError) as error:
+            raise ApprovalError("Action payload is not valid JSON data.") from error
+        if actual_hash != record.get("payload_sha256") or stored_hash != record.get("payload_sha256"):
             raise ApprovalError("Action payload does not match the approved payload.")
         record["status"] = "consumed"
         record["consumed_at"] = timestamp.isoformat()
