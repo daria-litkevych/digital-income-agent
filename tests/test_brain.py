@@ -49,7 +49,7 @@ class AgentBrainTests(unittest.TestCase):
     def test_live_structured_response_is_validated(self):
         payload = {
             "status": "needs_evidence", "summary": "Need independent reviews.",
-            "artifact": {}, "evidence": [], "assumptions": ["No sales data"],
+            "artifact": {"comparison": {}}, "evidence": [], "assumptions": ["No sales data"],
             "risks": ["Low confidence"], "confidence": "low",
             "requires_human_approval": True,
         }
@@ -70,7 +70,7 @@ class AgentBrainTests(unittest.TestCase):
     def test_hallucinated_evidence_url_is_rejected(self):
         payload = {
             "status": "draft", "summary": "Found a source.",
-            "artifact": {}, "evidence": [{"source": "https://invented.example/source"}],
+            "artifact": {"research_summary": {}}, "evidence": [{"source": "https://invented.example/source"}],
             "assumptions": [], "risks": [], "confidence": "low",
             "requires_human_approval": True,
         }
@@ -84,7 +84,7 @@ class AgentBrainTests(unittest.TestCase):
         source = "https://real.example/source"
         payload = {
             "status": "draft", "summary": "Summary grounded in supplied source.",
-            "artifact": {}, "evidence": [{"source": source}],
+            "artifact": {"research_summary": {}}, "evidence": [{"source": source}],
             "assumptions": [], "risks": [], "confidence": "medium",
             "requires_human_approval": True,
         }
