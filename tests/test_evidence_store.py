@@ -21,6 +21,15 @@ class EvidenceStoreTests(unittest.TestCase):
             "hypothesis": "prosumer_creator",
         }
 
+    def test_ab017_acceptance_handler_checks_store_and_runner_integration(self):
+        from agent.engine import execute
+        result = execute(
+            {"id": "AB-017", "role": "market_researcher", "kind": "evidence_discovery"},
+            {}, {},
+        )
+        self.assertTrue(result["ok"], result.get("metrics"))
+        self.assertTrue(all(result["metrics"]["checks"].values()))
+
     def test_url_canonicalization_removes_tracking_and_fragment(self):
         self.assertEqual(
             canonicalize_url(self.item["link"]),
