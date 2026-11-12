@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 45,
+  "run_count": 46,
   "status": "research_ok",
-  "last_run_utc": "2026-11-12T21:08:13.356118+00:00",
-  "research_last_run_utc": "2026-11-12T21:08:11.122801+00:00",
+  "last_run_utc": "2026-11-12T21:08:57.168888+00:00",
+  "research_last_run_utc": "2026-11-12T21:08:54.836952+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -192,13 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 42,
+  "pm_run_count": 43,
   "pm_last_cycle": {
-    "timestamp": "2026-11-12T21:08:13.356056+00:00",
-    "task_id": "AB-012",
-    "role": "project_manager",
-    "status": "completed",
-    "summary": "Project Manager now has a default-off autonomous dispatch path with explicit approval, persisted checkpoints and mandatory human review of specialist drafts."
+    "timestamp": "2026-11-12T21:08:57.168836+00:00",
+    "task_id": "AB-013",
+    "role": "quality_controller",
+    "status": "blocked",
+    "summary": "No safe executor is registered for AB-013."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -366,7 +366,7 @@
         "id": 9,
         "name": "Autonomous studio capability",
         "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-        "status": "in_progress"
+        "status": "blocked"
       }
     ],
     "tasks": [
@@ -875,12 +875,18 @@
         "phase": 9,
         "role": "quality_controller",
         "kind": "tool_permissions",
-        "status": "queued",
+        "status": "blocked",
         "priority": 108,
         "depends_on": [
           "AB-012"
         ],
-        "acceptance": "Every registered tool declares allowed specialist roles; runtime filters visible tools and refuses cross-role invocation. Tests prove research, workspace and privileged actions cannot be used by the wrong role."
+        "acceptance": "Every registered tool declares allowed specialist roles; runtime filters visible tools and refuses cross-role invocation. Tests prove research, workspace and privileged actions cannot be used by the wrong role.",
+        "started_at": "2026-11-12T21:08:57.168796+00:00",
+        "last_result": "No safe executor is registered for AB-013.",
+        "updated_at": "2026-11-12T21:08:57.168836+00:00",
+        "attempts": 1,
+        "blocked_reason": "No safe executor is registered for AB-013.",
+        "next_action": "Register a handler and acceptance checks before scheduling this task."
       },
       {
         "id": "AB-014",
@@ -1674,6 +1680,13 @@
       "role": "project_manager",
       "status": "completed",
       "summary": "Project Manager now has a default-off autonomous dispatch path with explicit approval, persisted checkpoints and mandatory human review of specialist drafts."
+    },
+    {
+      "timestamp": "2026-11-12T21:08:57.168836+00:00",
+      "task_id": "AB-013",
+      "role": "quality_controller",
+      "status": "blocked",
+      "summary": "No safe executor is registered for AB-013."
     }
   ]
 }

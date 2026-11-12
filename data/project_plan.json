@@ -156,7 +156,7 @@
       "id": 9,
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
-      "status": "in_progress"
+      "status": "blocked"
     }
   ],
   "tasks": [
@@ -665,12 +665,18 @@
       "phase": 9,
       "role": "quality_controller",
       "kind": "tool_permissions",
-      "status": "queued",
+      "status": "blocked",
       "priority": 108,
       "depends_on": [
         "AB-012"
       ],
-      "acceptance": "Every registered tool declares allowed specialist roles; runtime filters visible tools and refuses cross-role invocation. Tests prove research, workspace and privileged actions cannot be used by the wrong role."
+      "acceptance": "Every registered tool declares allowed specialist roles; runtime filters visible tools and refuses cross-role invocation. Tests prove research, workspace and privileged actions cannot be used by the wrong role.",
+      "started_at": "2026-11-12T21:08:57.168796+00:00",
+      "last_result": "No safe executor is registered for AB-013.",
+      "updated_at": "2026-11-12T21:08:57.168836+00:00",
+      "attempts": 1,
+      "blocked_reason": "No safe executor is registered for AB-013.",
+      "next_action": "Register a handler and acceptance checks before scheduling this task."
     },
     {
       "id": "AB-014",
