@@ -1,20 +1,93 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 2,
+  "run_count": 3,
   "status": "research_ok",
-  "last_run_utc": "2026-11-11T23:49:30.618451+00:00",
-  "research_last_run_utc": "2026-11-11T23:49:30.618451+00:00",
+  "last_run_utc": "2026-11-12T12:02:12.507303+00:00",
+  "research_last_run_utc": "2026-11-12T12:02:12.507303+00:00",
   "research_queries": [
-    "specialty coffee shop operations problems",
-    "coffee shop opening closing checklist template",
-    "specialty cafe staff training operations",
-    "cafe shift handover software",
-    "restaurant shift handover app",
-    "hospitality staff communication shift log"
+    "\"specialty coffee\" cafe operations staff training",
+    "\"coffee shop\" \"daily checklist\" OR \"opening checklist\" OR \"closing checklist\"",
+    "\"specialty cafe\" staff retention OR training OR workflow OR inventory",
+    "independent coffee shop owner operational challenges costs labor",
+    "restaurant hospitality shift handover log communication software",
+    "hotel restaurant staff shift notes task handoff app",
+    "\"restaurant shift report\" OR \"daily shift report\" software",
+    "hospitality operations frontline employee communication shift change problems"
   ],
-  "research_new_items": 26,
+  "research_new_items": 5,
   "research_errors": [],
   "research_items": [
+    {
+      "title": "Relay Raises $36M to Expand AI Platform for Frontline Operations - citybiz",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPU2lqd2tWeWpoRDFnV0N4cWY5N3AtcGpWR1lfNHNUMVR3aDRUbUlzU04tYmlDS1owR3A4WWpMa1E4QVU3SUFMNFlqQ0VIUjRkSGdoOFJuWjNCQTFIZV83ZDNNUERqQ2JKN1RHM2I3M201a290MDdrbnkxWEdkbVZ1dFowQml0SXNwajEwQm1GN2p6RmxTWTgxcWJicXlWNy1paXFWcQ?oc=5",
+      "published": "Wed, 30 Sep 2026 07:00:00 GMT",
+      "description": "Relay Raises $36M to Expand AI Platform for Frontline Operations citybiz",
+      "query": "hospitality operations frontline employee communication shift change problems",
+      "hypothesis": "shiftbrief_ai",
+      "relevance_score": 2,
+      "matched_terms": [
+        "frontline",
+        "operations"
+      ],
+      "published_date": "2026-09-30"
+    },
+    {
+      "title": "Blink Raises $17 Million and Partners With Shake Shack to Advance Frontline Workforce Technology for Restaurants - Restaurant Technology News",
+      "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOTUJiTkQ5aWJTc2ltYlBvdjFBZjg5cWVqU0JWY1FaUTJPUjFOZEE2YkNLVllRcGR1bVFmRjdDR29tbFNFZkJqVEx4T2pzdUFEWXp5MHBDenNrRjJkQjZqN3RNdV9HLUtIYlpxWUREYlpzUlNsWWtXdjUxQXRfdTFmdWJIQS1MT1hzTmFIR1FIa3h0YzhaNTRRbGdwS1NFNUtwWWlQZUZXMC1LNGI0bVhDX083MkctelZZYl8zeENURG9XYmhVcTBHLVV5cHJPbHk2SWpNT3p2eVNaUnpKcTl6M0FPeUxwWklMOUJ4WlZB?oc=5",
+      "published": "Sat, 27 Jun 2026 07:00:00 GMT",
+      "description": "Blink Raises $17 Million and Partners With Shake Shack to Advance Frontline Workforce Technology for Restaurants Restaurant Technology News",
+      "query": "hospitality operations frontline employee communication shift change problems",
+      "hypothesis": "shiftbrief_ai",
+      "relevance_score": 2,
+      "matched_terms": [
+        "frontline",
+        "restaurant"
+      ],
+      "published_date": "2026-06-27"
+    },
+    {
+      "title": "HN TV: Why Running Hotel Operations on WhatsApp Is the Equivalent of Managing Your Business on Personal Gmail — A Conversation with Guy Weiss, CEO of Zenzap - Hospitality Net",
+      "link": "https://news.google.com/rss/articles/CBMioAJBVV95cUxNa1hOVzlwWk1mMXdEaFdCNUV3dERobnBvWkIwcDZMUUZ6UzNJQ1JXanctbVlPb0FGamdvNmtFVG01ZlFlclJXTG1kUEc5SFRBaDIyUmZLT3RwQnBqdDZCdmk3NnF6NEdwTm05MXdGWTBUNWJzREl3MGJRd2pNRlBIaGU0RVZjNkZwZGpOU08tNWluVTZqNmlRTzhsUndYbDZpY19pNnV3SjRtUUtDZzlFdkVIUnpHYUg2dVVWVEctaEhZbWV4dzZMTEEzdVRzcWtuLTdULUJGY0RHMHphR29kczNZOEluVFoyREFEbEYwQjQ0NlVQOTRjbU5UM0kyUlNXeHVqN1o0aUZCNFBWM2tkOXpGaU1lNTJ3UkNiN3BoRzg?oc=5",
+      "published": "Wed, 17 Jun 2026 07:00:00 GMT",
+      "description": "HN TV: Why Running Hotel Operations on WhatsApp Is the Equivalent of Managing Your Business on Personal Gmail — A Conversation with Guy Weiss, CEO of Zenzap Hospitality Net",
+      "query": "hospitality operations frontline employee communication shift change problems",
+      "hypothesis": "shiftbrief_ai",
+      "relevance_score": 3,
+      "matched_terms": [
+        "hospitality",
+        "hotel",
+        "operations"
+      ],
+      "published_date": "2026-06-17"
+    },
+    {
+      "title": "The high cost of high turnover: How barista retention is stalling coffee shop growth across the US - Coffee Intelligence",
+      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBVcVdPYUdQamhxWEJ3RkoyRUQyVDNYTlU3VnlIVmFoU3gxVHVhbE95dThic0xDaDc3NlI2VkxhM0NZamRQWDhzSXN3V2NFOWE5d19ZbmdfTXIyc3BKaXQzeTh2STFHWjYxWWMzYWswaDl3Z0NvT09VVzNSSlFSdw?oc=5",
+      "published": "Wed, 03 Jun 2026 07:00:00 GMT",
+      "description": "The high cost of high turnover: How barista retention is stalling coffee shop growth across the US Coffee Intelligence",
+      "query": "independent coffee shop owner operational challenges costs labor",
+      "hypothesis": "cafe_starter_kit",
+      "relevance_score": 2,
+      "matched_terms": [
+        "coffee shop",
+        "cost"
+      ],
+      "published_date": "2026-06-03"
+    },
+    {
+      "title": "Enhancing Processes in the Hospitality Sector Through Operational Excellence: A Strategic Framework for Future-Ready Hotels - Hospitality Net",
+      "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxNRG9oMUdhSmVIWFR3Xy1tVnFlQWx5VmJYd19jUUhUUmRHM1JKcEY0WWFSdERlYlVwbE5EYzFJUFpta3Raa2RrZGkxMktsZ2hUZEVOVHY4NUF0eldDdGRMcVdUMVk5MU15cE5PMVdmZDFPQ0hhQV9rX19rd1N3T2VaQmh3WkVZeVNnWWRUdGlJaF9jY1plbnY0ZGMwWkRTbG95NF9QTm1xUjlLamZ3Zm1jTzNtNUpLcFRLaklYUXF2NUFqNGUxMFZ2Ykw2R002bjhrb3B1cm5LUE41ZVoyZ1FnQ0NmX3d3bmYwemhNSXJmd1BKOHdkZTVsYkhubGN4dw?oc=5",
+      "published": "Tue, 05 May 2026 07:00:00 GMT",
+      "description": "Enhancing Processes in the Hospitality Sector Through Operational Excellence: A Strategic Framework for Future-Ready Hotels Hospitality Net",
+      "query": "hospitality operations frontline employee communication shift change problems",
+      "hypothesis": "shiftbrief_ai",
+      "relevance_score": 2,
+      "matched_terms": [
+        "hospitality",
+        "hotel"
+      ],
+      "published_date": "2026-05-05"
+    },
     {
       "title": "College shuts down Goodrich Coffee Bar, citing need to restructure - The Williams Record",
       "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPWkhpRzBWUEdxRFJsdmNyNUc5d21zVjhkbHlYM1VpS1FvendKbUY1THg4U2VZd1lTRzJGU0hMWUIyVml6OHdfLWU0WmFSMzAtOE1qa1A5R2NSa1BxQnV6TnFnMDZZQU5RaHZtT1JQMnZRR0I2SmhSQ0poNy1LWS10TXl1RlRnb2VUX3lkS2dtVVY3RkcyZnp1LTlTN2JKZjhFbVFYZXZxZkg?oc=5",
@@ -197,5 +270,10 @@
       "description": "2025 Employee Sentiment Study www.aon.com",
       "query": "hospitality staff communication shift log"
     }
-  ]
+  ],
+  "research_hypotheses": {
+    "cafe_starter_kit": "Small Café Manager Starter Kit",
+    "shiftbrief_ai": "ShiftBrief AI"
+  },
+  "research_method": "Google News RSS, last 365 days, keyword relevance score >= 2"
 }
