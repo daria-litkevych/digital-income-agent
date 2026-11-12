@@ -162,6 +162,11 @@ class AgentBrain:
             raise BrainError("Human-approval flag must be boolean.")
         if not isinstance(payload["artifact"], dict):
             raise BrainError("Specialist artifact must be a JSON object.")
+        unexpected_sections = set(payload["artifact"]) - set(spec.allowed_outputs)
+        if unexpected_sections:
+            raise BrainError("Artifact contains sections not allowed for role: " + ", ".join(sorted(unexpected_sections)))
+        if payload["status"] == "draft" and not payload["artifact"]:
+            raise BrainError("Draft output must contain at least one role-specific artifact section.")
         if not all(isinstance(payload[key], list) for key in ("evidence", "assumptions", "risks")):
             raise BrainError("Evidence, assumptions and risks must be arrays.")
         if payload["confidence"] not in {"none", "low", "medium", "high"}:
