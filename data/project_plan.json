@@ -593,12 +593,18 @@
       "phase": 9,
       "role": "developer",
       "kind": "workspace_tools",
-      "status": "queued",
+      "status": "blocked",
       "priority": 112,
       "depends_on": [
         "AB-007"
       ],
-      "acceptance": "Agents can inspect approved workspace files, propose bounded changes and run tests in isolated temporary workspaces. No secrets, deployment, public commits or writes outside allowlisted paths; all generated changes are reviewable."
+      "acceptance": "Agents can inspect approved workspace files, propose bounded changes and run tests in isolated temporary workspaces. No secrets, deployment, public commits or writes outside allowlisted paths; all generated changes are reviewable.",
+      "started_at": "2026-11-12T20:59:43.786507+00:00",
+      "last_result": "No safe executor is registered for AB-009.",
+      "updated_at": "2026-11-12T20:59:43.786544+00:00",
+      "attempts": 1,
+      "blocked_reason": "No safe executor is registered for AB-009.",
+      "next_action": "Register a handler and acceptance checks before scheduling this task."
     },
     {
       "id": "AB-010",
