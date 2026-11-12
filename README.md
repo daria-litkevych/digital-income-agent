@@ -31,7 +31,7 @@ On each scheduled or manual GitHub Actions run, the Project Manager:
 
 ## Current limitations and safety
 
-The GitHub runner currently collects Google News RSS signals and runs the task orchestrator. It does **not** yet have an approved live browser/search integration, so tasks requiring competitor pages, current prices, customer reviews or source verification are explicitly blocked instead of being fabricated. Those findings can be added after evidence-backed research in the assistant session.
+The GitHub runner currently collects Google News RSS signals and runs the task orchestrator. An initial sourced competitor scan is stored in `data/market_research.json` and summarized in `reports/market-research.md`. The runner itself still has no live browser/search integration; future research tasks requiring fresh external evidence must remain blocked unless a supported integration is added. The current specialist executor can process the saved evidence but does not independently browse competitor sites.
 
 No paid API, subscription, server or domain is enabled. No product publication, customer outreach or paid action occurs without explicit approval.
 
@@ -40,7 +40,7 @@ No paid API, subscription, server or domain is enabled. No product publication, 
 - `agent/main.py` — RSS signal collection.
 - `agent/project_manager.py` — persistent task orchestration and specialist role registry.
 - `data/state.json` — saved execution and research state.
-- `data/project_plan.json` — persistent project phases and task queue.
+- `data/project_plan.json` — persistent project phases and task queue.\n- `data/market_research.json` — sourced competitor and customer-signal evidence.
 - `reports/latest.md` — research signals report.
 - `reports/project-manager.md` — current project dashboard and task status.
 - `.github/workflows/daily-agent.yml` — cloud schedule and execution.
