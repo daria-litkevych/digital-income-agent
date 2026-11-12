@@ -768,6 +768,20 @@
       "updated_at": "2026-11-12T21:31:49.635511+00:00",
       "attempts": 2,
       "completed_at": "2026-11-12T21:31:49.635511+00:00"
+    },
+    {
+      "id": "AB-019",
+      "title": "Integrate durable specialist orchestration and evidence tools into Project Manager",
+      "phase": 9,
+      "role": "project_manager",
+      "kind": "pm_orchestrator_integration",
+      "status": "queued",
+      "priority": 93,
+      "depends_on": [
+        "AB-018"
+      ],
+      "acceptance": "Approved Project Manager dispatch writes each specialist checkpoint atomically to a workflow-scoped file, reloads prior checkpoints on restart, injects the provenance-aware evidence store into role-scoped research tools, keeps scheduled dispatch approval-free, and never marks specialist drafts complete without human review. Tests prove durable persistence and review gating.",
+      "next_action": "Run the full CI workflow and inspect the AB-019 acceptance checks."
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
