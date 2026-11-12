@@ -166,6 +166,21 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-012":
+        root = Path(__file__).resolve().parents[1]
+        pm_path = root / "agent" / "project_manager.py"
+        test_path = root / "tests" / "test_pm_autonomy_gate.py"
+        source = pm_path.read_text(encoding="utf-8") if pm_path.exists() else ""
+        checks = {
+            "project_manager_dispatch_integrated": "dispatch_to_autonomous_studio" in source,
+            "approval_defaults_to_false": "autonomous_approval=False" in source,
+            "unapproved_execution_blocked": "explicit human approval was not supplied" in source,
+            "checkpoints_persist_in_state": "autonomous_workflow_checkpoints" in source,
+            "drafts_remain_human_review_gated": "will not mark this task complete" in source,
+            "default_off_tests_exist": test_path.exists(),
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "Project Manager now has a default-off autonomous dispatch path with explicit approval, persisted checkpoints and mandatory human review of specialist drafts." if passed else "Project Manager autonomy integration checks are incomplete.", "metrics": {"checks": checks}, "artifact": {"integration": "agent/project_manager.py", "tests": "tests/test_pm_autonomy_gate.py", "limitations": ["Scheduled Project Manager does not supply live approval", "No live model request is enabled", "Autonomous task outputs cannot be marked done without human review"]}, "next_action": "Run full end-to-end integration tests in offline mode, then perform a security and permission audit."}
     if task_id == "AB-011":
         root = Path(__file__).resolve().parents[1]
         factory_path = root / "agent" / "autonomous_studio.py"
