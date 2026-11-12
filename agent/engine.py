@@ -166,6 +166,24 @@ def execute(task: dict, state: dict, evidence: dict) -> dict:
         passed = all(checks.values())
         return {"ok": passed, "blocked": not passed, "summary": "Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality." if passed else "Agent Brain evaluation suite is incomplete.", "metrics": {"checks": checks, "covered_roles": sorted(covered_roles)}, "artifact": {"fixture_file": "benchmarks/agent_brain_cases.json", "test_file": "tests/test_brain_evals.py", "limitations": ["No live model evaluations", "No claim of role-level reasoning quality", "No network or paid calls"]}, "next_action": "Complete missing role/evidence evaluations before proceeding."}
 
+    if task_id == "AB-008":
+        root = Path(__file__).resolve().parents[1]
+        source_path = root / "agent" / "research_tools.py"
+        test_path = root / "tests" / "test_research_tools.py"
+        source = source_path.read_text(encoding="utf-8") if source_path.exists() else ""
+        checks = {
+            "public_source_fetcher_exists": source_path.exists(),
+            "source_fetcher_tests_exist": test_path.exists(),
+            "https_only": 'parsed.scheme != "https"' in source,
+            "private_ip_blocked": "ip.is_global" in source,
+            "redirects_not_followed": "_NoRedirect" in source,
+            "bounded_response_size": "max_bytes + 1" in source and "max_text_characters" in source,
+            "evidence_ungraded_until_review": "ungraded_public_source" in source,
+            "read_only_tool_registered_explicitly": 'name="fetch_public_url"' in source,
+        }
+        passed = all(checks.values())
+        return {"ok": passed, "blocked": not passed, "summary": "Read-only public-source retrieval is implemented with HTTPS and public-IP checks, redirect refusal, response bounds and explicit ungraded evidence metadata." if passed else "Safe source-retrieval checks are incomplete.", "metrics": {"checks": checks}, "artifact": {"adapter": "agent/research_tools.py", "tests": "tests/test_research_tools.py", "limitations": ["No search provider; this tool fetches supplied URLs only", "Fetched text is ungraded until independently reviewed", "No credentials, forms, login or write actions"]}, "next_action": "Connect retrieval to an approved public discovery source and evidence store."}
+
     if task_id == "AB-007":
         root = Path(__file__).resolve().parents[1]
         runtime_path = root / "agent" / "tool_runtime.py"
