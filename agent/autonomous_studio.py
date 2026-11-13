@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable
 
-from agent.llm import LLMSettings, OpenAICompatibleClient
+from agent.llm import LLMSettings, OpenAICompatibleClient, LocalLLMSettings, LocalOllamaClient
 from agent.orchestrator import MultiAgentOrchestrator
 from agent.research_tools import build_research_tool_registry
 from agent.evidence_store import EvidenceStore
@@ -78,6 +78,44 @@ def build_live_studio(
     ledger = SpendLedger(ledger_path, monthly_cap)
     client = OpenAICompatibleClient(settings, api_key, ledger)
 
+    workspace = ProposalWorkspace(repository_root)
+    evidence_store = EvidenceStore(Path(repository_root) / "data" / "evidence_store.json")
+    research_tools = build_research_tool_registry(evidence_store=evidence_store)
+    workspace_tools = build_workspace_tool_registry(workspace)
+    registry = ToolRegistry(
+        list(research_tools._tools.values()) + list(workspace_tools._tools.values())
+    )
+    runtime = AgentToolRuntime(client, registry, live_approved=True)
+    orchestrator = MultiAgentOrchestrator(
+        runtime, checkpoint_loader=checkpoint_loader, checkpoint_saver=checkpoint_saver,
+    )
+    return LiveStudio(orchestrator=orchestrator, workspace=workspace)
+
+
+def build_local_studio(
+    repository_root: str | Path,
+    *,
+    checkpoint_loader: Callable[[], dict[str, Any]],
+    checkpoint_saver: Callable[[dict[str, Any]], None],
+    approval_confirmed: bool = False,
+    env: dict[str, str] | None = None,
+) -> LiveStudio:
+    """Build an opt-in local-model studio; no paid provider or download is used."""
+    if approval_confirmed is not True:
+        raise LiveStudioApprovalError("Human approval is required before local studio construction.")
+    values = dict(os.environ if env is None else env)
+    if values.get("STUDIO_LOCAL_LLM_ENABLED", "").lower() != "true":
+        raise LiveStudioApprovalError("STUDIO_LOCAL_LLM_ENABLED is not explicitly true.")
+    settings = LocalLLMSettings(
+        enabled=True,
+        base_url=values.get("STUDIO_LOCAL_LLM_BASE_URL", "http://127.0.0.1:11434"),
+        model=_required(values, "STUDIO_LOCAL_LLM_MODEL"),
+        max_output_tokens=int(values.get("STUDIO_LOCAL_LLM_MAX_OUTPUT_TOKENS", "900")),
+        max_input_characters=int(values.get("STUDIO_LOCAL_LLM_MAX_INPUT_CHARACTERS", "12000")),
+        timeout_seconds=int(values.get("STUDIO_LOCAL_LLM_TIMEOUT_SECONDS", "120")),
+    )
+    settings.validate()
+    client = LocalOllamaClient(settings)
     workspace = ProposalWorkspace(repository_root)
     evidence_store = EvidenceStore(Path(repository_root) / "data" / "evidence_store.json")
     research_tools = build_research_tool_registry(evidence_store=evidence_store)
