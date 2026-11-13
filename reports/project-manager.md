@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-13T13:22:37.557841+00:00
+**Last cycle:** 2026-11-13T13:22:51.150641+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 35 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 67
-- Last task: None (no_eligible_tasks)
+- Completed: 36 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
+- Project Manager cycles: 68
+- Last task: AB-022 (completed)
 
 ## Specialist registry
 
@@ -50,6 +50,8 @@
   - Latest: Product Designer now produces structured user journeys, wireframe specifications and acceptance criteria from a complete supplied brief.
 - **AB-007 · Build bounded specialist tool-call runtime** — done · developer
   - Latest: Bounded JSON tool-call runtime is implemented with an allowlisted registry, argument validation, approval gates, hard step/output limits and AgentBrain final-output validation.
+- **AB-022 · Implement and integrate the isolated Developer proposal specialist** — done · developer
+  - Latest: Developer can stage a bounded code proposal, produce a diff and run allowlisted tests in an isolated temporary workspace without modifying the repository.
 - **AB-008 · Add safe source-retrieval tools and evidence provenance** — done · market_researcher
   - Latest: Read-only public-source retrieval is implemented with HTTPS and public-IP checks, redirect refusal, response bounds and explicit ungraded evidence metadata.
 - **AB-009 · Add sandboxed workspace editing and test execution tools** — done · developer
