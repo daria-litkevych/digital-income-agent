@@ -162,7 +162,7 @@
       "id": 10,
       "name": "Operational specialist capability",
       "goal": "Turn the registered specialist roles into useful, testable provider-free agents with structured outputs, explicit evidence limits and review gates.",
-      "status": "in_progress"
+      "status": "completed"
     }
   ],
   "tasks": [
@@ -817,12 +817,17 @@
       "phase": 10,
       "role": "product_designer",
       "kind": "specialist_capability",
-      "status": "queued",
+      "status": "done",
       "priority": 115,
       "depends_on": [
         "AB-020"
       ],
-      "acceptance": "A generic Product Designer handler consumes a complete supplied brief and produces role-owned user journey, wireframe specification and acceptance criteria; incomplete briefs fail closed; assumptions state that independent customer research was not performed; outputs require human review; CI covers success and failure cases. No product niche or external action is introduced."
+      "acceptance": "A generic Product Designer handler consumes a complete supplied brief and produces role-owned user journey, wireframe specification and acceptance criteria; incomplete briefs fail closed; assumptions state that independent customer research was not performed; outputs require human review; CI covers success and failure cases. No product niche or external action is introduced.",
+      "started_at": "2026-11-13T13:21:50.984800+00:00",
+      "last_result": "Product Designer now produces structured user journeys, wireframe specifications and acceptance criteria from a complete supplied brief.",
+      "updated_at": "2026-11-13T13:21:50.985058+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-13T13:21:50.985058+00:00"
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",

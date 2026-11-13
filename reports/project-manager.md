@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-13T13:21:32.251086+00:00
+**Last cycle:** 2026-11-13T13:21:50.985058+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 34 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 65
-- Last task: None (no_eligible_tasks)
+- Completed: 35 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
+- Project Manager cycles: 66
+- Last task: AB-021 (completed)
 
 ## Specialist registry
 
@@ -30,6 +30,7 @@
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
 - **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
 - **9. Autonomous studio capability** — completed: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
+- **10. Operational specialist capability** — completed: Turn the registered specialist roles into useful, testable provider-free agents with structured outputs, explicit evidence limits and review gates.
 
 ## Task queue
 
@@ -45,6 +46,8 @@
   - Latest: Role-specific contract fixtures and evidence-provenance evaluation tests are registered. These validate interface discipline, not live model reasoning quality.
 - **AB-006 · Run end-to-end Agent Brain workflow and document autonomy limits** — done · project_manager
   - Latest: End-to-end tests cover queued/in-progress task recovery, guarded specialist dispatch, persisted mock draft and human-review blocking.
+- **AB-021 · Implement and integrate the provider-free Product Designer specialist** — done · product_designer
+  - Latest: Product Designer now produces structured user journeys, wireframe specifications and acceptance criteria from a complete supplied brief.
 - **AB-007 · Build bounded specialist tool-call runtime** — done · developer
   - Latest: Bounded JSON tool-call runtime is implemented with an allowlisted registry, argument validation, approval gates, hard step/output limits and AgentBrain final-output validation.
 - **AB-008 · Add safe source-retrieval tools and evidence provenance** — done · market_researcher

@@ -1,9 +1,9 @@
 {
   "agent_name": "Digital Income Agent",
-  "run_count": 68,
+  "run_count": 69,
   "status": "research_ok",
-  "last_run_utc": "2026-11-13T13:21:32.251152+00:00",
-  "research_last_run_utc": "2026-11-13T13:21:28.957415+00:00",
+  "last_run_utc": "2026-11-13T13:21:50.985113+00:00",
+  "research_last_run_utc": "2026-11-13T13:21:48.383714+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -192,12 +192,13 @@
     "prosumer_creator": "Creator and independent professional workflows"
   },
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
-  "pm_run_count": 65,
+  "pm_run_count": 66,
   "pm_last_cycle": {
-    "timestamp": "2026-11-13T13:21:32.251086+00:00",
-    "task_id": null,
-    "status": "no_eligible_tasks",
-    "summary": "No queued or retryable task has all dependencies completed."
+    "timestamp": "2026-11-13T13:21:50.985058+00:00",
+    "task_id": "AB-021",
+    "role": "product_designer",
+    "status": "completed",
+    "summary": "Product Designer now produces structured user journeys, wireframe specifications and acceptance criteria from a complete supplied brief."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -365,6 +366,12 @@
         "id": 9,
         "name": "Autonomous studio capability",
         "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
+        "status": "completed"
+      },
+      {
+        "id": 10,
+        "name": "Operational specialist capability",
+        "goal": "Turn the registered specialist roles into useful, testable provider-free agents with structured outputs, explicit evidence limits and review gates.",
         "status": "completed"
       }
     ],
@@ -1013,6 +1020,24 @@
         "updated_at": "2026-11-13T13:20:30.797029+00:00",
         "attempts": 2,
         "completed_at": "2026-11-13T13:20:30.797029+00:00"
+      },
+      {
+        "id": "AB-021",
+        "title": "Implement and integrate the provider-free Product Designer specialist",
+        "phase": 10,
+        "role": "product_designer",
+        "kind": "specialist_capability",
+        "status": "done",
+        "priority": 115,
+        "depends_on": [
+          "AB-020"
+        ],
+        "acceptance": "A generic Product Designer handler consumes a complete supplied brief and produces role-owned user journey, wireframe specification and acceptance criteria; incomplete briefs fail closed; assumptions state that independent customer research was not performed; outputs require human review; CI covers success and failure cases. No product niche or external action is introduced.",
+        "started_at": "2026-11-13T13:21:50.984800+00:00",
+        "last_result": "Product Designer now produces structured user journeys, wireframe specifications and acceptance criteria from a complete supplied brief.",
+        "updated_at": "2026-11-13T13:21:50.985058+00:00",
+        "attempts": 1,
+        "completed_at": "2026-11-13T13:21:50.985058+00:00"
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -1064,8 +1089,8 @@
         {
           "id": "AG-08",
           "name": "AI role dispatch and structured agent outputs",
-          "status": "planned",
-          "evidence": "Must remain offline/mock by default and require approval for live provider calls"
+          "status": "implemented_limited",
+          "evidence": "agent/brain.py, agent/llm.py and guarded Project Manager integration; live inference remains disconnected and disabled by default."
         },
         {
           "id": "AG-09",
@@ -1103,8 +1128,8 @@
         },
         {
           "role": "product_designer",
-          "status": "planned",
-          "responsibility": "PRD, user journey, prototype and acceptance criteria"
+          "status": "deterministic_limited",
+          "responsibility": "Produces reviewable user journeys, wireframe specifications and acceptance criteria from complete supplied briefs; no independent research or product decisions."
         },
         {
           "role": "developer",
@@ -1744,6 +1769,22 @@
         ]
       },
       "next_action": "Keep these checks in CI and add separately reviewed semantic evaluations only when a safe, approved evaluation method exists."
+    },
+    "AB-021": {
+      "ok": true,
+      "blocked": false,
+      "summary": "Product Designer now produces structured user journeys, wireframe specifications and acceptance criteria from a complete supplied brief.",
+      "metrics": {
+        "fixture_passed": true,
+        "acceptance_criteria": 4,
+        "journey_steps": 4
+      },
+      "artifact": {
+        "module": "agent/product_designer.py",
+        "tests": "tests/test_product_designer.py",
+        "mode": "deterministic provider-free specialist"
+      },
+      "next_action": "Connect the role to the bounded orchestration runtime and keep all generated requirements subject to review."
     }
   },
   "event_log": [
@@ -2164,6 +2205,13 @@
       "task_id": null,
       "status": "no_eligible_tasks",
       "summary": "No queued or retryable task has all dependencies completed."
+    },
+    {
+      "timestamp": "2026-11-13T13:21:50.985058+00:00",
+      "task_id": "AB-021",
+      "role": "product_designer",
+      "status": "completed",
+      "summary": "Product Designer now produces structured user journeys, wireframe specifications and acceptance criteria from a complete supplied brief."
     }
   ],
   "evidence_store_summary": {
