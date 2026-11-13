@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-13T13:27:16.788800+00:00
+**Last cycle:** 2026-11-13T13:27:29.886466+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 39 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
-- Project Manager cycles: 75
-- Last task: None (no_eligible_tasks)
+- Completed: 40 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
+- Project Manager cycles: 76
+- Last task: AB-026 (completed)
 
 ## Specialist registry
 
@@ -66,6 +66,8 @@
   - Latest: Optional local Ollama inference is wired behind explicit approval, restricted to loopback, free of API billing and model downloads, and covered by no-network construction tests.
 - **AB-011 · Build explicitly approved live studio composition root** — done · developer
   - Latest: A live studio composition root now requires explicit host approval, an explicit live flag, runtime credentials, verified token pricing and a monthly spend ledger; construction itself makes no provider call.
+- **AB-026 · Verify local-model orchestration across specialists, tools and checkpoints** — done · quality_controller
+  - Latest: Local inference is covered through a mocked loopback provider, bounded tool use, two-specialist handoff, durable checkpoints and mandatory human review.
 - **AB-012 · Integrate default-off autonomous dispatch into Project Manager** — done · project_manager
   - Latest: Project Manager now has a default-off autonomous dispatch path with explicit approval, persisted checkpoints and mandatory human review of specialist drafts.
 - **AB-013 · Enforce role-specific tool permissions and audit boundaries** — done · quality_controller

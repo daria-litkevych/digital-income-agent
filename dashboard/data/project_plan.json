@@ -900,6 +900,24 @@
       "updated_at": "2026-11-13T13:26:21.062619+00:00",
       "attempts": 1,
       "completed_at": "2026-11-13T13:26:21.062619+00:00"
+    },
+    {
+      "id": "AB-026",
+      "title": "Verify local-model orchestration across specialists, tools and checkpoints",
+      "phase": 10,
+      "role": "quality_controller",
+      "kind": "local_orchestration_capability",
+      "status": "done",
+      "priority": 110,
+      "depends_on": [
+        "AB-025"
+      ],
+      "acceptance": "A mocked local Ollama endpoint completes a two-specialist workflow, exercises a role-scoped tool call, persists each checkpoint, reaches review_required rather than auto-completion, and rejects a foreign-role artifact. Tests make no real network or paid API calls.",
+      "started_at": "2026-11-13T13:27:29.885824+00:00",
+      "last_result": "Local inference is covered through a mocked loopback provider, bounded tool use, two-specialist handoff, durable checkpoints and mandatory human review.",
+      "updated_at": "2026-11-13T13:27:29.886466+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-13T13:27:29.886466+00:00"
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
