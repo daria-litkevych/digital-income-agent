@@ -15,6 +15,9 @@ def evaluate(repository_root) -> dict:
     llm = llm_path.read_text(encoding="utf-8")
     studio = studio_path.read_text(encoding="utf-8")
     pm = pm_path.read_text(encoding="utf-8")
+    runner_path = root / "agent" / "local_runner.py"
+    runner_tests = root / "tests" / "test_local_runner.py"
+    docs_path = root / "docs" / "local-model-setup.md"
     checks = {
         "local_client_is_explicitly_disabled_by_default": "enabled: bool = False" in llm and "Local LLM is disabled" in llm,
         "endpoint_is_loopback_only": "address.is_loopback" in llm and "ipaddress.ip_address" in llm,
@@ -24,6 +27,8 @@ def evaluate(repository_root) -> dict:
         "local_factory_requires_approval_and_opt_in": "approval_confirmed is not True" in studio and "STUDIO_LOCAL_LLM_ENABLED" in studio,
         "project_manager_routes_local_provider_explicitly": "build_local_studio if runtime_env.get(\"STUDIO_LOCAL_LLM_ENABLED\", \"\").lower() == \"true\" else build_live_studio" in pm,
         "client_and_factory_tests_exist": llm_tests.is_file() and studio_tests.is_file(),
+        "manual_runner_requires_explicit_approval": runner_path.is_file() and "approval_confirmed is not True" in runner_path.read_text(encoding="utf-8"),
+        "runner_rejects_secret_fields_and_is_documented": runner_tests.is_file() and docs_path.is_file() and "Secret-like field" in runner_path.read_text(encoding="utf-8"),
     }
     passed = all(checks.values())
     return {
