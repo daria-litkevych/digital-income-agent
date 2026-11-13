@@ -162,7 +162,7 @@
       "id": 10,
       "name": "Operational specialist capability",
       "goal": "Turn the registered specialist roles into useful, testable provider-free agents with structured outputs, explicit evidence limits and review gates.",
-      "status": "completed"
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -936,6 +936,19 @@
       "updated_at": "2026-11-13T13:29:46.839666+00:00",
       "attempts": 2,
       "completed_at": "2026-11-13T13:29:46.839666+00:00"
+    },
+    {
+      "id": "AB-028",
+      "title": "Run final readiness audit and prepare local-model handoff",
+      "phase": 10,
+      "role": "quality_controller",
+      "kind": "studio_readiness_audit",
+      "status": "queued",
+      "priority": 108,
+      "depends_on": [
+        "AB-027"
+      ],
+      "acceptance": "Final audit confirms all prior AB tasks are complete, all nine roles are registered, specialist modules and regression tests exist, CI runs the full unittest suite, paid and local inference are off by default, the manual local CLI requires approval, the scheduled workflow does not invoke it, and café product tasks remain paused."
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -993,14 +1006,14 @@
       {
         "id": "AG-09",
         "name": "Product design/development/QA artifact pipeline",
-        "status": "planned",
-        "evidence": "Product-specific workspaces and test gates not yet implemented"
+        "status": "implemented_limited",
+        "evidence": "agent/product_designer.py, agent/developer.py, agent/workspace_tools.py and tests; generic design and proposal-only code validation exist, but no product-specific end-to-end build pipeline is active."
       },
       {
         "id": "AG-10",
         "name": "Listing preparation and analytics pipeline",
-        "status": "planned",
-        "evidence": "No marketplace integration or sales analytics connected"
+        "status": "implemented_limited",
+        "evidence": "agent/growth_launch.py and agent/analytics.py; private listing drafts and supplied-data analytics exist, but no marketplace integration or external sales analytics is connected."
       }
     ],
     "role_registry": [
@@ -1050,7 +1063,7 @@
         "responsibility": "Calculates descriptive metrics from supplied aggregate data; no external account access, tracking or causal claims."
       }
     ],
-    "important_limit": "The current scheduled system is deterministic and rules-based. The live LLM client is disconnected from role handlers. No automatic customer outreach, public publishing, paid API calls or spending is enabled."
+    "important_limit": "The scheduled GitHub Actions system remains deterministic and does not invoke local or paid inference. A manual, explicitly approved local Ollama runner is available; no model is installed or downloaded automatically. No automatic customer outreach, public publishing, paid API calls or spending is enabled."
   },
   "project_notes": {
     "spending": [
