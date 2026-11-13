@@ -55,5 +55,5 @@ def evaluate(repository_root) -> dict:
             "remaining_user_action": "Install and start a local Ollama service, install a compatible model, then explicitly approve a manual local run.",
             "limitations": ["No model is installed or run by this audit", "No semantic quality of a particular model is claimed", "No paid API, publication, outreach or spending is enabled"],
         },
-        "next_action": "User action is now required to install a local model and approve the first real inference run.",
+        "next_action": "Install and start a local model service, then explicitly approve the first real inference run.",
     }
