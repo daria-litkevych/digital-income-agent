@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-13T13:29:32.438601+00:00
+**Last cycle:** 2026-11-13T13:29:46.839666+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 40 | Queued: 1 | Running: 0 | Blocked: 2 | Failed: 0
+- Completed: 41 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
 - Project Manager cycles: 79
-- Last task: None (no_eligible_tasks)
+- Last task: AB-027 (completed)
 
 ## Specialist registry
 
@@ -30,7 +30,7 @@
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
 - **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
 - **9. Autonomous studio capability** — completed: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
-- **10. Operational specialist capability** — blocked: Turn the registered specialist roles into useful, testable provider-free agents with structured outputs, explicit evidence limits and review gates.
+- **10. Operational specialist capability** — completed: Turn the registered specialist roles into useful, testable provider-free agents with structured outputs, explicit evidence limits and review gates.
 
 ## Task queue
 
@@ -70,9 +70,8 @@
   - Latest: Local inference is covered through a mocked loopback provider, bounded tool use, two-specialist handoff, durable checkpoints and mandatory human review.
 - **AB-012 · Integrate default-off autonomous dispatch into Project Manager** — done · project_manager
   - Latest: Project Manager now has a default-off autonomous dispatch path with explicit approval, persisted checkpoints and mandatory human review of specialist drafts.
-- **AB-027 · Add a manually approved local workflow CLI and setup documentation** — blocked · project_manager
-  - Latest: Local inference acceptance checks are incomplete.
-  - Next action: Keep the local model path off until a user explicitly enables it and installs a model locally.
+- **AB-027 · Add a manually approved local workflow CLI and setup documentation** — done · project_manager
+  - Latest: Optional local Ollama inference is wired behind explicit approval, restricted to loopback, free of API billing and model downloads, and covered by no-network construction tests.
 - **AB-013 · Enforce role-specific tool permissions and audit boundaries** — done · quality_controller
   - Latest: Specialist tool permissions are now enforced by role at both discovery and invocation; cross-role access fails closed.
 - **AB-014 · Run full offline autonomy integration and recovery suite** — done · quality_controller
