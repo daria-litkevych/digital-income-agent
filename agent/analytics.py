@@ -32,7 +32,6 @@ def analyse_metrics(metrics: dict[str, Any]) -> dict[str, Any]:
 
     conversion_rate = values["conversions"] / values["sessions"] if values["sessions"] else None
     refund_rate = values["refunds"] / values["conversions"] if values["conversions"] else None
-    net_revenue = values["gross_revenue"] - metrics.get("refund_amount", 0)
     refund_amount = metrics.get("refund_amount", 0)
     if isinstance(refund_amount, bool) or not isinstance(refund_amount, (int, float)) or not isfinite(refund_amount) or refund_amount < 0:
         raise MetricsInputError("refund_amount must be a finite non-negative number.")
