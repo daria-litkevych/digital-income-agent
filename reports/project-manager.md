@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-13T13:20:16.855645+00:00
+**Last cycle:** 2026-11-13T13:20:30.797029+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 33 | Queued: 1 | Running: 0 | Blocked: 2 | Failed: 0
+- Completed: 34 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
 - Project Manager cycles: 64
-- Last task: None (no_eligible_tasks)
+- Last task: AB-020 (completed)
 
 ## Specialist registry
 
@@ -29,7 +29,7 @@
 - **6. Sales and launch assets** — planned: Prepare product name, positioning, screenshots, instructions, pricing hypothesis, support and listing copy.
 - **7. Approval and publication** — planned: Review platform fees, tax/VAT, privacy and listing details; publish only after explicit user approval.
 - **8. Analytics and iteration** — planned: Measure visits, conversion, refunds, support and revenue; improve, reposition or stop products based on evidence.
-- **9. Autonomous studio capability** — blocked: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
+- **9. Autonomous studio capability** — completed: Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.
 
 ## Task queue
 
@@ -76,9 +76,8 @@
   - Latest: A role-scoped research tool now fetches the exact public HTTPS URL for a known discovery record and stores a bounded, hash-addressed excerpt while preserving Unverified status.
 - **AB-019 · Integrate durable specialist orchestration and evidence tools into Project Manager** — done · project_manager
   - Latest: Project Manager now persists specialist checkpoints after every handoff, reloads them on resume, and injects the provenance-aware evidence store into the approved research tool registry. Scheduled execution still supplies no live approval and all outputs remain subject to human review.
-- **AB-020 · Build cross-role specialist evaluation and adversarial quality gates** — blocked · quality_controller
-  - Latest: No safe executor is registered for AB-020.
-  - Next action: Register a handler and acceptance checks before scheduling this task.
+- **AB-020 · Build cross-role specialist evaluation and adversarial quality gates** — done · quality_controller
+  - Latest: Cross-role structural quality and safety gates passed for all nine registered roles. These are offline contract tests, not semantic model-quality benchmarks.
 - **DS-003 · Deep-dive top three opportunities and identify validation experiments** — done · market_researcher
   - Latest: Deep-dived freelancer scope changes, micro-business invoice follow-up and wedding workflows. Competitors/free alternatives are material in all three.
 - **MR-001 · Map direct competitors and substitutes for café starter kit** — done · market_researcher
