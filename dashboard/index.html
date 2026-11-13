@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Digital Income — Project Dashboard</title>
+<title>Autonomous Digital Product Studio — Dashboard</title>
 <style>
 :root{--bg:#f5f6f8;--panel:#fff;--ink:#202431;--muted:#737b8c;--line:#e7e9ef;--accent:#6657d9;--soft:#efedff;--green:#16845b;--amber:#a76a13;--red:#b54747;--shadow:0 8px 30px #2024310b}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
@@ -25,7 +25,7 @@ main{max-width:1240px;margin:24px auto;padding:0 20px 50px}.notice{background:#f
 </style>
 </head>
 <body>
-<header><div><h1>Digital Income Dashboard</h1><p>Управление проектом онлайн-пассивного дохода</p></div><span class="tag">PRIVATE · AUTO-SYNC</span></header>
+<header><div><h1>Autonomous Digital Product Studio</h1><p>Единая панель управления студией автономных агентов</p></div><span class="tag">PRIVATE · AUTO-SYNC</span></header>
 <main>
 <div class="notice"><strong>Автоматическое обновление:</strong> панель загружает актуальные JSON-файлы из приватного Netlify-проекта. GitHub Actions обновляет данные после циклов агента. Ручная загрузка остаётся как резервный вариант.</div>
 <div class="toolbar"><div class="uploadset">
@@ -34,12 +34,12 @@ main{max-width:1240px;margin:24px auto;padding:0 20px 50px}.notice{background:#f
 <button class="btn" id="export" disabled>Экспорт плана</button>
 </div><div class="statusline" id="status">Подключение к данным проекта…</div></div>
 <div class="tabs" id="tabs">
-<button class="tab active" data-tab="overview">Обзор</button><button class="tab" data-tab="tasks">Задачи</button><button class="tab" data-tab="roadmap">Этапы</button><button class="tab" data-tab="agents">AI-роли</button><button class="tab" data-tab="research">Исследование</button><button class="tab" data-tab="finance">Финансы и цель</button>
+<button class="tab active" data-tab="overview">Обзор</button><button class="tab" data-tab="tasks">Задачи</button><button class="tab" data-tab="roadmap">Этапы</button><button class="tab" data-tab="agents">Агенты студии</button><button class="tab" data-tab="research">Рынок и гипотезы</button><button class="tab" data-tab="finance">Финансы и цель</button>
 </div>
-<section class="panel active" id="overview"><div id="overviewContent" class="empty"><h3>Загрузи данные проекта</h3><p>Панель автоматически загружает project_plan.json, state.json и market_research.json. Если автоматическая загрузка не сработает, можно выбрать файлы вручную.</p><p>Пока файлы не загружены, панель не показывает выдуманные показатели.</p></div></section>
+<section class="panel active" id="overview"><div id="overviewContent" class="empty"><h3>Загрузи данные студии</h3><p>Панель автоматически загружает project_plan.json, state.json и market_research.json. Если автоматическая загрузка не сработает, можно выбрать файлы вручную.</p><p>Пока файлы не загружены, панель не показывает выдуманные показатели.</p></div></section>
 <section class="panel" id="tasks"><div id="tasksContent" class="empty">Загрузи project_plan.json, чтобы увидеть очередь задач.</div></section>
 <section class="panel" id="roadmap"><div id="roadmapContent" class="empty">Загрузи project_plan.json, чтобы увидеть этапы.</div></section>
-<section class="panel" id="agents"><div id="agentsContent" class="empty">Роли появятся после загрузки данных проекта.</div></section>
+<section class="panel" id="agents"><div id="agentsContent" class="empty">Агенты появятся после загрузки реестра студии.</div></section>
 <section class="panel" id="research"><div id="researchContent" class="empty">Загрузи market_research.json, чтобы увидеть конкурентную среду.</div></section>
 <section class="panel" id="finance"><div class="grid">
 <div class="card metric"><div class="k">Целевой доход</div><div class="v">€1,000</div><div class="sub">в месяц через 5 лет</div></div>
@@ -47,7 +47,7 @@ main{max-width:1240px;margin:24px auto;padding:0 20px 50px}.notice{background:#f
 <div class="card metric"><div class="k">Желаемые расходы</div><div class="v">≤ €10</div><div class="sub">в месяц</div></div>
 <div class="card metric"><div class="k">Первый доход</div><div class="v">€100–300</div><div class="sub">первая проверяемая цель</div></div></div>
 <div class="card"><h3 class="sectiontitle">Финансовые правила проекта</h3><ul class="small"><li>Не подключать платные API, подписки, серверы или домены без отдельного одобрения.</li><li>Не публиковать продукт и не отправлять коммерческие сообщения без отдельного одобрения.</li><li>Сначала проверяем спрос, затем тратим деньги и строим продукт.</li><li>Не считать выручку, пока нет подтверждённых продаж.</li></ul></div></section>
-<div class="footer">Версия 2.0 · Показывает 9 ролей, зрелость 10 компонентов и ограничения автономного режима. Данные в Netlify обновляются только после успешной публикации; если дата последнего цикла отстаёт от GitHub, опубликованный снимок устарел.</div>
+<div class="footer">Версия 2.1 · Источник данных: корневая папка data/. Число агентов берётся из реестра реализации, а не из сокращённого списка в state.json.</div>
 </main>
 <script>
 const state={plan:null,run:null,research:null,docs:[]};
@@ -136,22 +136,27 @@ function renderResearch(){
  const scan=d.opportunity_scan||{},dives=d.deep_dives||{};
  let html='';
  if(scan.candidates?.length){
-  html+='<div class="card"><h3 class="sectiontitle">Портфель возможностей · B2C / B2B / Prosumer</h3><p class="small muted">'+esc(scan.scope||"Первичный поиск; не подтверждение спроса.")+'</p><div class="tablewrap"><table class="data"><thead><tr><th>Гипотеза</th><th>Сегмент</th><th>Проблема</th><th>Уровень сигнала</th></tr></thead><tbody>';
-  html+=scan.candidates.map(x=>'<tr><td><strong>'+esc(x.id)+'</strong></td><td>'+esc(x.segment)+'</td><td>'+esc(x.problem)+'</td><td>'+esc(x.evidence_level)+'</td></tr>').join("");
+  html+='<div class="card"><h3 class="sectiontitle">Портфель рыночных возможностей · B2C / B2B / Prosumer</h3><p class="small muted">'+esc(scan.scope||"Исследовательские гипотезы; спрос ещё не подтверждён.")+'</p><div class="tablewrap"><table class="data"><thead><tr><th>Гипотеза</th><th>Сегмент</th><th>Проблема</th><th>Сигнал</th></tr></thead><tbody>';
+  html+=scan.candidates.map(x=>'<tr><td><strong>'+esc(x.id||x.name)+'</strong></td><td>'+esc(x.segment)+'</td><td>'+esc(x.problem||x.description)+'</td><td>'+esc(x.evidence_level||x.status||"Требует проверки")+'</td></tr>').join("");
   html+='</tbody></table></div></div>';
  }
  if(dives.decision){
-  html+='<div class="card" style="margin-top:14px"><h3 class="sectiontitle">Первый MVP-кандидат: '+esc(dives.decision.selected||"")+'</h3><p class="small">'+(dives.decision.why||[]).map(esc).join(" · ")+'</p><p class="small muted">'+(dives.decision.risks||[]).map(esc).join(" · ")+'</p><p class="small"><strong>Следующий тест:</strong> '+esc(dives.decision.next_test||"")+'</p></div>';
+  html+='<div class="card" style="margin-top:14px"><h3 class="sectiontitle">Текущая рекомендация студии</h3><p><strong>'+esc(dives.decision.selected||"Кандидат не выбран")+'</strong></p><p class="small">'+(dives.decision.why||[]).map(esc).join(" · ")+'</p><p class="small muted">'+(dives.decision.risks||[]).map(esc).join(" · ")+'</p><p class="small"><strong>Следующий тест:</strong> '+esc(dives.decision.next_test||"Не определён")+'</p></div>';
  }
- if(dives.candidates?.length){
-  html+='<div class="two" style="margin-top:14px">'+dives.candidates.map(x=>'<div class="card"><h3 class="sectiontitle">'+esc(x.name)+'</h3><p class="small muted">'+esc(x.assessment)+'</p><div class="small"><strong>Конкуренты:</strong> '+(x.competitors||[]).map(u=>'<a href="'+esc(u)+'" target="_blank" rel="noopener">ссылка</a>').join(" · ")+'</div></div>').join("")+'</div>';
+ if(d.customer_signals){
+  const signals=Array.isArray(d.customer_signals)?d.customer_signals:Object.entries(d.customer_signals).flatMap(([k,v])=>(Array.isArray(v)?v:[v]).map(x=>typeof x==="string"?{source:k,signal:x}:{source:k,...x}));
+  html+='<div class="card" style="margin-top:14px"><h3 class="sectiontitle">Сигналы и наблюдения клиентов</h3>'+signals.slice(0,12).map(x=>'<div class="task"><strong>'+esc(x.title||x.source||"Наблюдение")+'</strong><div class="taskmeta">'+esc(x.signal||x.description||x.summary||x.text||"")+'</div></div>').join("")+'</div>';
  }
- html+='<div class="card" style="margin-top:14px"><h3 class="sectiontitle">Первоначальные конкуренты horeca</h3><div class="two">';
- for(const [key,title] of [["cafe_starter_kit","Small Café Manager Starter Kit"],["shiftbrief_ai","ShiftBrief AI"]]){
-  const items=d.hypotheses?.[key]||[];html+='<div><h4>'+title+'</h4><div class="tablewrap"><table class="data"><thead><tr><th>Продукт</th><th>Цена</th><th>Тип</th></tr></thead><tbody>'+items.map(x=>'<tr><td><a href="'+esc(x.source)+'" target="_blank" rel="noopener">'+esc(x.name)+'</a><div class="small muted">'+esc(x.evidence_note||"")+'</div></td><td>'+esc(x.price)+'</td><td>'+esc(x.type)+'</td></tr>').join("")+'</tbody></table></div></div>';
+ if(d.early_findings){
+  const findings=Array.isArray(d.early_findings)?d.early_findings:Object.entries(d.early_findings).map(([k,v])=>({title:k,detail:typeof v==="string"?v:JSON.stringify(v)}));
+  html+='<div class="card" style="margin-top:14px"><h3 class="sectiontitle">Промежуточные выводы</h3>'+findings.map(x=>'<div class="task"><strong>'+esc(x.title||x.name||"Вывод")+'</strong><div class="taskmeta">'+esc(x.detail||x.finding||x.summary||"")+'</div></div>').join("")+'</div>';
  }
- html+='</div></div>';
- html+='<div class="notice" style="margin-top:14px">Важно: поиск и обсуждения дают гипотезы, а не подтверждение продаж или готовности платить. Первый MVP ещё нужно проверить на реальных пользователях.</div>';
+ if(d.next_validation){
+  const next=Array.isArray(d.next_validation)?d.next_validation:[d.next_validation];
+  html+='<div class="card" style="margin-top:14px"><h3 class="sectiontitle">Следующие шаги проверки спроса</h3><ol class="small">'+next.map(x=>'<li>'+esc(typeof x==="string"?x:(x.action||x.task||x.description||JSON.stringify(x)))+'</li>').join("")+'</ol></div>';
+ }
+ html+='<div class="notice" style="margin-top:14px">Важно: этот раздел относится ко всему рынку цифровых продуктов. Ни одна гипотеза не считается выбранным продуктом или подтверждённым спросом до проверки на реальных пользователях.</div>';
+ if(!scan.candidates?.length&&!dives.decision&&!d.customer_signals&&!d.early_findings&&!d.next_validation)html='<div class="empty"><h3>Пока нет исследовательских результатов</h3><p>Студия добавит их после следующего цикла исследования.</p></div>';
  $("researchContent").innerHTML=html;
 }
 $("tabs").addEventListener("click",e=>{const b=e.target.closest("button[data-tab]");if(!b)return;document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".panel").forEach(x=>x.classList.toggle("active",x.id===b.dataset.tab))});
