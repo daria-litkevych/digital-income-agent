@@ -201,11 +201,15 @@
   },
   "project_manager_status": "operational",
   "specialist_roles": {
-    "project_manager": "Prioritises work, dependencies, continuity and execution limits.",
-    "market_researcher": "Organises sourced competitor and customer evidence.",
-    "business_analyst": "Compares pricing, customer pain, economics and evidence strength.",
-    "product_strategist": "Compares hypotheses and designs low-cost validation experiments.",
-    "quality_controller": "Audits sources, evidence limits and unsupported conclusions."
+    "project_manager": "Priorities, dependencies, task execution and approval gates",
+    "market_researcher": "RSS discovery and stored evidence; broad web research still needs implementation",
+    "business_analyst": "Evidence comparison, pricing and opportunity scoring",
+    "product_strategist": "Candidate comparison and validation experiment design",
+    "product_designer": "Produces reviewable user journeys, wireframe specifications and acceptance criteria from complete supplied briefs; no independent research or product decisions.",
+    "developer": "Validates supplied code proposals in an allowlisted temporary workspace, runs approved tests and emits diffs; it does not autonomously generate or apply code.",
+    "quality_controller": "Evidence and output checks; product QA pipeline planned",
+    "growth_launch": "Prepares private positioning, listing drafts and launch checklists from supplied briefs; no publishing, outreach or invented evidence.",
+    "analytics": "Calculates descriptive metrics from supplied aggregate data; no external account access, tracking or causal claims."
   },
   "project_plan": {
     "name": "Online Passive Income",
@@ -2613,5 +2617,6 @@
   "evidence_store_summary": {
     "added": 11,
     "total": 11
-  }
+  },
+  "studio_snapshot_updated_utc": "2026-11-13T13:44:57.068Z"
 }
