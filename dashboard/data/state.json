@@ -2,8 +2,8 @@
   "agent_name": "Digital Income Agent",
   "run_count": 77,
   "status": "research_ok",
-  "last_run_utc": "2026-11-13T13:26:07.746284+00:00",
-  "research_last_run_utc": "2026-11-13T13:26:05.170625+00:00",
+  "last_run_utc": "2026-11-13T13:26:21.062708+00:00",
+  "research_last_run_utc": "2026-11-13T13:26:18.430861+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -194,10 +194,11 @@
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
   "pm_run_count": 74,
   "pm_last_cycle": {
-    "timestamp": "2026-11-13T13:26:07.746218+00:00",
-    "task_id": null,
-    "status": "no_eligible_tasks",
-    "summary": "No queued or retryable task has all dependencies completed."
+    "timestamp": "2026-11-13T13:26:21.062619+00:00",
+    "task_id": "AB-025",
+    "role": "project_manager",
+    "status": "completed",
+    "summary": "Optional local Ollama inference is wired behind explicit approval, restricted to loopback, free of API billing and model downloads, and covered by no-network construction tests."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -1091,6 +1092,24 @@
         "updated_at": "2026-11-13T13:24:19.456639+00:00",
         "attempts": 1,
         "completed_at": "2026-11-13T13:24:19.456639+00:00"
+      },
+      {
+        "id": "AB-025",
+        "title": "Add optional free local-model inference for autonomous specialists",
+        "phase": 10,
+        "role": "project_manager",
+        "kind": "local_provider_capability",
+        "status": "done",
+        "priority": 111,
+        "depends_on": [
+          "AB-024"
+        ],
+        "acceptance": "An optional Ollama-compatible local client is disabled by default, accepts only a literal loopback IP endpoint, uses bounded prompts/responses and timeouts, never downloads models, reports zero API cost, and is available only through explicit human approval and local opt-in. Project Manager selects it only when the local flag is explicitly true. Tests prove construction makes no network call and paid inference remains separate.",
+        "started_at": "2026-11-13T13:26:21.061841+00:00",
+        "last_result": "Optional local Ollama inference is wired behind explicit approval, restricted to loopback, free of API billing and model downloads, and covered by no-network construction tests.",
+        "updated_at": "2026-11-13T13:26:21.062619+00:00",
+        "attempts": 1,
+        "completed_at": "2026-11-13T13:26:21.062619+00:00"
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -1143,7 +1162,7 @@
           "id": "AG-08",
           "name": "AI role dispatch and structured agent outputs",
           "status": "implemented_limited",
-          "evidence": "agent/brain.py, agent/llm.py and guarded Project Manager integration; live inference remains disconnected and disabled by default."
+          "evidence": "Guarded Agent Brain, local Ollama-compatible client and explicit composition roots; live inference remains disabled by default and no model is downloaded automatically."
         },
         {
           "id": "AG-09",
@@ -1198,6 +1217,11 @@
           "role": "growth_launch",
           "status": "deterministic_limited",
           "responsibility": "Prepares private positioning, listing drafts and launch checklists from supplied briefs; no publishing, outreach or invented evidence."
+        },
+        {
+          "role": "analytics",
+          "status": "deterministic_limited",
+          "responsibility": "Calculates descriptive metrics from supplied aggregate data; no external account access, tracking or causal claims."
         }
       ],
       "important_limit": "The current scheduled system is deterministic and rules-based. The live LLM client is disconnected from role handlers. No automatic customer outreach, public publishing, paid API calls or spending is enabled."
@@ -1886,6 +1910,34 @@
         "mode": "supplied aggregate data only; no external tracking"
       },
       "next_action": "Connect only reviewed, user-approved metrics sources if and when a real product requires them."
+    },
+    "AB-025": {
+      "ok": true,
+      "blocked": false,
+      "summary": "Optional local Ollama inference is wired behind explicit approval, restricted to loopback, free of API billing and model downloads, and covered by no-network construction tests.",
+      "metrics": {
+        "checks": {
+          "local_client_is_explicitly_disabled_by_default": true,
+          "endpoint_is_loopback_only": true,
+          "no_model_downloads": true,
+          "zero_cost_response": true,
+          "bounded_request_and_response": true,
+          "local_factory_requires_approval_and_opt_in": true,
+          "project_manager_routes_local_provider_explicitly": true,
+          "client_and_factory_tests_exist": true
+        },
+        "passed": 8,
+        "total": 8
+      },
+      "artifact": {
+        "client": "agent/llm.py",
+        "composition_root": "agent/autonomous_studio.py",
+        "tests": [
+          "tests/test_local_llm.py",
+          "tests/test_local_studio.py"
+        ]
+      },
+      "next_action": "Keep the local model path off until a user explicitly enables it and installs a model locally."
     }
   },
   "event_log": [
@@ -2360,10 +2412,11 @@
       "summary": "No queued or retryable task has all dependencies completed."
     },
     {
-      "timestamp": "2026-11-13T13:26:07.746218+00:00",
-      "task_id": null,
-      "status": "no_eligible_tasks",
-      "summary": "No queued or retryable task has all dependencies completed."
+      "timestamp": "2026-11-13T13:26:21.062619+00:00",
+      "task_id": "AB-025",
+      "role": "project_manager",
+      "status": "completed",
+      "summary": "Optional local Ollama inference is wired behind explicit approval, restricted to loopback, free of API billing and model downloads, and covered by no-network construction tests."
     }
   ],
   "evidence_store_summary": {

@@ -1,14 +1,14 @@
 # Project Manager — Online Passive Income
 
-**Last cycle:** 2026-11-13T13:26:07.746218+00:00
+**Last cycle:** 2026-11-13T13:26:21.062619+00:00
 
 **Goal:** Build an AI-assisted Digital Product Studio that discovers, validates, designs, builds, tests, prepares and (with explicit approval) publishes digital products across B2C, B2B and prosumer markets, targeting €1,000/month within five years.
 
 ## Execution status
 
-- Completed: 38 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
+- Completed: 39 | Queued: 1 | Running: 0 | Blocked: 1 | Failed: 0
 - Project Manager cycles: 74
-- Last task: None (no_eligible_tasks)
+- Last task: AB-025 (completed)
 
 ## Specialist registry
 
@@ -62,6 +62,8 @@
   - Latest: Analytics now calculates transparent descriptive metrics from supplied data, preserves zero-denominator gaps and avoids causal claims.
 - **AB-010 · Integrate autonomous multi-step specialist orchestration** — done · project_manager
   - Latest: Checkpointed multi-specialist orchestration is implemented with bounded workflows, role validation, recovery and human-review gates.
+- **AB-025 · Add optional free local-model inference for autonomous specialists** — done · project_manager
+  - Latest: Optional local Ollama inference is wired behind explicit approval, restricted to loopback, free of API billing and model downloads, and covered by no-network construction tests.
 - **AB-011 · Build explicitly approved live studio composition root** — done · developer
   - Latest: A live studio composition root now requires explicit host approval, an explicit live flag, runtime credentials, verified token pricing and a monthly spend ledger; construction itself makes no provider call.
 - **AB-012 · Integrate default-off autonomous dispatch into Project Manager** — done · project_manager

@@ -882,6 +882,24 @@
       "updated_at": "2026-11-13T13:24:19.456639+00:00",
       "attempts": 1,
       "completed_at": "2026-11-13T13:24:19.456639+00:00"
+    },
+    {
+      "id": "AB-025",
+      "title": "Add optional free local-model inference for autonomous specialists",
+      "phase": 10,
+      "role": "project_manager",
+      "kind": "local_provider_capability",
+      "status": "done",
+      "priority": 111,
+      "depends_on": [
+        "AB-024"
+      ],
+      "acceptance": "An optional Ollama-compatible local client is disabled by default, accepts only a literal loopback IP endpoint, uses bounded prompts/responses and timeouts, never downloads models, reports zero API cost, and is available only through explicit human approval and local opt-in. Project Manager selects it only when the local flag is explicitly true. Tests prove construction makes no network call and paid inference remains separate.",
+      "started_at": "2026-11-13T13:26:21.061841+00:00",
+      "last_result": "Optional local Ollama inference is wired behind explicit approval, restricted to loopback, free of API billing and model downloads, and covered by no-network construction tests.",
+      "updated_at": "2026-11-13T13:26:21.062619+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-13T13:26:21.062619+00:00"
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -934,7 +952,7 @@
         "id": "AG-08",
         "name": "AI role dispatch and structured agent outputs",
         "status": "implemented_limited",
-        "evidence": "agent/brain.py, agent/llm.py and guarded Project Manager integration; live inference remains disconnected and disabled by default."
+        "evidence": "Guarded Agent Brain, local Ollama-compatible client and explicit composition roots; live inference remains disabled by default and no model is downloaded automatically."
       },
       {
         "id": "AG-09",
@@ -989,6 +1007,11 @@
         "role": "growth_launch",
         "status": "deterministic_limited",
         "responsibility": "Prepares private positioning, listing drafts and launch checklists from supplied briefs; no publishing, outreach or invented evidence."
+      },
+      {
+        "role": "analytics",
+        "status": "deterministic_limited",
+        "responsibility": "Calculates descriptive metrics from supplied aggregate data; no external account access, tracking or causal claims."
       }
     ],
     "important_limit": "The current scheduled system is deterministic and rules-based. The live LLM client is disconnected from role handlers. No automatic customer outreach, public publishing, paid API calls or spending is enabled."

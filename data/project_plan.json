@@ -162,7 +162,7 @@
       "id": 10,
       "name": "Operational specialist capability",
       "goal": "Turn the registered specialist roles into useful, testable provider-free agents with structured outputs, explicit evidence limits and review gates.",
-      "status": "in_progress"
+      "status": "completed"
     }
   ],
   "tasks": [
@@ -889,12 +889,17 @@
       "phase": 10,
       "role": "project_manager",
       "kind": "local_provider_capability",
-      "status": "queued",
+      "status": "done",
       "priority": 111,
       "depends_on": [
         "AB-024"
       ],
-      "acceptance": "An optional Ollama-compatible local client is disabled by default, accepts only a literal loopback IP endpoint, uses bounded prompts/responses and timeouts, never downloads models, reports zero API cost, and is available only through explicit human approval and local opt-in. Project Manager selects it only when the local flag is explicitly true. Tests prove construction makes no network call and paid inference remains separate."
+      "acceptance": "An optional Ollama-compatible local client is disabled by default, accepts only a literal loopback IP endpoint, uses bounded prompts/responses and timeouts, never downloads models, reports zero API cost, and is available only through explicit human approval and local opt-in. Project Manager selects it only when the local flag is explicitly true. Tests prove construction makes no network call and paid inference remains separate.",
+      "started_at": "2026-11-13T13:26:21.061841+00:00",
+      "last_result": "Optional local Ollama inference is wired behind explicit approval, restricted to loopback, free of API billing and model downloads, and covered by no-network construction tests.",
+      "updated_at": "2026-11-13T13:26:21.062619+00:00",
+      "attempts": 1,
+      "completed_at": "2026-11-13T13:26:21.062619+00:00"
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
