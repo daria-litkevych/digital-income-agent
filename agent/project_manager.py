@@ -192,6 +192,11 @@ def main():
             task.pop("blocked_reason", None)
             task.pop("next_action", None)
             task["last_result"] = "Re-queued after registering the offline cross-role quality gate evaluator."
+        if task.get("id") == "AB-027" and task.get("status") == "blocked" and "Local inference acceptance checks are incomplete" in str(task.get("blocked_reason", "")):
+            task["status"] = "queued"
+            task.pop("blocked_reason", None)
+            task.pop("next_action", None)
+            task["last_result"] = "Re-queued after adding the missing local runner regression tests."
     for task in plan["tasks"]:
         if task.get("status") == "in_progress":
             task["status"] = "queued"
