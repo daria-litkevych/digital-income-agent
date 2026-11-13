@@ -19,6 +19,10 @@ DEFAULT_BRAIN = build_offline_brain()
 
 def dispatch_task(task, state, evidence, brain=None, *, autonomous_approval=False, env=None):
     """Route tasks to deterministic handlers, guarded Brain drafts or approved autonomy."""
+    if task.get("kind") == "agent_evaluation":
+        from agent.quality_gates import evaluate
+        return evaluate(ROOT)
+
     if task.get("dispatch_to_autonomous_studio"):
         if autonomous_approval is not True:
             return {
@@ -159,6 +163,14 @@ def main():
         raise RuntimeError("project_plan.json must contain a tasks array")
 
     # Recover interrupted work safely. It returns to the queue, not to done.
+    # AB-020 was blocked only because its deterministic evaluator was not registered.
+    # Re-queue that one known task now that the safe handler is available.
+    for task in plan["tasks"]:
+        if task.get("id") == "AB-020" and task.get("status") == "blocked" and "No safe executor is registered" in str(task.get("blocked_reason", "")):
+            task["status"] = "queued"
+            task.pop("blocked_reason", None)
+            task.pop("next_action", None)
+            task["last_result"] = "Re-queued after registering the offline cross-role quality gate evaluator."
     for task in plan["tasks"]:
         if task.get("status") == "in_progress":
             task["status"] = "queued"
