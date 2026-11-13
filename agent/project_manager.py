@@ -22,6 +22,9 @@ def dispatch_task(task, state, evidence, brain=None, *, autonomous_approval=Fals
     if task.get("kind") == "agent_evaluation":
         from agent.quality_gates import evaluate
         return evaluate(ROOT)
+    if task.get("kind") == "specialist_capability" and task.get("role") == "product_designer":
+        from agent.product_designer import evaluate
+        return evaluate(ROOT)
 
     if task.get("dispatch_to_autonomous_studio"):
         if autonomous_approval is not True:
