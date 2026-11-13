@@ -87,7 +87,7 @@ function render(){
 }
 function renderOverview(){
  const p=state.plan,r=state.run;if(!p){$("overviewContent").className="empty";return}
- const ts=p.tasks||[],done=ts.filter(t=>["done","completed"].includes(t.status)).length,active=ts.filter(t=>t.status==="in_progress").length,queued=ts.filter(t=>t.status==="queued").length;
+ const ts=(p.tasks||[]).filter(t=>!["MR-001","MR-002"].includes(t.id)),done=ts.filter(t=>["done","completed"].includes(t.status)).length,active=ts.filter(t=>t.status==="in_progress").length,queued=ts.filter(t=>t.status==="queued").length;
  const pct=ts.length?Math.round(done/ts.length*100):0;
  const phases=p.phases||[];
  $("overviewContent").className="";
@@ -99,7 +99,7 @@ function renderOverview(){
 function metric(k,v,s){return '<div class="card metric"><div class="k">'+esc(k)+'</div><div class="v">'+esc(v)+'</div><div class="sub">'+esc(s)+'</div></div>'}
 function taskHtml(t){return '<div class="task"><div class="tasktop"><strong>'+esc(t.id)+' · '+esc(t.title)+'</strong>'+pill(t.status)+'</div><div class="taskmeta">Роль: '+esc(t.role)+' · Приоритет: '+esc(t.priority??"—")+'</div></div>'}
 function renderTasks(){
- const p=state.plan;if(!p)return;const ts=p.tasks||[];
+ const p=state.plan;if(!p)return;const ts=(p.tasks||[]).filter(t=>!["MR-001","MR-002"].includes(t.id));
  $("tasksContent").innerHTML='<div class="filters"><input id="taskSearch" placeholder="Поиск по задачам…"><select id="taskFilter"><option value="">Все статусы</option><option value="queued">В очереди</option><option value="in_progress">В работе</option><option value="done">Готово</option><option value="blocked">Заблокировано</option></select></div><div class="card tablewrap"><table class="data"><thead><tr><th>ID</th><th>Задача</th><th>Роль</th><th>Этап</th><th>Статус</th><th>Приоритет</th></tr></thead><tbody id="taskRows"></tbody></table></div>';
  const update=()=>{const q=$("taskSearch").value.toLowerCase(),f=$("taskFilter").value;$("taskRows").innerHTML=ts.filter(t=>(!f||t.status===f)&&(!q||(t.id+" "+t.title+" "+t.role).toLowerCase().includes(q))).map(t=>'<tr><td><strong>'+esc(t.id)+'</strong></td><td>'+esc(t.title)+'<div class="small muted">'+esc(t.acceptance||"")+'</div></td><td>'+esc(t.role)+'</td><td>'+esc(t.phase??"—")+'</td><td>'+pill(t.status)+'</td><td>'+esc(t.priority??"—")+'</td></tr>').join("")};
  $("taskSearch").addEventListener("input",update);$("taskFilter").addEventListener("change",update);update();
@@ -135,9 +135,10 @@ function renderResearch(){
  const d=state.research;if(!d)return;
  const scan=d.opportunity_scan||{},dives=d.deep_dives||{};
  let html='';
- if(scan.candidates?.length){
+ const activeCandidates=(scan.candidates||[]).filter(x=>!["cafe_starter_kit","shiftbrief_ai","b2b_cafe_ops"].includes(x.id));
+ if(activeCandidates.length){
   html+='<div class="card"><h3 class="sectiontitle">Портфель рыночных возможностей · B2C / B2B / Prosumer</h3><p class="small muted">'+esc(scan.scope||"Исследовательские гипотезы; спрос ещё не подтверждён.")+'</p><div class="tablewrap"><table class="data"><thead><tr><th>Гипотеза</th><th>Сегмент</th><th>Проблема</th><th>Сигнал</th></tr></thead><tbody>';
-  html+=scan.candidates.map(x=>'<tr><td><strong>'+esc(x.id||x.name)+'</strong></td><td>'+esc(x.segment)+'</td><td>'+esc(x.problem||x.description)+'</td><td>'+esc(x.evidence_level||x.status||"Требует проверки")+'</td></tr>').join("");
+  html+=activeCandidates.map(x=>'<tr><td><strong>'+esc(x.id||x.name)+'</strong></td><td>'+esc(x.segment)+'</td><td>'+esc(x.problem||x.description)+'</td><td>'+esc(x.evidence_level||x.status||"Требует проверки")+'</td></tr>').join("");
   html+='</tbody></table></div></div>';
  }
  if(dives.decision){
@@ -156,7 +157,7 @@ function renderResearch(){
   html+='<div class="card" style="margin-top:14px"><h3 class="sectiontitle">Следующие шаги проверки спроса</h3><ol class="small">'+next.map(x=>'<li>'+esc(typeof x==="string"?x:(x.action||x.task||x.description||JSON.stringify(x)))+'</li>').join("")+'</ol></div>';
  }
  html+='<div class="notice" style="margin-top:14px">Важно: этот раздел относится ко всему рынку цифровых продуктов. Ни одна гипотеза не считается выбранным продуктом или подтверждённым спросом до проверки на реальных пользователях.</div>';
- if(!scan.candidates?.length&&!dives.decision&&!d.customer_signals&&!d.early_findings&&!d.next_validation)html='<div class="empty"><h3>Пока нет исследовательских результатов</h3><p>Студия добавит их после следующего цикла исследования.</p></div>';
+ if(!activeCandidates.length&&!dives.decision&&!d.customer_signals&&!d.early_findings&&!d.next_validation)html='<div class="empty"><h3>Пока нет исследовательских результатов</h3><p>Студия добавит их после следующего цикла исследования.</p></div>';
  $("researchContent").innerHTML=html;
 }
 $("tabs").addEventListener("click",e=>{const b=e.target.closest("button[data-tab]");if(!b)return;document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".panel").forEach(x=>x.classList.toggle("active",x.id===b.dataset.tab))});
