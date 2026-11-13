@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import ipaddress
 from dataclasses import dataclass
 from typing import Protocol
 from urllib.error import URLError
@@ -188,4 +189,100 @@ class OpenAICompatibleClient:
             text=text, model=self.settings.model, provider=self.settings.provider,
             input_tokens=input_tokens, output_tokens=output_tokens,
             estimated_cost_usd=cost, is_mock=False,
+        )
+
+
+@dataclass(frozen=True)
+class LocalLLMSettings:
+    """Opt-in settings for a local Ollama-compatible server on loopback only."""
+    enabled: bool = False
+    base_url: str = "http://127.0.0.1:11434"
+    model: str = ""
+    max_output_tokens: int = 900
+    max_input_characters: int = 12000
+    timeout_seconds: int = 120
+    max_response_bytes: int = 2_000_000
+
+    def validate(self) -> None:
+        if not self.enabled:
+            raise RuntimeError("Local LLM is disabled. Explicit local opt-in is required.")
+        parsed = urlparse(self.base_url)
+        if parsed.scheme != "http" or not parsed.hostname:
+            raise ValueError("Local model endpoint must use HTTP on a loopback IP address.")
+        try:
+            address = ipaddress.ip_address(parsed.hostname)
+            port = parsed.port
+        except ValueError as error:
+            raise ValueError("Local model endpoint must use a literal loopback IP address and valid port.") from error
+        if not address.is_loopback:
+            raise ValueError("Local model endpoint must resolve to a loopback IP address.")
+        if parsed.username or parsed.password or parsed.query or parsed.fragment or parsed.path not in ("", "/"):
+            raise ValueError("Local model endpoint must not contain credentials, paths, query or fragment.")
+        if not self.model.strip():
+            raise ValueError("A locally installed model name is required; models are never downloaded automatically.")
+        if not 1 <= self.max_output_tokens <= 4000:
+            raise ValueError("Local output-token limit must be between 1 and 4000.")
+        if not 1 <= self.max_input_characters <= 100000:
+            raise ValueError("Local input-character limit must be between 1 and 100000.")
+        if not 1 <= self.timeout_seconds <= 300:
+            raise ValueError("Local request timeout must be between 1 and 300 seconds.")
+        if not 1024 <= self.max_response_bytes <= 10_000_000:
+            raise ValueError("Local response-size limit is outside the allowed range.")
+
+
+class LocalOllamaClient:
+    """Local-only Ollama chat client; no API key, billing or model downloads."""
+    def __init__(self, settings: LocalLLMSettings):
+        settings.validate()
+        self.settings = settings
+
+    def generate(self, request: LLMRequest) -> LLMResponse:
+        self.settings.validate()
+        if not request.task.strip() or not request.user.strip():
+            raise ValueError("task and user prompt must not be empty")
+        prompt_size = len(request.system) + len(request.user)
+        if prompt_size > self.settings.max_input_characters:
+            raise ValueError("Prompt exceeds the configured local input limit.")
+        if request.max_output_tokens < 1 or request.max_output_tokens > self.settings.max_output_tokens:
+            raise ValueError("Requested output limit exceeds configured local limit.")
+
+        payload = {
+            "model": self.settings.model,
+            "messages": [
+                {"role": "system", "content": request.system},
+                {"role": "user", "content": request.user},
+            ],
+            "stream": False,
+            "options": {"num_predict": request.max_output_tokens},
+        }
+        http_request = HTTPRequest(
+            self.settings.base_url.rstrip("/") + "/api/chat",
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json", "Accept": "application/json"},
+            method="POST",
+        )
+        try:
+            with urlopen(http_request, timeout=self.settings.timeout_seconds) as response:
+                raw = response.read(self.settings.max_response_bytes + 1)
+        except URLError as error:
+            raise RuntimeError(f"Local model request failed: {error.reason}") from error
+        if len(raw) > self.settings.max_response_bytes:
+            raise RuntimeError("Local model response exceeded the configured size limit.")
+        try:
+            body = json.loads(raw.decode("utf-8"))
+            text = body["message"]["content"]
+            input_tokens = int(body.get("prompt_eval_count", 0))
+            output_tokens = int(body.get("eval_count", 0))
+        except (UnicodeDecodeError, json.JSONDecodeError, KeyError, TypeError, ValueError) as error:
+            raise RuntimeError("Local model returned an unexpected response format.") from error
+        if not isinstance(text, str) or not text.strip():
+            raise RuntimeError("Local model returned an empty or non-text response.")
+        return LLMResponse(
+            text=text,
+            model=self.settings.model,
+            provider="ollama-local",
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
+            estimated_cost_usd=0.0,
+            is_mock=False,
         )
