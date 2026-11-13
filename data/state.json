@@ -2,8 +2,8 @@
   "agent_name": "Digital Income Agent",
   "run_count": 81,
   "status": "research_ok",
-  "last_run_utc": "2026-11-13T13:28:49.080964+00:00",
-  "research_last_run_utc": "2026-11-13T13:28:47.152138+00:00",
+  "last_run_utc": "2026-11-13T13:29:01.371663+00:00",
+  "research_last_run_utc": "2026-11-13T13:28:59.184311+00:00",
   "research_queries": [
     "consumer daily planning focus life admin app spreadsheet template",
     "personal finance budget spreadsheet savings calculator irregular expenses tool",
@@ -194,10 +194,11 @@
   "research_method": "Google News RSS, last 365 days, eight B2C/B2B/prosumer query groups, keyword relevance score >= 2",
   "pm_run_count": 78,
   "pm_last_cycle": {
-    "timestamp": "2026-11-13T13:28:49.080888+00:00",
-    "task_id": null,
-    "status": "no_eligible_tasks",
-    "summary": "No queued or retryable task has all dependencies completed."
+    "timestamp": "2026-11-13T13:29:01.371601+00:00",
+    "task_id": "AB-027",
+    "role": "project_manager",
+    "status": "blocked",
+    "summary": "Local inference acceptance checks are incomplete."
   },
   "project_manager_status": "operational",
   "specialist_roles": {
@@ -371,7 +372,7 @@
         "id": 10,
         "name": "Operational specialist capability",
         "goal": "Turn the registered specialist roles into useful, testable provider-free agents with structured outputs, explicit evidence limits and review gates.",
-        "status": "completed"
+        "status": "blocked"
       }
     ],
     "tasks": [
@@ -1127,6 +1128,25 @@
         "updated_at": "2026-11-13T13:27:29.886466+00:00",
         "attempts": 1,
         "completed_at": "2026-11-13T13:27:29.886466+00:00"
+      },
+      {
+        "id": "AB-027",
+        "title": "Add a manually approved local workflow CLI and setup documentation",
+        "phase": 10,
+        "role": "project_manager",
+        "kind": "local_provider_capability",
+        "status": "blocked",
+        "priority": 109,
+        "depends_on": [
+          "AB-026"
+        ],
+        "acceptance": "A CLI runner requires --approve-local-run, loads a bounded JSON workflow, rejects secret-like context fields, persists resumable checkpoints, always closes the local studio, and returns review_required outputs. A generic workflow example and setup documentation explain opt-in, loopback-only endpoint, no model downloads, no paid API and the human review gate.",
+        "started_at": "2026-11-13T13:29:01.370656+00:00",
+        "last_result": "Local inference acceptance checks are incomplete.",
+        "updated_at": "2026-11-13T13:29:01.371601+00:00",
+        "attempts": 1,
+        "blocked_reason": "Local inference acceptance checks are incomplete.",
+        "next_action": "Keep the local model path off until a user explicitly enables it and installs a model locally."
       }
     ],
     "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -1978,6 +1998,36 @@
         "billing": "zero"
       },
       "next_action": "Run the full suite and keep real local inference opt-in until a local model is installed and approved."
+    },
+    "AB-027": {
+      "ok": false,
+      "blocked": true,
+      "summary": "Local inference acceptance checks are incomplete.",
+      "metrics": {
+        "checks": {
+          "local_client_is_explicitly_disabled_by_default": true,
+          "endpoint_is_loopback_only": true,
+          "no_model_downloads": true,
+          "zero_cost_response": true,
+          "bounded_request_and_response": true,
+          "local_factory_requires_approval_and_opt_in": true,
+          "project_manager_routes_local_provider_explicitly": true,
+          "client_and_factory_tests_exist": true,
+          "manual_runner_requires_explicit_approval": true,
+          "runner_rejects_secret_fields_and_is_documented": false
+        },
+        "passed": 9,
+        "total": 10
+      },
+      "artifact": {
+        "client": "agent/llm.py",
+        "composition_root": "agent/autonomous_studio.py",
+        "tests": [
+          "tests/test_local_llm.py",
+          "tests/test_local_studio.py"
+        ]
+      },
+      "next_action": "Keep the local model path off until a user explicitly enables it and installs a model locally."
     }
   },
   "event_log": [
@@ -2478,10 +2528,11 @@
       "summary": "No queued or retryable task has all dependencies completed."
     },
     {
-      "timestamp": "2026-11-13T13:28:49.080888+00:00",
-      "task_id": null,
-      "status": "no_eligible_tasks",
-      "summary": "No queued or retryable task has all dependencies completed."
+      "timestamp": "2026-11-13T13:29:01.371601+00:00",
+      "task_id": "AB-027",
+      "role": "project_manager",
+      "status": "blocked",
+      "summary": "Local inference acceptance checks are incomplete."
     }
   ],
   "evidence_store_summary": {
