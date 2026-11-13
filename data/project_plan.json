@@ -157,6 +157,12 @@
       "name": "Autonomous studio capability",
       "goal": "Implement and integrate guarded role-based AI dispatch with offline default, structured outputs, human approval gates, spend enforcement, persistence and evaluations. Live paid inference remains disabled until explicit approval.",
       "status": "completed"
+    },
+    {
+      "id": 10,
+      "name": "Operational specialist capability",
+      "goal": "Turn the registered specialist roles into useful, testable provider-free agents with structured outputs, explicit evidence limits and review gates.",
+      "status": "in_progress"
     }
   ],
   "tasks": [
@@ -804,6 +810,19 @@
       "updated_at": "2026-11-13T13:20:30.797029+00:00",
       "attempts": 2,
       "completed_at": "2026-11-13T13:20:30.797029+00:00"
+    },
+    {
+      "id": "AB-021",
+      "title": "Implement and integrate the provider-free Product Designer specialist",
+      "phase": 10,
+      "role": "product_designer",
+      "kind": "specialist_capability",
+      "status": "queued",
+      "priority": 115,
+      "depends_on": [
+        "AB-020"
+      ],
+      "acceptance": "A generic Product Designer handler consumes a complete supplied brief and produces role-owned user journey, wireframe specification and acceptance criteria; incomplete briefs fail closed; assumptions state that independent customer research was not performed; outputs require human review; CI covers success and failure cases. No product niche or external action is introduced."
     }
   ],
   "created_at": "2026-11-12T14:23:11.062255+00:00",
@@ -855,8 +874,8 @@
       {
         "id": "AG-08",
         "name": "AI role dispatch and structured agent outputs",
-        "status": "planned",
-        "evidence": "Must remain offline/mock by default and require approval for live provider calls"
+        "status": "implemented_limited",
+        "evidence": "agent/brain.py, agent/llm.py and guarded Project Manager integration; live inference remains disconnected and disabled by default."
       },
       {
         "id": "AG-09",
@@ -894,8 +913,8 @@
       },
       {
         "role": "product_designer",
-        "status": "planned",
-        "responsibility": "PRD, user journey, prototype and acceptance criteria"
+        "status": "deterministic_limited",
+        "responsibility": "Produces reviewable user journeys, wireframe specifications and acceptance criteria from complete supplied briefs; no independent research or product decisions."
       },
       {
         "role": "developer",
