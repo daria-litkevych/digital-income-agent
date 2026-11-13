@@ -41,6 +41,9 @@ def dispatch_task(task, state, evidence, brain=None, *, autonomous_approval=Fals
     if task.get("kind") == "local_orchestration_capability":
         from agent.local_orchestration import evaluate
         return evaluate(ROOT)
+    if task.get("kind") == "studio_readiness_audit":
+        from agent.studio_readiness import evaluate
+        return evaluate(ROOT)
 
     if task.get("dispatch_to_autonomous_studio"):
         if autonomous_approval is not True:
