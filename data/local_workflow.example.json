@@ -1,0 +1,16 @@
+{
+  "tasks": [
+    {
+      "role": "market_researcher",
+      "task": "Review only the source material supplied in context. Separate facts, assumptions and missing evidence. Do not invent sources or claim that research was performed beyond the supplied material."
+    },
+    {
+      "role": "quality_controller",
+      "task": "Audit the previous specialist output for unsupported claims, missing evidence, risks and required human review. Do not approve publication or external actions."
+    }
+  ],
+  "context": {
+    "sources": [],
+    "notes": "Replace this with non-sensitive material that you want the local specialists to review."
+  }
+}
