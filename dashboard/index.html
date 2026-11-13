@@ -47,7 +47,7 @@ main{max-width:1240px;margin:24px auto;padding:0 20px 50px}.notice{background:#f
 <div class="card metric"><div class="k">Желаемые расходы</div><div class="v">≤ €10</div><div class="sub">в месяц</div></div>
 <div class="card metric"><div class="k">Первый доход</div><div class="v">€100–300</div><div class="sub">первая проверяемая цель</div></div></div>
 <div class="card"><h3 class="sectiontitle">Финансовые правила проекта</h3><ul class="small"><li>Не подключать платные API, подписки, серверы или домены без отдельного одобрения.</li><li>Не публиковать продукт и не отправлять коммерческие сообщения без отдельного одобрения.</li><li>Сначала проверяем спрос, затем тратим деньги и строим продукт.</li><li>Не считать выручку, пока нет подтверждённых продаж.</li></ul></div></section>
-<div class="footer">Версия 1.1 · Данные автоматически обновляются из приватного репозитория при новом деплое.</div>
+<div class="footer">Версия 2.0 · Показывает 9 ролей, зрелость 10 компонентов и ограничения автономного режима. Данные в Netlify обновляются только после успешной публикации; если дата последнего цикла отстаёт от GitHub, опубликованный снимок устарел.</div>
 </main>
 <script>
 const state={plan:null,run:null,research:null,docs:[]};
@@ -105,7 +105,32 @@ function renderTasks(){
  $("taskSearch").addEventListener("input",update);$("taskFilter").addEventListener("change",update);update();
 }
 function renderRoadmap(){const p=state.plan;if(!p)return;$("roadmapContent").innerHTML='<div class="card">'+(p.phases||[]).map(x=>'<div class="phase"><div class="phasehead"><strong>Этап '+esc(x.id)+': '+esc(x.name)+'</strong>'+pill(x.status)+'</div><div class="small muted">'+esc(x.goal)+'</div></div>').join("")+'</div>'}
-function renderAgents(){const p=state.plan;if(!p)return;const roles=[["project_manager","Project Manager","Планирует работу, управляет зависимостями и сохраняет прогресс."],["market_researcher","Market Researcher","Ищет конкурентов, продукты, рыночные возможности и проблемы клиентов."],["business_analyst","Business Analyst","Сравнивает цены, модели оплаты, сигналы спроса и экономику."],["product_strategist","Product Strategist","Сравнивает гипотезы и предлагает дешёвые эксперименты проверки."],["quality_controller","Quality Controller","Проверяет качество доказательств и убирает неподтверждённые выводы."]];$("agentsContent").innerHTML='<div class="two">'+roles.map(x=>'<div class="role"><strong>'+x[1]+'</strong><p>'+x[2]+'</p><p>Задач в плане: '+(p.tasks||[]).filter(t=>t.role===x[0]).length+'</p></div>').join("")+'</div>'}
+function agentStatusName(s){return ({deterministic:"Детерминированный",deterministic_limited:"Ограниченные возможности",implemented:"Реализован",implemented_limited:"Реализован частично",implemented_not_connected:"Не подключён",implemented_pending_deployment_verification:"Ожидает проверки публикации",planned:"Запланирован"}[s]||s||"—")}
+function renderAgents(){
+ const p=state.plan;if(!p)return;
+ const registry=p.agent_implementation?.role_registry||[];
+ const components=p.agent_implementation?.current_components||[];
+ const names={
+  project_manager:"Project Manager",market_researcher:"Market Researcher",
+  business_analyst:"Business Analyst",product_strategist:"Product Strategist",
+  product_designer:"Product Designer",developer:"Developer",
+  quality_controller:"Quality Controller",growth_launch:"Growth & Launch",
+  analytics:"Analytics"
+ };
+ const roleCards=registry.map(x=>{
+  const count=(p.tasks||[]).filter(t=>t.role===x.role).length;
+  return '<div class="role"><div class="tasktop"><strong>'+esc(names[x.role]||x.role)+'</strong>'+pill(x.status)+'</div><p>'+esc(x.responsibility)+'</p><p class="small muted">Задач в плане: '+count+' · '+esc(agentStatusName(x.status))+'</p></div>';
+ }).join("");
+ const componentCards=components.map(x=>
+  '<div class="task"><div class="tasktop"><strong>'+esc(x.id)+' · '+esc(x.name)+'</strong>'+pill(x.status)+'</div><div class="taskmeta">'+esc(x.evidence||"")+'</div></div>'
+ ).join("");
+ const localMode=p.agent_implementation?.importantLimit||p.agent_implementation?.important_limit||"Локальный инференс выключен по умолчанию; для запуска требуется отдельное ручное подтверждение.";
+ $("agentsContent").innerHTML=
+  '<div class="grid">'+metric("Зарегистрировано ролей",registry.length,"в реестре студии")+metric("Компонентов системы",components.length,"архитектура и инфраструктура")+metric("Задач завершено",(p.tasks||[]).filter(t=>["done","completed"].includes(t.status)).length,"по текущему плану")+metric("Следующие задачи",(p.tasks||[]).filter(t=>["queued","in_progress","blocked"].includes(t.status)).length,"очередь и блокировки")+'</div>'+
+  '<div class="card"><h3 class="sectiontitle">Команда агентов</h3><p class="small muted">Статус показывает фактическую степень реализации, а не обещание полной автономности.</p><div class="two">'+roleCards+'</div></div>'+
+  '<div class="card" style="margin-top:14px"><h3 class="sectiontitle">Компоненты студии</h3>'+componentCards+'</div>'+
+  '<div class="notice" style="margin-top:14px"><strong>Режим выполнения и ограничения</strong><p>'+esc(localMode)+'</p><p class="small">Плановые GitHub Actions запускают детерминированные обработчики и тесты. Реальный локальный AI запускается отдельно, только вручную и после установки модели. Публикация, рассылки и расходы не автоматизированы.</p></div>';
+}
 function renderResearch(){
  const d=state.research;if(!d)return;
  const scan=d.opportunity_scan||{},dives=d.deep_dives||{};
