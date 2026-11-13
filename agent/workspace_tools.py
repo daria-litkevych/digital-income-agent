@@ -27,6 +27,8 @@ DEFAULT_ALLOWED_FILES = (
     "agent/tool_runtime.py",
     "agent/research_tools.py",
     "agent/workspace_tools.py",
+    "agent/product_designer.py",
+    "agent/developer.py",
     "agent/orchestrator.py",
     "agent/autonomous_studio.py",
     "tests/test_brain.py",
@@ -35,6 +37,8 @@ DEFAULT_ALLOWED_FILES = (
     "tests/test_tool_runtime.py",
     "tests/test_research_tools.py",
     "tests/test_workspace_tools.py",
+    "tests/test_product_designer.py",
+    "tests/test_developer.py",
     "tests/test_orchestrator.py",
     "tests/test_autonomous_studio.py",
     "tests/test_pm_autonomy_gate.py",
@@ -45,6 +49,7 @@ DEFAULT_ALLOWED_TESTS = (
     "tests.test_project_manager",
     "tests.test_tool_runtime",
     "tests.test_research_tools",
+    "tests.test_product_designer",
 )
 
 
