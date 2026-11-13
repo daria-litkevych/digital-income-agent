@@ -31,6 +31,9 @@ def dispatch_task(task, state, evidence, brain=None, *, autonomous_approval=Fals
     if task.get("kind") == "specialist_capability" and task.get("role") == "growth_launch":
         from agent.growth_launch import evaluate
         return evaluate(ROOT)
+    if task.get("kind") == "specialist_capability" and task.get("role") == "analytics":
+        from agent.analytics import evaluate
+        return evaluate(ROOT)
 
     if task.get("dispatch_to_autonomous_studio"):
         if autonomous_approval is not True:
