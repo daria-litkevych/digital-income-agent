@@ -36,6 +36,10 @@ class AnalyticsTests(unittest.TestCase):
                 with self.assertRaises(MetricsInputError):
                     analyse_metrics(dict(self.metrics, sessions=bad))
 
+    def test_invalid_refund_amount_is_rejected_before_arithmetic(self):
+        with self.assertRaisesRegex(MetricsInputError, "refund_amount"):
+            analyse_metrics(dict(self.metrics, refund_amount="not-a-number"))
+
     def test_inconsistent_refunds_are_rejected(self):
         with self.assertRaisesRegex(MetricsInputError, "refunds cannot exceed conversions"):
             analyse_metrics(dict(self.metrics, refunds=6))
