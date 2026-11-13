@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import os
 import json
 import hashlib
 
@@ -42,7 +43,7 @@ def dispatch_task(task, state, evidence, brain=None, *, autonomous_approval=Fals
                 "summary": "Autonomous studio execution is disabled in the Project Manager; explicit human approval was not supplied.",
                 "next_action": "Obtain explicit approval for provider, verified token prices, per-call cap, monthly cap and credentials before a live run.",
             }
-        from agent.autonomous_studio import build_live_studio
+        from agent.autonomous_studio import build_live_studio, build_local_studio
         workflow_steps = task.get("workflow_steps", [])
         workflow_id = str(task.get("id", "autonomous-task"))
         if not workflow_id.strip() or len(workflow_id) > 120:
@@ -59,12 +60,14 @@ def dispatch_task(task, state, evidence, brain=None, *, autonomous_approval=Fals
         def save_checkpoints(updated):
             # Persist after every specialist handoff, not only at PM cycle end.
             save_json(checkpoint_path, updated)
-        studio = build_live_studio(
+        runtime_env = dict(os.environ if env is None else env)
+        studio_factory = build_local_studio if runtime_env.get("STUDIO_LOCAL_LLM_ENABLED", "").lower() == "true" else build_live_studio
+        studio = studio_factory(
             ROOT,
             checkpoint_loader=load_checkpoints,
             checkpoint_saver=save_checkpoints,
             approval_confirmed=True,
-            env=env,
+            env=runtime_env,
         )
         try:
             result = studio.orchestrator.run(
